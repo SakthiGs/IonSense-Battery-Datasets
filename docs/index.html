@@ -270,6 +270,81 @@ dialog.sheet::backdrop{background:var(--scrim)}
 .copy-out{width:100%;font-size:13px;padding:6px 8px;border:1px solid var(--line-strong);border-radius:var(--r-s);background:var(--sunken)}
 .caveat{font-size:13px;color:var(--muted);margin:0;padding-top:14px;border-top:1px solid var(--line)}
 
+/* Compare: selection toggles, tray and side-by-side panel */
+.cmp-toggle{display:inline-flex;align-items:center;gap:7px;height:34px;padding:0 11px 0 9px;border-radius:var(--r-s);border:1px solid var(--line-strong);background:var(--panel);font-size:13.5px;font-weight:600;color:var(--ink-2);cursor:pointer;user-select:none;white-space:nowrap}
+.cmp-toggle input{width:15px;height:15px;margin:0;accent-color:var(--accent);cursor:pointer}
+.cmp-toggle:hover{border-color:var(--ink-2);color:var(--ink)}
+.cmp-toggle.is-on{border-color:var(--accent);background:var(--accent-soft);color:var(--accent-ink)}
+.cmp-toggle.is-full{opacity:.5;cursor:not-allowed}
+.cmp-toggle.is-full input{cursor:not-allowed}
+.cmp-toggle.bare{height:auto;padding:4px;border:0;background:none}
+.cmp-toggle.bare.is-on{background:none}
+.ds-aside{display:inline-flex;align-items:center;gap:4px;margin-left:auto}
+.ds-aside .btn.ghost{margin-left:0}
+.ds.is-compared{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+.list td.pick,.list th.pick{min-width:0;width:44px;padding-right:0}
+.list tr.is-compared td{background:color-mix(in srgb,var(--accent) 7%,transparent)}
+.tray{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:30;width:min(1000px,calc(100% - 32px));display:flex;align-items:center;gap:10px 16px;padding:10px 10px 10px 18px;background:var(--panel);border:1px solid var(--line-strong);border-radius:var(--r-l);box-shadow:var(--shadow)}
+.tray-title{display:flex;flex-direction:column;line-height:1.25;white-space:nowrap}
+.tray-title strong{font-size:14.5px;font-weight:700}
+.tray-title span{font-size:12.5px;color:var(--muted)}
+.tray-title span.warn{color:var(--warn);font-weight:600}
+.slots{display:flex;gap:8px;flex:1;min-width:0}
+.slot{flex:1 1 0;min-width:0;display:flex;align-items:center;gap:4px;height:38px;padding:0 4px 0 11px;border-radius:8px;background:var(--sunken);font-size:13px;font-weight:500}
+.slot > span{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.slot button{flex:none;display:inline-grid;place-items:center;width:28px;height:28px;border:0;border-radius:6px;background:none;color:var(--muted)}
+.slot button:hover{background:var(--line);color:var(--ink)}
+.slot button svg{width:14px;height:14px}
+.slot.empty{justify-content:center;background:transparent;border:1px dashed var(--line-strong);color:var(--muted);font-weight:400;padding:0 10px}
+.tray-actions{display:flex;align-items:center;gap:6px;flex:none}
+.tray-actions .btn.primary[disabled]{opacity:.45;cursor:not-allowed}
+body.has-tray{padding-bottom:84px}
+dialog.compare{width:min(1240px,calc(100% - 32px));max-width:none;height:min(860px,calc(100% - 32px));max-height:none;border:1px solid var(--line);border-radius:var(--r-l);padding:0;background:var(--panel);color:var(--ink);box-shadow:var(--shadow);overflow:hidden}
+dialog.compare[open]{display:flex;flex-direction:column;animation:cmp-in .22s cubic-bezier(.2,.7,.2,1)}
+dialog.compare::backdrop{background:var(--scrim)}
+@keyframes cmp-in{from{transform:translateY(12px);opacity:.5}to{transform:none;opacity:1}}
+.cmp-bar{display:flex;align-items:center;gap:10px 14px;flex-wrap:wrap;padding:14px 16px 14px 24px;border-bottom:1px solid var(--line)}
+.cmp-bar h2{font-size:20px;font-weight:700;font-stretch:108%;margin-right:auto}
+.cmp-bar .summary{font-size:13.5px;color:var(--ink-2)}
+.only-diff{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;color:var(--ink-2);cursor:pointer;user-select:none}
+.only-diff input{width:16px;height:16px;margin:0;accent-color:var(--accent);cursor:pointer}
+.cmp-body{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain}
+table.cmp{border-collapse:separate;border-spacing:0;width:100%;table-layout:fixed;font-size:14px}
+.cmp col.attr{width:178px}
+.cmp th,.cmp td{text-align:left;vertical-align:top;padding:12px 16px;border-bottom:1px solid var(--line)}
+.cmp td + td{border-left:1px solid var(--line)}
+.cmp thead th{position:sticky;top:0;z-index:2;background:var(--panel);border-bottom:1px solid var(--line-strong);padding-block:16px 14px;white-space:normal;font-size:inherit;font-weight:400;color:var(--ink)}
+.cmp thead th + th{border-left:1px solid var(--line)}
+.cmp thead th.corner{z-index:3;left:0;color:var(--muted);font-size:12.5px;font-weight:500;vertical-align:bottom}
+.cmp tbody th{position:sticky;left:0;z-index:1;background:var(--panel);font-weight:600;font-size:13.5px}
+.cmp tbody tr:last-child th,.cmp tbody tr:last-child td{border-bottom:0}
+.cmp-cat{font-size:12.5px;color:var(--muted);font-weight:500}
+.cmp-name{display:block;margin:4px 0 6px;border:0;background:none;padding:0;text-align:left;font-size:16px;line-height:1.3;font-weight:650;color:var(--ink);letter-spacing:-.005em}
+button.cmp-name:hover{color:var(--accent-ink);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.cmp-desc{margin:0 0 12px;font-size:13px;font-weight:400;line-height:1.45;color:var(--ink-2);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.cmp-col-actions{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.cmp-col-actions .btn{height:32px;font-size:13px}
+.cmp-col-actions .link-btn{font-weight:500}
+.mark{display:inline-flex;align-items:center;gap:5px;margin-top:5px;font-size:11.5px;font-weight:600;letter-spacing:.01em;border-radius:999px;padding:1px 8px}
+.mark.diff{color:var(--accent-ink);background:var(--accent-soft)}
+.mark.same{color:var(--muted);background:var(--sunken)}
+.mark i{width:6px;height:6px;border-radius:50%;background:currentColor}
+.cmp tr.is-diff th{box-shadow:inset 3px 0 0 var(--accent)}
+.cmp tr.is-same td{color:var(--ink-2)}
+.cmp td .ns{color:var(--muted);font-style:italic}
+.vals{display:flex;flex-wrap:wrap;gap:5px}
+.v{border-radius:6px;padding:2px 8px;font-size:12.5px;line-height:1.5;background:var(--sunken);color:var(--ink-2)}
+.v.uniq{background:var(--accent-soft);color:var(--accent-ink);font-weight:650;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--accent) 45%,transparent)}
+.cmp td a{color:var(--accent-ink);font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:4px;overflow-wrap:anywhere}
+.cmp td a:hover{text-decoration:underline}
+.cmp td small{display:block;color:var(--muted);font-size:12px;margin-top:2px;overflow-wrap:anywhere}
+.cmp-key{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;padding:12px 24px;border-top:1px solid var(--line);font-size:12.5px;color:var(--muted)}
+.cmp-key .v{font-size:12px}
+.cmp-empty{padding:40px 24px;color:var(--ink-2)}
+.cmp-note{margin:0;padding:10px 24px;font-size:13.5px;color:var(--warn);background:var(--warn-soft)}
+.copy-wrap{display:flex;gap:6px;align-items:center}
+.copy-wrap input{width:min(360px,60vw);font-size:12.5px;padding:6px 8px;border:1px solid var(--line-strong);border-radius:var(--r-s);background:var(--sunken)}
+
 /* Footer */
 .foot{border-top:1px solid var(--line);background:var(--panel)}
 .foot-in{max-width:1360px;margin:0 auto;padding:28px 24px;display:flex;flex-wrap:wrap;gap:12px 32px;justify-content:space-between;font-size:13.5px;color:var(--ink-2)}
@@ -301,11 +376,23 @@ dialog.sheet::backdrop{background:var(--scrim)}
   .stats{grid-template-columns:repeat(3,minmax(0,1fr));gap:4px 14px;width:100%}
   .search kbd{display:none}
   .hero p{display:none}
+  .slots{display:none}
+  .tray{justify-content:space-between;padding:10px 10px 10px 16px}
+  dialog.compare{width:100%;height:100%;border-radius:0;border:0}
+  .cmp-bar{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 10px;padding:12px 12px 12px 16px}
+  .cmp-bar h2{font-size:18px;grid-row:1;grid-column:1;align-self:center}
+  #compare-close{grid-row:1;grid-column:2}
+  .cmp-bar .summary,.only-diff,.copy-wrap{grid-column:1/-1}
+  .cmp col.attr{width:116px}
+  .cmp th,.cmp td{padding:10px 12px}
+  .cmp-key{padding:10px 16px}
+  .copy-wrap input{width:100%}
   .search input{padding-right:14px}
   .views button span{display:none}
   .toolbar h2{font-size:18px}
   .foot-in{padding-inline:16px}
 }
+@media (max-width:900px) and (min-width:641px){ .slot.empty{display:none} }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{transition-duration:0s!important;animation-duration:0s!important}
 }
@@ -406,6 +493,27 @@ dialog.sheet::backdrop{background:var(--scrim)}
   <div class="sheet-body" id="detail-body"></div>
 </dialog>
 
+<dialog class="compare" id="compare" aria-labelledby="compare-title">
+  <div class="cmp-bar">
+    <h2 id="compare-title">Compare datasets</h2>
+    <span class="summary" id="compare-summary"></span>
+    <label class="only-diff"><input type="checkbox" id="only-diff"> Only show differences</label>
+    <span class="copy-wrap" id="copy-wrap"><button class="btn" type="button" id="copy-compare">Copy comparison link</button></span>
+    <button class="icon-btn" type="button" id="compare-close" aria-label="Close comparison"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 5l10 10M15 5 5 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+  </div>
+  <div class="cmp-body" id="compare-body"></div>
+  <div class="cmp-key" id="compare-key"><span class="v uniq">Highlighted</span><span>values are not shared by every dataset.</span><span>Missing information is shown as <em class="ns" style="color:inherit">Not specified</em>, never estimated.</span></div>
+</dialog>
+
+<div class="tray" id="tray" role="region" aria-label="Datasets selected for comparison" hidden>
+  <div class="tray-title"><strong>Compare</strong><span id="tray-count">0 of 3 selected</span></div>
+  <div class="slots" id="slots"></div>
+  <div class="tray-actions">
+    <button class="link-btn" type="button" id="tray-clear">Clear</button>
+    <button class="btn primary" type="button" id="tray-open">Compare</button>
+  </div>
+</div>
+
 <div class="tip" id="tip" role="tooltip" hidden></div>
 
 <noscript><p style="max-width:1360px;margin:0 auto;padding:16px 24px">The dataset finder needs JavaScript. You can browse the same catalogue in the <a href="https://github.com/SakthiGs/EV-Battery-IonSense#readme">repository README</a>.</p></noscript>
@@ -481,7 +589,7 @@ const COLLAPSE_OVER = 10, COLLAPSED_ROWS = 8;
 
 /* ---------- State ---------- */
 const state = {
-  q: '', sort: 'documented', view: 'cards', open: null, lastAdded: null,
+  q: '', sort: 'documented', view: 'cards', open: null, lastAdded: null, compare: [],
   sel: Object.fromEntries(FACETS.map(f => [f.key, new Set()])),
   mode: { task: 'any', signal: 'any' },
   expanded: {}
@@ -772,7 +880,7 @@ function card(d) {
   addFact('Scale', known(d.scale));
   addFact('Source', known(d.source));
   const notes = notesOf(d);
-  return h('article', { class: 'ds' },
+  return h('article', { class: 'ds' + (isCompared(d) ? ' is-compared' : ''), 'data-card': d.id },
     h('div', { class: 'ds-top' }, h('span', {}, d.category || 'Uncategorised'), h('span', { class: 'res' }, resourceOf(d))),
     h('h3', { class: 'ds-title' }, h('button', { type: 'button', 'data-fk': 'open|' + d.id, onclick: () => openDetail(d) }, highlight(d.name))),
     h('p', { class: 'ds-desc' }, highlight(d.description || 'No description yet.')),
@@ -783,15 +891,18 @@ function card(d) {
       extLink(http(d.url), PRIMARY_LABEL[d.source_type] || 'Open source', 'btn primary'),
       extLink(paperOf(d), 'Paper', 'btn'),
       extLink(codeOf(d), 'Code', 'btn'),
-      h('button', { type: 'button', class: 'btn ghost', onclick: () => openDetail(d) }, 'Details'))
+      h('span', { class: 'ds-aside' },
+        compareToggle(d),
+        h('button', { type: 'button', class: 'btn ghost', onclick: () => openDetail(d) }, 'Details')))
   );
 }
 
 function tableView() {
   const head = ['Dataset', 'Category', 'Chemistry', 'Research tasks', 'Measurements', 'Links'];
   return h('div', { class: 'table-wrap' }, h('table', { class: 'list' },
-    h('thead', {}, h('tr', {}, head.map(t => h('th', { scope: 'col' }, t)))),
-    h('tbody', {}, results.map(d => h('tr', {},
+    h('thead', {}, h('tr', {}, h('th', { scope: 'col', class: 'pick' }, h('span', { class: 'sr-only' }, 'Compare')), head.map(t => h('th', { scope: 'col' }, t)))),
+    h('tbody', {}, results.map(d => h('tr', { class: isCompared(d) ? 'is-compared' : null, 'data-row': d.id },
+      h('td', { class: 'pick' }, compareToggle(d, true)),
       h('td', { class: 'name' }, h('button', { type: 'button', 'data-fk': 'open|' + d.id, onclick: () => openDetail(d) }, highlight(d.name)), h('small', {}, resourceOf(d))),
       h('td', {}, d.category || ''),
       h('td', {}, chemOf(d).join(', ')),
@@ -902,7 +1013,8 @@ function openDetail(d) {
     extLink(paperOf(d), 'Publication', 'btn'),
     extLink(codeOf(d), 'Source code', 'btn'),
     extLink(doiOf(d), 'DOI', 'btn'),
-    http(d.url) ? copyBtn : null);
+    http(d.url) ? copyBtn : null,
+    compareToggle(d));
 
   $('#detail-crumb').textContent = d.category || '';
   $('#detail-body').replaceChildren(...[
@@ -933,6 +1045,203 @@ dlg.addEventListener('click', e => {
   if (c && state.open) { const d = data.find(x => x.id === state.open); if (d) setTimeout(() => openDetail(d)); }
 });
 
+/* ---------- Dataset comparison ---------- */
+const COMPARE_MAX = 3;
+const NS = 'Not specified';
+const ACCESS_STATUS = { verified_public: 'Public access confirmed', not_checked: 'Not checked yet' };
+const humanize = v => String(v).replace(/_/g, ' ').replace(/^\w/, c => c.toUpperCase());
+const isCompared = d => state.compare.includes(d.id);
+const comparedData = () => state.compare.map(id => data.find(d => d.id === id)).filter(Boolean);
+const chemCheckOf = d => {
+  if (d.chemistry_verification === 'source_verified') return 'Checked at source';
+  if (CHEM_STATUS[d.chemistry_review_status]) return CHEM_STATUS[d.chemistry_review_status][0];
+  return d.chemistry_review_status ? humanize(d.chemistry_review_status) : NS;
+};
+/* Each row reads one field straight from datasets.json. Nothing is inferred:
+   an empty or placeholder value is shown as "Not specified". */
+const COMPARE_ROWS = [
+  { label: 'Category', get: d => d.category || NS },
+  { label: 'Chemistry', list: d => { const c = chemOf(d); return c[0] === 'Not specified' ? [] : c; } },
+  { label: 'Research tasks', list: d => d.tasks || [] },
+  { label: 'Measurements', list: d => d.signals || [] },
+  { label: 'Scale', get: d => known(d.scale) || NS },
+  { label: 'Source', get: d => known(d.source) || NS },
+  { label: 'Access type', get: d => d.resource_type === 'model_weights' ? 'Model weights' : (RESOURCE[d.source_type] || NS) },
+  { label: 'Access checked', get: d => ACCESS_STATUS[d.access_status] || (d.access_status ? humanize(d.access_status) : NS) },
+  { label: 'Chemistry label', get: chemCheckOf },
+  { label: 'Licence', get: d => known(d.license) || NS },
+  { label: 'Publication', link: paperOf },
+  { label: 'Source code', link: codeOf },
+  { label: 'Notes', get: d => notesOf(d).join(' ') || NS }
+];
+const sameKey = (row, d) => row.list ? row.list(d).map(v => v.toLowerCase()).sort().join('|')
+  : row.link ? (row.link(d) ? 'linked' : '') : String(row.get(d)).trim().toLowerCase();
+
+function compareToggle(d, bare) {
+  const on = isCompared(d), full = !on && state.compare.length >= COMPARE_MAX;
+  const input = h('input', { type: 'checkbox', 'data-fk': 'cmp|' + d.id + (bare ? '|t' : ''), 'aria-label': bare ? 'Compare ' + d.name : null });
+  input.checked = on; input.disabled = full;
+  input.addEventListener('change', () => setCompared(d.id, input.checked));
+  return h('label', {
+    class: 'cmp-toggle' + (bare ? ' bare' : '') + (on ? ' is-on' : '') + (full ? ' is-full' : ''),
+    'data-cmp': d.id,
+    title: full ? `You can compare up to ${COMPARE_MAX} datasets. Remove one to add another.` : (on ? 'Remove from comparison' : 'Add to comparison')
+  }, input, bare ? null : 'Compare');
+}
+
+function setCompared(id, on) {
+  const i = state.compare.indexOf(id);
+  if (on && i < 0) {
+    if (state.compare.length >= COMPARE_MAX) { trayWarn(); syncCompare(); return; }
+    state.compare.push(id);
+  } else if (!on && i >= 0) state.compare.splice(i, 1);
+  syncCompare();
+  if (cmpDlg.open) { if (state.compare.length) renderCompare(); else cmpDlg.close(); }
+  writeUrl();
+}
+
+/* Update every compare control in place, so cards are not rebuilt and focus stays put. */
+function syncCompare() {
+  const n = state.compare.length;
+  document.querySelectorAll('[data-cmp]').forEach(label => {
+    const id = label.dataset.cmp, on = state.compare.includes(id), full = !on && n >= COMPARE_MAX;
+    const input = label.querySelector('input');
+    input.checked = on; input.disabled = full;
+    label.classList.toggle('is-on', on); label.classList.toggle('is-full', full);
+    label.title = full ? `You can compare up to ${COMPARE_MAX} datasets. Remove one to add another.` : (on ? 'Remove from comparison' : 'Add to comparison');
+  });
+  document.querySelectorAll('[data-card]').forEach(c => c.classList.toggle('is-compared', state.compare.includes(c.dataset.card)));
+  document.querySelectorAll('[data-row]').forEach(r => r.classList.toggle('is-compared', state.compare.includes(r.dataset.row)));
+  renderTray();
+}
+
+let trayTimer = 0;
+function trayWarn() {
+  const c = $('#tray-count');
+  c.textContent = `Limit is ${COMPARE_MAX}. Remove one first.`;
+  c.classList.add('warn');
+  clearTimeout(trayTimer);
+  trayTimer = setTimeout(() => { c.classList.remove('warn'); renderTray(); }, 2600);
+}
+
+function renderTray() {
+  const list = comparedData(), n = list.length, tray = $('#tray');
+  tray.hidden = n === 0;
+  document.body.classList.toggle('has-tray', n > 0);
+  if (!$('#tray-count').classList.contains('warn')) $('#tray-count').textContent = n < 2 ? `${n} of ${COMPARE_MAX} selected. Pick one more.` : `${n} of ${COMPARE_MAX} selected`;
+  const slots = list.map(d => h('div', { class: 'slot', title: d.name },
+    h('span', {}, d.name),
+    h('button', { type: 'button', 'aria-label': 'Remove ' + d.name + ' from comparison', onclick: () => setCompared(d.id, false) }, ICON_X())));
+  for (let i = n; i < COMPARE_MAX; i++) slots.push(h('div', { class: 'slot empty' }, 'Tick Compare on a dataset'));
+  $('#slots').replaceChildren(...slots);
+  const go = $('#tray-open');
+  go.disabled = n < 2;
+  go.textContent = n < 2 ? 'Compare' : `Compare ${n} datasets`;
+  go.title = n < 2 ? 'Select at least two datasets' : '';
+}
+
+const cmpDlg = $('#compare');
+function openCompare() {
+  if (!state.compare.length) return;
+  hideTip();
+  renderCompare();
+  if (!cmpDlg.open) cmpDlg.showModal();
+  writeUrl();
+}
+
+function renderCompare() {
+  const list = comparedData(), n = list.length;
+  const onlyDiff = $('#only-diff').checked;
+  const rows = COMPARE_ROWS.map(row => {
+    const keys = list.map(d => sameKey(row, d));
+    const differs = n > 1 && new Set(keys).size > 1;
+    let shared = null;
+    if (row.list && n > 1) {
+      const sets = list.map(d => new Set(row.list(d).map(v => v.toLowerCase())));
+      shared = new Set([...sets[0]].filter(v => sets.every(s => s.has(v))));
+    }
+    return { row, differs, shared };
+  });
+  const diffCount = rows.filter(r => r.differs).length;
+  $('#compare-summary').textContent = n > 1 ? `${diffCount} of ${rows.length} attributes differ` : 'Add another dataset to see differences';
+
+  const cell = (r, d) => {
+    const { row, shared } = r;
+    if (row.list) {
+      const vals = row.list(d);
+      if (!vals.length) return h('td', {}, h('span', { class: 'ns' }, NS));
+      return h('td', {}, h('div', { class: 'vals' }, vals.map(v => {
+        const uniq = shared && !shared.has(v.toLowerCase());
+        return h('span', { class: uniq ? 'v uniq' : 'v', title: uniq ? 'Not shared by every dataset in this comparison' : null }, v);
+      })));
+    }
+    if (row.link) {
+      const url = row.link(d);
+      if (!url) return h('td', {}, h('span', { class: 'ns' }, NS));
+      let host = '';
+      try { host = new URL(url).hostname.replace(/^www\./, ''); } catch (e) {}
+      return h('td', {}, extLink(url, row.label === 'Publication' ? 'View publication' : 'View code'), host ? h('small', {}, host) : null);
+    }
+    const v = row.get(d);
+    return h('td', {}, v === NS ? h('span', { class: 'ns' }, NS) : v);
+  };
+
+  const head = h('tr', {}, h('th', { scope: 'col', class: 'corner' }, n > 1 ? 'Attribute' : ''), list.map(d => h('th', { scope: 'col' },
+    h('div', { class: 'cmp-cat' }, d.category || NS),
+    h('button', { type: 'button', class: 'cmp-name', title: 'Show full details', onclick: () => openDetail(d) }, d.name),
+    h('p', { class: 'cmp-desc' }, d.description || NS),
+    h('div', { class: 'cmp-col-actions' },
+      extLink(http(d.url), PRIMARY_LABEL[d.source_type] || 'Open source', 'btn primary'),
+      h('button', { type: 'button', class: 'link-btn', onclick: () => setCompared(d.id, false) }, 'Remove')))));
+
+  const shown = rows.filter(r => !onlyDiff || r.differs || n < 2);
+  const body = shown.map(r => h('tr', { class: n > 1 ? (r.differs ? 'is-diff' : 'is-same') : null },
+    h('th', { scope: 'row' }, r.row.label, n > 1 ? h('div', {}, h('span', { class: 'mark ' + (r.differs ? 'diff' : 'same') }, h('i'), r.differs ? 'Differs' : 'Same')) : null),
+    list.map(d => cell(r, d))));
+
+  const table = h('table', { class: 'cmp' },
+    h('caption', { class: 'sr-only' }, 'Side-by-side comparison of the selected datasets'),
+    h('colgroup', {}, h('col', { class: 'attr' }), list.map(() => h('col', {}))),
+    h('thead', {}, head),
+    h('tbody', {}, body));
+  const narrow = matchMedia('(max-width:640px)').matches;
+  table.style.minWidth = `calc(${narrow ? 116 : 178}px + ${n} * ${narrow ? 210 : 230}px)`;
+
+  const parts = [];
+  if (n < 2) parts.push(h('p', { class: 'cmp-note' }, 'Only one dataset is selected. Close this panel and tick Compare on another dataset.'));
+  if (onlyDiff && n > 1 && !diffCount) parts.push(h('p', { class: 'cmp-empty' }, 'These datasets match on every attribute listed here.'));
+  else parts.push(table);
+  const scroller = $('#compare-body'), keep = scroller.scrollLeft;
+  scroller.replaceChildren(...parts);
+  scroller.scrollLeft = keep;
+  $('#compare-key').hidden = n < 2;
+  resetCopy();
+}
+
+function compareUrl() {
+  const q = '?compare=' + state.compare.map(encodeURIComponent).join(',') + '&panel=compare';
+  const base = /^https?:$/.test(location.protocol) ? location.origin + location.pathname : location.href.split(/[?#]/)[0];
+  return base + q;
+}
+function resetCopy() {
+  $('#copy-wrap').replaceChildren(h('button', { class: 'btn', type: 'button', id: 'copy-compare', onclick: copyCompare }, 'Copy comparison link'));
+}
+function copyCompare() {
+  const url = compareUrl(), btn = $('#copy-compare');
+  const fallback = () => {
+    const inp = h('input', { value: url, readonly: true, 'aria-label': 'Comparison link' });
+    $('#copy-wrap').replaceChildren(inp); inp.focus(); inp.select();
+  };
+  try { navigator.clipboard.writeText(url).then(() => { btn.textContent = 'Link copied'; }, fallback); } catch (e) { fallback(); }
+}
+
+$('#tray-open').addEventListener('click', openCompare);
+$('#tray-clear').addEventListener('click', () => { state.compare = []; syncCompare(); writeUrl(); });
+$('#compare-close').addEventListener('click', () => cmpDlg.close());
+$('#only-diff').addEventListener('change', renderCompare);
+cmpDlg.addEventListener('click', e => { if (e.target === cmpDlg) cmpDlg.close(); });
+cmpDlg.addEventListener('close', () => { writeUrl(); syncCompare(); });
+
 /* ---------- URL state (shareable views) ---------- */
 function writeUrl() {
   try {
@@ -943,13 +1252,15 @@ function writeUrl() {
     if (state.sort !== 'documented') p.set('sort', state.sort);
     if (state.view !== 'cards') p.set('view', state.view);
     if (state.open) p.set('dataset', state.open);
-    const s = p.toString();
+    if (state.compare.length) p.set('compare', state.compare.join(','));
+    if (cmpDlg.open) p.set('panel', 'compare');
+    const s = p.toString().replace(/%2C/g, ',');
     history.replaceState(null, '', (s ? '?' + s : location.pathname) + location.hash);
   } catch (e) { /* sandboxed frames may refuse; the page works without it */ }
 }
 function readUrl() {
   let p;
-  try { p = new URLSearchParams(location.search); } catch (e) { return; }
+  try { p = new URLSearchParams(location.search); } catch (e) { return {}; }
   state.q = p.get('q') || '';
   $('#q').value = state.q;
   for (const f of FACETS) for (const v of p.getAll(f.key)) if (f.options.includes(v)) state.sel[f.key].add(v);
@@ -957,7 +1268,9 @@ function readUrl() {
   if (['name', 'category', 'documented'].includes(p.get('sort'))) state.sort = p.get('sort');
   if (['cards', 'table', 'coverage'].includes(p.get('view'))) state.view = p.get('view');
   $('#sort').value = state.sort;
-  return p.get('dataset');
+  const ids = (p.get('compare') || '').split(',').map(s => s.trim()).filter(Boolean);
+  state.compare = [...new Set(ids)].filter(id => data.some(d => d.id === id)).slice(0, COMPARE_MAX);
+  return { dataset: p.get('dataset'), panel: p.get('panel') };
 }
 
 /* ---------- Mobile filter drawer ---------- */
@@ -1030,9 +1343,11 @@ fetch('./datasets.json', { cache: 'no-cache' })
     categoryOrder = [...catCount.keys()].sort((a, b) => catCount.get(b) - catCount.get(a) || a.localeCompare(b));
     buildFacets();
     buildPack();
-    const openId = readUrl();
+    const fromUrl = readUrl();
     update(false);
-    const d = openId && data.find(x => x.id === openId);
+    syncCompare();
+    if (fromUrl.panel === 'compare' && state.compare.length) openCompare();
+    const d = fromUrl.dataset && data.find(x => x.id === fromUrl.dataset);
     if (d) openDetail(d);
   })
   .catch(err => {
