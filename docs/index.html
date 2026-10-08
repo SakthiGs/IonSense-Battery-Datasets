@@ -40,11 +40,160 @@ let all=[];
 const $=id=>document.getElementById(id);
 const controls=['query','category','chemistry','task','signal','sort'];
 const text=(tag,value,className)=>{const n=document.createElement(tag);n.textContent=value;if(className)n.className=className;return n};
-const selectOptions=(id,values)=>{[...new Set(values.filter(Boolean))].sort().forEach(value=>{const o=document.createElement('option');o.value=value;o.textContent=value;$(id).append(o)})};
-const card=d=>{const article=text('article','','card');const badges=text('div','','tagrow');badges.append(text('span',d.category,'tag'),text('span',d.chemistry,'tag alt'));article.append(badges,text('h3',d.name),text('p',d.description));article.append(text('div',d.source+' · '+d.scale,'small'));if(d.notes)article.append(text('div','Note: '+d.notes,'small'));const footer=text('div','','cardfooter');const a=text('a','View original dataset ↗','action');a.href=d.url;a.target='_blank';a.rel='noopener noreferrer';footer.append(a);if(d.paper){const p=text('a','Original publication ↗','paper');p.href=d.paper;p.target='_blank';p.rel='noopener noreferrer';footer.append(p)}article.append(footer);return article};
-function render(){const q=$('query').value.trim().toLowerCase(),c=$('category').value,ch=$('chemistry').value,t=$('task').value,s=$('signal').value;const result=all.filter(d=>(!c||d.category===c)&&(!ch||d.chemistry===ch)&&(!t||d.tasks.includes(t))&&(!s||d.signals.includes(s))&&(!q||[d.name,d.source,d.description,d.category,d.chemistry,d.scale,...d.tasks,...d.signals].join(' ').toLowerCase().includes(q))).sort((a,b)=>String(a[$('sort').value]).localeCompare(String(b[$('sort').value])));$('count').textContent=result.length+' of '+all.length+' datasets';$('cards').replaceChildren(...result.map(card));$('empty').hidden=result.length!==0;}
-controls.forEach(id=>$(id).addEventListener(id==='query'?'input':'change',render));$('reset').addEventListener('click',()=>{controls.forEach(id=>$(id).value=id==='sort'?'name':'');render()});
-fetch('./datasets.json').then(r=>{if(!r.ok)throw Error('HTTP '+r.status);return r.json()}).then(data=>{all=data;selectOptions('category',all.map(d=>d.category));selectOptions('chemistry',all.map(d=>d.chemistry));selectOptions('task',all.flatMap(d=>d.tasks));selectOptions('signal',all.flatMap(d=>d.signals));$('total').textContent=all.length;$('categories').textContent=new Set(all.map(d=>d.category)).size;render()}).catch(err=>{$('count').textContent='Unable to load dataset catalogue';$('empty').hidden=false;$('empty').textContent='Catalogue could not be loaded. Serve the project from a local web server or GitHub Pages. '+err.message});
+const fields=['category','chemistry','task','signal'];
+const titles={category:'categories',chemistry:'chemistries',task:'tasks',signal:'measurements'};
+const labels={category:'All categories',chemistry:'All chemistries',task:'All tasks',signal:'All measurements'};
+const selected=Object.fromEntries(fields.map(f=>[f,'']));
+let priority=[];
+const values=(d,f)=>{
+  if(f==='chemistry') return Array.isArray(d.chemistries) ? (d.chemistries.length?d.chemistries:['Unspecified']) : [d.chemistry||'Unspecified'];
+  if(f==='task')return d.tasks||[];
+  if(f==='signal')return d.signals||[];
+  return d.category?[d.category]:[];
+};
+const queryMatch=d=>{
+  const q=$('query').value.trim().toLowerCase();
+  if(!q)return true;
+  return [d.name,d.source,d.description,d.category,d.chemistry,d.scale,d.notes,...(d.chemistries||[]),...(d.tasks||[]),...(d.signals||[])].filter(Boolean).join(' ').toLowerCase().includes(q);
+};
+const matches=(d,excluded)=>fields.every(f=>f===excluded||!selected[f]||values(d,f).includes(selected[f]));
+function refreshOptions(){
+  // Preserve the most recent change when older selections conflict.
+  for(const f of [...priority].reverse()){
+    if(!selected[f])continue;
+    const works=all.some(d=>queryMatch(d)&&matches(d,null));
+    if(works)continue;
+    for(const older of [...priority]){
+      if(older===f)break;
+      selected[older]='';
+      if(all.some(d=>queryMatch(d)&&matches(d,null)))break;
+    }
+  }
+  fields.forEach(f=>{
+    const available=all.filter(d=>queryMatch(d)&&matches(d,f));
+    const opts=[...new Set(available.flatMap(d=>values(d,f)).filter(Boolean))].sort((a,b)=>a.localeCompare(b));
+    const el=$(f);
+    el.replaceChildren();
+    const first=document.createElement('option');first.value='';first.textContent=labels[f];el.append(first);
+    for(const v of opts){const o=document.createElement('option');o.value=v;o.textContent=v;el.append(o)}
+    if(selected[f]&&!opts.includes(selected[f])) selected[f]='';
+    el.value=selected[f];
+  });
+}
+const card=d=>{
+  const article=text('article','','card');
+  const badges=text('div','','tagrow');
+
+  badges.append(
+    text('span',d.category||'Uncategorized','tag'),
+    text('span',(d.chemistries&&d.chemistries.length?d.chemistries.join(' · '):d.chemistry||'Unspecified'),'tag alt')
+  );
+
+  if(d.id==='magbridge-battery-v1')
+    badges.append(text('span','Synthetic dataset','tag'));
+
+  const types={
+    data_repository:'Data repository',
+    data_portal:'Data portal',
+    direct_download:'Direct download',
+    source_data:'Source data',
+    code_repository:'Code repository',
+    code_only:'Code only',
+    publication_source:'Publication',
+    publication_only:'Publication'
+  };
+
+  badges.append(text('span',types[d.source_type]||'Other source','tag'));
+
+  article.append(
+    badges,
+    text('h3',d.name||'Unnamed dataset'),
+    text('p',d.description||'No description available')
+  );
+
+  const details=[d.source,d.scale].filter(Boolean);
+  if(details.length)
+    article.append(text('div',details.join(' · '),'small'));
+
+  if(d.notes)
+    article.append(text('div','Note: '+d.notes,'small'));
+
+  if(d.source_type==='code_only')
+    article.append(text('div','Dataset unavailable; code provided.','small'));
+  else if(d.access_status!=='verified_public')
+    article.append(text('div','Download availability not yet verified.','small'));
+
+  const footer=text('div','','cardfooter');
+
+  const labels={
+    data_repository:'Open data repository ↗',
+    data_portal:'Open data portal ↗',
+    direct_download:'Download source file ↗',
+    source_data:'View source data ↗',
+    code_repository:'View code repository ↗',
+    code_only:'View code repository ↗',
+    publication_source:'View publication ↗',
+    publication_only:'View publication ↗'
+  };
+
+  const link=(url,label,cls)=>{
+    if(!url)return;
+    const a=text('a',label,cls);
+    a.href=url;
+    a.target='_blank';
+    a.rel='noopener noreferrer';
+    footer.append(a);
+  };
+
+  link(d.url,labels[d.source_type]||'Open source ↗','action');
+
+  const paper=d.paper_url||d.paper;
+  if(paper && paper!==d.url)
+    link(paper,'Original publication ↗','paper');
+
+  if(d.code_url && d.code_url!==d.url)
+    link(d.code_url,'Source code ↗','paper');
+
+  if(d.doi && !paper)
+    link('https://doi.org/'+d.doi,'Dataset DOI ↗','paper');
+
+  article.append(footer);
+  return article;
+};
+
+
+function render(){
+  refreshOptions();
+  const results=all.filter(d=>queryMatch(d)&&matches(d,null)).sort((a,b)=>String(a[$('sort').value]||'').localeCompare(String(b[$('sort').value]||'')));
+  $('count').textContent=results.length+' of '+all.length+' entries';
+  $('cards').replaceChildren(...results.map(card));
+  $('empty').hidden=results.length!==0;
+}
+fields.forEach(f=>$(f).addEventListener('change',()=>{
+  selected[f]=$(f).value;
+  priority=priority.filter(x=>x!==f).concat(f);
+  // New selection wins: remove older, incompatible filters.
+  if(selected[f]&&!all.some(d=>queryMatch(d)&&matches(d,null))){
+    for(const older of priority){
+      if(older===f)break;
+      selected[older]='';
+      if(all.some(d=>queryMatch(d)&&matches(d,null)))break;
+    }
+  }
+  render();
+}));
+$('query').addEventListener('input',render);
+$('sort').addEventListener('change',render);
+$('reset').addEventListener('click',()=>{
+  fields.forEach(f=>selected[f]='');priority=[];
+  $('query').value='';$('sort').value='name';render();
+});
+fetch('./datasets.json').then(r=>{if(!r.ok)throw Error('HTTP '+r.status);return r.json()}).then(data=>{
+  all=data;
+  $('total').textContent=all.length;
+  $('categories').textContent=new Set(all.map(d=>d.category)).size;
+  render();
+}).catch(err=>{$('count').textContent='Unable to load catalogue';$('empty').hidden=false;$('empty').textContent=err.message});
 })();
 </script>
 </body></html>

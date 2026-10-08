@@ -1,11 +1,1629 @@
 [
-{"id":"home-storage-rwth","name":"Multi-Year Home Storage Field Measurements","category":"Field & Real-World","chemistry":"Unspecified","tasks":["Capacity estimation","Energy management"],"source":"RWTH Aachen / ISEA","scale":"21 systems · 106 system-years","description":"One-second measurements of current, voltage, power and housing/room temperature across residential storage systems in Germany.","url":"https://zenodo.org/records/12091223","paper":"https://doi.org/10.1038/s41560-024-01620-9","access":"Open landing page","signals":["Current","Voltage","Power","Temperature"],"notes":"Home storage, not EV fleet telemetry."},
-{"id":"field-28-lfp","name":"Lithium-Ion Battery Field Data: 28 LFP Systems","category":"Field & Real-World","chemistry":"LFP","tasks":["Fault diagnosis","Health monitoring"],"source":"Original field-data authors","scale":"28 portable systems · ~133 million rows","description":"Fault-biased operational battery data with cell voltages, pack current and temperatures, from returned portable systems.","url":"https://zenodo.org/records/13715694","paper":"","access":"Open landing page","signals":["Voltage","Current","Temperature"],"notes":"Portable systems, not necessarily EVs; appears again in original README entry 11 — potential duplicate to review."},
-{"id":"tsinghua-ev","name":"Tsinghua EV Field Datasets","category":"Field & Real-World","chemistry":"Unspecified","tasks":["Charging analysis","Health monitoring"],"source":"Tsinghua University","scale":"464 EVs · >1.2M charging snippets","description":"Real-world EV charging data across multiple vehicle types.","url":"https://data.mendeley.com/datasets/mcsh4hnb8b/1","paper":"","access":"Open landing page","signals":["Charging data"],"notes":"Check original files for exact chemistry and available columns."},
-{"id":"onroad-capacity","name":"Battery Capacity Prognostics for On-Road EVs","category":"Field & Real-World","chemistry":"Unspecified","tasks":["Capacity estimation","SOH estimation"],"source":"Original research authors","scale":"20 EVs · 29 months","description":"On-road EV charging data and capacity-related features for degradation studies.","url":"https://github.com/shiyunliu-battery/battery-charging-data-of-on-road-electric-vehicles","paper":"","access":"Repository","signals":["Charging data","Capacity"],"notes":"Review original documentation before choosing train/test splits."},
-{"id":"online-fault-zenodo","name":"Online Fault Diagnosis Under Stochastic Conditions","category":"Safety & Failure","chemistry":"Unspecified","tasks":["Fault diagnosis","Anomaly detection"],"source":"Original research authors","scale":"515 vehicles · 18.2M records (as catalogued)","description":"Cloud BMS observations and reported fault examples for online fault diagnostics.","url":"https://zenodo.org/records/10656500","paper":"","access":"Open landing page","signals":["BMS signals"],"notes":"Check dataset access terms and fault-label definitions at source."},
-{"id":"bev-energy-kuleuven","name":"BEV Energy Dynamics Dataset","category":"Field & Real-World","chemistry":"Unspecified","tasks":["Energy management","Charging analysis"],"source":"KU Leuven","scale":"1-second time series","description":"High-resolution energy measurements during driving, charging and parking.","url":"https://rdr.kuleuven.be/dataset.xhtml?persistentId=doi:10.48804/8KPDTW","paper":"","access":"Repository","signals":["Energy","Charging data"],"notes":"Energy-dynamics study; do not assume SOH ground-truth labels."},
-{"id":"formation-tri","name":"Battery Formation and Structured Aging Cycling Data","category":"Lab Aging & Degradation","chemistry":"Unspecified","tasks":["Cycle life","Degradation analysis"],"source":"Toyota Research Institute / MATR","scale":"Formation and cycling data","description":"Processed formation and aging measurements with cycle summaries.","url":"https://data.matr.io/8/","paper":"","access":"Repository","signals":["Cycling data","Capacity"],"notes":"Inspect source metadata for experimental partitions."},
-{"id":"tum-commercial-aging","name":"Experimental Degradation Study of Commercial Li-Ion Cells","category":"Lab Aging & Degradation","chemistry":"NCA","tasks":["SOH estimation","Degradation analysis"],"source":"Technical University of Munich","scale":"196 cells","description":"Calendar and cycling aging under varied conditions for silicon-doped graphite/NCA cells.","url":"https://mediatum.ub.tum.de/1713382","paper":"","access":"Repository","signals":["Capacity","Cycling data"],"notes":"Check documentation for complete measurement inventory."},
-{"id":"early-cycle-life","name":"Data-Driven Prediction of Battery Cycle Life","category":"Lab Aging & Degradation","chemistry":"Unspecified","tasks":["Cycle life","RUL prediction"],"source":"MIT / Stanford","scale":"Early-prediction cycling dataset","description":"Battery cycling measurements used for early cycle-life prediction.","url":"https://data.matr.io/1/","paper":"","access":"Repository","signals":["Cycling data","Capacity"],"notes":"Verify the experimental setup and train/test groups at source."}
+  {
+    "id": "home-storage-rwth",
+    "name": "Multi-Year Home Storage Field Measurements",
+    "category": "Field & Real-World",
+    "chemistry": "Unspecified",
+    "tasks": [
+      "Capacity estimation",
+      "Energy management"
+    ],
+    "source": "RWTH Aachen / ISEA",
+    "scale": "21 systems · 106 system-years",
+    "description": "One-second measurements of current, voltage, power and housing/room temperature across residential storage systems in Germany.",
+    "url": "https://zenodo.org/records/12091223",
+    "paper": "https://doi.org/10.1038/s41560-024-01620-9",
+    "access": "Open landing page",
+    "signals": [
+      "Current",
+      "Voltage",
+      "Power",
+      "Temperature"
+    ],
+    "notes": "Home storage, not EV fleet telemetry.",
+    "source_type": "data_repository",
+    "access_status": "not_checked",
+    "chemistries": [],
+    "chemistry_review_status": "needs_source_verification"
+  },
+  {
+    "id": "field-28-lfp",
+    "name": "Lithium-Ion Battery Field Data: 28 LFP Systems",
+    "category": "Field & Real-World",
+    "chemistry": "LFP",
+    "tasks": [
+      "Fault diagnosis",
+      "Health monitoring"
+    ],
+    "source": "Original field-data authors",
+    "scale": "28 portable systems · ~133 million rows",
+    "description": "Fault-biased operational battery data with cell voltages, pack current and temperatures, from returned portable systems.",
+    "url": "https://zenodo.org/records/13715694",
+    "paper": "",
+    "access": "Open landing page",
+    "signals": [
+      "Voltage",
+      "Current",
+      "Temperature"
+    ],
+    "notes": "Portable systems, not necessarily EVs; appears again in original README entry 11 — potential duplicate to review.",
+    "source_type": "data_repository",
+    "access_status": "not_checked",
+    "chemistries": [
+      "LFP"
+    ],
+    "chemistry_review_status": "catalogue_label_not_independently_verified"
+  },
+  {
+    "id": "lithium-ion-battery-aging-dataset-based-on-ev-real-driving-profiles",
+    "name": "Lithium-Ion Battery Aging Dataset Based on EV Real-Driving Profiles",
+    "category": "Field & Real-World",
+    "chemistry": "Unspecified",
+    "tasks": [
+      "Fault diagnosis",
+      "Degradation analysis"
+    ],
+    "source": "See original source",
+    "scale": "See original source",
+    "description": "Aging data for cells subjected to Urban Dynamometer Driving Schedule (UDDS) discharge and CC-CV charging. Periodic diagnostic tests include capacity measurement, HPPC, and Electrochemical Impedance Spectroscopy (EIS), capturing battery degradation under realistic driving conditions.",
+    "url": "https://osf.io/qsabn/?view_only=2a03b6c78ef14922a3e244f3d549de78",
+    "paper": "https://www.sciencedirect.com/science/article/pii/S2352340922002062?via%3Dihub",
+    "access": "Unverified",
+    "signals": [
+      "Capacity",
+      "EIS",
+      "Charging data"
+    ],
+    "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
+    "source_type": "data_repository",
+    "access_status": "not_checked",
+    "chemistries": [],
+    "chemistry_review_status": "needs_source_verification"
+  },
+  {
+    "id": "tsinghua-ev",
+    "name": "Tsinghua EV Field Datasets",
+    "category": "Field & Real-World",
+    "chemistry": "Unspecified",
+    "tasks": [
+      "Charging analysis",
+      "Health monitoring"
+    ],
+    "source": "Tsinghua University",
+    "scale": "464 EVs · >1.2M charging snippets",
+    "description": "Real-world EV charging data across multiple vehicle types.",
+    "url": "https://data.mendeley.com/datasets/mcsh4hnb8b/1",
+    "paper": "",
+    "access": "Open landing page",
+    "signals": [
+      "Charging data"
+    ],
+    "notes": "Check original files for exact chemistry and available columns.",
+    "source_type": "data_repository",
+    "access_status": "not_checked",
+    "chemistries": [],
+    "chemistry_review_status": "needs_source_verification"
+  },
+  {
+    "id": "predicting-battery-end-of-life-from-solar-off-grid-field-data",
+    "name": "Predicting Battery End of Life from Solar Off-Grid Field Data",
+    "category": "Field & Real-World",
+    "chemistry": "Lead-acid",
+    "tasks": [
+      "Other research"
+    ],
+    "source": "See original source",
+    "scale": "See original source",
+    "description": "Performance metrics from solar off-grid systems used in lighting, phone charging, and small appliances. A rare dataset from low-resource settings that challenges assumptions built on lab or Western EV data.",
+    "url": "https://ora.ox.ac.uk/objects/uuid:e41d3d4c-f74e-4d76-81fd-0caa77ec6cec",
+    "paper": "https://www.cell.com/joule/fulltext/S2542-4351(21",
+    "access": "Unverified",
+    "signals": [
+      "Charging data"
+    ],
+    "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
+    "source_type": "data_repository",
+    "access_status": "not_checked",
+    "chemistries": [
+      "Lead-acid"
+    ],
+    "chemistry_review_status": "catalogue_label_not_independently_verified"
+  },
+  {
+    "id": "challenges-and-opportunities-in-truck-electrification-big-operational-data",
+    "name": "Challenges and Opportunities in Truck Electrification — Big Operational Data",
+    "category": "Field & Real-World",
+    "chemistry": "Unspecified",
+    "tasks": [
+      "Degradation analysis"
+    ],
+    "source": "See original source",
+    "scale": "See original source",
+    "description": "Large-scale operational data from commercial electric trucks, revealing real-world range, charging, and degradation challenges in heavy-duty electrification.",
+    "url": "https://springernature.figshare.com/articles/dataset/Challenges_and_opportunities_in_truck_electrification_unveiled_by_big_operational_data/24421210?file=44809303",
+    "paper": "https://www.nature.com/articles/s41560-024-01602-x#Abs1",
+    "access": "Unverified",
+    "signals": [
+      "Charging data"
+    ],
+    "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
+    "source_type": "data_repository",
+    "access_status": "not_checked",
+    "chemistries": [],
+    "chemistry_review_status": "needs_source_verification"
+  },
+  {
+    "id": "onroad-capacity",
+    "name": "Battery Capacity Prognostics for On-Road EVs",
+    "category": "Field & Real-World",
+    "chemistry": "Unspecified",
+    "tasks": [
+      "Capacity estimation",
+      "SOH estimation"
+    ],
+    "source": "Original research authors",
+    "scale": "20 EVs · 29 months",
+    "description": "On-road EV charging data and capacity-related features for degradation studies.",
+    "url": "https://github.com/shiyunliu-battery/battery-charging-data-of-on-road-electric-vehicles",
+    "paper": "",
+    "access": "Repository",
+    "signals": [
+      "Charging data",
+      "Capacity"
+    ],
+    "notes": "Review original documentation before choosing train/test splits.",
+    "source_type": "code_repository",
+    "access_status": "not_checked",
+    "chemistries": [],
+    "chemistry_review_status": "needs_source_verification"
+  },
+  {
+    "id": "synthetic-duty-cycles-from-real-world-autonomous-ev-driving",
+    "name": "Synthetic Duty Cycles from Real-World Autonomous EV Driving",
+    "category": "Field & Real-World",
+    "chemistry": "Unspecified",
+    "tasks": [
+      "Other research"
+    ],
+    "source": "See original source",
+    "scale": "See original source",
+    "description": "Synthetic load profiles derived from autonomous EV real-world driving data, enabling controlled lab experiments that are grounded in realistic usage.",
+    "url": "https://purl.stanford.edu/ky011nj6376",
+    "paper": "https://www.sciencedirect.com/science/article/pii/S2666386423003314",
+    "access": "Unverified",
+    "signals": [
+      "Cycling data"
+    ],
+    "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
+    "source_type": "data_repository",
+    "access_status": "not_checked",
+    "chemistries": [],
+    "chemistry_review_status": "needs_source_verification"
+  },
+  {
+    "id": "online-fault-zenodo",
+    "name": "Online Fault Diagnosis Under Stochastic Conditions",
+    "category": "Safety & Failure",
+    "chemistry": "Unspecified",
+    "tasks": [
+      "Fault diagnosis",
+      "Anomaly detection"
+    ],
+    "source": "Original research authors",
+    "scale": "515 vehicles · 18.2M records (as catalogued)",
+    "description": "Cloud BMS observations and reported fault examples for online fault diagnostics.",
+    "url": "https://zenodo.org/records/10656500",
+    "paper": "",
+    "access": "Open landing page",
+    "signals": [
+      "BMS signals"
+    ],
+    "notes": "Check dataset access terms and fault-label definitions at source.",
+    "source_type": "data_repository",
+    "access_status": "not_checked",
+    "chemistries": [],
+    "chemistry_review_status": "needs_source_verification"
+  },
+  {
+    "id": "bev-energy-kuleuven",
+    "name": "BEV Energy Dynamics Dataset",
+    "category": "Field & Real-World",
+    "chemistry": "Unspecified",
+    "tasks": [
+      "Energy management",
+      "Charging analysis"
+    ],
+    "source": "KU Leuven",
+    "scale": "1-second time series",
+    "description": "High-resolution energy measurements during driving, charging and parking.",
+    "url": "https://rdr.kuleuven.be/dataset.xhtml?persistentId=doi:10.48804/8KPDTW",
+    "paper": "",
+    "access": "Repository",
+    "signals": [
+      "Energy",
+      "Charging data"
+    ],
+    "notes": "Energy-dynamics study; do not assume SOH ground-truth labels.",
+    "source_type": "data_repository",
+    "access_status": "not_checked",
+    "chemistries": [],
+    "chemistry_review_status": "needs_source_verification"
+  },
+  {
+    "id": "electric-vehicle-usage-data-set-for-battery-aging-studies",
+    "name": "Electric Vehicle Usage Data Set for Battery Aging Studies",
+    "category": "Field & Real-World",
+    "chemistry": "LFP",
+    "tasks": [
+      "Fault diagnosis",
+      "Degradation analysis"
+    ],
+    "source": "See original source",
+    "scale": "See original source",
+    "description": "Real-world field measurements from 28 portable 24 V LFP battery systems with 8 prismatic cells in series. All units were returned due to abnormal behaviour, making this a fault-biased dataset. Distinct from Field Dataset 2 — published separately with different scope.",
+    "url": "https://github.com/TUMFTM/electric-vehicle-uds-dataset/tree/main",
+    "paper": "https://www.sciencedirect.com/science/article/pii/S2590116825001250?via%3Dihub#d1e4342",
+    "access": "Unverified",
+    "signals": [],
+    "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
+    "source_type": "code_repository",
+    "access_status": "not_checked",
+    "chemistries": [
+      "LFP"
+    ],
+    "chemistry_review_status": "catalogue_label_not_independently_verified"
+  },
+  {
+    "id": "second-life-lithium-ion-battery-aging-dataset-based-on-grid-storage-cycling",
+    "name": "Second-Life Lithium-Ion Battery Aging Dataset Based on Grid Storage Cycling",
+    "category": "Lab Aging & Degradation",
+    "chemistry": "NMC",
+    "tasks": [
+      "Degradation analysis"
+    ],
+    "source": "See original source",
+    "scale": "See original source",
+    "description": "Six NMC cells cycled using residential and commercial synthetic duty cycles. Purpose-built for studying second-life degradation under grid storage conditions.",
+    "url": "https://osf.io/8jnr5/",
+    "paper": "https://www.sciencedirect.com/science/article/pii/S2352340924010084?via%3Dihub",
+    "access": "Unverified",
+    "signals": [
+      "Cycling data"
+    ],
+    "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
+    "source_type": "data_repository",
+    "access_status": "not_checked",
+    "chemistries": [
+      "NMC"
+    ],
+    "chemistry_review_status": "catalogue_label_not_independently_verified"
+  },
+  {
+    "id": "formation-tri",
+    "name": "Battery Formation and Structured Aging Cycling Data",
+    "category": "Lab Aging & Degradation",
+    "chemistry": "Unspecified",
+    "tasks": [
+      "Cycle life",
+      "Degradation analysis"
+    ],
+    "source": "Toyota Research Institute / MATR",
+    "scale": "Formation and cycling data",
+    "description": "Processed formation and aging measurements with cycle summaries.",
+    "url": "https://data.matr.io/8/",
+    "paper": "",
+    "access": "Repository",
+    "signals": [
+      "Cycling data",
+      "Capacity"
+    ],
+    "notes": "Inspect source metadata for experimental partitions.",
+    "source_type": "data_repository",
+    "access_status": "not_checked",
+    "chemistries": [],
+    "chemistry_review_status": "needs_source_verification"
+  },
+  {
+    "id": "full-factorial-doe-dataset-for-parallel-connected-lithium-ion-cells",
+    "name": "Full Factorial DOE Dataset for Parallel-Connected Lithium-Ion Cells",
+    "category": "Lab Aging & Degradation",
+    "chemistry": "Multiple / mixed",
+    "tasks": [
+      "Degradation analysis"
+    ],
+    "source": "See original source",
+    "scale": "See original source",
+    "description": "Full factorial design of experiments on ladder-configured parallel strings. Varies temperature, cell-to-cell interconnection resistance, chemistry (NCA/NMC), and aging level. Includes individual cell current and temperature distributions.",
+    "url": "https://data.mendeley.com/datasets/zh58byr53c/1",
+    "paper": "https://www.sciencedirect.com/science/article/pii/S2352152X24003670?via%3Dihub",
+    "access": "Unverified",
+    "signals": [
+      "Current",
+      "Temperature"
+    ],
+    "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
+    "source_type": "data_repository",
+    "access_status": "not_checked",
+    "chemistries": [
+      "NCA",
+      "NMC"
+    ],
+    "chemistry_evidence": {
+      "status": "catalogue_or_source_review",
+      "url": "https://data.mendeley.com/datasets/zh58byr53c/1",
+      "note": "Catalogue description explicitly identifies NCA/NMC"
+    },
+    "chemistry_review_status": "catalogue_label_not_independently_verified"
+  },
+  {
+    "id": "experimental-data-galvanostatic-discharge-at-different-c-rates-and-temperatures",
+    "name": "Experimental Data — Galvanostatic Discharge at Different C-Rates and Temperatures",
+    "category": "Lab Aging & Degradation",
+    "chemistry": "Unspecified",
+    "tasks": [
+      "Degradation analysis"
+    ],
+    "source": "See original source",
+    "scale": "See original source",
+    "description": "Detailed measurements of voltage, current, and skin temperature for three lithium-ion batteries tested under galvanostatic discharge at various C-rates and temperatures via Arbin system.",
+    "url": "https://data.mendeley.com/datasets/kxsbr4x3j2/2",
+    "paper": "https://www.sciencedirect.com/science/article/pii/S2352340921001785?via%3Dihub",
+    "access": "Unverified",
+    "signals": [
+      "Voltage",
+      "Current",
+      "Temperature"
+    ],
+    "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
+    "source_type": "data_repository",
+    "access_status": "not_checked",
+    "chemistries": [],
+    "chemistry_review_status": "needs_source_verification"
+  },
+  {
+    "id": "increasing-generalization-capability-of-battery-health-estimation-continual-learning",
+    "name": "Increasing Generalization Capability of Battery Health Estimation — Continual Learning",
+    "category": "Lab Aging & Degradation",
+    "chemistry": "Unspecified",
+    "tasks": [
+      "SOH estimation",
+      "Degradation analysis"
+    ],
+    "source": "See original source",
+    "scale": "See original source",
+    "description": "Pouch and prismatic cells aged under various temperatures and loading profiles. Includes partial Q curves during charging, capacities, and normalised SOH curves, with non-accelerated degradation experiment data.",
+    "url": "https://data.mendeley.com/datasets/n3b54nsw8m/9",
+    "paper": "https://www.sciencedirect.com/science/article/pii/S266638642300588X#abs0020",
+    "access": "Unverified",
+    "signals": [
+      "Temperature",
+      "Capacity",
+      "Charging data"
+    ],
+    "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
+    "source_type": "data_repository",
+    "access_status": "not_checked",
+    "chemistries": [],
+    "chemistry_review_status": "needs_source_verification"
+  },
+  {
+    "id": "tum-commercial-aging",
+    "name": "Experimental Degradation Study of Commercial Li-Ion Cells",
+    "category": "Lab Aging & Degradation",
+    "chemistry": "NCA",
+    "tasks": [
+      "SOH estimation",
+      "Degradation analysis"
+    ],
+    "source": "Technical University of Munich",
+    "scale": "196 cells",
+    "description": "Calendar and cycling aging under varied conditions for silicon-doped graphite/NCA cells.",
+    "url": "https://mediatum.ub.tum.de/1713382",
+    "paper": "",
+    "access": "Repository",
+    "signals": [
+      "Capacity",
+      "Cycling data"
+    ],
+    "notes": "Check documentation for complete measurement inventory.",
+    "source_type": "data_repository",
+    "access_status": "not_checked",
+    "chemistries": [
+      "NCA"
+    ],
+    "chemistry_review_status": "catalogue_label_not_independently_verified"
+  },
+  {
+    "id": "underlying-dataset-for-battery-pack-degradation-under-thermal-gradients",
+    "name": "Underlying Dataset for Battery Pack Degradation Under Thermal Gradients",
+    "category": "Lab Aging & Degradation",
+    "chemistry": "Unspecified",
+    "tasks": [
+      "Degradation analysis"
+    ],
+    "source": "See original source",
+    "scale": "See original source",
+    "description": "Raw and processed data plus analysis codes for investigating aging in parallel-connected Li-ion battery packs under thermal gradients.",
+    "url": "https://zenodo.org/records/10207731",
+    "paper": "https://www.nature.com/articles/s44172-023-00153-5#Abs1",
+    "access": "Unverified",
+    "signals": [
+      "Temperature"
+    ],
+    "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
+    "source_type": "data_repository",
+    "access_status": "not_checked",
+    "chemistries": [],
+    "chemistry_review_status": "needs_source_verification"
+  },
+  {
+    "id": "early-cycle-life",
+    "name": "Data-Driven Prediction of Battery Cycle Life",
+    "category": "Lab Aging & Degradation",
+    "chemistry": "LFP",
+    "tasks": [
+      "Cycle life",
+      "RUL prediction"
+    ],
+    "source": "MIT / Stanford",
+    "scale": "Early-prediction cycling dataset",
+    "description": "Battery cycling measurements used for early cycle-life prediction.",
+    "url": "https://data.matr.io/1/",
+    "paper": "",
+    "access": "Repository",
+    "signals": [
+      "Cycling data",
+      "Capacity"
+    ],
+    "notes": "Verify the experimental setup and train/test groups at source.",
+    "source_type": "data_repository",
+    "access_status": "not_checked",
+    "chemistries": [
+      "LFP"
+    ],
+    "chemistry_evidence_url": "https://www.nature.com/articles/s41560-019-0356-8",
+    "chemistry_verification": "source_verified",
+    "chemistry_evidence": {
+      "status": "catalogue_or_source_review",
+      "url": "https://data.matr.io/1/",
+      "note": "Source study uses LFP/graphite fast-charging cells"
+    },
+    "chemistry_review_status": "catalogue_label_not_independently_verified"
+  },
+  {
+    "id": "physics-informed-neural-network-for-lithium-ion-battery-degradation-modelling",
+    "name": "Physics-Informed Neural Network for Lithium-Ion Battery Degradation Modelling",
+    "category": "Lab Aging & Degradation",
+    "chemistry": "NMC",
+    "tasks": [
+      "Degradation analysis"
+    ],
+    "source": "See original source",
+    "scale": "See original source",
+    "description": "Supports physics-informed neural network modelling for stable degradation analysis and prognosis across diverse operating conditions.",
+    "url": "https://zenodo.org/records/10963339",
+    "paper": "https://www.nature.com/articles/s41467-024-48779-z",
+    "access": "Unverified",
+    "signals": [],
+    "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
+    "source_type": "data_repository",
+    "access_status": "not_checked",
+    "chemistries": [
+      "NMC"
+    ],
+    "chemistry_review_status": "catalogue_label_not_independently_verified"
+  },
+  {
+    "id": "prognosis-of-multivariate-battery-state-via-transformers",
+    "name": "Prognosis of Multivariate Battery State via Transformers",
+    "category": "Lab Aging & Degradation",
+    "chemistry": "LFP",
+    "tasks": [
+      "Degradation analysis"
+    ],
+    "source": "See original source",
+    "scale": "See original source",
+    "description": "Processed files for multivariate battery state prediction using transformer architectures. Includes LFP fast-charging and six cathode chemistry datasets.",
+    "url": "https://www.materialsdatafacility.org/detail/spacetimeformer_battery_v1.2",
+    "paper": "https://arxiv.org/abs/2309.10014",
+    "access": "Unverified",
+    "signals": [
+      "Charging data"
+    ],
+    "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
+    "source_type": "data_repository",
+    "access_status": "not_checked",
+    "chemistries": [
+      "LFP"
+    ],
+    "chemistry_review_status": "catalogue_label_not_independently_verified"
+  },
+  {
+    "id": "battery-aging-modes-across-nmc-compositions",
+    "name": "Battery Aging Modes Across NMC Compositions",
+    "category": "Lab Aging & Degradation",
+    "chemistry": "NMC",
+    "tasks": [
+      "Degradation analysis"
+    ],
+    "source": "See original source",
+    "scale": "See original source",
+    "description": "Cycle-by-cycle capacity, Coulombic efficiency, and end-of-charge/discharge voltages. Includes code for battery aging mode classification using ML.",
+    "url": "https://zenodo.org/records/7250553",
+    "paper": "https://www.cell.com/joule/fulltext/S2542-4351(22",
+    "access": "Unverified",
+    "signals": [
+      "Voltage",
+      "Capacity",
+      "Charging data",
+      "Cycling data"
+    ],
+    "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
+    "source_type": "data_repository",
+    "access_status": "not_checked",
+    "chemistries": [
+      "NMC"
+    ],
+    "chemistry_review_status": "catalogue_label_not_independently_verified"
+  },
+  {
+    "id": "isu-ilcc-battery-aging-dataset",
+    "name": "ISU-ILCC Battery Aging Dataset",
+    "category": "Lab Aging & Degradation",
+    "chemistry": "Unspecified",
+    "tasks": [
+      "Degradation analysis"
+    ],
+    "source": "See original source",
+    "scale": "See original source",
+    "description": "Li-ion polymer cells cycled under varying charge rate, discharge rate, and depth of discharge. Designed for studying stress factor dependencies in capacity fade.",
+    "url": "https://iastate.figshare.com/articles/dataset/_b_ISU-ILCC_Battery_Aging_Dataset_b_/22582234",
+    "paper": "https://www.cell.com/cell-reports-physical-science/fulltext/S2666-3864(24",
+    "access": "Unverified",
+    "signals": [
+      "Capacity",
+      "Charging data"
+    ],
+    "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
+    "source_type": "data_repository",
+    "access_status": "not_checked",
+    "chemistries": [],
+    "chemistry_review_status": "needs_source_verification"
+  },
+  {
+    "id": "comprehensive-battery-aging-dataset-nmc-c-sio-capacity-impedance-fade",
+    "name": "Comprehensive Battery Aging Dataset: NMC/C-SiO Capacity & Impedance Fade",
+    "category": "Lab Aging & Degradation",
+    "chemistry": "NMC",
+    "tasks": [
+      "Degradation analysis"
+    ],
+    "source": "See original source",
+    "scale": "See original source",
+    "description": "Wide-range operating conditions for NMC/C+SiO cells. One of the most comprehensive publicly available aging datasets for this chemistry.",
+    "url": "https://radar.kit.edu/radar/en/dataset/kww7jv8ajuvchcah",
+    "paper": "https://www.nature.com/articles/s41597-024-03831-x",
+    "access": "Unverified",
+    "signals": [
+      "Capacity",
+      "EIS"
+    ],
+    "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
+    "source_type": "data_repository",
+    "access_status": "not_checked",
+    "chemistries": [
+      "NMC"
+    ],
+    "chemistry_review_status": "catalogue_label_not_independently_verified"
+  },
+  {
+    "id": "dynamic-cycling-enhances-battery-lifetime",
+    "name": "Dynamic Cycling Enhances Battery Lifetime",
+    "category": "Lab Aging & Degradation",
+    "chemistry": "Unspecified",
+    "tasks": [
+      "Degradation analysis"
+    ],
+    "source": "See original source",
+    "scale": "See original source",
+    "description": "Dynamic discharge profiles representative of EV driving vs. constant-current profiles. Findings show up to 38% increase in equivalent full cycles at end-of-life under dynamic profiles.",
+    "url": "https://purl.stanford.edu/td676xr4322",
+    "paper": "https://www.nature.com/articles/s41560-024-01675-8#data-availability",
+    "access": "Unverified",
+    "signals": [
+      "Current",
+      "Cycling data"
+    ],
+    "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
+    "source_type": "data_repository",
+    "access_status": "not_checked",
+    "chemistries": [],
+    "chemistry_review_status": "needs_source_verification"
+  },
+  {
+    "id": "stanford-long-term-calendar-aging-dataset",
+    "name": "Stanford Long-Term Calendar Aging Dataset",
+    "category": "Lab Aging & Degradation",
+    "chemistry": "LFP",
+    "tasks": [
+      "Degradation analysis"
+    ],
+    "source": "See original source",
+    "scale": "See original source",
+    "description": "Calendar aging data from eight cell types (LFP, NCR, VTC6, and others) stored at 24°C, 45°C, 60°C, and 85°C. Provides decade-scale aging insights.",
+    "url": "https://osf.io/ju325/",
+    "paper": "https://www.cell.com/joule/fulltext/S2542-4351(24",
+    "access": "Unverified",
+    "signals": [],
+    "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
+    "source_type": "data_repository",
+    "access_status": "not_checked",
+    "chemistries": [
+      "LFP"
+    ],
+    "chemistry_review_status": "catalogue_label_not_independently_verified"
+  },
+  {
+    "id": "wmg-calendar-aging-dataset-lgm50-commercial-cells-39-storage-conditions",
+    "name": "WMG Calendar Aging Dataset — LGM50 Commercial Cells (39 Storage Conditions)",
+    "category": "Lab Aging & Degradation",
+    "chemistry": "Unspecified",
+    "tasks": [
+      "Degradation analysis"
+    ],
+    "source": "See original source",
+    "scale": "See original source",
+    "description": "Calendar aging from LGM50 cells at 0°C, 25°C, and 45°C across 13 SOC levels per temperature. Two-year per condition storage tests with regular RPTs.",
+    "url": "https://zenodo.org/records/14577286",
+    "paper": "https://www.sciencedirect.com/science/article/pii/S0306261924026059",
+    "access": "Unverified",
+    "signals": [
+      "Temperature"
+    ],
+    "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
+    "source_type": "data_repository",
+    "access_status": "not_checked",
+    "chemistries": [],
+    "chemistry_review_status": "needs_source_verification"
+  },
+  {
+    "id": "cycle-aging-data-of-automotive-grade-li-ion-cells-under-realistic-conditions-vw-id-3",
+    "name": "Cycle Aging Data of Automotive-Grade Li-ion Cells Under Realistic Conditions (VW ID.3)",
+    "category": "Lab Aging & Degradation",
+    "chemistry": "NMC",
+    "tasks": [
+      "Degradation analysis"
+    ],
+    "source": "See original source",
+    "scale": "See original source",
+    "description": "Three automotive-grade cells subjected to three usage patterns over 3+ years. One of the few publicly available datasets specifically from a production EV cell.",
+    "url": "https://mediatum.ub.tum.de/1748915",
+    "paper": "https://www.sciencedirect.com/science/article/pii/S2352152X25000702",
+    "access": "Unverified",
+    "signals": [
+      "Cycling data"
+    ],
+    "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
+    "source_type": "data_repository",
+    "access_status": "not_checked",
+    "chemistries": [
+      "NMC"
+    ],
+    "chemistry_review_status": "catalogue_label_not_independently_verified"
+  },
+  {
+    "id": "comprehensive-cycle-aging-data-and-analysis-for-commercial-21700-cells",
+    "name": "Comprehensive Cycle Aging Data and Analysis for Commercial 21700 Cells",
+    "category": "Lab Aging & Degradation",
+    "chemistry": "Unspecified",
+    "tasks": [
+      "Degradation analysis"
+    ],
+    "source": "See original source",
+    "scale": "See original source",
+    "description": "Well-structured repository containing summary data, processed time-series, and raw data. Includes degradation mode analysis, resistance measurements, and aging statistics with Jupyter notebook for easy parsing.",
+    "url": "https://zenodo.org/records/10637534",
+    "paper": "https://www.sciencedirect.com/science/article/pii/S0378775324001368",
+    "access": "Unverified",
+    "signals": [
+      "Cycling data"
+    ],
+    "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
+    "source_type": "data_repository",
+    "access_status": "not_checked",
+    "chemistries": [],
+    "chemistry_review_status": "needs_source_verification"
+  },
+  {
+    "id": "aging-dataset-lco-battery-with-mechanical-measurements",
+    "name": "Aging Dataset — LCO Battery with Mechanical Measurements",
+    "category": "Lab Aging & Degradation",
+    "chemistry": "LCO",
+    "tasks": [
+      "Degradation analysis"
+    ],
+    "source": "See original source",
+    "scale": "See original source",
+    "description": "Includes cycling RPTs, HPPC tests, and low-rate cycles. Uniquely provides mechanical (differential pressure) measurements alongside electrochemical data.",
+    "url": "https://zenodo.org/records/14914172",
+    "paper": "https://www.sciencedirect.com/science/article/pii/S0306261925002545",
+    "access": "Unverified",
+    "signals": [
+      "Cycling data"
+    ],
+    "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
+    "source_type": "data_repository",
+    "access_status": "not_checked",
+    "chemistries": [
+      "LCO"
+    ],
+    "chemistry_review_status": "catalogue_label_not_independently_verified"
+  },
+  {
+    "id": "battery-degradation-dataset-based-on-a-forklift-mission-profile",
+    "name": "Battery Degradation Dataset Based on a Forklift Mission Profile",
+    "category": "Lab Aging & Degradation",
+    "chemistry": "Unspecified",
+    "tasks": [
+      "Degradation analysis"
+    ],
+    "source": "See original source",
+    "scale": "See original source",
+    "description": "Degradation data from cells cycled under a forklift mission profile — an under-represented industrial application in the literature.",
+    "url": "https://www.sciencedirect.com/science/article/pii/S2352340923009228",
+    "paper": "https://www.sciencedirect.com/science/article/pii/S2352340923009228",
+    "access": "Unverified",
+    "signals": [],
+    "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
+    "source_type": "publication_source",
+    "access_status": "not_checked",
+    "chemistries": [],
+    "chemistry_review_status": "needs_source_verification"
+  },
+  {
+    "id": "multi-stage-lithium-ion-battery-aging-study",
+    "name": "Multi-Stage Lithium-Ion Battery Aging Study",
+    "category": "Lab Aging & Degradation",
+    "chemistry": "Unspecified",
+    "tasks": [
+      "Degradation analysis"
+    ],
+    "source": "See original source",
+    "scale": "See original source",
+    "description": "Two experimental phases combining non-model-based and model-based optimal experimental design. Supports lifetime prediction, physics-based model parameterisation, and aging relationship discovery.",
+    "url": "https://figshare.com/articles/dataset/Multi-Stage_Lithium_Ion_Battery_Aging_Study/25975315",
+    "paper": "https://www.nature.com/articles/s41597-024-03859-z",
+    "access": "Unverified",
+    "signals": [],
+    "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
+    "source_type": "data_repository",
+    "access_status": "not_checked",
+    "chemistries": [],
+    "chemistry_review_status": "needs_source_verification"
+  },
+  {
+    "id": "uconn-lco-gr-battery-fast-charging-dataset",
+    "name": "UConn LCO/Gr Battery Fast Charging Dataset",
+    "category": "Lab Aging & Degradation",
+    "chemistry": "LCO",
+    "tasks": [
+      "SOH estimation"
+    ],
+    "source": "See original source",
+    "scale": "See original source",
+    "description": "SOC-sweep tests at four SOH levels (100%–70%) and 1.5C–3.5C charge rates. Benchmark tests with repeated RPTs until 70% end-of-life capacity.",
+    "url": "https://digitalcommons.lib.uconn.edu/reil_datasets/4/",
+    "paper": "https://pubs.rsc.org/en/content/articlelanding/2026/ta/d5ta09520d",
+    "access": "Unverified",
+    "signals": [
+      "Capacity",
+      "Charging data"
+    ],
+    "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
+    "source_type": "data_repository",
+    "access_status": "not_checked",
+    "chemistries": [
+      "LCO"
+    ],
+    "chemistry_review_status": "catalogue_label_not_independently_verified"
+  },
+  {
+    "id": "discovery-learning-predicts-battery-cycle-life-from-minimal-experiments",
+    "name": "Discovery Learning Predicts Battery Cycle Life from Minimal Experiments",
+    "category": "Lab Aging & Degradation",
+    "chemistry": "NMC",
+    "tasks": [
+      "RUL prediction"
+    ],
+    "source": "See original source",
+    "scale": "See original source",
+    "description": "NMC811 and NMC9/Si–C cells under diverse conditions. Provides full capacity-retention trajectories plus high-resolution early-cycle data (first 50 EFCs). Organised into 37 groups to capture manufacturing variability.",
+    "url": "https://zenodo.org/records/17654407",
+    "paper": "https://www.nature.com/articles/s41586-025-09951-7",
+    "access": "Unverified",
+    "signals": [
+      "Capacity",
+      "Cycling data"
+    ],
+    "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
+    "source_type": "data_repository",
+    "access_status": "not_checked",
+    "chemistries": [
+      "NMC"
+    ],
+    "chemistry_evidence_url": "https://www.nature.com/articles/s41586-025-09951-7",
+    "chemistry_verification": "catalogue_description_needs_source_confirmation",
+    "chemistry_evidence": {
+      "status": "catalogue_or_source_review",
+      "url": "https://zenodo.org/records/17654407",
+      "note": "Existing catalogue description identifies NMC811 and NMC9; chemistry-subtype source confirmation still recommended"
+    },
+    "chemistry_review_status": "catalogue_label_not_independently_verified"
+  },
+  {
+    "id": "battery-failure-databank-nrel",
+    "name": "Battery Failure Databank (NREL)",
+    "category": "Safety & Failure",
+    "chemistry": "Unspecified",
+    "tasks": [
+      "Fault diagnosis",
+      "Safety analysis"
+    ],
+    "source": "See original source",
+    "scale": "See original source",
+    "description": "Covers nail penetration, thermal abuse, and internal short-circuit testing. Provides heat output, ejected mass data, and test-to-test variability. Most tests include associated high-speed X-ray radiography videos.",
+    "url": "https://www.nrel.gov/transportation/battery-failure.html",
+    "paper": "https://www.nature.com/articles/s41467-024-52653-3",
+    "access": "Unverified",
+    "signals": [
+      "Temperature"
+    ],
+    "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
+    "source_type": "data_portal",
+    "access_status": "not_checked",
+    "chemistries": [],
+    "chemistry_review_status": "needs_source_verification"
+  },
+  {
+    "id": "air-cooled-li-ion-battery-pack-from-a-plug-in-hybrid-vehicle-phev",
+    "name": "Air-Cooled Li-Ion Battery Pack from a Plug-In Hybrid Vehicle (PHEV)",
+    "category": "Safety & Failure",
+    "chemistry": "Unspecified",
+    "tasks": [
+      "Fault diagnosis"
+    ],
+    "source": "See original source",
+    "scale": "See original source",
+    "description": "Real-world battery pack data extracted from a PHEV, enabling physics-informed deep learning for thermal fault detection.",
+    "url": "https://borealisdata.ca/dataset.xhtml?persistentId=doi:10.5683/SP3/THZTJC",
+    "paper": "https://www.nature.com/articles/s44172-025-00409-2",
+    "access": "Unverified",
+    "signals": [
+      "Temperature"
+    ],
+    "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
+    "source_type": "data_repository",
+    "access_status": "not_checked",
+    "chemistries": [],
+    "chemistry_review_status": "needs_source_verification"
+  },
+  {
+    "id": "battery-failure-detection-and-fpi-estimation-during-cycling-to-failure",
+    "name": "Battery Failure Detection and FPI Estimation During Cycling-to-Failure",
+    "category": "Safety & Failure",
+    "chemistry": "Unspecified",
+    "tasks": [
+      "Fault diagnosis"
+    ],
+    "source": "See original source",
+    "scale": "See original source",
+    "description": "Real-time tracking of battery cycling-to-failure, including Faradaic process indicator (FPI) estimation. Includes surface strain measurements for failure detection.",
+    "url": "https://zenodo.org/records/17651045",
+    "paper": "https://www.cell.com/joule/fulltext/S2542-4351(25",
+    "access": "Unverified",
+    "signals": [
+      "Cycling data"
+    ],
+    "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
+    "source_type": "data_repository",
+    "access_status": "not_checked",
+    "chemistries": [],
+    "chemistry_review_status": "needs_source_verification"
+  },
+  {
+    "id": "li-ion-battery-pack-cycling-dataset-with-cc-cv-charging-and-wltp-constant-discharge-profiles",
+    "name": "Li-Ion Battery Pack Cycling Dataset with CC-CV Charging and WLTP/Constant Discharge Profiles",
+    "category": "Safety & Failure",
+    "chemistry": "Unspecified",
+    "tasks": [
+      "Other research"
+    ],
+    "source": "See original source",
+    "scale": "See original source",
+    "description": "Simulates dynamic driving conditions using WLTP cycle-derived current profiles from a Tesla Model 3 vehicle model. Records cell voltages, currents, surface temperatures, and pack-level resistance. Uses a CAN bus architecture with commercial automotive BMS units.",
+    "url": "https://dataverse.csuc.cat/dataset.xhtml?persistentId=doi:10.34810/data2395",
+    "paper": "",
+    "access": "Unverified",
+    "signals": [
+      "Voltage",
+      "Current",
+      "Temperature",
+      "Charging data",
+      "Cycling data"
+    ],
+    "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
+    "source_type": "data_repository",
+    "access_status": "not_checked",
+    "chemistries": [],
+    "chemistry_review_status": "needs_source_verification"
+  },
+  {
+    "id": "attention-towards-chemistry-agnostic-and-explainable-battery-lifetime-prediction-arcana",
+    "name": "Attention Towards Chemistry-Agnostic and Explainable Battery Lifetime Prediction (ARCANA)",
+    "category": "State Estimation & Health Monitoring",
+    "chemistry": "Unspecified",
+    "tasks": [
+      "Other research"
+    ],
+    "source": "See original source",
+    "scale": "See original source",
+    "description": "Pre-trained model weights from the ARCANA framework, including models trained on lithium-ion and sodium-ion cells. Designed for explainable lifetime prediction across chemistries.",
+    "url": "https://zenodo.org/records/10293072",
+    "paper": "https://www.nature.com/articles/s41524-024-01286-7",
+    "access": "Unverified",
+    "signals": [],
+    "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
+    "source_type": "data_repository",
+    "access_status": "not_checked",
+    "chemistries": [],
+    "chemistry_review_status": "cathode_unspecified",
+    "resource_type": "model_weights",
+    "resource_note": "Linked Zenodo record contains pretrained ARCANA model weights, not a standalone raw battery dataset.",
+    "chemistry_families": [
+      "Lithium-ion",
+      "Sodium-ion"
+    ],
+    "resource_evidence_url": "https://zenodo.org/records/10293072"
+  },
+  {
+    "id": "lithium-inventory-tracking-as-a-nondestructive-battery-evaluation-method",
+    "name": "Lithium Inventory Tracking as a Nondestructive Battery Evaluation Method",
+    "category": "State Estimation & Health Monitoring",
+    "chemistry": "NMC",
+    "tasks": [
+      "Other research"
+    ],
+    "source": "See original source",
+    "scale": "See original source",
+    "description": "Charge and discharge cycles under various formulations, configurations, and testing conditions. Supports lithium inventory tracking as a non-destructive monitoring technique.",
+    "url": "https://osf.io/2w4k3/",
+    "paper": "https://www.nature.com/articles/s41560-024-01476-z",
+    "access": "Unverified",
+    "signals": [
+      "Charging data",
+      "Cycling data"
+    ],
+    "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
+    "source_type": "data_repository",
+    "access_status": "not_checked",
+    "chemistries": [
+      "NMC"
+    ],
+    "chemistry_review_status": "catalogue_label_not_independently_verified"
+  },
+  {
+    "id": "gic-nmc-solar-battery-synthetic-data",
+    "name": "GIC/NMC Solar Battery Synthetic Data",
+    "category": "State Estimation & Health Monitoring",
+    "chemistry": "NMC",
+    "tasks": [
+      "Other research"
+    ],
+    "source": "See original source",
+    "scale": "See original source",
+    "description": "Synthetically generated with varied cell parameters to account for cell-to-cell variations. Separate training and validation sets provided.",
+    "url": "https://data.mendeley.com/datasets/rg8b2k2k28/1",
+    "paper": "https://www.nature.com/articles/s41467-023-38895-7",
+    "access": "Unverified",
+    "signals": [],
+    "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
+    "source_type": "data_repository",
+    "access_status": "not_checked",
+    "chemistries": [
+      "NMC"
+    ],
+    "chemistry_review_status": "catalogue_label_not_independently_verified"
+  },
+  {
+    "id": "data-driven-capacity-estimation-from-voltage-relaxation",
+    "name": "Data-Driven Capacity Estimation from Voltage Relaxation",
+    "category": "State Estimation & Health Monitoring",
+    "chemistry": "Multiple / mixed",
+    "tasks": [
+      "Capacity estimation"
+    ],
+    "source": "See original source",
+    "scale": "See original source",
+    "description": "Cycling data, impedance measurements, and voltage relaxation tests. Useful for capacity estimation without full charge/discharge cycles.",
+    "url": "https://zenodo.org/records/6405084",
+    "paper": "https://www.nature.com/articles/s41467-022-29837-w",
+    "access": "Unverified",
+    "signals": [
+      "Voltage",
+      "Capacity",
+      "EIS",
+      "Charging data",
+      "Cycling data"
+    ],
+    "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
+    "source_type": "data_repository",
+    "access_status": "not_checked",
+    "chemistries": [],
+    "chemistry_review_status": "needs_source_verification"
+  },
+  {
+    "id": "impedance-based-forecasting-of-battery-performance-amid-uneven-usage",
+    "name": "Impedance-Based Forecasting of Battery Performance Amid Uneven Usage",
+    "category": "State Estimation & Health Monitoring",
+    "chemistry": "Unspecified",
+    "tasks": [
+      "Other research"
+    ],
+    "source": "See original source",
+    "scale": "See original source",
+    "description": "Cycled under multistage constant current with randomly changed currents between cycles to simulate realistic usage. Explores impedance as a predictor for future performance under non-uniform usage.",
+    "url": "https://zenodo.org/records/6645536",
+    "paper": "https://www.nature.com/articles/s41467-022-32422-w",
+    "access": "Unverified",
+    "signals": [
+      "Current",
+      "EIS",
+      "Cycling data"
+    ],
+    "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
+    "source_type": "data_repository",
+    "access_status": "not_checked",
+    "chemistries": [],
+    "chemistry_review_status": "needs_source_verification"
+  },
+  {
+    "id": "identifying-degradation-patterns-via-impedance-spectroscopy-and-machine-learning",
+    "name": "Identifying Degradation Patterns via Impedance Spectroscopy and Machine Learning",
+    "category": "State Estimation & Health Monitoring",
+    "chemistry": "Unspecified",
+    "tasks": [
+      "Degradation analysis"
+    ],
+    "source": "See original source",
+    "scale": "See original source",
+    "description": "Dataset supporting ML-based identification of degradation patterns through electrochemical impedance spectroscopy analysis.",
+    "url": "https://zenodo.org/records/3633835",
+    "paper": "https://www.nature.com/articles/s41467-020-15235-7",
+    "access": "Unverified",
+    "signals": [
+      "EIS"
+    ],
+    "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
+    "source_type": "data_repository",
+    "access_status": "not_checked",
+    "chemistries": [],
+    "chemistry_review_status": "needs_source_verification"
+  },
+  {
+    "id": "real-time-personalized-health-status-prediction-via-deep-transfer-learning",
+    "name": "Real-Time Personalized Health Status Prediction via Deep Transfer Learning",
+    "category": "State Estimation & Health Monitoring",
+    "chemistry": "LFP",
+    "tasks": [
+      "Other research"
+    ],
+    "source": "See original source",
+    "scale": "See original source",
+    "description": "Enables real-time health prediction using deep transfer learning across different usage profiles.",
+    "url": "https://data.mendeley.com/datasets/nsc7hnsg4s/2",
+    "paper": "https://pubs.rsc.org/en/content/articlehtml/2022/ee/d2ee01676a",
+    "access": "Unverified",
+    "signals": [],
+    "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
+    "source_type": "data_repository",
+    "access_status": "not_checked",
+    "chemistries": [
+      "LFP"
+    ],
+    "chemistry_review_status": "catalogue_label_not_independently_verified"
+  },
+  {
+    "id": "generative-learning-assisted-state-of-health-estimation-for-battery-recycling",
+    "name": "Generative Learning Assisted State-of-Health Estimation for Battery Recycling",
+    "category": "State Estimation & Health Monitoring",
+    "chemistry": "Unspecified",
+    "tasks": [
+      "SOH estimation",
+      "Fault diagnosis"
+    ],
+    "source": "See original source",
+    "scale": "See original source",
+    "description": "Source data accompanying a generative learning framework for SoH estimation under random retirement conditions — bridging battery diagnostics and sustainable recycling.",
+    "url": "https://www.nature.com/articles/s41467-024-54454-0#Sec19",
+    "paper": "https://www.nature.com/articles/s41467-024-54454-0",
+    "access": "Unverified",
+    "signals": [],
+    "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
+    "source_type": "publication_source",
+    "access_status": "not_checked",
+    "chemistries": [],
+    "chemistry_review_status": "needs_source_verification"
+  },
+  {
+    "id": "wmg-dib-dataset-rapid-soh-estimation-via-eis-and-ml",
+    "name": "WMG-DIB Dataset — Rapid SoH Estimation via EIS and ML",
+    "category": "State Estimation & Health Monitoring",
+    "chemistry": "Unspecified",
+    "tasks": [
+      "SOH estimation"
+    ],
+    "source": "See original source",
+    "scale": "See original source",
+    "description": "Reference performance tests, EIS measurements across SOC and temperature, and derived metrics from EIS plots. Designed specifically for rapid SoH estimation.",
+    "url": "https://data.mendeley.com/datasets/mn9fb7xdx6/3",
+    "paper": "https://www.sciencedirect.com/science/article/pii/S2352340923002767",
+    "access": "Unverified",
+    "signals": [
+      "Temperature",
+      "EIS"
+    ],
+    "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
+    "source_type": "data_repository",
+    "access_status": "not_checked",
+    "chemistries": [],
+    "chemistry_review_status": "needs_source_verification"
+  },
+  {
+    "id": "retired-lithium-ion-batteries-dataset",
+    "name": "Retired Lithium-Ion Batteries Dataset",
+    "category": "State Estimation & Health Monitoring",
+    "chemistry": "Unspecified",
+    "tasks": [
+      "Capacity estimation"
+    ],
+    "source": "See original source",
+    "scale": "See original source",
+    "description": "Dataset supporting capacity estimation of retired batteries using random charging segments from large-scale real-world data.",
+    "url": "https://zenodo.org/records/14562266",
+    "paper": "https://www.sciencedirect.com/science/article/pii/S2666386425000438",
+    "access": "Unverified",
+    "signals": [
+      "Capacity",
+      "Charging data"
+    ],
+    "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
+    "source_type": "data_repository",
+    "access_status": "not_checked",
+    "chemistries": [],
+    "chemistry_review_status": "needs_source_verification"
+  },
+  {
+    "id": "ultrasonic-and-deep-learning-dataset-for-real-time-soc-estimation-in-large-format-cells",
+    "name": "Ultrasonic and Deep-Learning Dataset for Real-Time SoC Estimation in Large-Format Cells",
+    "category": "State Estimation & Health Monitoring",
+    "chemistry": "Unspecified",
+    "tasks": [
+      "Other research"
+    ],
+    "source": "See original source",
+    "scale": "See original source",
+    "description": "Experimentally collected ultrasonic waveforms from large-format Li-ion pouch cells during controlled charge/discharge. Four sensors arranged for multiple actuator–receiver paths. Provided as both raw CSV waveforms and CNN-ready image representations.",
+    "url": "https://github.com/hfarhaditolie/Ultrasonic-SoC",
+    "paper": "https://www.sciencedirect.com/science/article/pii/S2666546825001946",
+    "access": "Unverified",
+    "signals": [
+      "Charging data"
+    ],
+    "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
+    "source_type": "code_repository",
+    "access_status": "not_checked",
+    "chemistries": [],
+    "chemistry_review_status": "needs_source_verification"
+  },
+  {
+    "id": "mechanistically-guided-residual-learning-dataset-for-battery-state-monitoring",
+    "name": "Mechanistically Guided Residual Learning Dataset for Battery State Monitoring",
+    "category": "State Estimation & Health Monitoring",
+    "chemistry": "Unspecified",
+    "tasks": [
+      "Degradation analysis"
+    ],
+    "source": "See original source",
+    "scale": "See original source",
+    "description": "Electrochemical characterisation and long-term cycling data from prismatic and pouch cells. Combines OCV measurements, cycling trajectories, and physics-based features with data-driven residual learning. Covers full-life degradation modelling.",
+    "url": "https://zenodo.org/records/17591942",
+    "paper": "https://www.nature.com/articles/s41467-025-67565-z",
+    "access": "Unverified",
+    "signals": [
+      "Cycling data"
+    ],
+    "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
+    "source_type": "data_repository",
+    "access_status": "not_checked",
+    "chemistries": [],
+    "chemistry_review_status": "needs_source_verification"
+  },
+  {
+    "id": "probability-distributed-equivalent-circuit-model-dataset",
+    "name": "Probability Distributed Equivalent Circuit Model Dataset",
+    "category": "Electrochemical Characterisation",
+    "chemistry": "Unspecified",
+    "tasks": [
+      "Degradation analysis"
+    ],
+    "source": "See original source",
+    "scale": "See original source",
+    "description": "Supports development of a physically motivated voltage hysteresis model leveraging probability distributed equivalent circuits for enhanced performance prediction accuracy.",
+    "url": "https://zenodo.org/records/10852930",
+    "paper": "https://www.nature.com/articles/s44172-024-00221-4",
+    "access": "Unverified",
+    "signals": [
+      "Voltage"
+    ],
+    "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
+    "source_type": "data_repository",
+    "access_status": "not_checked",
+    "chemistries": [],
+    "chemistry_review_status": "needs_source_verification"
+  },
+  {
+    "id": "source-data-internal-sensors-in-a-smart-battery-impact-on-local-graphite-lithiation",
+    "name": "Source Data: Internal Sensors in a Smart Battery — Impact on Local Graphite Lithiation",
+    "category": "Electrochemical Characterisation",
+    "chemistry": "Unspecified",
+    "tasks": [
+      "Other research"
+    ],
+    "source": "See original source",
+    "scale": "See original source",
+    "description": "Reveals how embedded internal sensors affect the graphite lithiation mechanism, providing rare insight into instrumented cell behaviour.",
+    "url": "https://www.nature.com/articles/s41467-024-54656-6#Sec14",
+    "paper": "https://www.nature.com/articles/s41467-024-54656-6#Sec14",
+    "access": "Unverified",
+    "signals": [],
+    "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
+    "source_type": "source_data",
+    "access_status": "not_checked",
+    "chemistries": [],
+    "chemistry_review_status": "needs_source_verification"
+  },
+  {
+    "id": "rate-capability-ocv-impedance-and-half-cell-data-sodium-ion-and-lfp-batteries",
+    "name": "Rate Capability, OCV, Impedance, and Half-Cell Data — Sodium-Ion and LFP Batteries",
+    "category": "Electrochemical Characterisation",
+    "chemistry": "LFP",
+    "tasks": [
+      "Other research"
+    ],
+    "source": "See original source",
+    "scale": "See original source",
+    "description": "Comprehensive electrochemical characterisation of two sodium-ion batteries (layered oxide cathodes) and one LFP cell. Includes pseudo-OCV, GEIS-based OCV, GEIS, R-DC, and rate capability results. Designed for systematic comparison between sodium-ion and lithium-ion technologies.",
+    "url": "https://doi.org/10.14459/2024mp1762675",
+    "paper": "https://www.sciencedirect.com/science/article/pii/S0378775325001260",
+    "access": "Unverified",
+    "signals": [
+      "EIS"
+    ],
+    "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
+    "source_type": "data_repository",
+    "access_status": "not_checked",
+    "chemistries": [
+      "LFP",
+      "Sodium-ion"
+    ],
+    "chemistry_evidence": {
+      "status": "catalogue_or_source_review",
+      "url": "https://doi.org/10.14459/2024mp1762675",
+      "note": "Catalogue description explicitly identifies LFP and sodium-ion batteries"
+    },
+    "chemistry_review_status": "catalogue_label_not_independently_verified"
+  },
+  {
+    "id": "data-repository-for-electrochemical-thermal-modelling-of-high-power-li-ion-pouch-cells",
+    "name": "Data Repository for Electrochemical-Thermal Modelling of High Power Li-Ion Pouch Cells",
+    "category": "Electrochemical Characterisation",
+    "chemistry": "LFP",
+    "tasks": [
+      "Other research"
+    ],
+    "source": "See original source",
+    "scale": "See original source",
+    "description": "Controlled CC discharge, pulse protocols, and high-resolution lock-in thermography for spatially resolved heat generation. Supports electrochemical–thermal model development for automotive high-power applications.",
+    "url": "https://ora.ox.ac.uk/objects/uuid:fe9bad3e-8a72-4e3b-8f01-fec3324b6758",
+    "paper": "https://www.sciencedirect.com/science/article/pii/S037877532502600X",
+    "access": "Unverified",
+    "signals": [
+      "Temperature",
+      "Power"
+    ],
+    "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
+    "source_type": "data_repository",
+    "access_status": "not_checked",
+    "chemistries": [
+      "LFP"
+    ],
+    "chemistry_review_status": "catalogue_label_not_independently_verified"
+  },
+  {
+    "id": "a-cross-scale-framework-for-evaluating-flexibility-values-of-battery-and-fuel-cell-evs",
+    "name": "A Cross-Scale Framework for Evaluating Flexibility Values of Battery and Fuel Cell EVs",
+    "category": "Electrochemical Characterisation",
+    "chemistry": "Unspecified",
+    "tasks": [
+      "Other research"
+    ],
+    "source": "See original source",
+    "scale": "See original source",
+    "description": "Description available in source README.",
+    "url": "https://github.com/macroenergy/Dolphyn.jl",
+    "paper": "https://github.com/macroenergy/Dolphyn.jl",
+    "access": "Unverified",
+    "signals": [],
+    "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
+    "source_type": "code_only",
+    "access_status": "not_checked",
+    "chemistries": [],
+    "chemistry_review_status": "needs_source_verification",
+    "resource_note": "Code only; dataset unavailable according to original catalogue."
+  },
+  {
+    "id": "improving-real-world-execution-of-optimised-trading-schedules-for-large-scale-battery-storage",
+    "name": "Improving Real-World Execution of Optimised Trading Schedules for Large-Scale Battery Storage",
+    "category": "Electrochemical Characterisation",
+    "chemistry": "Unspecified",
+    "tasks": [
+      "Other research"
+    ],
+    "source": "See original source",
+    "scale": "See original source",
+    "description": "Power flows, SoC at unit and system level, grid interaction, and optimised dispatch schedules from two real-world field trial configurations of a hybrid BESS.",
+    "url": "https://publications.rwth-aachen.de/record/1015732",
+    "paper": "https://publications.rwth-aachen.de/record/1015732/files/Supplementary_file.pdf",
+    "access": "Unverified",
+    "signals": [
+      "Power"
+    ],
+    "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
+    "source_type": "data_repository",
+    "access_status": "not_checked",
+    "chemistries": [],
+    "chemistry_review_status": "needs_source_verification"
+  },
+  {
+    "id": "a-dataset-of-over-1-000-computed-tomography-scans-of-battery-cells",
+    "name": "A Dataset of Over 1,000 Computed Tomography Scans of Battery Cells",
+    "category": "Battery Imaging",
+    "chemistry": "Unspecified",
+    "tasks": [
+      "Other research"
+    ],
+    "source": "See original source",
+    "scale": "See original source",
+    "description": "Radial and axial views for cylindrical cells; x-y, x-z, and y-z views for pouch and prismatic formats. Enables non-destructive internal structural analysis.",
+    "url": "https://plus.figshare.com/articles/dataset/A_dataset_of_over_one_thousand_computed_tomography_scans_of_battery_cells/25330501",
+    "paper": "https://www.sciencedirect.com/science/article/pii/S235234092400581X",
+    "access": "Unverified",
+    "signals": [],
+    "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
+    "source_type": "data_repository",
+    "access_status": "not_checked",
+    "chemistries": [],
+    "chemistry_review_status": "needs_source_verification"
+  },
+  {
+    "id": "battery-imaging-library-bil",
+    "name": "Battery Imaging Library (BIL)",
+    "category": "Battery Imaging",
+    "chemistry": "Unspecified",
+    "tasks": [
+      "Degradation analysis"
+    ],
+    "source": "See original source",
+    "scale": "See original source",
+    "description": "An open, curated repository spanning single particles to full cells. Includes raw, reconstructed, and processed data supporting multi-scale analysis and reproducible battery imaging research.",
+    "url": "https://batteryimaginglibrary.com/",
+    "paper": "https://batteryimaginglibrary.com/",
+    "access": "Unverified",
+    "signals": [],
+    "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
+    "source_type": "data_portal",
+    "access_status": "not_checked",
+    "chemistries": [],
+    "chemistry_review_status": "needs_source_verification"
+  },
+  {
+    "id": "source-data-reuse-and-recycling-pathway-of-retired-batteries",
+    "name": "Source Data: Reuse and Recycling Pathway of Retired Batteries",
+    "category": "Second-Life & Recycling",
+    "chemistry": "Unspecified",
+    "tasks": [
+      "Other research"
+    ],
+    "source": "See original source",
+    "scale": "See original source",
+    "description": "Data and code for evaluating economic and environmental functions of different reuse versus recycling decisions for retired lithium-ion batteries.",
+    "url": "https://github.com/RuifeiMa/Reuse-and-recycling-pathway-of-retired-batteries",
+    "paper": "https://github.com/RuifeiMa/Reuse-and-recycling-pathway-of-retired-batteries",
+    "access": "Unverified",
+    "signals": [],
+    "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
+    "source_type": "code_repository",
+    "access_status": "not_checked",
+    "chemistries": [],
+    "chemistry_review_status": "needs_source_verification"
+  },
+  {
+    "id": "long-term-sweat-testing-data-for-second-life-batteries",
+    "name": "Long-Term Sweat Testing Data for Second-Life Batteries",
+    "category": "Second-Life & Recycling",
+    "chemistry": "Unspecified",
+    "tasks": [
+      "Other research"
+    ],
+    "source": "See original source",
+    "scale": "See original source",
+    "description": "Long-term cycling from repurposed EV batteries under six real-world scenarios: time-of-use tariffs, PV self-consumption, and frequency response services. Recorded with Chroma 17020 battery cycler; processed into individual charge–discharge cycle CSV files.",
+    "url": "https://repository.lboro.ac.uk/articles/online_resource/Long-Term_Sweat_Testing_Data_for_Second-Life_Batteries/28732490/2",
+    "paper": "https://www.nature.com/articles/s41597-025-05360-7",
+    "access": "Unverified",
+    "signals": [
+      "Charging data",
+      "Cycling data"
+    ],
+    "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
+    "source_type": "data_repository",
+    "access_status": "not_checked",
+    "chemistries": [],
+    "chemistry_review_status": "needs_source_verification"
+  },
+  {
+    "id": "nasa-battery-data-set",
+    "name": "NASA Battery Data Set",
+    "category": "Aerospace & Specialised",
+    "chemistry": "Unspecified",
+    "tasks": [
+      "Other research"
+    ],
+    "source": "See original source",
+    "scale": "See original source",
+    "description": "Lithium-ion battery charge, discharge, and impedance experiments at different temperatures. A seminal dataset widely used in prognostics and health management (PHM) research.",
+    "url": "https://phm-datasets.s3.amazonaws.com/NASA/5.+Battery+Data+Set.zip",
+    "paper": "https://www.nature.com/articles/s41598-023-33018-0",
+    "access": "Unverified",
+    "signals": [
+      "Temperature",
+      "EIS",
+      "Charging data"
+    ],
+    "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
+    "source_type": "direct_download",
+    "access_status": "not_checked",
+    "chemistries": [],
+    "chemistry_review_status": "needs_source_verification"
+  },
+  {
+    "id": "randomized-battery-usage-data-set-nasa",
+    "name": "Randomized Battery Usage Data Set (NASA)",
+    "category": "Aerospace & Specialised",
+    "chemistry": "Unspecified",
+    "tasks": [
+      "SOH estimation"
+    ],
+    "source": "See original source",
+    "scale": "See original source",
+    "description": "Batteries cycled with randomly generated current profiles, with periodic reference charging/discharging cycles for SOH benchmarking.",
+    "url": "https://phm-datasets.s3.amazonaws.com/NASA/11.+Randomized+Battery+Usage+Data+Set.zip",
+    "paper": "https://www.papers.phmsociety.org/index.php/phmconf/article/view/2490",
+    "access": "Unverified",
+    "signals": [
+      "Current",
+      "Charging data",
+      "Cycling data"
+    ],
+    "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
+    "source_type": "direct_download",
+    "access_status": "not_checked",
+    "chemistries": [],
+    "chemistry_review_status": "needs_source_verification"
+  },
+  {
+    "id": "hirf-battery-data-set-nasa",
+    "name": "HIRF Battery Data Set (NASA)",
+    "category": "Aerospace & Specialised",
+    "chemistry": "Unspecified",
+    "tasks": [
+      "Other research"
+    ],
+    "source": "See original source",
+    "scale": "See original source",
+    "description": "Battery data from experiments on the Edge 540 Aircraft in a High-Intensity Radiated Field (HIRF) Chamber.",
+    "url": "https://phm-datasets.s3.amazonaws.com/NASA/15.+HIRF+Battery+Data+Set.zip",
+    "paper": "https://papers.phmsociety.org/index.php/phmconf/article/view/2571",
+    "access": "Unverified",
+    "signals": [],
+    "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
+    "source_type": "direct_download",
+    "access_status": "not_checked",
+    "chemistries": [],
+    "chemistry_review_status": "needs_source_verification"
+  },
+  {
+    "id": "small-satellite-power-simulation-nasa",
+    "name": "Small Satellite Power Simulation (NASA)",
+    "category": "Aerospace & Specialised",
+    "chemistry": "Unspecified",
+    "tasks": [
+      "Other research"
+    ],
+    "source": "See original source",
+    "scale": "See original source",
+    "description": "Simulated experiments on BP930 satellite batteries using the MACCOR system. Designed for battery performance characterisation in small satellite mission profiles.",
+    "url": "https://data.nasa.gov/dataset/small-satellite-power-simulation",
+    "paper": "https://ieeexplore.ieee.org/abstract/document/7356483",
+    "access": "Unverified",
+    "signals": [
+      "Power"
+    ],
+    "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
+    "source_type": "data_portal",
+    "access_status": "not_checked",
+    "chemistries": [],
+    "chemistry_review_status": "needs_source_verification"
+  },
+  {
+    "id": "accelerated-battery-life-testing-nasa",
+    "name": "Accelerated Battery Life Testing (NASA)",
+    "category": "Aerospace & Specialised",
+    "chemistry": "Unspecified",
+    "tasks": [
+      "Other research"
+    ],
+    "source": "See original source",
+    "scale": "See original source",
+    "description": "Accelerated lifecycle data for 18650-cell Li-ion packs under constant, random loading, and second-life conditions.",
+    "url": "https://data.nasa.gov/dataset/randomized-and-recommissioned-battery-dataset",
+    "paper": "https://papers.phmsociety.org/index.php/phmconf/article/view/3463",
+    "access": "Unverified",
+    "signals": [],
+    "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
+    "source_type": "data_portal",
+    "access_status": "not_checked",
+    "chemistries": [],
+    "chemistry_review_status": "needs_source_verification"
+  },
+  {
+    "id": "magbridge-battery-v1",
+    "name": "MagBridge-Battery v1.0",
+    "category": "Synthetic & Derived Battery Datasets",
+    "chemistry": "LFP",
+    "tasks": [
+      "SOH estimation",
+      "Second-life classification",
+      "Anomaly detection"
+    ],
+    "signals": [
+      "Magnetometry",
+      "SOH",
+      "SOC"
+    ],
+    "description": "Synthetic bridge dataset for lithium-ion battery magnetometry and state-of-health diagnostics. Contains 6,760 samples for SOH regression, second-life classification and anomaly detection. Not direct experimental magnetometry measurements.",
+    "url": "https://zenodo.org/records/20260147",
+    "source_type": "data_repository",
+    "access_status": "not_checked",
+    "doi": "10.5281/zenodo.20260147",
+    "paper_url": "https://arxiv.org/abs/2605.20240",
+    "code_url": "https://github.com/SakthiGs/MagBridge-Battery",
+    "license": "CC-BY-4.0",
+    "samples": 6760,
+    "chemistries": [
+      "LFP"
+    ],
+    "dataset_kind": "Synthetic",
+    "chemistry_review_status": "catalogue_label_not_independently_verified"
+  }
 ]
