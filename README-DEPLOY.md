@@ -1,26 +1,40 @@
-# IonSense Dataset Finder — starter release
+# Deploying IonSense — Battery Research Dataset Finder
 
-This is an additive static site for the existing `SakthiGs/EV-Battery-IonSense` repository. It DOES NOT replace the repository README, license or other files.
+Repository: `https://github.com/SakthiGs/IonSense-Battery-Datasets`
+Website: `https://sakthigs.github.io/IonSense-Battery-Datasets/`
 
-## Contents
-- `docs/index.html` — browser interface, responsive design, search and filters
-- `data/datasets.json` — nine initial entries transcribed from existing public README, with original-source URLs
-- `.github/workflows/pages.yml` — Pages deployment workflow
+GitHub Pages should publish from branch **main**, folder **/docs**. Keep `docs/index.html` and `docs/datasets.json` together.
 
-## Add to your existing GitHub repository
+## Local preview
 
-1. Download and unzip this package on your computer.
-2. In a terminal open your local clone of `EV-Battery-IonSense` (the existing repository).
-3. Copy the three included directories (`docs`, `data`, `.github`) *into the repository*, merging them with any existing directories; do **not** delete the original repo contents.
-4. Run `python3 -m json.tool data/datasets.json >/dev/null` to validate JSON.
-5. Run `python3 -m http.server 8000` from the repository root and visit `http://localhost:8000/docs/` to preview.
-6. `git add docs/index.html data/datasets.json .github/workflows/pages.yml`
-7. `git commit -m "Add IonSense Dataset Finder MVP" && git push origin main`
-8. In GitHub **Settings → Pages → Build and deployment**, select **GitHub Actions** as source.
-9. Under **Actions**, find `Deploy IonSense Dataset Finder`, run it manually if necessary, then visit `https://sakthigs.github.io/EV-Battery-IonSense/` after the action finishes.
+From the repository root:
 
-## Scope/limitations
-- The current catalogue contains **nine starter entries**, not the full public README catalogue. Expand the JSON after auditing exact links and duplicate entries. The home-storage and portable-system records should not be represented as on-road EV data.
-- Dataset links go to original **landing pages**; availability, licenses, signal lists and model suitability need source-by-source verification. No files are hosted by IonSense.
-- The site performs **no visitor or outgoing-click tracking**. Add privacy-conscious analytics separately, only if needed.
-- The deployment uses the Pages GitHub Actions workflow. GitHub Pages must be enabled and its repository permissions must permit Actions to deploy.
+```bash
+python3 -m http.server 8000
+```
+
+Open `http://localhost:8000/docs/` and verify:
+
+- The catalogue loads 66 entries and filters by application domain, category, chemistry, research task and measurements.
+- Field datasets do not all appear as EV records; check Home Storage, Tsinghua EV and NASA satellite examples.
+- Cards, Table, Coverage, Dataset Comparison (up to 3 entries), dark/light mode and copyable comparison URLs still work.
+- Cloudflare beacon remains in `docs/index.html` (analytics appears only once deployed, and your dashboard may take time to update).
+- The navigation, issue and README links open the renamed repository.
+
+## Publish
+
+Commit only the files you intentionally edited. For this branding/domain pass:
+
+```bash
+git add README.md README-DEPLOY.md CONTRIBUTING.md battery_banner.svg docs/index.html docs/datasets.json
+git diff --cached --check
+git diff --cached --stat
+git commit -m "Rebrand IonSense and clarify battery dataset applications"
+git push origin main
+```
+
+The Git remote should be `https://github.com/SakthiGs/IonSense-Battery-Datasets.git`. The repository's **About** text and any external references must be changed through GitHub independently. Old GitHub Pages paths may not redirect automatically after the repository rename.
+
+## Limitations
+
+Application tags reflect currently catalogued descriptions; they are **not** a complete source-by-source audit. Unknown end-uses remain unclassified; unknown chemistry remains unknown. Some records refer to code/models or publications rather than direct downloads. Do not publish claims that every record has validated access.

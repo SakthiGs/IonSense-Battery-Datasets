@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>IonSense Dataset Finder</title>
-<meta name="description" content="Find open battery datasets for EV, lab ageing and diagnostics research. Every entry links to the original publisher.">
+<title>IonSense — Battery Research Dataset Finder</title>
+<meta name="description" content="Discover and compare battery research datasets across electric mobility, stationary storage, laboratory studies, safety, recycling and specialised applications. Original sources credited.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap">
@@ -404,11 +404,11 @@ button.cmp-name:hover{color:var(--accent-ink);text-decoration:underline;text-und
     <a class="brand" href="./" aria-label="IonSense dataset finder home">
       <svg viewBox="0 0 26 26" aria-hidden="true"><rect x="1" y="5" width="21" height="16" rx="3.5" fill="none" stroke="var(--accent)" stroke-width="2"/><rect x="22.5" y="10" width="2.5" height="6" rx="1" fill="var(--accent)"/><path d="M12.6 7.5 7.8 14h3.6l-1 4.5 4.9-6.6h-3.7z" fill="var(--accent)"/></svg>
       <span class="brand-name">IonSense</span>
-      <span class="brand-sub">Battery dataset finder</span>
+      <span class="brand-sub">Battery research dataset finder</span>
     </a>
     <nav aria-label="Project links">
-      <a class="navlink wide" href="https://github.com/SakthiGs/EV-Battery-IonSense/issues/new" target="_blank" rel="noopener noreferrer">Suggest a dataset</a>
-      <a class="navlink" href="https://github.com/SakthiGs/EV-Battery-IonSense" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a class="navlink wide" href="https://github.com/SakthiGs/IonSense-Battery-Datasets/issues/new" target="_blank" rel="noopener noreferrer">Suggest a dataset</a>
+      <a class="navlink" href="https://github.com/SakthiGs/IonSense-Battery-Datasets" target="_blank" rel="noopener noreferrer">GitHub</a>
       <button class="icon-btn" id="theme" type="button" aria-label="Switch to dark theme"></button>
     </nav>
   </div>
@@ -443,9 +443,9 @@ button.cmp-name:hover{color:var(--accent-ink);text-decoration:underline;text-und
     <section class="overview" aria-label="Catalogue overview">
       <div class="hero">
         <div>
-          <div class="hero-num"><strong id="hero-n">–</strong><span id="hero-label">open battery datasets</span></div>
+          <div class="hero-num"><strong id="hero-n">–</strong><span id="hero-label">battery research resources</span></div>
         </div>
-        <p id="hero-text">Field telemetry, lab ageing, impedance and safety data from public repositories. Each entry links to the original publisher so you can cite the people who made it.</p>
+        <p id="hero-text">Discover research resources spanning EVs, stationary storage, laboratory ageing, diagnostics, safety, recycling and specialised batteries. Follow the original links and credit the creators.</p>
         <dl class="stats" id="stats"></dl>
       </div>
       <div class="pack-wrap">
@@ -483,8 +483,8 @@ button.cmp-name:hover{color:var(--accent-ink);text-decoration:underline;text-und
 
 <footer class="foot">
   <div class="foot-in">
-    <p>IonSense is a directory, not a host. Datasets stay with their original publishers. Check each licence and cite the original creators. Metadata here is provisional until it has been checked at the source.</p>
-    <p><a href="https://github.com/SakthiGs/EV-Battery-IonSense/issues" target="_blank" rel="noopener noreferrer">Report a correction</a></p>
+    <p>IonSense is a cross-domain battery research directory, not a dataset host. Entries may link to datasets, source data, papers, code or models. Check original access terms and cite the creators. Application labels and other metadata are provisional until verified at source.</p>
+    <p><a href="https://github.com/SakthiGs/IonSense-Battery-Datasets/issues" target="_blank" rel="noopener noreferrer">Report a correction</a></p>
   </div>
 </footer>
 
@@ -516,7 +516,7 @@ button.cmp-name:hover{color:var(--accent-ink);text-decoration:underline;text-und
 
 <div class="tip" id="tip" role="tooltip" hidden></div>
 
-<noscript><p style="max-width:1360px;margin:0 auto;padding:16px 24px">The dataset finder needs JavaScript. You can browse the same catalogue in the <a href="https://github.com/SakthiGs/EV-Battery-IonSense#readme">repository README</a>.</p></noscript>
+<noscript><p style="max-width:1360px;margin:0 auto;padding:16px 24px">The dataset finder needs JavaScript. You can browse the same catalogue in the <a href="https://github.com/SakthiGs/IonSense-Battery-Datasets#readme">repository README</a>.</p></noscript>
 
 <script>
 (() => {
@@ -540,7 +540,7 @@ const RESOURCE = {
   publication_source: 'Publication', publication_only: 'Publication'
 };
 const PRIMARY_LABEL = {
-  data_repository: 'Open dataset', data_portal: 'Open portal', direct_download: 'Download',
+  data_repository: 'View source', data_portal: 'View portal', direct_download: 'Download',
   source_data: 'Source data', code_repository: 'View code', code_only: 'View code',
   publication_source: 'View publication', publication_only: 'View publication'
 };
@@ -563,6 +563,7 @@ const doiOf = d => (typeof d.doi === 'string' && d.doi.trim()) ? 'https://doi.or
 const chemOf = d => (Array.isArray(d.chemistries) && d.chemistries.length) ? d.chemistries
   : (d.chemistry && d.chemistry !== 'Unspecified' ? [d.chemistry] : ['Not specified']);
 const resourceOf = d => d.resource_type === 'model_weights' ? 'Model weights' : (RESOURCE[d.source_type] || 'Other source');
+const domainOf = d => Array.isArray(d.application_domains) && d.application_domains.length ? d.application_domains : ['Not specified'];
 const includesOf = d => {
   const v = [];
   if (paperOf(d) || /^publication/.test(d.source_type || '')) v.push('Linked publication');
@@ -578,6 +579,7 @@ const scoreOf = d => (paperOf(d) ? 2 : 0) + (chemOf(d)[0] !== 'Not specified' ? 
    Research task and measurements can switch to "all". "Must include" is always "all". */
 const FACETS = [
   { key: 'category', title: 'Category', get: d => [d.category || 'Uncategorised'] },
+  { key: 'domain', title: 'Application domain', get: domainOf },
   { key: 'chemistry', title: 'Cell chemistry', get: chemOf },
   { key: 'task', title: 'Research task', get: d => d.tasks || [], switchable: true },
   { key: 'signal', title: 'Measurements', get: d => (d.signals && d.signals.length) ? d.signals : ['Not listed'], switchable: true },
@@ -807,7 +809,7 @@ function renderFacets(tokens) {
 function renderOverview() {
   const n = results.length, filtered = isFiltered();
   $('#hero-n').textContent = n;
-  $('#hero-label').textContent = filtered ? `of ${data.length} datasets match` : 'open battery datasets';
+  $('#hero-label').textContent = filtered ? `of ${data.length} datasets match` : 'battery research resources';
   const stats = [
     [new Set(results.map(d => d.category)).size, 'categories'],
     [results.filter(d => d._v.includes.includes('Linked publication')).length, 'with a paper'],
@@ -876,6 +878,7 @@ function chip(key, value, d) {
 function card(d) {
   const facts = h('dl', { class: 'facts' });
   const addFact = (k, v) => { if (v) facts.append(h('dt', {}, k), h('dd', {}, v)); };
+  addFact('Application', domainOf(d).join(', '));
   addFact('Chemistry', chemOf(d).join(', '));
   addFact('Scale', known(d.scale));
   addFact('Source', known(d.source));
@@ -898,13 +901,14 @@ function card(d) {
 }
 
 function tableView() {
-  const head = ['Dataset', 'Category', 'Chemistry', 'Research tasks', 'Measurements', 'Links'];
+  const head = ['Dataset', 'Category', 'Application', 'Chemistry', 'Research tasks', 'Measurements', 'Links'];
   return h('div', { class: 'table-wrap' }, h('table', { class: 'list' },
     h('thead', {}, h('tr', {}, h('th', { scope: 'col', class: 'pick' }, h('span', { class: 'sr-only' }, 'Compare')), head.map(t => h('th', { scope: 'col' }, t)))),
     h('tbody', {}, results.map(d => h('tr', { class: isCompared(d) ? 'is-compared' : null, 'data-row': d.id },
       h('td', { class: 'pick' }, compareToggle(d, true)),
       h('td', { class: 'name' }, h('button', { type: 'button', 'data-fk': 'open|' + d.id, onclick: () => openDetail(d) }, highlight(d.name)), h('small', {}, resourceOf(d))),
       h('td', {}, d.category || ''),
+      h('td', {}, domainOf(d).join(', ')),
       h('td', {}, chemOf(d).join(', ')),
       h('td', {}, (d.tasks || []).join(', ')),
       h('td', {}, (d.signals || []).join(', ') || h('span', { style: 'color:var(--muted)' }, 'Not listed')),
@@ -986,6 +990,7 @@ function openDetail(d) {
   const facts = h('dl', { class: 'facts' });
   const add = (k, ...v) => { if (v.some(x => x)) facts.append(h('dt', {}, k), h('dd', {}, ...v)); };
   add('Source', known(d.source) || 'See the original record');
+  add('Application domain', domainOf(d).join(', '));
   add('Scale', known(d.scale) || 'See the original record');
   const chem = chemOf(d);
   let chemStatus = null;
@@ -1061,6 +1066,7 @@ const chemCheckOf = d => {
    an empty or placeholder value is shown as "Not specified". */
 const COMPARE_ROWS = [
   { label: 'Category', get: d => d.category || NS },
+  { label: 'Application domain', list: d => d.application_domains || [] },
   { label: 'Chemistry', list: d => { const c = chemOf(d); return c[0] === 'Not specified' ? [] : c; } },
   { label: 'Research tasks', list: d => d.tasks || [] },
   { label: 'Measurements', list: d => d.signals || [] },
@@ -1334,6 +1340,7 @@ fetch('./datasets.json', { cache: 'no-cache' })
       d._v = {};
       for (const f of FACETS) d._v[f.key] = [...new Set(f.get(d).filter(Boolean))];
       d._hay = [d.name, d.source, d.description, d.category, d.chemistry, d.scale, d.notes, d.resource_note, resourceOf(d),
+        ...(d.application_domains || []),
         ...(d.chemistries || []), ...(d.chemistry_families || []), ...(d.tasks || []), ...(d.signals || [])].filter(Boolean).join(' ').toLowerCase();
       d._score = scoreOf(d);
       return d;
