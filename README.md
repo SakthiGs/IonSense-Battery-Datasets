@@ -1,6 +1,6 @@
 # IonSense — Battery Research Dataset Finder
 
-![IonSense banner — battery research dataset discovery](battery_banner.svg)
+![IonSense banner — battery research dataset discovery](battery_banner.png)
 
 **Discover battery research resources across electric mobility, stationary energy storage, laboratory testing, diagnostics, safety, recycling, and specialised applications.**
 
