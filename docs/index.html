@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="IonSense: discover open battery datasets and credit original dataset creators.">
+  <title>IonSense — Battery Dataset Finder</title>
+  <style>
+    :root{font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;color:#eaf1f8;background:#08111e;line-height:1.5}
+    *{box-sizing:border-box}body{margin:0}a{color:inherit}button,select,input{font:inherit}button,select{cursor:pointer}
+    header{border-bottom:1px solid #22334b;background:#0b1726} .wrap{max-width:1200px;margin:auto;padding:0 24px}
+    nav{display:flex;align-items:center;justify-content:space-between;min-height:74px;gap:12px}.logo{font-size:21px;font-weight:850;letter-spacing:-.6px}.bolt{color:#5fe0ad}.navlink{color:#b4c5d7;text-decoration:none;font-size:14px}
+    .hero{padding:64px 0 34px;background:radial-gradient(ellipse at 85% 20%,#123c45 0,transparent 43%)}.eyebrow{color:#65e6b4;text-transform:uppercase;letter-spacing:2px;font-size:12px;font-weight:750}
+    h1{font-size:clamp(36px,6vw,62px);line-height:1.08;letter-spacing:-2px;max-width:780px;margin:12px 0 18px} .intro{color:#aec1d6;max-width:670px;font-size:17px}
+    .stats{display:flex;gap:25px;flex-wrap:wrap;padding:18px 0}.stats strong{font-size:21px;color:#fff}.stats span{color:#91a9c0;font-size:13px;margin-left:6px}
+    .finder{padding-top:28px;padding-bottom:65px}.panel{background:#101f30;border:1px solid #283a50;border-radius:18px;padding:22px;box-shadow:0 20px 50px #0002}
+    label{display:block;font-size:12px;color:#aebed1;font-weight:700;letter-spacing:.3px;margin-bottom:8px}.fields{display:grid;grid-template-columns:2fr 1fr 1fr;gap:14px}
+    input,select{width:100%;border:1px solid #3a5068;border-radius:10px;background:#0a1726;color:#edf5ff;padding:12px 13px;outline:none;min-width:0}
+    input:focus,select:focus{border-color:#62dfb0;box-shadow:0 0 0 2px #62dfb030}
+    .toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:25px 0 16px;flex-wrap:wrap}.toolbar h2{font-size:20px;margin:0}.muted{color:#94aabe;font-size:13px}.clear{border:1px solid #384c63;border-radius:9px;background:transparent;color:#c7d8e8;padding:8px 12px}
+    .cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.card{background:#101f30;border:1px solid #2a3c52;border-radius:16px;padding:23px;display:flex;flex-direction:column;gap:13px}
+    .tagrow{display:flex;gap:7px;flex-wrap:wrap}.tag{border-radius:6px;background:#1a3442;color:#8ff3c5;padding:4px 8px;font-size:11px;font-weight:700}.tag.alt{background:#253348;color:#b9ccde}
+    .card h3{font-size:20px;letter-spacing:-.35px;line-height:1.3;margin:0}.card p{color:#bbcad9;font-size:14px;margin:0}.small{font-size:12px;color:#91a7bc}
+    .cardfooter{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-top:auto;padding-top:13px;border-top:1px solid #2a3b4e}
+    .action{padding:9px 12px;border-radius:9px;background:#5ddfae;color:#08231a;text-decoration:none;font-size:13px;font-weight:800}.action:hover{background:#8af4c9}
+    .paper{font-size:13px;color:#a7d3ff;text-decoration:none}.empty{padding:65px 15px;text-align:center;color:#aebdd0;border:1px dashed #42546a;border-radius:16px}
+    footer{border-top:1px solid #293c51;padding:30px 0;color:#9bafc5;font-size:13px} footer a{color:#9bdfc4}
+    @media(max-width:760px){.fields,.cards{grid-template-columns:1fr}.hero{padding-top:42px}.stats{gap:15px}h1{letter-spacing:-1px}}
+  </style>
+</head>
+<body>
+<header><div class="wrap"><nav><div class="logo"><span class="bolt">⚡</span> IonSense <span style="font-weight:400;color:#849cb1;font-size:14px">/ Dataset Finder</span></div><a class="navlink" href="https://github.com/SakthiGs/EV-Battery-IonSense" target="_blank" rel="noopener noreferrer">GitHub repository ↗</a></nav></div></header>
+<section class="hero"><div class="wrap"><div class="eyebrow">Open battery research directory</div><h1>Find the right battery dataset. <span style="color:#67e1b1">Faster.</span></h1><p class="intro">Explore battery field measurements, aging experiments and diagnostic datasets. Follow direct links to the original data and credit the researchers who published them.</p><div class="stats"><div><strong id="total">—</strong><span>curated entries</span></div><div><strong id="categories">—</strong><span>categories</span></div><div><strong>100%</strong><span>original-source links</span></div></div></div></section>
+<main class="wrap finder"><section class="panel" aria-label="Dataset filters"><div class="fields"><div><label for="query">SEARCH DATASETS</label><input id="query" type="search" placeholder="Name, institution, signal, keyword…"></div><div><label for="category">CATEGORY</label><select id="category"><option value="">All categories</option></select></div><div><label for="chemistry">CHEMISTRY</label><select id="chemistry"><option value="">All chemistries</option></select></div><div><label for="task">RESEARCH TASK</label><select id="task"><option value="">All tasks</option></select></div><div><label for="signal">MEASUREMENT</label><select id="signal"><option value="">All measurements</option></select></div><div><label for="sort">SORT BY</label><select id="sort"><option value="name">Dataset name</option><option value="category">Category</option></select></div></div></section>
+<div class="toolbar"><div><h2>Explore datasets</h2><div class="muted" role="status" id="count">Loading catalogue…</div></div><button id="reset" class="clear">Clear filters</button></div><section class="cards" id="cards" aria-live="polite"></section><div class="empty" id="empty" hidden>No datasets match. Try fewer filters.</div></main>
+<footer><div class="wrap">IonSense is a discovery directory, not a host of third-party datasets. Check terms and cite the <strong>original dataset creators</strong>. Dataset metadata is provisional unless verified at source. · <a href="https://github.com/SakthiGs/EV-Battery-IonSense/issues" target="_blank" rel="noopener noreferrer">Suggest a dataset or correction</a></div></footer>
+<script>
+(() => {
+'use strict';
+let all=[];
+const $=id=>document.getElementById(id);
+const controls=['query','category','chemistry','task','signal','sort'];
+const text=(tag,value,className)=>{const n=document.createElement(tag);n.textContent=value;if(className)n.className=className;return n};
+const selectOptions=(id,values)=>{[...new Set(values.filter(Boolean))].sort().forEach(value=>{const o=document.createElement('option');o.value=value;o.textContent=value;$(id).append(o)})};
+const card=d=>{const article=text('article','','card');const badges=text('div','','tagrow');badges.append(text('span',d.category,'tag'),text('span',d.chemistry,'tag alt'));article.append(badges,text('h3',d.name),text('p',d.description));article.append(text('div',d.source+' · '+d.scale,'small'));if(d.notes)article.append(text('div','Note: '+d.notes,'small'));const footer=text('div','','cardfooter');const a=text('a','View original dataset ↗','action');a.href=d.url;a.target='_blank';a.rel='noopener noreferrer';footer.append(a);if(d.paper){const p=text('a','Original publication ↗','paper');p.href=d.paper;p.target='_blank';p.rel='noopener noreferrer';footer.append(p)}article.append(footer);return article};
+function render(){const q=$('query').value.trim().toLowerCase(),c=$('category').value,ch=$('chemistry').value,t=$('task').value,s=$('signal').value;const result=all.filter(d=>(!c||d.category===c)&&(!ch||d.chemistry===ch)&&(!t||d.tasks.includes(t))&&(!s||d.signals.includes(s))&&(!q||[d.name,d.source,d.description,d.category,d.chemistry,d.scale,...d.tasks,...d.signals].join(' ').toLowerCase().includes(q))).sort((a,b)=>String(a[$('sort').value]).localeCompare(String(b[$('sort').value])));$('count').textContent=result.length+' of '+all.length+' datasets';$('cards').replaceChildren(...result.map(card));$('empty').hidden=result.length!==0;}
+controls.forEach(id=>$(id).addEventListener(id==='query'?'input':'change',render));$('reset').addEventListener('click',()=>{controls.forEach(id=>$(id).value=id==='sort'?'name':'');render()});
+fetch('./datasets.json').then(r=>{if(!r.ok)throw Error('HTTP '+r.status);return r.json()}).then(data=>{all=data;selectOptions('category',all.map(d=>d.category));selectOptions('chemistry',all.map(d=>d.chemistry));selectOptions('task',all.flatMap(d=>d.tasks));selectOptions('signal',all.flatMap(d=>d.signals));$('total').textContent=all.length;$('categories').textContent=new Set(all.map(d=>d.category)).size;render()}).catch(err=>{$('count').textContent='Unable to load dataset catalogue';$('empty').hidden=false;$('empty').textContent='Catalogue could not be loaded. Serve the project from a local web server or GitHub Pages. '+err.message});
+})();
+</script>
+</body></html>
