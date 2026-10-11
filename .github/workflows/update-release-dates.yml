@@ -1,0 +1,42 @@
+name: Update release dates
+
+on:
+  schedule:
+    - cron: "32 3 * * 0"   # 03:32 UTC every Sunday
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - docs/datasets.json
+      - scripts/update_release_dates.py
+      - scripts/release_date_overrides.json
+      - .github/workflows/update-release-dates.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-release-dates
+  cancel-in-progress: true
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Look up release dates
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python scripts/update_release_dates.py | tee -a "$GITHUB_STEP_SUMMARY"
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/release_dates.json
+          if git diff --cached --quiet; then echo "No change"; exit 0; fi
+          git commit -m "Update dataset release dates"
+          git pull --rebase origin main
+          git push
