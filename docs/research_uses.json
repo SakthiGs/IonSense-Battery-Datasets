@@ -2074,6 +2074,234 @@
           "reviewed": false
         }
       ]
+    },
+    "home-storage-rwth": {
+      "coverage": "Only the original study is listed; reuse by other groups has not been searched yet.",
+      "papers": [
+        {
+          "title": "Multi-year field measurements of home storage systems and their use in capacity estimation",
+          "authors": "Figgener, van Ouwerkerk, Haberschusz et al.",
+          "year": 2024,
+          "venue": "Nature Energy 9, 1438–1447",
+          "doi": "10.1038/s41560-024-01620-9",
+          "relation": "Original study",
+          "use": "Describes eight years of field data from 21 home storage systems and estimates their capacity from operating data.",
+          "tasks": [
+            "Capacity estimation"
+          ],
+          "methods": [],
+          "split": "",
+          "evidence": "Data availability (Zenodo 12091223)",
+          "reviewed": false
+        }
+      ]
+    },
+    "challenges-and-opportunities-in-truck-electrification-big-operational-data": {
+      "coverage": "Only the original study is listed; reuse by other groups has not been searched yet.",
+      "papers": [
+        {
+          "title": "Challenges and opportunities in truck electrification revealed by big operational data",
+          "authors": "Zhao, Zhang, Santi et al.",
+          "year": 2024,
+          "venue": "Nature Energy 9, 1427–1437",
+          "doi": "10.1038/s41560-024-01602-x",
+          "relation": "Original study",
+          "use": "Analyses a year of operation from 61,598 electric trucks in China, covering range, charging, emissions and cost of ownership.",
+          "tasks": [
+            "Other research"
+          ],
+          "methods": [],
+          "split": "",
+          "evidence": "Data availability (Figshare 24421210)",
+          "reviewed": false
+        }
+      ]
+    },
+    "onroad-capacity": {
+      "coverage": "Only the original study is listed; reuse by other groups has not been searched yet.",
+      "papers": [
+        {
+          "title": "Prognostics of battery capacity based on charging data and data-driven methods for on-road vehicles",
+          "authors": "Deng, Xu, Liu, Hu, Duan, Xu",
+          "year": 2023,
+          "venue": "Applied Energy 339, 120954",
+          "doi": "",
+          "url": "https://github.com/shiyunliu-battery/battery-charging-data-of-on-road-electric-vehicles",
+          "relation": "Original study",
+          "use": "Estimates and forecasts pack capacity of 20 electric vehicles from 29 months of charging data.",
+          "tasks": [
+            "Capacity estimation"
+          ],
+          "methods": [
+            "Data-driven models"
+          ],
+          "split": "",
+          "evidence": "Repository README asks users to cite this paper",
+          "reviewed": false
+        }
+      ]
+    },
+    "generative-learning-assisted-state-of-health-estimation-for-battery-recycling": {
+      "coverage": "Only the original study is listed; reuse by other groups has not been searched yet.",
+      "papers": [
+        {
+          "title": "Generative learning assisted state-of-health estimation for sustainable battery recycling with random retirement conditions",
+          "authors": "Tao, Ma, Zhao et al.",
+          "year": 2024,
+          "venue": "Nature Communications 15, 10154",
+          "doi": "10.1038/s41467-024-54454-0",
+          "relation": "Original study",
+          "use": "Estimates the health of 270 retired cells of three chemistries from pulse tests, using generated data to cover unseen retirement conditions.",
+          "tasks": [
+            "SOH estimation"
+          ],
+          "methods": [
+            "Conditional variational autoencoder"
+          ],
+          "split": "",
+          "evidence": "Results; Source Data",
+          "reviewed": false
+        }
+      ]
+    },
+    "attention-towards-chemistry-agnostic-and-explainable-battery-lifetime-prediction-arcana": {
+      "coverage": "Only the original study is listed; reuse by other groups has not been searched yet.",
+      "papers": [
+        {
+          "title": "Attention towards chemistry agnostic and explainable battery lifetime prediction",
+          "authors": "Rahmanian, Lee, Linzner et al.",
+          "year": 2024,
+          "venue": "npj Computational Materials 10, 100",
+          "doi": "10.1038/s41524-024-01286-7",
+          "relation": "Original study",
+          "use": "Introduces ARCANA, an attention-based lifetime model trained across many chemistries and fine-tuned on sodium-ion cells.",
+          "tasks": [
+            "Cycle life"
+          ],
+          "methods": [
+            "Attention network"
+          ],
+          "split": "",
+          "evidence": "Methods (training data)",
+          "reviewed": false
+        }
+      ]
+    },
+    "source-data-reuse-and-recycling-pathway-of-retired-batteries": {
+      "coverage": "Only the original study is listed; reuse by other groups has not been searched yet.",
+      "papers": [
+        {
+          "title": "Pathway decisions for reuse and recycling of retired lithium-ion batteries considering economic and environmental functions",
+          "authors": "",
+          "year": 2024,
+          "venue": "Nature Communications",
+          "doi": "10.1038/s41467-024-52030-0",
+          "relation": "Original study",
+          "use": "Compares reuse and recycling pathways for retired LFP and NMC batteries by cost and lifecycle carbon emissions.",
+          "tasks": [
+            "Other research"
+          ],
+          "methods": [
+            "Techno-economic and lifecycle model"
+          ],
+          "split": "",
+          "evidence": "Repository README asks users to cite this paper",
+          "reviewed": false
+        }
+      ]
+    },
+    "a-dataset-of-over-1-000-computed-tomography-scans-of-battery-cells": {
+      "coverage": "Only the original study is listed; reuse by other groups has not been searched yet.",
+      "papers": [
+        {
+          "title": "A dataset of over one thousand computed tomography scans of battery cells",
+          "authors": "Condon, Buscarino, Moch et al.",
+          "year": 2024,
+          "venue": "Data in Brief",
+          "doi": "",
+          "url": "https://plus.figshare.com/articles/dataset/A_dataset_of_over_one_thousand_computed_tomography_scans_of_battery_cells/25330501",
+          "relation": "Original study",
+          "use": "Releases CT scans of 1,015 commercial cells in seven formats.",
+          "tasks": [
+            "Other research"
+          ],
+          "methods": [
+            "X-ray computed tomography"
+          ],
+          "split": "",
+          "evidence": "Figshare record",
+          "reviewed": false
+        }
+      ]
+    },
+    "randomized-battery-usage-data-set-nasa": {
+      "coverage": "Only the original study is listed; reuse by other groups has not been searched yet.",
+      "papers": [
+        {
+          "title": "Adaptation of an electrochemistry-based Li-ion battery model to account for deterioration observed under randomized use",
+          "authors": "Bole, Kulkarni, Daigle",
+          "year": 2014,
+          "venue": "Annual Conference of the PHM Society 6",
+          "doi": "",
+          "url": "https://www.papers.phmsociety.org/index.php/phmconf/article/view/2490",
+          "relation": "Original study",
+          "use": "Updates an electrochemical battery model online as cells age under randomised discharge, using an unscented Kalman filter.",
+          "tasks": [
+            "SOH estimation"
+          ],
+          "methods": [
+            "Unscented Kalman filter",
+            "Electrochemical model"
+          ],
+          "split": "",
+          "evidence": "NASA repository gives this as the publication to cite",
+          "reviewed": false
+        }
+      ]
+    },
+    "hirf-battery-data-set-nasa": {
+      "coverage": "Only the original study is listed; reuse by other groups has not been searched yet.",
+      "papers": [
+        {
+          "title": "Verification of a remaining flying time prediction system for small electric aircraft",
+          "authors": "Hogge, Bole, Vazquez, Celaya",
+          "year": 2015,
+          "venue": "Annual Conference of the PHM Society",
+          "doi": "",
+          "url": "https://papers.phmsociety.org/index.php/phmconf",
+          "relation": "Original study",
+          "use": "Checks predictions of remaining flight time for a small electric aircraft (Edge 540) using its battery data.",
+          "tasks": [
+            "Other research"
+          ],
+          "methods": [],
+          "split": "",
+          "evidence": "NASA repository gives this as the publication to cite",
+          "reviewed": false
+        }
+      ]
+    },
+    "small-satellite-power-simulation-nasa": {
+      "coverage": "Only the original study is listed; reuse by other groups has not been searched yet.",
+      "papers": [
+        {
+          "title": "A battery certification testbed for small satellite missions",
+          "authors": "Cameron, Kulkarni, Guarneros, Goebel, Poll",
+          "year": 2015,
+          "venue": "IEEE AUTOTESTCON 2015",
+          "doi": "",
+          "url": "https://ieeexplore.ieee.org/abstract/document/7356483",
+          "relation": "Original study",
+          "use": "Describes a testbed that runs small-satellite batteries through simulated mission power profiles.",
+          "tasks": [
+            "Other research"
+          ],
+          "methods": [],
+          "split": "",
+          "evidence": "NASA repository gives this as the publication to cite",
+          "reviewed": false
+        }
+      ]
     }
   }
 }

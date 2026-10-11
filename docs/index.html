@@ -598,7 +598,9 @@ const CHEM_STATUS = {
   confirmed_by_users: ['Confirmed by papers that use it', false],
   inferred_related_source: ['From a related source, not the data page', false]
 };
-const PIN_LAST = new Set(['Not specified', 'Not listed', 'Other research', 'Other source', 'Uncategorised']);
+const PIN_LAST = new Set(['Not specified', 'Not stated by source', 'Not applicable', 'Not listed', 'Other research', 'Other source', 'Uncategorised']);
+/* Chemistry values that mean "no chemistry to report": not checked, checked but not stated, or not about cells. */
+const NO_CHEM = new Set(['Not specified', 'Not stated by source', 'Not applicable']);
 const UNKNOWN = new Set(['', 'see original source', 'unknown', 'n/a']);
 const GENERIC_NOTE = /^imported from readme/i;
 
@@ -621,7 +623,8 @@ const includesOf = d => {
   return v;
 };
 const notesOf = d => [d.notes, d.resource_note].filter(n => typeof n === 'string' && n.trim() && !GENERIC_NOTE.test(n.trim()));
-const scoreOf = d => (paperOf(d) ? 2 : 0) + (chemOf(d)[0] !== 'Not specified' ? 2 : 0) + Math.min((d.signals || []).length, 4)
+const hasChem = d => !NO_CHEM.has(chemOf(d)[0]);
+const scoreOf = d => (paperOf(d) ? 2 : 0) + (hasChem(d) ? 2 : 0) + Math.min((d.signals || []).length, 4)
   + (known(d.scale) ? 1 : 0) + (known(d.source) ? 1 : 0) + (codeOf(d) ? 1 : 0) + (d.license ? 1 : 0);
 
 /* Facets: values within one facet combine with OR ("any"), facets combine with AND.
@@ -864,7 +867,7 @@ function renderOverview() {
   const stats = [
     [new Set(results.map(d => d.category)).size, 'categories'],
     [results.filter(d => d._v.includes.includes('Linked publication')).length, 'with a paper'],
-    [results.filter(d => chemOf(d)[0] !== 'Not specified').length, 'chemistry named']
+    [results.filter(hasChem).length, 'chemistry named']
   ];
   $('#stats').replaceChildren(...stats.map(([v, l]) => h('div', {}, h('dt', {}, l), h('dd', {}, v))));
   const ids = new Set(results.map(d => d.id));
@@ -1130,7 +1133,7 @@ function openDetail(d, jump) {
   const chem = chemOf(d);
   let chemStatus = null;
   if (d.chemistry_verification === 'source_verified') chemStatus = h('span', { class: 'status ok' }, ICON_CHECK(), 'Checked at source');
-  else if (CHEM_STATUS[d.chemistry_review_status] && chem[0] !== 'Not specified') chemStatus = h('span', { class: 'status' }, CHEM_STATUS[d.chemistry_review_status][0]);
+  else if (CHEM_STATUS[d.chemistry_review_status] && hasChem(d)) chemStatus = h('span', { class: 'status' }, CHEM_STATUS[d.chemistry_review_status][0]);
   add('Chemistry', chem.join(', '), chemStatus);
   if (Array.isArray(d.chemistry_families) && d.chemistry_families.length) add('Chemistry family', d.chemistry_families.join(', '));
   add('Resource', resourceOf(d));
