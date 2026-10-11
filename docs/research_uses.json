@@ -526,7 +526,8 @@
           "evidence": "Section 4.2.2; Table 4",
           "reviewed": false
         }
-      ]
+      ],
+      "results_note": "No ranked results yet. The studies report different metrics on different cells: the original paper gives R² only inside its figures, Liu et al. (IPEMC 2024) give MAPE per cell, and Kim et al. and Liu et al. (2024 preprint) use subsets of the test cells."
     },
     "data-driven-capacity-estimation-from-voltage-relaxation": {
       "coverage": "A starting list of 4 studies, found by searching for papers that reuse these 130 cells. Not every paper that used this dataset.",
@@ -757,6 +758,76 @@
           ],
           "split": "Single cell: OCV checks at cycles 159 to 344 and 12 driving cycles.",
           "evidence": "Section 3 (3.1 OCV test data, 3.2 dynamic discharge data)",
+          "reviewed": false
+        }
+      ]
+    },
+    "aging-dataset-lco-battery-with-mechanical-measurements": {
+      "coverage": "2 studies, both from the group that made the dataset. No use by other groups found yet; the data was released in February 2025.",
+      "papers": [
+        {
+          "title": "Aging diagnostics in lithium-ion batteries with differential mechanical measurements",
+          "authors": "Clerici, Pistorio, Somà",
+          "year": 2025,
+          "venue": "Applied Energy 386, 125524",
+          "doi": "10.1016/j.apenergy.2025.125524",
+          "relation": "Original study",
+          "use": "Introduces the data: an LCO/graphite cell cycled over 1,000 times to 70% state of health, with its thickness change split into a reversible part within each cycle and an irreversible part that grows with ageing.",
+          "tasks": [
+            "Degradation analysis"
+          ],
+          "methods": [
+            "Differential deformation analysis",
+            "Differential voltage analysis"
+          ],
+          "split": "",
+          "evidence": "Abstract; Zenodo record links this paper",
+          "reviewed": false
+        },
+        {
+          "title": "Mechanics of lithium-ion batteries: aging and diagnostics",
+          "authors": "Clerici, Pistorio, Somà",
+          "year": 2026,
+          "venue": "World Electric Vehicle Journal 17(1), 55",
+          "doi": "10.3390/wevj17010055",
+          "relation": "Same research group",
+          "use": "Review that reuses the LCO ageing test for deformation-based state-of-charge estimation, differential expansion diagnostics and validation of the group's coupled ageing model.",
+          "tasks": [
+            "SOC estimation",
+            "Degradation analysis"
+          ],
+          "methods": [
+            "Deformation-based SOC estimation",
+            "Physics-based ageing model"
+          ],
+          "split": "",
+          "evidence": "Section 2.2 (same protocol: C/2 charge, 1C discharge, 20 °C, reference tests every 25 cycles); Figures 3, 5, 6 and 10",
+          "reviewed": false
+        }
+      ]
+    },
+    "uconn-lco-gr-battery-fast-charging-dataset": {
+      "coverage": "1 study, the one that produced the data. No other use found yet; the dataset was released in January 2026.",
+      "papers": [
+        {
+          "title": "Coulombic efficiency-driven optimization of health-aware charging protocols: an experimental investigation on LCO/graphite lithium-ion cells",
+          "authors": "Navidi, Das, Nowacki, Shrotriya, Xu, Hu",
+          "year": 2026,
+          "venue": "Journal of Materials Chemistry A 14, 8100–8119",
+          "doi": "10.1039/D5TA09520D",
+          "relation": "Original study",
+          "use": "Measures coulombic efficiency across state of charge, charge rate and health, then designs fast-charging protocols that limit capacity fade, benchmarked against constant-current constant-voltage charging.",
+          "tasks": [
+            "Charging analysis",
+            "Capacity fade prediction"
+          ],
+          "methods": [
+            "Linear regression",
+            "Gaussian process regression",
+            "Nonlinear optimisation"
+          ],
+          "split": "",
+          "evidence": "Abstract; dataset page cites Navidi et al. for the protocols",
           "reviewed": false
         }
       ]

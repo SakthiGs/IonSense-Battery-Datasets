@@ -795,14 +795,18 @@
     "tasks": [
       "Degradation analysis"
     ],
-    "source": "See original source",
-    "scale": "See original source",
-    "description": "Includes cycling RPTs, HPPC tests, and low-rate cycles. Uniquely provides mechanical (differential pressure) measurements alongside electrochemical data.",
+    "source": "Politecnico di Torino",
+    "scale": "22 Ah pouch cell · about 1,125 cycles to 70% SOH",
+    "description": "Ageing data from a 22 Ah LCO/graphite pouch cell cycled at 20 °C until 70% state of health, with reference tests, HPPC and low-rate cycles. Laser sensors also record the cell's thickness change, both within each cycle and as it builds up over ageing.",
     "url": "https://zenodo.org/records/14914172",
     "paper": "https://www.sciencedirect.com/science/article/pii/S0306261925002545",
     "access": "Unverified",
     "signals": [
-      "Cycling data"
+      "Cycling data",
+      "Voltage",
+      "Current",
+      "Temperature",
+      "Mechanical deformation"
     ],
     "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
     "source_type": "data_repository",
@@ -810,8 +814,17 @@
     "chemistries": [
       "LCO"
     ],
-    "chemistry_review_status": "catalogue_label_not_independently_verified",
-    "application_domains": []
+    "chemistry_review_status": "source_verified",
+    "application_domains": [],
+    "license": "CC BY 4.0",
+    "doi": "10.5281/zenodo.14914172",
+    "chemistry_evidence_url": "https://zenodo.org/records/14914172",
+    "chemistry_verification": "source_verified",
+    "chemistry_evidence": {
+      "status": "source_verified",
+      "url": "https://zenodo.org/records/14914172",
+      "note": "Zenodo record and the Applied Energy paper both state a lithium cobalt oxide cathode and graphite anode."
+    }
   },
   {
     "id": "battery-degradation-dataset-based-on-a-forklift-mission-profile",
@@ -865,13 +878,14 @@
     "category": "Lab Aging & Degradation",
     "chemistry": "LCO",
     "tasks": [
-      "SOH estimation"
+      "SOH estimation",
+      "Charging analysis"
     ],
-    "source": "See original source",
-    "scale": "See original source",
-    "description": "SOC-sweep tests at four SOH levels (100%–70%) and 1.5C–3.5C charge rates. Benchmark tests with repeated RPTs until 70% end-of-life capacity.",
+    "source": "University of Connecticut",
+    "scale": "76 coin cells (Powerstream LiR2032)",
+    "description": "Fast-charging data from LCO/graphite coin cells. 40 cells map coulombic efficiency across state of charge and 1.5C–3.5C charge rates at four health levels (100% to 70%); 36 cells run benchmark charging protocols with repeated reference tests until 70% capacity.",
     "url": "https://digitalcommons.lib.uconn.edu/reil_datasets/4/",
-    "paper": "https://pubs.rsc.org/en/content/articlelanding/2026/ta/d5ta09520d",
+    "paper": "https://pubs.rsc.org/en/content/articlehtml/2026/ta/d5ta09520d",
     "access": "Unverified",
     "signals": [
       "Capacity",
@@ -883,8 +897,15 @@
     "chemistries": [
       "LCO"
     ],
-    "chemistry_review_status": "catalogue_label_not_independently_verified",
-    "application_domains": []
+    "chemistry_review_status": "source_verified",
+    "application_domains": [],
+    "chemistry_evidence_url": "https://digitalcommons.lib.uconn.edu/reil_datasets/4/",
+    "chemistry_verification": "source_verified",
+    "chemistry_evidence": {
+      "status": "source_verified",
+      "url": "https://digitalcommons.lib.uconn.edu/reil_datasets/4/",
+      "note": "Dataset page and the J. Mater. Chem. A paper both describe LCO/graphite cells."
+    }
   },
   {
     "id": "discovery-learning-predicts-battery-cycle-life-from-minimal-experiments",
@@ -1165,25 +1186,37 @@
     "id": "identifying-degradation-patterns-via-impedance-spectroscopy-and-machine-learning",
     "name": "Identifying Degradation Patterns via Impedance Spectroscopy and Machine Learning",
     "category": "State Estimation & Health Monitoring",
-    "chemistry": "Unspecified",
+    "chemistry": "LCO",
     "tasks": [
+      "SOH estimation",
+      "RUL prediction",
       "Degradation analysis"
     ],
-    "source": "See original source",
-    "scale": "See original source",
-    "description": "Dataset supporting ML-based identification of degradation patterns through electrochemical impedance spectroscopy analysis.",
+    "source": "University of Cambridge",
+    "scale": "12 coin cells · over 20,000 EIS spectra",
+    "description": "Impedance spectra from 12 LCO/graphite coin cells (Eunicell LR2032, 45 mAh) cycled at 25, 35 and 45 °C, measured at nine points in each cycle, with capacity for every cycle. Used to estimate state of health and remaining life from impedance alone.",
     "url": "https://zenodo.org/records/3633835",
     "paper": "https://www.nature.com/articles/s41467-020-15235-7",
     "access": "Unverified",
     "signals": [
-      "EIS"
+      "EIS",
+      "Capacity"
     ],
     "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
     "source_type": "data_repository",
     "access_status": "not_checked",
-    "chemistries": [],
-    "chemistry_review_status": "needs_source_verification",
-    "application_domains": []
+    "chemistries": [
+      "LCO"
+    ],
+    "chemistry_review_status": "source_verified",
+    "application_domains": [],
+    "chemistry_evidence_url": "https://www.nature.com/articles/s41467-020-15235-7",
+    "chemistry_verification": "source_verified",
+    "chemistry_evidence": {
+      "status": "source_verified",
+      "url": "https://www.nature.com/articles/s41467-020-15235-7",
+      "note": "Nature Communications paper (Methods): LiCoO2 cathode and graphite anode, Eunicell LR2032 coin cells."
+    }
   },
   {
     "id": "real-time-personalized-health-status-prediction-via-deep-transfer-learning",
