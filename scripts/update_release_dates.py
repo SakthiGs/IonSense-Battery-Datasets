@@ -121,8 +121,8 @@ def from_datacite(doi):
         if pd:
             dates += pd
             tried.append(p)
-    # Mendeley Data: 10.17632/abc.3 -> parent 10.17632/abc
-    m = re.match(r"(10\.17632/[a-z0-9]+)\.\d+$", doi)
+    # Mendeley Data (10.17632/abc.3) and figshare (10.6084/m9.figshare.123.v2): the DOI without the version
+    m = re.match(r"(10\.17632/[a-z0-9]+)\.\d+$", doi) or re.match(r"(.+)\.v\d+$", doi)
     if m and m.group(1) not in tried:
         pd, _ = datacite_dates(m.group(1))
         if pd:
