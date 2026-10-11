@@ -649,6 +649,7 @@ const state = {
   expanded: {}
 };
 let data = [], results = [], categoryOrder = [];
+let CITES = {}, CITES_META = {};  /* citations.json: OpenAlex counts for each dataset's original paper */
 let USES = {};  /* research_uses.json, keyed by dataset id; empty if the file is missing */
 const usesOf = d => (USES[d.id] && Array.isArray(USES[d.id].papers)) ? USES[d.id].papers.filter(p => p && p.title) : [];
 
@@ -936,6 +937,8 @@ function card(d) {
   addFact('Chemistry', chemOf(d).join(', '));
   addFact('Scale', known(d.scale));
   addFact('Source', known(d.source));
+  const nCite = citeOf(d);
+  if (nCite != null) addFact('Cited', h('span', { title: `Citations of the original paper (${CITES_META.source || 'OpenAlex'}, ${citeAsOf()})` }, `${nCite.toLocaleString()} times`));
   const nUses = usesOf(d).length;
   if (nUses) addFact('Used in', h('button', { type: 'button', class: 'link-btn', style: 'padding:0;font-size:inherit', onclick: () => openDetail(d, 'uses') }, plural(nUses, 'published study', 'published studies')));
   const notes = notesOf(d);
@@ -1139,6 +1142,8 @@ function openDetail(d, jump) {
   add('Resource', resourceOf(d));
   add('Research tasks', h('span', { class: 'chips' }, (d.tasks || []).map(t => chip('task', t, d))));
   add('Measurements', (d.signals && d.signals.length) ? h('span', { class: 'chips' }, d.signals.map(s => chip('signal', s, d))) : 'Not listed');
+  const nCite = citeOf(d);
+  if (nCite != null) add('Citations', `${nCite.toLocaleString()}`, h('span', { style: 'color:var(--muted);font-size:13px;margin-left:6px' }, `original paper · ${CITES_META.source || 'OpenAlex'}, ${citeAsOf()}`));
   add('Licence', d.license || '');
   add('Samples', typeof d.samples === 'number' ? d.samples.toLocaleString() : '');
   add('Data kind', d.dataset_kind || '');
@@ -1473,13 +1478,19 @@ document.addEventListener('keydown', e => {
 
 /* ---------- Load ---------- */
 /* research_uses.json is optional: if it is missing or malformed the catalogue still loads, just without "Used in research". */
+const citesReady = fetch('./citations.json', { cache: 'no-cache' })
+  .then(r => r.ok ? r.json() : null)
+  .then(j => { if (j && j.datasets && typeof j.datasets === 'object') { CITES = j.datasets; CITES_META = j; } })
+  .catch(() => {});
+const citeOf = d => (CITES[d.id] && typeof CITES[d.id].count === 'number') ? CITES[d.id].count : null;
+const citeAsOf = () => { try { return new Date(CITES_META.updated + 'T00:00:00').toLocaleDateString('en-GB', { month: 'short', year: 'numeric' }); } catch (e) { return ''; } };
 const usesReady = fetch('./research_uses.json', { cache: 'no-cache' })
   .then(r => r.ok ? r.json() : null)
   .then(j => { if (j && j.datasets && typeof j.datasets === 'object') USES = j.datasets; })
   .catch(() => {});
 fetch('./datasets.json', { cache: 'no-cache' })
   .then(r => { if (!r.ok) throw new Error('The catalogue file returned HTTP ' + r.status + '.'); return r.json(); })
-  .then(json => usesReady.then(() => json))
+  .then(json => Promise.all([usesReady, citesReady]).then(() => json))
   .then(json => {
     if (!Array.isArray(json)) throw new Error('datasets.json should contain a list of datasets.');
     data = json.filter(d => d && d.name).map((d, i) => {

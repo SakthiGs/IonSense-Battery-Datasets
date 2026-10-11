@@ -1,0 +1,40 @@
+name: Update citation counts
+
+on:
+  schedule:
+    - cron: "17 3 1 * *"   # 03:17 UTC on the 1st of every month
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - docs/research_uses.json
+      - scripts/update_citations.py
+      - .github/workflows/update-citations.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-citations
+  cancel-in-progress: true
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Fetch citation counts from OpenAlex
+        run: python scripts/update_citations.py
+      - name: Commit if changed
+        run: |
+          if git diff --quiet -- docs/citations.json && git ls-files --error-unmatch docs/citations.json >/dev/null 2>&1; then
+            echo "No change"; exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/citations.json
+          git commit -m "Update citation counts from OpenAlex"
+          git push
