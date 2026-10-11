@@ -513,6 +513,7 @@ button.cmp-name:hover{color:var(--accent-ink);text-decoration:underline;text-und
           <label class="select" id="sort-wrap">Sort
             <select id="sort">
               <option value="documented">Best documented</option>
+              <option value="newest">Newest release</option>
               <option value="name">Name (A–Z)</option>
               <option value="category">Category</option>
             </select>
@@ -600,7 +601,7 @@ const CHEM_STATUS = {
   confirmed_by_users: ['Confirmed by papers that use it', false],
   inferred_related_source: ['From a related source, not the data page', false]
 };
-const PIN_LAST = new Set(['No studies listed yet', 'Other or not recorded', 'Not specified', 'Not stated by source', 'Not applicable', 'Not listed', 'Other research', 'Other source', 'Uncategorised']);
+const PIN_LAST = new Set(['Not stated', 'No studies listed yet', 'Other or not recorded', 'Not specified', 'Not stated by source', 'Not applicable', 'Not listed', 'Other research', 'Other source', 'Uncategorised']);
 /* Chemistry values that mean "no chemistry to report": not checked, checked but not stated, or not about cells. */
 const NO_CHEM = new Set(['Not specified', 'Not stated by source', 'Not applicable']);
 const UNKNOWN = new Set(['', 'see original source', 'unknown', 'n/a']);
@@ -651,6 +652,20 @@ const METHOD_FAMILIES = [
   ['Electrochemical diagnostics (non-ML)', /\beis\b|impedance|incremental capacity|differential voltage|\bgitt\b|degradation mode|pulse resistance|lithium inventory/],
   ['Experiments & imaging (non-ML)', /ageing tests|aging tests|efficiency tests|teardown|x-ray|tomography|radiography|thermography|diffraction|calorimetry|indentation|expansion|strain|deformation|magnetometry|susceptibility/]
 ];
+const relOf = d => (RELEASES[d.id] && /^\d{4}/.test(RELEASES[d.id].date || '')) ? RELEASES[d.id] : null;
+const REL_KIND = {
+  'Released with paper': 'released with the paper',
+  'Released with preprint': 'released with the preprint',
+  'Project created': 'date the OSF project was created; no release date recorded',
+  'Repository created': 'date the GitHub repository was created; no release date recorded',
+  'Listed on data.nasa.gov': 'date listed on data.nasa.gov; the original release may be earlier'
+};
+const isRelease = r => /^Released/.test(r.kind || '');
+const relYear = d => { const r = relOf(d); return r ? +r.date.slice(0, 4) : null; };
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const fmtPartial = iso => { const [y, m, dd] = String(iso || '').split('-'); return [dd ? +dd : '', m ? MONTHS[+m - 1] : '', y].filter(Boolean).join(' '); };
+const REL_BUCKETS = ['2025–2026', '2023–2024', '2020–2022', '2015–2019', 'Before 2015'];
+const relBucket = d => { const y = relYear(d); if (!y) return ['Not stated']; return [y >= 2025 ? REL_BUCKETS[0] : y >= 2023 ? REL_BUCKETS[1] : y >= 2020 ? REL_BUCKETS[2] : y >= 2015 ? REL_BUCKETS[3] : REL_BUCKETS[4]]; };
 const NO_STUDIES = 'No studies listed yet', OTHER_METHODS = 'Other or not recorded';
 function methodFamiliesOf(d) {
   const papers = usesOf(d);
@@ -671,6 +686,7 @@ const FACETS = [
   { key: 'method', title: 'Methods used in studies', get: methodFamiliesOf, switchable: true, order: () => METHOD_FAMILIES.map(x => x[0]),
     note: 'From the published studies listed for each dataset. Most datasets list only their original study so far.' },
   { key: 'signal', title: 'Measurements', get: d => (d.signals && d.signals.length) ? d.signals : ['Not listed'], switchable: true },
+  { key: 'released', title: 'First released', get: relBucket, order: () => REL_BUCKETS },
   { key: 'resource', title: 'Resource type', get: d => [resourceOf(d)] },
   { key: 'includes', title: 'Must include', get: includesOf, fixed: 'all' }
 ];
@@ -750,6 +766,7 @@ function facetCounts(f, tokens) {
 function sortResults(list) {
   const byName = (a, b) => a.name.localeCompare(b.name);
   if (state.sort === 'name') return list.sort(byName);
+  if (state.sort === 'newest') return list.sort((a, b) => String((relOf(b) || {}).date || '').localeCompare(String((relOf(a) || {}).date || '')) || b._score - a._score || byName(a, b));
   if (state.sort === 'category') return list.sort((a, b) => categoryOrder.indexOf(a.category) - categoryOrder.indexOf(b.category) || b._score - a._score || byName(a, b));
   return list.sort((a, b) => b._score - a._score || byName(a, b));
 }
@@ -975,6 +992,8 @@ function card(d) {
   addFact('Chemistry', chemOf(d).join(', '));
   addFact('Scale', known(d.scale));
   addFact('Source', known(d.source));
+  const rel = relOf(d);
+  if (rel) addFact(isRelease(rel) ? 'Released' : 'First online', h('span', { title: `${rel.kind} · ${rel.source}` }, rel.date.slice(0, 4)));
   const nCite = citeOf(d);
   if (nCite != null) addFact('Cited', h('span', { title: `Citations of the original paper (${CITES_META.source || 'OpenAlex'}, ${citeAsOf()})` }, `${nCite.toLocaleString()} times`));
   const nUses = usesOf(d).length;
@@ -1186,6 +1205,13 @@ function openDetail(d, jump) {
   add('Measurements', (d.signals && d.signals.length) ? h('span', { class: 'chips' }, d.signals.map(s => chip('signal', s, d))) : 'Not listed');
   const nCite = citeOf(d);
   if (nCite != null) add('Citations', `${nCite.toLocaleString()}`, h('span', { style: 'color:var(--muted);font-size:13px;margin-left:6px' }, `original paper · ${CITES_META.source || 'OpenAlex'}, ${citeAsOf()}`));
+  const rl = relOf(d);
+  if (rl) {
+    const why = REL_KIND[rl.kind] || '';
+    const src = rl.source.replace(/^DataCite record for /, 'DataCite: ');
+    add('First released', fmtPartial(rl.date), h('span', { style: 'color:var(--muted);font-size:13px;margin-left:6px' },
+      why ? why + ' · ' : '', rl.url ? h('a', { href: rl.url, target: '_blank', rel: 'noopener noreferrer' }, src) : src));
+  } else add('First released', h('span', { style: 'color:var(--ink-2)' }, 'Not stated by the host'));
   const lk = linkOf(d);
   if (lk) add('Data link', lk.status === 'ok' ? h('span', { class: 'status ok', style: 'margin-left:0' }, ICON_CHECK(), 'Working')
       : lk.status === 'broken' ? h('span', { class: 'status', style: 'margin-left:0' }, 'May be broken')
@@ -1464,7 +1490,7 @@ function readUrl() {
   $('#q').value = state.q;
   for (const f of FACETS) for (const v of p.getAll(f.key)) if (f.options.includes(v)) state.sel[f.key].add(v);
   for (const k of Object.keys(state.mode)) if (p.get(k + 'Match') === 'all') state.mode[k] = 'all';
-  if (['name', 'category', 'documented'].includes(p.get('sort'))) state.sort = p.get('sort');
+  if (['name', 'category', 'documented', 'newest'].includes(p.get('sort'))) state.sort = p.get('sort');
   if (['cards', 'table', 'coverage'].includes(p.get('view'))) state.view = p.get('view');
   $('#sort').value = state.sort;
   const ids = (p.get('compare') || '').split(',').map(s => s.trim()).filter(Boolean);
@@ -1529,6 +1555,11 @@ const citesReady = fetch('./citations.json', { cache: 'no-cache' })
   .then(r => r.ok ? r.json() : null)
   .then(j => { if (j && j.datasets && typeof j.datasets === 'object') { CITES = j.datasets; CITES_META = j; } })
   .catch(() => {});
+let RELEASES = {};  /* release_dates.json: when each dataset was first made public */
+const relReady = fetch('./release_dates.json', { cache: 'no-cache' })
+  .then(r => r.ok ? r.json() : null)
+  .then(j => { if (j && j.datasets && typeof j.datasets === 'object') RELEASES = j.datasets; })
+  .catch(() => {});
 let LINKS = {};
 const linksReady = fetch('./link_status.json', { cache: 'no-cache' })
   .then(r => r.ok ? r.json() : null)
@@ -1544,7 +1575,7 @@ const usesReady = fetch('./research_uses.json', { cache: 'no-cache' })
   .catch(() => {});
 fetch('./datasets.json', { cache: 'no-cache' })
   .then(r => { if (!r.ok) throw new Error('The catalogue file returned HTTP ' + r.status + '.'); return r.json(); })
-  .then(json => Promise.all([usesReady, citesReady, linksReady]).then(() => json))
+  .then(json => Promise.all([usesReady, citesReady, linksReady, relReady]).then(() => json))
   .then(json => {
     if (!Array.isArray(json)) throw new Error('datasets.json should contain a list of datasets.');
     data = json.filter(d => d && d.name).map((d, i) => {

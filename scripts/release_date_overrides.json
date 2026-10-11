@@ -1,4 +1,59 @@
 {
-  "about": "Release dates checked by hand, for datasets whose host has no machine-readable date. Each needs a source.",
-  "datasets": {}
+  "about": "Release dates checked by hand, for datasets whose host has no machine-readable release record. Each entry gives its source.",
+  "datasets": {
+    "early-cycle-life": {
+      "date": "2019-03-25",
+      "kind": "Released with paper",
+      "source": "Severson et al., Nature Energy (published 25 Mar 2019); data at data.matr.io/1",
+      "url": "https://www.nature.com/articles/s41560-019-0356-8"
+    },
+    "closed-loop-fast-charging-optimisation": {
+      "date": "2020-02-19",
+      "kind": "Released with paper",
+      "source": "Attia et al., Nature (published 19 Feb 2020)",
+      "url": "https://www.nature.com/articles/s41586-020-1994-5"
+    },
+    "generative-learning-assisted-state-of-health-estimation-for-battery-recycling": {
+      "date": "2024-11-23",
+      "kind": "Released with paper",
+      "source": "Tao et al., Nature Communications (published 23 Nov 2024)",
+      "url": "https://www.nature.com/articles/s41467-024-54454-0"
+    },
+    "source-data-internal-sensors-in-a-smart-battery-impact-on-local-graphite-lithiation": {
+      "date": "2024-11-26",
+      "kind": "Released with paper",
+      "source": "Nature Communications source data (published 26 Nov 2024)",
+      "url": "https://www.nature.com/articles/s41467-024-54656-6"
+    },
+    "evbattery-large-scale-ev-dataset": {
+      "date": "2022-01-28",
+      "kind": "Released with preprint",
+      "source": "arXiv 2201.12358, version 1 (28 Jan 2022)",
+      "url": "https://arxiv.org/abs/2201.12358v1"
+    },
+    "liiondb-parameter-database": {
+      "date": "2022-05-30",
+      "kind": "Released with paper",
+      "source": "Wang et al., Progress in Energy (online 30 May 2022)",
+      "url": "https://spiral.imperial.ac.uk/entities/publication/7dbbf9d5-74bc-448a-89a3-aceb52b2edcf"
+    },
+    "nasa-battery-data-set": {
+      "date": "2010-09-13",
+      "kind": "Listed on data.nasa.gov",
+      "source": "data.nasa.gov 'Li-ion Battery Aging Datasets' (Issued 2010-09-13)",
+      "url": "https://data.nasa.gov/dataset/li-ion-battery-aging-datasets"
+    },
+    "small-satellite-power-simulation-nasa": {
+      "date": "2023-11-02",
+      "kind": "Released",
+      "source": "data.nasa.gov record (Issued 2023-11-02)",
+      "url": "https://data.nasa.gov/dataset/small-satellite-power-simulation"
+    },
+    "accelerated-battery-life-testing-nasa": {
+      "date": "2023-12-18",
+      "kind": "Released",
+      "source": "data.nasa.gov record (Issued 2023-12-18)",
+      "url": "https://data.nasa.gov/dataset/randomized-and-recommissioned-battery-dataset"
+    }
+  }
 }

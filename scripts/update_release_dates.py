@@ -77,6 +77,9 @@ def candidate_dois(d):
         m = re.search(r"zenodo\.org/records?/(\d+)", v)
         if m:
             out.append("10.5281/zenodo." + m.group(1))
+        m = re.search(r"purl\.stanford\.edu/([a-z0-9]+)", v)
+        if m:
+            out.append("10.25740/" + m.group(1))
         m = re.search(r"data\.mendeley\.com/datasets/([a-z0-9]+)(?:/(\d+))?", v)
         if m:
             out.append(f"10.17632/{m.group(1)}" + (f".{m.group(2)}" if m.group(2) else ""))
@@ -99,12 +102,17 @@ def datacite_dates(doi):
     return dates, (parents, types)
 
 
+# DOI prefixes of data repositories: records there are data even when typed as "publication".
+DATA_PREFIXES = ("10.5281/", "10.17632/", "10.6084/", "10.14459/", "10.18154/", "10.4121/", "10.5287/",
+                 "10.25740/", "10.21227/", "10.35097/", "10.5683/", "10.18126/", "10.17630/", "10.1184/", "10.48804/", "10.34810/")
+
+
 def from_datacite(doi):
     dates, extra = datacite_dates(doi)
     if dates is None:
         return None
     parents, types = extra
-    if types & {"Text", "JournalArticle", "ConferencePaper", "Preprint"}:
+    if types & {"Text", "JournalArticle", "ConferencePaper", "Preprint"} and not doi.startswith(DATA_PREFIXES):
         return None  # a paper, not data
     tried = [doi]
     # Version DOIs: the parent (concept) record carries the first release.
