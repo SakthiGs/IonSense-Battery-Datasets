@@ -1110,7 +1110,8 @@ function usesSection(d) {
   };
   return h('section', { class: 'uses', id: 'detail-uses', 'aria-labelledby': 'uses-title' },
     h('div', { class: 'uses-head' }, h('h3', { id: 'uses-title' }, 'Used in research'), h('span', { class: 'cnt' }, plural(papers.length, 'study', 'studies'))),
-    entry.coverage ? h('p', { class: 'uses-intro' }, entry.coverage) : null,
+    entry.coverage ? h('p', { class: 'uses-intro' }, entry.coverage,
+      http(entry.more_url) ? [' ', extLink(http(entry.more_url), entry.more_label || 'Longer list', 'link-btn')] : null) : null,
     h('ol', { class: 'uses-list' }, papers.map((p, i) => item(p, i))));
 }
 

@@ -64,14 +64,14 @@
     "id": "lithium-ion-battery-aging-dataset-based-on-ev-real-driving-profiles",
     "name": "Lithium-Ion Battery Aging Dataset Based on EV Real-Driving Profiles",
     "category": "Field & Real-World",
-    "chemistry": "Unspecified",
+    "chemistry": "NMC",
     "tasks": [
       "Fault diagnosis",
       "Degradation analysis"
     ],
-    "source": "See original source",
-    "scale": "See original source",
-    "description": "Aging data for cells subjected to Urban Dynamometer Driving Schedule (UDDS) discharge and CC-CV charging. Periodic diagnostic tests include capacity measurement, HPPC, and Electrochemical Impedance Spectroscopy (EIS), capturing battery degradation under realistic driving conditions.",
+    "source": "Stanford Energy Control Laboratory",
+    "scale": "10 cells (INR21700-M50T, 4.85 Ah)",
+    "description": "Ageing data for 10 INR21700-M50T cells (NMC cathode, graphite/silicon anode) discharged with repeated UDDS urban driving cycles and CC-CV charging, with periodic capacity, HPPC and impedance tests.",
     "url": "https://osf.io/qsabn/?view_only=2a03b6c78ef14922a3e244f3d549de78",
     "paper": "https://www.sciencedirect.com/science/article/pii/S2352340922002062?via%3Dihub",
     "access": "Unverified",
@@ -83,11 +83,20 @@
     "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
     "source_type": "data_repository",
     "access_status": "not_checked",
-    "chemistries": [],
-    "chemistry_review_status": "needs_source_verification",
+    "chemistries": [
+      "NMC"
+    ],
+    "chemistry_review_status": "source_verified",
     "application_domains": [
       "Electric mobility"
-    ]
+    ],
+    "chemistry_evidence_url": "https://onorilab.stanford.edu/products/code-and-data-set",
+    "chemistry_verification": "source_verified",
+    "chemistry_evidence": {
+      "status": "source_verified",
+      "url": "https://onorilab.stanford.edu/products/code-and-data-set",
+      "note": "Onori Lab data page lists the chemistry as NMC; papers using the data describe INR21700-M50T NMC / graphite-silicon cells."
+    }
   },
   {
     "id": "tsinghua-ev",
@@ -310,14 +319,16 @@
     "tasks": [
       "Degradation analysis"
     ],
-    "source": "See original source",
-    "scale": "See original source",
-    "description": "Six NMC cells cycled using residential and commercial synthetic duty cycles. Purpose-built for studying second-life degradation under grid storage conditions.",
+    "source": "Stanford Energy Control Laboratory",
+    "scale": "6 cells (INR21700-M50T) · 24 months",
+    "description": "Six INR21700-M50T cells that had already been aged on EV driving cycles (see the EV real-driving profile dataset) were cycled for 24 more months on residential and commercial grid-storage duty cycles, with temperature alternating between 20 and 35 °C, plus calendar ageing. Periodic capacity, pulse and impedance tests.",
     "url": "https://osf.io/8jnr5/",
     "paper": "https://www.sciencedirect.com/science/article/pii/S2352340924010084?via%3Dihub",
     "access": "Unverified",
     "signals": [
-      "Cycling data"
+      "Cycling data",
+      "Capacity",
+      "EIS"
     ],
     "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
     "source_type": "data_repository",
@@ -325,10 +336,17 @@
     "chemistries": [
       "NMC"
     ],
-    "chemistry_review_status": "catalogue_label_not_independently_verified",
+    "chemistry_review_status": "source_verified",
     "application_domains": [
       "Stationary energy storage"
-    ]
+    ],
+    "chemistry_evidence_url": "https://doaj.org/article/3db6f545f0f94ff2b4e82e4a8f9d8a0c",
+    "chemistry_verification": "source_verified",
+    "chemistry_evidence": {
+      "status": "source_verified",
+      "url": "https://doaj.org/article/3db6f545f0f94ff2b4e82e4a8f9d8a0c",
+      "note": "Data in Brief abstract: INR21700-M50T cells with NMC cathodes and graphite/silicon anodes."
+    }
   },
   {
     "id": "formation-tri",
@@ -546,23 +564,38 @@
     "category": "Lab Aging & Degradation",
     "chemistry": "NMC",
     "tasks": [
+      "SOH estimation",
       "Degradation analysis"
     ],
-    "source": "See original source",
-    "scale": "See original source",
-    "description": "Supports physics-informed neural network modelling for stable degradation analysis and prognosis across diverse operating conditions.",
+    "source": "Xi'an Jiaotong University",
+    "scale": "55 cells (LISHEN 18650, 2 Ah) · 6 test protocols",
+    "description": "The XJTU battery dataset: 55 NCM523/graphite 18650 cells cycled to failure at room temperature under six charge/discharge protocols, including random discharge currents, random walks and a satellite orbit profile, sampled at 1 Hz.",
     "url": "https://zenodo.org/records/10963339",
     "paper": "https://www.nature.com/articles/s41467-024-48779-z",
     "access": "Unverified",
-    "signals": [],
+    "signals": [
+      "Cycling data",
+      "Voltage",
+      "Current",
+      "Capacity"
+    ],
     "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
     "source_type": "data_repository",
     "access_status": "not_checked",
     "chemistries": [
       "NMC"
     ],
-    "chemistry_review_status": "catalogue_label_not_independently_verified",
-    "application_domains": []
+    "chemistry_review_status": "source_verified",
+    "application_domains": [],
+    "license": "CC BY 4.0",
+    "doi": "10.5281/zenodo.10963339",
+    "chemistry_evidence_url": "https://zenodo.org/records/10963339",
+    "chemistry_verification": "source_verified",
+    "chemistry_evidence": {
+      "status": "source_verified",
+      "url": "https://zenodo.org/records/10963339",
+      "note": "Zenodo record and Nature Communications paper: LISHEN cells with a LiNi0.5Co0.2Mn0.3O2 (NCM523) cathode."
+    }
   },
   {
     "id": "prognosis-of-multivariate-battery-state-via-transformers",
@@ -598,11 +631,11 @@
     "tasks": [
       "Degradation analysis"
     ],
-    "source": "See original source",
-    "scale": "See original source",
-    "description": "Cycle-by-cycle capacity, Coulombic efficiency, and end-of-charge/discharge voltages. Includes code for battery aging mode classification using ML.",
+    "source": "Idaho National Laboratory",
+    "scale": "44 single-layer pouch cells (NMC532 and NMC811)",
+    "description": "Cycle-by-cycle capacity, coulombic efficiency and end-of-charge and end-of-discharge voltages from 44 NMC/graphite single-layer pouch cells with NMC532 or NMC811 cathodes, two electrode loadings and five charging rates. Includes code that classifies the main ageing mode.",
     "url": "https://zenodo.org/records/7250553",
-    "paper": "https://www.cell.com/joule/fulltext/S2542-4351(22",
+    "paper": "https://doi.org/10.1016/j.joule.2022.10.016",
     "access": "Unverified",
     "signals": [
       "Voltage",
@@ -616,8 +649,17 @@
     "chemistries": [
       "NMC"
     ],
-    "chemistry_review_status": "catalogue_label_not_independently_verified",
-    "application_domains": []
+    "chemistry_review_status": "source_verified",
+    "application_domains": [],
+    "license": "CC BY 4.0",
+    "doi": "10.5281/zenodo.7250553",
+    "chemistry_evidence_url": "https://github.com/hypochen/Battery-aging-modes-across-NMC",
+    "chemistry_verification": "source_verified",
+    "chemistry_evidence": {
+      "status": "source_verified",
+      "url": "https://github.com/hypochen/Battery-aging-modes-across-NMC",
+      "note": "Dataset README: NMC532 and NMC811 cathodes with graphite anodes."
+    }
   },
   {
     "id": "isu-ilcc-battery-aging-dataset",
@@ -650,17 +692,21 @@
     "category": "Lab Aging & Degradation",
     "chemistry": "NMC",
     "tasks": [
-      "Degradation analysis"
+      "Degradation analysis",
+      "SOH estimation"
     ],
-    "source": "See original source",
-    "scale": "See original source",
-    "description": "Wide-range operating conditions for NMC/C+SiO cells. One of the most comprehensive publicly available aging datasets for this chemistry.",
+    "source": "Karlsruhe Institute of Technology",
+    "scale": "228 cells (LG INR18650HG2, 3 Ah) · 76 conditions",
+    "description": "Calendar, cycling and driving-profile ageing of 228 LG INR18650HG2 cells (NMC cathode, graphite-SiO anode) at 0 to 40 °C, three cells per condition, aged to 40–50% capacity. Check-ups record capacity, impedance at five states of charge and pulse responses; raw logs every two seconds.",
     "url": "https://radar.kit.edu/radar/en/dataset/kww7jv8ajuvchcah",
     "paper": "https://www.nature.com/articles/s41597-024-03831-x",
     "access": "Unverified",
     "signals": [
       "Capacity",
-      "EIS"
+      "EIS",
+      "Voltage",
+      "Current",
+      "Temperature"
     ],
     "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
     "source_type": "data_repository",
@@ -668,8 +714,17 @@
     "chemistries": [
       "NMC"
     ],
-    "chemistry_review_status": "catalogue_label_not_independently_verified",
-    "application_domains": []
+    "chemistry_review_status": "source_verified",
+    "application_domains": [],
+    "license": "CC BY 4.0",
+    "doi": "10.35097/1947",
+    "chemistry_evidence_url": "https://www.nature.com/articles/s41597-024-03831-x",
+    "chemistry_verification": "source_verified",
+    "chemistry_evidence": {
+      "status": "source_verified",
+      "url": "https://www.nature.com/articles/s41597-024-03831-x",
+      "note": "Scientific Data descriptor: LG INR18650HG2 cells, NMC cathode and graphite/SiO anode."
+    }
   },
   {
     "id": "dynamic-cycling-enhances-battery-lifetime",
@@ -754,11 +809,11 @@
     "tasks": [
       "Degradation analysis"
     ],
-    "source": "See original source",
-    "scale": "See original source",
-    "description": "Three automotive-grade cells subjected to three usage patterns over 3+ years. One of the few publicly available datasets specifically from a production EV cell.",
+    "source": "Technical University of Munich",
+    "scale": "Pouch cells from a 2020 VW ID.3 · over 3 years of cycling",
+    "description": "More than three years of cycling of pouch cells from a 2020 Volkswagen ID.3, under a highway profile, a commuting profile and an accelerated 1C/1C test, compared with a pack in a test vehicle.",
     "url": "https://mediatum.ub.tum.de/1748915",
-    "paper": "https://www.sciencedirect.com/science/article/pii/S2352152X25000702",
+    "paper": "https://doi.org/10.1016/j.est.2025.115357",
     "access": "Unverified",
     "signals": [
       "Cycling data"
@@ -769,10 +824,17 @@
     "chemistries": [
       "NMC"
     ],
-    "chemistry_review_status": "catalogue_label_not_independently_verified",
+    "chemistry_review_status": "source_verified",
     "application_domains": [
       "Electric mobility"
-    ]
+    ],
+    "chemistry_evidence_url": "https://portal.fis.tum.de/en/publications/understanding-lithium-ion-battery-degradation-in-vehicle-applicat/",
+    "chemistry_verification": "source_verified",
+    "chemistry_evidence": {
+      "status": "source_verified",
+      "url": "https://portal.fis.tum.de/en/publications/understanding-lithium-ion-battery-degradation-in-vehicle-applicat/",
+      "note": "TUM publication record: NMC cathode and graphite anode."
+    }
   },
   {
     "id": "comprehensive-cycle-aging-data-and-analysis-for-commercial-21700-cells",
@@ -924,11 +986,12 @@
     "category": "Lab Aging & Degradation",
     "chemistry": "NMC",
     "tasks": [
+      "Cycle life",
       "RUL prediction"
     ],
-    "source": "See original source",
-    "scale": "See original source",
-    "description": "NMC811 and NMC9/Si–C cells under diverse conditions. Provides full capacity-retention trajectories plus high-resolution early-cycle data (first 50 EFCs). Organised into 37 groups to capture manufacturing variability.",
+    "source": "University of Michigan, National University of Singapore and Farasis Energy",
+    "scale": "123 large-format pouch cells · 8 material and design combinations",
+    "description": "Cycling data from 123 industrial large-format pouch cells made by Farasis Energy, covering eight material and design combinations and several cycling protocols. Released with a method that predicts cycle life from early cycles of a few prototypes.",
     "url": "https://zenodo.org/records/17654407",
     "paper": "https://www.nature.com/articles/s41586-025-09951-7",
     "access": "Unverified",
@@ -945,12 +1008,14 @@
     "chemistry_evidence_url": "https://www.nature.com/articles/s41586-025-09951-7",
     "chemistry_verification": "catalogue_description_needs_source_confirmation",
     "chemistry_evidence": {
-      "status": "catalogue_or_source_review",
-      "url": "https://zenodo.org/records/17654407",
-      "note": "Existing catalogue description identifies NMC811 and NMC9; chemistry-subtype source confirmation still recommended"
+      "status": "not_confirmed",
+      "url": "https://www.nature.com/articles/s41586-025-09951-7",
+      "note": "The paper and data record describe material and design combinations but do not name the cathode chemistries, so the NMC811 / NMC9 label could not be confirmed."
     },
     "chemistry_review_status": "catalogue_label_not_independently_verified",
-    "application_domains": []
+    "application_domains": [],
+    "license": "CC BY 4.0",
+    "doi": "10.5281/zenodo.17654407"
   },
   {
     "id": "battery-failure-databank-nrel",
@@ -1092,11 +1157,11 @@
     "category": "State Estimation & Health Monitoring",
     "chemistry": "NMC",
     "tasks": [
-      "Other research"
+      "Degradation analysis"
     ],
-    "source": "See original source",
-    "scale": "See original source",
-    "description": "Charge and discharge cycles under various formulations, configurations, and testing conditions. Supports lithium inventory tracking as a non-destructive monitoring technique.",
+    "source": "Idaho National Laboratory",
+    "scale": "12 lithium-metal / NMC811 cells (coin and pouch)",
+    "description": "Formation and cycle-ageing data from lithium-metal cells with NMC811 cathodes from two suppliers, in coin and pouch formats, with three electrolytes and upper voltage limits of 4.2, 4.4 and 4.6 V. Supports tracking the active lithium inventory without opening the cell.",
     "url": "https://osf.io/2w4k3/",
     "paper": "https://www.nature.com/articles/s41560-024-01476-z",
     "access": "Unverified",
@@ -1110,8 +1175,15 @@
     "chemistries": [
       "NMC"
     ],
-    "chemistry_review_status": "catalogue_label_not_independently_verified",
-    "application_domains": []
+    "chemistry_review_status": "source_verified",
+    "application_domains": [],
+    "chemistry_evidence_url": "https://www.osti.gov/pages/servlets/purl/2434007",
+    "chemistry_verification": "source_verified",
+    "chemistry_evidence": {
+      "status": "source_verified",
+      "url": "https://www.osti.gov/pages/servlets/purl/2434007",
+      "note": "Author manuscript (Methods, Table 1): LiNi0.8Mn0.1Co0.1O2 (NMC811) cathodes against a lithium metal anode."
+    }
   },
   {
     "id": "gic-nmc-solar-battery-synthetic-data",
@@ -1119,25 +1191,35 @@
     "category": "State Estimation & Health Monitoring",
     "chemistry": "NMC",
     "tasks": [
-      "Other research"
+      "Degradation analysis"
     ],
-    "source": "See original source",
-    "scale": "See original source",
-    "description": "Synthetically generated with varied cell parameters to account for cell-to-cell variations. Separate training and validation sets provided.",
+    "source": "Hawaii Natural Energy Institute",
+    "scale": "About 700,000 synthetic degradation paths",
+    "description": "Synthetic voltage data for graphite/NMC cells charged from solar power, generated with a mechanistic model across combinations of lithium inventory loss and active material loss, with about ±1% cell-to-cell variation. Separate training and validation sets.",
     "url": "https://data.mendeley.com/datasets/rg8b2k2k28/1",
     "paper": "https://www.nature.com/articles/s41467-023-38895-7",
     "access": "Unverified",
-    "signals": [],
+    "signals": [
+      "Voltage"
+    ],
     "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
     "source_type": "data_repository",
     "access_status": "not_checked",
     "chemistries": [
       "NMC"
     ],
-    "chemistry_review_status": "catalogue_label_not_independently_verified",
+    "chemistry_review_status": "source_verified",
     "application_domains": [
       "Stationary energy storage"
-    ]
+    ],
+    "doi": "10.17632/rg8b2k2k28.1",
+    "chemistry_evidence_url": "https://www.nature.com/articles/s41467-023-38895-7",
+    "chemistry_verification": "source_verified",
+    "chemistry_evidence": {
+      "status": "source_verified",
+      "url": "https://www.nature.com/articles/s41467-023-38895-7",
+      "note": "Nature Communications paper: graphite-based negative electrode and NMC (1:1:1) positive electrode."
+    }
   },
   {
     "id": "data-driven-capacity-estimation-from-voltage-relaxation",

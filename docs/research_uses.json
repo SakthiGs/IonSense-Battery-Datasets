@@ -3,7 +3,7 @@
   "updated": "2026-10-11",
   "datasets": {
     "early-cycle-life": {
-      "coverage": "A starting list of 7 papers, mostly picked from the most-cited work that cites Severson et al. (2019), which has over 3,000 citations. Not every paper that used this dataset.",
+      "coverage": "A starting list of 9 papers, mostly picked from the most-cited work that cites Severson et al. (2019), which has over 3,000 citations. Not every paper that used this dataset.",
       "papers": [
         {
           "title": "Data-driven prediction of battery cycle life before capacity degradation",
@@ -336,6 +336,43 @@
             }
           ],
           "reviewed": false
+        },
+        {
+          "title": "Physics-informed neural network for lithium-ion battery degradation stable modeling and prognosis",
+          "authors": "Wang, Zhai, Zhao et al.",
+          "year": 2024,
+          "venue": "Nature Communications 15, 4332",
+          "doi": "10.1038/s41467-024-48779-z",
+          "relation": "Independent group",
+          "use": "One of four datasets used to test a physics-informed state-of-health model.",
+          "tasks": [
+            "SOH estimation"
+          ],
+          "methods": [
+            "Physics-informed neural network"
+          ],
+          "split": "Own split: cells divided about 6:2:2 into training, validation and test sets.",
+          "evidence": "Methods (datasets); Data availability",
+          "reviewed": false
+        },
+        {
+          "title": "Physical information-guided Kolmogorov–Arnold networks for battery state of health estimation",
+          "authors": "Liu, Ye, Cui, Ma",
+          "year": 2025,
+          "venue": "Energies 18(22), 5865",
+          "doi": "10.3390/en18225865",
+          "relation": "Independent group",
+          "use": "Main dataset for a physics-informed KAN model that estimates state of health.",
+          "tasks": [
+            "SOH estimation"
+          ],
+          "methods": [
+            "Kolmogorov–Arnold network",
+            "Physics-informed neural network"
+          ],
+          "split": "Uses the original cell groups as 41 training, 40 validation and 43 test cells.",
+          "evidence": "Section 4",
+          "reviewed": false
         }
       ],
       "results_note": "Numbers as reported in each paper, not re-run by IonSense. Only results on the same test cells and metric are ranked together. All ranked results use data from the first 100 cycles. Lower RMSE is better.",
@@ -364,7 +401,7 @@
       ]
     },
     "nasa-battery-data-set": {
-      "coverage": "A starting list of 4 studies. This is one of the most widely used battery datasets, so the list covers only a few of the papers that used it.",
+      "coverage": "A starting list of 5 studies. This is one of the most widely used battery datasets, so the list covers only a few of the papers that used it.",
       "papers": [
         {
           "title": "Battery Data Set",
@@ -440,6 +477,25 @@
           ],
           "split": "Tests on batteries #6, #7 and #47; three training sets of 4, 5 or 11 other batteries.",
           "evidence": "Section V-A; Tables II and III",
+          "reviewed": false
+        },
+        {
+          "title": "State of health estimation for lithium-ion batteries based on transferable long short-term memory optimized using Harris hawk algorithm",
+          "authors": "Yang, Wang, Li, Zhang",
+          "year": 2024,
+          "venue": "Sustainability 16(15), 6316",
+          "doi": "10.3390/su16156316",
+          "relation": "Independent group",
+          "use": "Pre-trains an LSTM model on cells B0006 and B0007, then transfers it to CALCE and XJTU cells.",
+          "tasks": [
+            "SOH estimation"
+          ],
+          "methods": [
+            "LSTM",
+            "Transfer learning"
+          ],
+          "split": "",
+          "evidence": "Section 2 (datasets)",
           "reviewed": false
         }
       ]
@@ -530,7 +586,7 @@
       "results_note": "No ranked results yet. The studies report different metrics on different cells: the original paper gives R² only inside its figures, Liu et al. (IPEMC 2024) give MAPE per cell, and Kim et al. and Liu et al. (2024 preprint) use subsets of the test cells."
     },
     "data-driven-capacity-estimation-from-voltage-relaxation": {
-      "coverage": "A starting list of 4 studies, found by searching for papers that reuse these 130 cells. Not every paper that used this dataset.",
+      "coverage": "A starting list of 5 studies, found by searching for papers that reuse these 130 cells. Not every paper that used this dataset.",
       "papers": [
         {
           "title": "Data-driven capacity estimation of commercial lithium-ion batteries from voltage relaxation",
@@ -612,6 +668,24 @@
           ],
           "split": "",
           "evidence": "Section 4.2.3; Table 5",
+          "reviewed": false
+        },
+        {
+          "title": "Physics-informed neural network for lithium-ion battery degradation stable modeling and prognosis",
+          "authors": "Wang, Zhai, Zhao et al.",
+          "year": 2024,
+          "venue": "Nature Communications 15, 4332",
+          "doi": "10.1038/s41467-024-48779-z",
+          "relation": "Independent group",
+          "use": "One of four datasets used to test a physics-informed state-of-health model (called the TJU dataset there).",
+          "tasks": [
+            "SOH estimation"
+          ],
+          "methods": [
+            "Physics-informed neural network"
+          ],
+          "split": "Cells divided about 6:2:2 into training, validation and test sets.",
+          "evidence": "Methods (datasets); Data availability",
           "reviewed": false
         }
       ]
@@ -702,7 +776,7 @@
       ]
     },
     "lithium-ion-battery-aging-dataset-based-on-ev-real-driving-profiles": {
-      "coverage": "A starting list of 3 studies, found by searching for papers that reuse these cells. Not every paper that used this dataset.",
+      "coverage": "A starting list of 4 studies, found by searching for papers that reuse these cells. Not every paper that used this dataset.",
       "papers": [
         {
           "title": "Lithium-ion battery aging dataset based on electric vehicle real-driving profiles",
@@ -711,7 +785,7 @@
           "venue": "Data in Brief 41, 107995",
           "doi": "10.1016/j.dib.2022.107995",
           "relation": "Original study",
-          "use": "Introduces the dataset: 10 NMC/graphite-silicon 21700 cells (INR21700-M50T) discharged with repeated UDDS driving cycles for about 30 months, with periodic capacity, HPPC and impedance tests.",
+          "use": "Introduces the dataset: 10 NMC/graphite-silicon 21700 cells (INR21700-M50T) discharged with repeated UDDS driving cycles, with periodic capacity, HPPC and impedance tests.",
           "tasks": [
             "SOH estimation",
             "Degradation analysis"
@@ -758,6 +832,24 @@
           ],
           "split": "Single cell: OCV checks at cycles 159 to 344 and 12 driving cycles.",
           "evidence": "Section 3 (3.1 OCV test data, 3.2 dynamic discharge data)",
+          "reviewed": false
+        },
+        {
+          "title": "Second-life lithium-ion battery aging dataset based on grid storage cycling",
+          "authors": "Moy, Khan, Fasolato, Pozzato, Allam, Onori",
+          "year": 2024,
+          "venue": "Data in Brief 57, 111046",
+          "doi": "",
+          "url": "https://www.sciencedirect.com/science/article/pii/S2352340924010084",
+          "open_access_url": "https://doaj.org/article/3db6f545f0f94ff2b4e82e4a8f9d8a0c",
+          "relation": "Same research group",
+          "use": "Takes six of these cells after their EV-driving ageing and continues ageing them for 24 months on grid-storage duty cycles.",
+          "tasks": [
+            "Degradation analysis"
+          ],
+          "methods": [],
+          "split": "",
+          "evidence": "Data article abstract (cells previously tested for 23 months on a UDDS profile)",
           "reviewed": false
         }
       ]
@@ -833,7 +925,7 @@
       ]
     },
     "tum-commercial-aging": {
-      "coverage": "A starting list of 3 studies, found by searching for papers that reuse these 196 cells. Not every paper that used this dataset.",
+      "coverage": "A starting list of 4 studies, found by searching for papers that reuse these 196 cells. Not every paper that used this dataset.",
       "papers": [
         {
           "title": "Experimental degradation study of a commercial lithium-ion battery",
@@ -888,6 +980,25 @@
           "split": "",
           "evidence": "Section II A (Experimental data); Table I",
           "reviewed": false
+        },
+        {
+          "title": "Discovery Learning predicts battery cycle life from minimal experiments",
+          "authors": "Zhang, Zhang, Yi et al.",
+          "year": 2026,
+          "venue": "Nature 650, 110–115",
+          "doi": "10.1038/s41586-025-09951-7",
+          "relation": "Independent group",
+          "use": "One of the public datasets (Sony VTC5A cells from TUM) used to train a model that predicts the cycle life of new cell designs.",
+          "tasks": [
+            "Cycle life"
+          ],
+          "methods": [
+            "Active learning",
+            "Zero-shot learning"
+          ],
+          "split": "",
+          "evidence": "Data availability (lists Sony-VTC5A from the Technical University of Munich)",
+          "reviewed": false
         }
       ]
     },
@@ -931,6 +1042,308 @@
           ],
           "split": "",
           "evidence": "Abstract",
+          "reviewed": false
+        }
+      ]
+    },
+    "physics-informed-neural-network-for-lithium-ion-battery-degradation-modelling": {
+      "coverage": "A starting list of 5 studies. The dataset's authors keep a much longer list of papers that use it, with their reported results.",
+      "more_url": "https://github.com/wang-fujin/XJTU-Battery-Dataset-Papers-Summary",
+      "more_label": "Full list kept by the dataset authors",
+      "papers": [
+        {
+          "title": "Physics-informed neural network for lithium-ion battery degradation stable modeling and prognosis",
+          "authors": "Wang, Zhai, Zhao et al.",
+          "year": 2024,
+          "venue": "Nature Communications 15, 4332",
+          "doi": "10.1038/s41467-024-48779-z",
+          "relation": "Original study",
+          "use": "Introduces the XJTU dataset and estimates state of health with a physics-informed neural network, tested on it and on three public datasets (Zhu et al. 2022, Ma et al. 2022, Severson et al. 2019).",
+          "tasks": [
+            "SOH estimation"
+          ],
+          "methods": [
+            "Physics-informed neural network",
+            "MLP",
+            "CNN"
+          ],
+          "split": "Cells split about 6:2:2 into training, validation and test sets within each dataset; 10 repeats.",
+          "evidence": "Results; Methods; Data availability (Zenodo 10.5281/zenodo.10963339)",
+          "reviewed": false
+        },
+        {
+          "title": "Open access dataset, code library and benchmarking deep learning approaches for state-of-health estimation of lithium-ion batteries",
+          "authors": "Wang, Zhai, Liu et al.",
+          "year": 2024,
+          "venue": "Journal of Energy Storage 77, 109884",
+          "doi": "",
+          "url": "https://www.sciencedirect.com/science/article/pii/S2352152X23032826",
+          "relation": "Same research group",
+          "use": "Benchmarks CNN, LSTM, GRU, MLP and attention models for state-of-health estimation on all 55 cells.",
+          "tasks": [
+            "SOH estimation"
+          ],
+          "methods": [
+            "CNN",
+            "LSTM",
+            "GRU",
+            "MLP",
+            "Attention"
+          ],
+          "split": "Train and test on different cells.",
+          "evidence": "Listed with results in the dataset authors' summary of papers; the article itself was not opened here",
+          "reviewed": false
+        },
+        {
+          "title": "Integrated mixed attention U-Net mechanisms with multi-stage division strategy customized for accurate estimation of lithium-ion battery state of health",
+          "authors": "Fan, Yang, Hou",
+          "year": 2024,
+          "venue": "Electronics 13(16), 3244",
+          "doi": "10.3390/electronics13163244",
+          "relation": "Independent group",
+          "use": "Estimates state of health on batches 1 to 3 with an attention U-Net, after splitting each degradation curve into stages at its knee point.",
+          "tasks": [
+            "SOH estimation"
+          ],
+          "methods": [
+            "U-Net with attention",
+            "LSTM",
+            "GRU",
+            "MLP"
+          ],
+          "split": "Leave one cell out within each batch.",
+          "evidence": "Section 4.1 (dataset); Section 4.2",
+          "reviewed": false
+        },
+        {
+          "title": "State of health estimation for lithium-ion batteries based on transferable long short-term memory optimized using Harris hawk algorithm",
+          "authors": "Yang, Wang, Li, Zhang",
+          "year": 2024,
+          "venue": "Sustainability 16(15), 6316",
+          "doi": "10.3390/su16156316",
+          "relation": "Independent group",
+          "use": "Transfers an LSTM model pre-trained on NASA cells to the first cell of batch 1.",
+          "tasks": [
+            "SOH estimation"
+          ],
+          "methods": [
+            "LSTM",
+            "Transfer learning",
+            "Harris hawk optimisation"
+          ],
+          "split": "Single cell (batch 1, cell 1): fine-tuned on its first 30% of data, or trained on its first 70%.",
+          "evidence": "Section 2 (datasets); split as summarised in the dataset authors' list of papers",
+          "reviewed": false
+        },
+        {
+          "title": "Physical information-guided Kolmogorov–Arnold networks for battery state of health estimation",
+          "authors": "Liu, Ye, Cui, Ma",
+          "year": 2025,
+          "venue": "Energies 18(22), 5865",
+          "doi": "10.3390/en18225865",
+          "relation": "Independent group",
+          "use": "Uses batches 1 to 4 to test how well a physics-informed KAN model, developed on the Severson et al. cells, generalises.",
+          "tasks": [
+            "SOH estimation"
+          ],
+          "methods": [
+            "Kolmogorov–Arnold network",
+            "Physics-informed neural network"
+          ],
+          "split": "",
+          "evidence": "Section 4; Figure 10",
+          "reviewed": false
+        }
+      ]
+    },
+    "discovery-learning-predicts-battery-cycle-life-from-minimal-experiments": {
+      "coverage": "1 study, the one that produced the data. The dataset was released in late 2025, so no reuse yet.",
+      "papers": [
+        {
+          "title": "Discovery Learning predicts battery cycle life from minimal experiments",
+          "authors": "Zhang, Zhang, Yi et al.",
+          "year": 2026,
+          "venue": "Nature 650, 110–115",
+          "doi": "10.1038/s41586-025-09951-7",
+          "open_access_url": "https://arxiv.org/abs/2508.06985",
+          "relation": "Original study",
+          "use": "Predicts the cycle life of new cell designs from the first cycles of about half of the prototypes, after learning from public datasets of other designs.",
+          "tasks": [
+            "Cycle life"
+          ],
+          "methods": [
+            "Active learning",
+            "Physics-guided learning",
+            "Zero-shot learning"
+          ],
+          "split": "",
+          "evidence": "Abstract; Data availability",
+          "reviewed": false
+        }
+      ]
+    },
+    "lithium-inventory-tracking-as-a-nondestructive-battery-evaluation-method": {
+      "coverage": "1 study, the one that produced the data. No use by other groups found yet.",
+      "papers": [
+        {
+          "title": "Lithium inventory tracking as a non-destructive battery evaluation and monitoring method",
+          "authors": "Li, Zhang, Zhou et al.",
+          "year": 2024,
+          "venue": "Nature Energy 9, 612–621",
+          "doi": "10.1038/s41560-024-01476-z",
+          "open_access_url": "https://www.osti.gov/pages/servlets/purl/2434007",
+          "relation": "Original study",
+          "use": "Converts measured capacity into an estimate of active lithium in the electrode, and tracks it from formation to end of life in lithium-metal / NMC811 cells.",
+          "tasks": [
+            "Degradation analysis"
+          ],
+          "methods": [
+            "Lithium inventory tracking",
+            "GITT"
+          ],
+          "split": "",
+          "evidence": "Methods; Table 1 (author manuscript); Data availability (OSF 10.17605/OSF.IO/2W4K3)",
+          "reviewed": false
+        }
+      ]
+    },
+    "gic-nmc-solar-battery-synthetic-data": {
+      "coverage": "1 study, the one that produced the data. A 2023 follow-up by the same group generates new synthetic data with the same method rather than reusing this set.",
+      "papers": [
+        {
+          "title": "Data-driven direct diagnosis of Li-ion batteries connected to photovoltaics",
+          "authors": "Dubarry, Costa, Matthews",
+          "year": 2023,
+          "venue": "Nature Communications 14, 3138",
+          "doi": "10.1038/s41467-023-38895-7",
+          "relation": "Original study",
+          "use": "Trains models on the synthetic data to identify degradation modes (lithium inventory loss and active material loss on each electrode) in solar-charged batteries.",
+          "tasks": [
+            "Degradation analysis"
+          ],
+          "methods": [
+            "Random forest",
+            "XGBoost",
+            "Feed-forward neural network",
+            "1D CNN"
+          ],
+          "split": "",
+          "evidence": "Results; Methods; Data availability (Mendeley 10.17632/rg8b2k2k28.1)",
+          "reviewed": false
+        }
+      ]
+    },
+    "battery-aging-modes-across-nmc-compositions": {
+      "coverage": "1 study, the one that produced the data. No use by other groups found yet.",
+      "papers": [
+        {
+          "title": "Battery aging mode identification across NMC compositions and designs using machine learning",
+          "authors": "Chen, Walker, Kim, Kunz, Tanim, Dufek",
+          "year": 2022,
+          "venue": "Joule 6(12), 2776–2793",
+          "doi": "10.1016/j.joule.2022.10.016",
+          "relation": "Original study",
+          "use": "Classifies the main ageing mode of each cell (lithium plating, SEI growth, cathode material loss) from cycle-by-cycle signals, and estimates cathode material loss.",
+          "tasks": [
+            "Degradation analysis"
+          ],
+          "methods": [
+            "Decision tree classification",
+            "Regression"
+          ],
+          "split": "",
+          "evidence": "Abstract; dataset README and code",
+          "reviewed": false
+        }
+      ]
+    },
+    "comprehensive-battery-aging-dataset-nmc-c-sio-capacity-impedance-fade": {
+      "coverage": "2 studies found so far. Not every paper that used this dataset.",
+      "papers": [
+        {
+          "title": "Comprehensive battery aging dataset: capacity and impedance fade measurements of a lithium-ion NMC/C-SiO cell",
+          "authors": "Luh, Blank",
+          "year": 2024,
+          "venue": "Scientific Data 11, 1004",
+          "doi": "10.1038/s41597-024-03831-x",
+          "relation": "Original study",
+          "use": "Describes the 228-cell ageing campaign: calendar, cycling and driving-profile ageing at four temperatures, with capacity, impedance and pulse check-ups.",
+          "tasks": [
+            "Degradation analysis"
+          ],
+          "methods": [],
+          "split": "",
+          "evidence": "Data descriptor",
+          "reviewed": false
+        },
+        {
+          "title": "Estimation of the state of charge and health of lithium-ion batteries based on deep learning",
+          "authors": "Zanganeh",
+          "year": 2026,
+          "venue": "Master's thesis, University of Genoa",
+          "doi": "",
+          "url": "https://unire.unige.it/handle/123456789/16238",
+          "relation": "Independent group",
+          "use": "Estimates state of charge and state of health from voltage, current and temperature windows.",
+          "tasks": [
+            "SOC estimation",
+            "SOH estimation"
+          ],
+          "methods": [
+            "MLP",
+            "CNN",
+            "LSTM",
+            "GRU"
+          ],
+          "split": "State of health: whole ageing conditions held out for testing.",
+          "evidence": "Thesis record (abstract)",
+          "reviewed": false
+        }
+      ]
+    },
+    "cycle-aging-data-of-automotive-grade-li-ion-cells-under-realistic-conditions-vw-id-3": {
+      "coverage": "1 study, the one that produced the data. The dataset was released in 2025, so no reuse yet.",
+      "papers": [
+        {
+          "title": "Understanding lithium-ion battery degradation in vehicle applications: Insights from realistic and accelerated aging tests using Volkswagen ID.3 pouch cells",
+          "authors": "Schreiber, Abo Gamra, Bilfinger et al.",
+          "year": 2025,
+          "venue": "Journal of Energy Storage 112, 115357",
+          "doi": "10.1016/j.est.2025.115357",
+          "relation": "Original study",
+          "use": "Compares three years of realistic highway and commuting profiles with an accelerated 1C/1C test, and with a pack in a test vehicle. Accelerated testing over-predicted lithium loss compared with commuting use.",
+          "tasks": [
+            "Degradation analysis"
+          ],
+          "methods": [
+            "Ageing tests",
+            "Degradation mode analysis"
+          ],
+          "split": "",
+          "evidence": "Abstract (TUM publication record)",
+          "reviewed": false
+        }
+      ]
+    },
+    "second-life-lithium-ion-battery-aging-dataset-based-on-grid-storage-cycling": {
+      "coverage": "1 study, the one that produced the data. No use by other groups found yet.",
+      "papers": [
+        {
+          "title": "Second-life lithium-ion battery aging dataset based on grid storage cycling",
+          "authors": "Moy, Khan, Fasolato, Pozzato, Allam, Onori",
+          "year": 2024,
+          "venue": "Data in Brief 57, 111046",
+          "doi": "",
+          "url": "https://www.sciencedirect.com/science/article/pii/S2352340924010084",
+          "open_access_url": "https://doaj.org/article/3db6f545f0f94ff2b4e82e4a8f9d8a0c",
+          "relation": "Original study",
+          "use": "Continues ageing six cells from the EV real-driving profile dataset on grid-storage duty cycles, to see whether used EV cells suit second-life storage.",
+          "tasks": [
+            "Degradation analysis"
+          ],
+          "methods": [],
+          "split": "",
+          "evidence": "Data article abstract",
           "reviewed": false
         }
       ]
