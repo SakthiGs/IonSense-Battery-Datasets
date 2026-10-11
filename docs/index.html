@@ -115,6 +115,7 @@ a svg{width:.9em;height:.9em;flex:none}
 .opt.is-off input{cursor:default}
 .more{margin-top:4px;margin-left:4px}
 .facet-hint{font-size:12.5px;color:var(--muted);margin:6px 8px 0}
+.facet-note{font-size:12.5px;line-height:1.45;color:var(--muted);margin:2px 8px 8px}
 
 /* Search row */
 .search-row{display:flex;gap:10px;align-items:stretch}
@@ -598,7 +599,7 @@ const CHEM_STATUS = {
   confirmed_by_users: ['Confirmed by papers that use it', false],
   inferred_related_source: ['From a related source, not the data page', false]
 };
-const PIN_LAST = new Set(['Not specified', 'Not stated by source', 'Not applicable', 'Not listed', 'Other research', 'Other source', 'Uncategorised']);
+const PIN_LAST = new Set(['No studies listed yet', 'Other or not recorded', 'Not specified', 'Not stated by source', 'Not applicable', 'Not listed', 'Other research', 'Other source', 'Uncategorised']);
 /* Chemistry values that mean "no chemistry to report": not checked, checked but not stated, or not about cells. */
 const NO_CHEM = new Set(['Not specified', 'Not stated by source', 'Not applicable']);
 const UNKNOWN = new Set(['', 'see original source', 'unknown', 'n/a']);
@@ -629,11 +630,44 @@ const scoreOf = d => (paperOf(d) ? 2 : 0) + (hasChem(d) ? 2 : 0) + Math.min((d.s
 
 /* Facets: values within one facet combine with OR ("any"), facets combine with AND.
    Research task and measurements can switch to "all". "Must include" is always "all". */
+/* Method families: each study's methods are grouped so the filter stays short.
+   A dataset matches a family when any listed study of it used a method in that family. */
+const METHOD_FAMILIES = [
+  ['Recurrent networks (LSTM, GRU)', /lstm|\bgru\b|sequence-to-sequence|mamba|recurrent/],
+  ['Convolutional networks (CNN)', /\bcnn\b|u-net|convolution/],
+  ['Transformers & attention', /transformer|attention|cyclepatch/],
+  ['Feed-forward networks (MLP)', /\bmlp\b|feed-?forward|kolmogorov/],
+  ['Generative models', /autoencoder|\bgan\b|infogan|generative/],
+  ['Physics-informed ML', /physics-informed|physics-guided|residual learning|universal differential/],
+  ['Gaussian processes & Bayesian', /gaussian process|bayesian (monte carlo|updating)|hierarchical bayesian|relevance vector/],
+  ['Tree ensembles (RF, XGBoost)', /random forest|xgboost|boosted trees|decision tree/],
+  ['Linear & kernel models', /elastic ?net|linear (regression|models?)|multivariate linear|\bridge\b|\bplsr\b|\bpcr\b|logistic|support vector|naive bayes|univariate models|^regression$/],
+  ['Transfer & continual learning', /transfer learning|continual|zero-shot/],
+  ['Active learning & optimisation', /active learning|bayesian optimi[sz]ation|optimal experimental|harris hawk|design of experiments/],
+  ['Feature engineering & early prediction', /feature engineering|early prediction|two-point|health indicators|\bshap\b|partial dependence|spearman/],
+  ['Physics-based & circuit models (non-ML)', /\bdfn\b|electrochemical(-thermal)? model|equivalent circuit|spme|physics-based|mechanistic|lumped thermal|kalman|adaptive filter|power-law|arrhenius|calendar ageing model|ocv curve/],
+  ['Electrochemical diagnostics (non-ML)', /\beis\b|impedance|incremental capacity|differential voltage|\bgitt\b|degradation mode|pulse resistance|lithium inventory/],
+  ['Experiments & imaging (non-ML)', /ageing tests|aging tests|efficiency tests|teardown|x-ray|tomography|radiography|thermography|diffraction|calorimetry|indentation|expansion|strain|deformation|magnetometry|susceptibility/]
+];
+const NO_STUDIES = 'No studies listed yet', OTHER_METHODS = 'Other or not recorded';
+function methodFamiliesOf(d) {
+  const papers = usesOf(d);
+  if (!papers.length) return [NO_STUDIES];
+  const out = new Set();
+  for (const p of papers) for (const m of (p.methods || [])) {
+    const s = String(m).toLowerCase();
+    for (const [fam, re] of METHOD_FAMILIES) if (re.test(s)) out.add(fam);
+  }
+  return out.size ? [...out] : [OTHER_METHODS];
+}
+
 const FACETS = [
   { key: 'category', title: 'Category', get: d => [d.category || 'Uncategorised'] },
   { key: 'domain', title: 'Application domain', get: domainOf },
   { key: 'chemistry', title: 'Cell chemistry', get: chemOf },
   { key: 'task', title: 'Research task', get: d => d.tasks || [], switchable: true },
+  { key: 'method', title: 'Methods used in studies', get: methodFamiliesOf, switchable: true, order: () => METHOD_FAMILIES.map(x => x[0]),
+    note: 'From the published studies listed for each dataset. Most datasets list only their original study so far.' },
   { key: 'signal', title: 'Measurements', get: d => (d.signals && d.signals.length) ? d.signals : ['Not listed'], switchable: true },
   { key: 'resource', title: 'Resource type', get: d => [resourceOf(d)] },
   { key: 'includes', title: 'Must include', get: includesOf, fixed: 'all' }
@@ -725,7 +759,8 @@ function buildFacets() {
   for (const f of FACETS) {
     const totals = new Map();
     data.forEach(d => d._v[f.key].forEach(v => totals.set(v, (totals.get(v) || 0) + 1)));
-    f.options = [...totals.keys()].sort((a, b) => (PIN_LAST.has(a) - PIN_LAST.has(b)) || totals.get(b) - totals.get(a) || a.localeCompare(b));
+    const rank = f.order ? f.order() : null, pos = v => rank && rank.includes(v) ? rank.indexOf(v) : 999;
+    f.options = [...totals.keys()].sort((a, b) => (PIN_LAST.has(a) - PIN_LAST.has(b)) || (rank ? pos(a) - pos(b) : 0) || totals.get(b) - totals.get(a) || a.localeCompare(b));
     const headId = 'fh-' + f.key;
     f.ui = {};
     f.ui.clear = h('button', { type: 'button', class: 'link-btn', hidden: true, 'aria-label': 'Clear ' + f.title.toLowerCase(), onclick: () => { state.sel[f.key].clear(); update(); } }, 'Clear');
@@ -747,6 +782,7 @@ function buildFacets() {
     });
     const section = h('section', { class: 'facet' },
       h('div', { class: 'facet-head' }, h('h3', { id: headId }, f.title), f.ui.mode, f.ui.clear),
+      f.note ? h('p', { class: 'facet-note' }, f.note) : null,
       list, f.ui.hint);
     if (f.options.length > COLLAPSE_OVER) {
       f.ui.more = h('button', { type: 'button', class: 'link-btn more', onclick: () => { state.expanded[f.key] = !state.expanded[f.key]; renderFacets(queryTokens()); } });
@@ -1513,7 +1549,8 @@ fetch('./datasets.json', { cache: 'no-cache' })
       for (const f of FACETS) d._v[f.key] = [...new Set(f.get(d).filter(Boolean))];
       d._hay = [d.name, d.source, d.description, d.category, d.chemistry, d.scale, d.notes, d.resource_note, resourceOf(d),
         ...(d.application_domains || []),
-        ...(d.chemistries || []), ...(d.chemistry_families || []), ...(d.tasks || []), ...(d.signals || [])].filter(Boolean).join(' ').toLowerCase();
+        ...(d.chemistries || []), ...(d.chemistry_families || []), ...(d.tasks || []), ...(d.signals || []),
+        ...usesOf(d).flatMap(p => p.methods || [])].filter(Boolean).join(' ').toLowerCase();
       d._score = scoreOf(d);
       return d;
     });
