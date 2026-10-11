@@ -3,7 +3,7 @@
   "updated": "2026-10-11",
   "datasets": {
     "early-cycle-life": {
-      "coverage": "A starting list of 9 papers, mostly picked from the most-cited work that cites Severson et al. (2019), which has over 3,000 citations. Not every paper that used this dataset.",
+      "coverage": "A starting list of 14 papers, mostly picked from the most-cited work that cites Severson et al. (2019), which has over 3,000 citations. Not every paper that used this dataset. Quantum machine learning studies were searched separately (October 2026).",
       "papers": [
         {
           "title": "Coupled Quantum Reservoir Features for Multi-Chemistry Battery State-of-Health Estimation",
@@ -417,6 +417,154 @@
           "split": "Uses the original cell groups as 41 training, 40 validation and 43 test cells.",
           "evidence": "Section 4",
           "reviewed": false
+        },
+        {
+          "title": "Battery health prognosis using Physics-informed neural network with Quantum Feature mapping",
+          "authors": "Hossain, Rafy, Solanki, Srivastava",
+          "year": 2026,
+          "venue": "arXiv preprint 2604.10362",
+          "doi": "",
+          "url": "https://arxiv.org/abs/2604.10362",
+          "relation": "Independent group",
+          "use": "Same quantum-feature physics-informed network used for SOH estimation on the MIT cells.",
+          "tasks": [
+            "SOH estimation"
+          ],
+          "methods": [
+            "Quantum feature mapping",
+            "Physics-informed neural network",
+            "Transfer learning"
+          ],
+          "split": "",
+          "evidence": "Table I (mean of 10 runs); split not reported",
+          "results": [
+            {
+              "benchmark": null,
+              "model": "Quantum feature map + PINN (QPINN)",
+              "metric": "MAPE",
+              "value": 0.5,
+              "unit": "%",
+              "test_set": "split not reported",
+              "evidence": "Table I",
+              "why": "State-of-health estimation, not the cycle-life prediction ranked above. The paper does not report its train/test split, so it is not compared with other results."
+            }
+          ],
+          "reviewed": false
+        },
+        {
+          "title": "Quantum-Enhanced Recurrent Neural Networks via Variational Quantum Gating for Battery State of Health Prediction",
+          "authors": "Xu, Liu, Gao, Xu",
+          "year": 2026,
+          "venue": "arXiv preprint 2604.20438",
+          "doi": "",
+          "url": "https://arxiv.org/abs/2604.20438",
+          "relation": "Independent group",
+          "use": "Same quantum-gated LSTM for state-of-health prediction on MIT cells, after filtering out anomalous cells.",
+          "tasks": [
+            "SOH estimation"
+          ],
+          "methods": [
+            "Quantum LSTM",
+            "Variational quantum circuits",
+            "LSTM"
+          ],
+          "split": "34 cells kept; 26 for training, 8 for testing.",
+          "evidence": "Section 3.3; Table 3",
+          "results": [
+            {
+              "benchmark": null,
+              "model": "Quantum LSTM",
+              "metric": "RMSE",
+              "value": 0.002,
+              "unit": "SOH",
+              "test_set": "8 test cells",
+              "evidence": "Table 3",
+              "why": "State-of-health prediction on the paper's own split, not the cycle-life task ranked above."
+            },
+            {
+              "benchmark": null,
+              "model": "LSTM (classical baseline)",
+              "metric": "RMSE",
+              "value": 0.0028,
+              "unit": "SOH",
+              "test_set": "8 test cells",
+              "evidence": "Table 3",
+              "why": "Same split as above."
+            }
+          ],
+          "reviewed": false
+        },
+        {
+          "title": "Multi-dataset battery health prediction model for sustainable electric vehicle systems using quantum machine learning",
+          "authors": "Monika, Sood",
+          "year": 2026,
+          "venue": "The Journal of Supercomputing 82, 463",
+          "doi": "10.1007/s11227-026-08620-4",
+          "relation": "Independent group",
+          "use": "Hybrid quantum LSTM for battery health prediction, tested on NASA, CALCE and MIT data.",
+          "tasks": [
+            "SOH estimation"
+          ],
+          "methods": [
+            "Quantum LSTM",
+            "Variational quantum circuits"
+          ],
+          "split": "Battery-wise split; the cells in each set are not listed in the abstract.",
+          "evidence": "Abstract",
+          "results": [
+            {
+              "benchmark": null,
+              "model": "Hybrid quantum LSTM",
+              "metric": "RMSE",
+              "value": 0.0151,
+              "unit": "",
+              "test_set": "battery-wise split",
+              "evidence": "Abstract",
+              "why": "Health prediction, not the cycle-life task ranked above. Own battery-wise split; which cells were tested is not stated in the abstract."
+            }
+          ],
+          "reviewed": false
+        },
+        {
+          "title": "Framework for Early Prediction of Lithium-Ion Battery Lifetime: A Hybrid Quantum-Classical Approach",
+          "authors": "Anggita, Akrom",
+          "year": 2025,
+          "venue": "Journal of Multiscale Materials Informatics 2(2)",
+          "doi": "10.62411/jimat.v2i2.15055",
+          "relation": "Independent group",
+          "use": "Encodes 42 early-cycle features with a variational quantum circuit (simulated) and predicts cycle life with gradient boosting, compared with classical feature-selection baselines.",
+          "tasks": [
+            "Cycle life"
+          ],
+          "methods": [
+            "Variational quantum circuit",
+            "Gradient boosting"
+          ],
+          "split": "Random stratified 70/30 split of the 124 cells, repeated with 20 seeds.",
+          "evidence": "Abstract; methods section",
+          "results": [
+            {
+              "benchmark": null,
+              "model": "VQC encoder + gradient boosting",
+              "metric": "RMSE",
+              "value": 93,
+              "unit": "cycles",
+              "test_set": "random 30% of cells",
+              "evidence": "Abstract",
+              "why": "Random split instead of the original test sets, so not ranked with them."
+            },
+            {
+              "benchmark": null,
+              "model": "SVM with wrapper selection (best classical baseline)",
+              "metric": "RMSE",
+              "value": 115,
+              "unit": "cycles",
+              "test_set": "random 30% of cells",
+              "evidence": "Abstract",
+              "why": "Same split as above."
+            }
+          ],
+          "reviewed": false
         }
       ],
       "results_note": "Numbers as reported in each paper, not re-run by IonSense. Only results on the same test cells and metric are ranked together. All ranked results use data from the first 100 cycles. Lower RMSE is better.",
@@ -445,7 +593,7 @@
       ]
     },
     "nasa-battery-data-set": {
-      "coverage": "A starting list of 5 studies. This is one of the most widely used battery datasets, so the list covers only a few of the papers that used it.",
+      "coverage": "A starting list of 8 studies. This is one of the most widely used battery datasets, so the list covers only a few of the papers that used it. Quantum machine learning studies were searched separately (October 2026).",
       "papers": [
         {
           "title": "Battery Data Set",
@@ -541,6 +689,76 @@
           "split": "",
           "evidence": "Section 2 (datasets)",
           "reviewed": false
+        },
+        {
+          "title": "Multi-dataset battery health prediction model for sustainable electric vehicle systems using quantum machine learning",
+          "authors": "Monika, Sood",
+          "year": 2026,
+          "venue": "The Journal of Supercomputing 82, 463",
+          "doi": "10.1007/s11227-026-08620-4",
+          "relation": "Independent group",
+          "use": "Hybrid quantum LSTM for battery health prediction, tested on NASA, CALCE and MIT data.",
+          "tasks": [
+            "SOH estimation"
+          ],
+          "methods": [
+            "Quantum LSTM",
+            "Variational quantum circuits"
+          ],
+          "split": "Battery-wise split; the cells in each set are not listed in the abstract.",
+          "evidence": "Abstract",
+          "results": [
+            {
+              "benchmark": null,
+              "model": "Hybrid quantum LSTM",
+              "metric": "RMSE",
+              "value": 0.0158,
+              "unit": "",
+              "test_set": "battery-wise split",
+              "evidence": "Abstract",
+              "why": "Own battery-wise split; which cells were tested is not stated in the abstract."
+            }
+          ],
+          "reviewed": false
+        },
+        {
+          "title": "Quantum-Enhanced Battery Anomaly Detection in Smart Transportation Systems",
+          "authors": "Mutua, de Fréin",
+          "year": 2025,
+          "venue": "Applied Sciences 15(17), 9452",
+          "doi": "10.3390/app15179452",
+          "relation": "Independent group",
+          "use": "Detects abnormal spikes in state-of-health data with a variational quantum neural network combined with an isolation forest; reports ROC-AUC 0.982, 7.8% above the isolation forest alone.",
+          "tasks": [
+            "Anomaly detection",
+            "SOH estimation"
+          ],
+          "methods": [
+            "Variational quantum neural network",
+            "Isolation forest"
+          ],
+          "split": "Trained on battery B0005, tested on B0006.",
+          "evidence": "Abstract and methods (MDPI)",
+          "reviewed": false
+        },
+        {
+          "title": "A Quantum Neural Network Regression for Modeling Lithium-ion Battery Capacity Degradation",
+          "authors": "Ngo, Le, Nguyen, Eroglu, Nguyen",
+          "year": 2023,
+          "venue": "IEEE Green Technologies Conference (GreenTech 2023)",
+          "doi": "10.1109/GreenTech56823.2023.10173794",
+          "relation": "Independent group",
+          "use": "Proof of concept: a hybrid quantum neural network models capacity fade against cycle number on NASA cells.",
+          "tasks": [
+            "Capacity estimation",
+            "Degradation analysis"
+          ],
+          "methods": [
+            "Quantum neural network"
+          ],
+          "split": "",
+          "evidence": "Abstract (ASU research portal)",
+          "reviewed": false
         }
       ]
     },
@@ -630,7 +848,7 @@
       "results_note": "No ranked results yet. The studies report different metrics on different cells: the original paper gives R² only inside its figures, Liu et al. (IPEMC 2024) give MAPE per cell, and Kim et al. and Liu et al. (2024 preprint) use subsets of the test cells."
     },
     "data-driven-capacity-estimation-from-voltage-relaxation": {
-      "coverage": "A starting list of 5 studies, found by searching for papers that reuse these 130 cells. Not every paper that used this dataset.",
+      "coverage": "A starting list of 8 studies, found by searching for papers that reuse these 130 cells. Not every paper that used this dataset. Quantum machine learning studies were searched separately (October 2026).",
       "papers": [
         {
           "title": "Coupled Quantum Reservoir Features for Multi-Chemistry Battery State-of-Health Estimation",
@@ -751,6 +969,70 @@
           ],
           "split": "Cells divided about 6:2:2 into training, validation and test sets.",
           "evidence": "Methods (datasets); Data availability",
+          "reviewed": false
+        },
+        {
+          "title": "Battery health prognosis using Physics-informed neural network with Quantum Feature mapping",
+          "authors": "Hossain, Rafy, Solanki, Srivastava",
+          "year": 2026,
+          "venue": "arXiv preprint 2604.10362",
+          "doi": "",
+          "url": "https://arxiv.org/abs/2604.10362",
+          "relation": "Independent group",
+          "use": "Same quantum-feature physics-informed network applied to three Tongji batches; SOH MAPE of 0.43–1.37% by batch.",
+          "tasks": [
+            "SOH estimation"
+          ],
+          "methods": [
+            "Quantum feature mapping",
+            "Physics-informed neural network",
+            "Transfer learning"
+          ],
+          "split": "",
+          "evidence": "Table I (mean of 10 runs); split not reported",
+          "reviewed": false
+        },
+        {
+          "title": "Quantum-Enhanced Recurrent Neural Networks via Variational Quantum Gating for Battery State of Health Prediction",
+          "authors": "Xu, Liu, Gao, Xu",
+          "year": 2026,
+          "venue": "arXiv preprint 2604.20438",
+          "doi": "",
+          "url": "https://arxiv.org/abs/2604.20438",
+          "relation": "Independent group",
+          "use": "Replaces the gate transformations of an LSTM with variational quantum circuits and compares it with LSTM, GRU and CNN on 28 NCA cells.",
+          "tasks": [
+            "SOH estimation"
+          ],
+          "methods": [
+            "Quantum LSTM",
+            "Variational quantum circuits",
+            "LSTM"
+          ],
+          "split": "22 cells for training, 6 for testing.",
+          "evidence": "Section 3.3; Table 3",
+          "results": [
+            {
+              "benchmark": null,
+              "model": "Quantum LSTM",
+              "metric": "RMSE",
+              "value": 0.0091,
+              "unit": "SOH",
+              "test_set": "6 test cells (NCA)",
+              "evidence": "Table 3",
+              "why": "Own cell split. Table 3 gives MAE 0.0111 for this row, larger than its RMSE, which cannot both be right."
+            },
+            {
+              "benchmark": null,
+              "model": "LSTM (classical baseline)",
+              "metric": "RMSE",
+              "value": 0.0128,
+              "unit": "SOH",
+              "test_set": "6 test cells (NCA)",
+              "evidence": "Table 3",
+              "why": "Own cell split."
+            }
+          ],
           "reviewed": false
         }
       ]
@@ -1112,7 +1394,7 @@
       ]
     },
     "physics-informed-neural-network-for-lithium-ion-battery-degradation-modelling": {
-      "coverage": "A starting list of 5 studies. The dataset's authors keep a much longer list of papers that use it, with their reported results.",
+      "coverage": "A starting list of 7 studies. The dataset's authors keep a much longer list of papers that use it, with their reported results. Quantum machine learning studies were searched separately (October 2026).",
       "more_url": "https://github.com/wang-fujin/XJTU-Battery-Dataset-Papers-Summary",
       "more_label": "Full list kept by the dataset authors",
       "papers": [
@@ -1261,6 +1543,27 @@
           ],
           "split": "",
           "evidence": "Section 4; Figure 10",
+          "reviewed": false
+        },
+        {
+          "title": "Battery health prognosis using Physics-informed neural network with Quantum Feature mapping",
+          "authors": "Hossain, Rafy, Solanki, Srivastava",
+          "year": 2026,
+          "venue": "arXiv preprint 2604.10362",
+          "doi": "",
+          "url": "https://arxiv.org/abs/2604.10362",
+          "relation": "Independent group",
+          "use": "Feeds quantum feature maps of the charging data into a physics-informed neural network; reports SOH MAPE of 0.26–0.69% across the six XJTU batches, plus transfer between datasets.",
+          "tasks": [
+            "SOH estimation"
+          ],
+          "methods": [
+            "Quantum feature mapping",
+            "Physics-informed neural network",
+            "Transfer learning"
+          ],
+          "split": "",
+          "evidence": "Table I (mean of 10 runs); split not reported",
           "reviewed": false
         }
       ]
@@ -1578,7 +1881,7 @@
       ]
     },
     "real-time-personalized-health-status-prediction-via-deep-transfer-learning": {
-      "coverage": "A starting list of 2 studies. Not every paper that used this dataset.",
+      "coverage": "A starting list of 4 studies. Not every paper that used this dataset. Quantum machine learning studies were searched separately (October 2026).",
       "papers": [
         {
           "title": "Coupled Quantum Reservoir Features for Multi-Chemistry Battery State-of-Health Estimation",
@@ -1638,6 +1941,49 @@
           ],
           "split": "Cells divided about 6:2:2 into training, validation and test sets.",
           "evidence": "Methods (datasets); Data availability",
+          "reviewed": false
+        },
+        {
+          "title": "Battery health prognosis using Physics-informed neural network with Quantum Feature mapping",
+          "authors": "Hossain, Rafy, Solanki, Srivastava",
+          "year": 2026,
+          "venue": "arXiv preprint 2604.10362",
+          "doi": "",
+          "url": "https://arxiv.org/abs/2604.10362",
+          "relation": "Independent group",
+          "use": "Same quantum-feature physics-informed network on the HUST cells, where the paper reports its largest gain over the best classical baseline (a CNN).",
+          "tasks": [
+            "SOH estimation"
+          ],
+          "methods": [
+            "Quantum feature mapping",
+            "Physics-informed neural network",
+            "Transfer learning"
+          ],
+          "split": "",
+          "evidence": "Table I (mean of 10 runs); split not reported",
+          "results": [
+            {
+              "benchmark": null,
+              "model": "Quantum feature map + PINN (QPINN)",
+              "metric": "MAPE",
+              "value": 0.26,
+              "unit": "%",
+              "test_set": "split not reported",
+              "evidence": "Table I",
+              "why": "The paper does not report its train/test split, so it is not compared with other results."
+            },
+            {
+              "benchmark": null,
+              "model": "CNN (best classical baseline in the paper)",
+              "metric": "MAPE",
+              "value": 0.74,
+              "unit": "%",
+              "test_set": "split not reported",
+              "evidence": "Table I",
+              "why": "The paper does not report its train/test split, so it is not compared with other results."
+            }
+          ],
           "reviewed": false
         }
       ]
@@ -2452,7 +2798,7 @@
       ]
     },
     "calce-battery-data": {
-      "coverage": "Only one of the papers CALCE lists for its data is shown; reuse by other groups has not been searched yet.",
+      "coverage": "The CALCE paper listed on its data page, plus quantum machine learning studies; other reuse has not been searched yet.",
       "papers": [
         {
           "title": "Prognostics of lithium-ion batteries based on Dempster–Shafer theory and the Bayesian Monte Carlo method",
@@ -2471,6 +2817,80 @@
           ],
           "split": "",
           "evidence": "Listed on the CALCE data page as a paper to cite for CS2 and CX2 data",
+          "reviewed": false
+        },
+        {
+          "title": "Quantum-Enhanced Recurrent Neural Networks via Variational Quantum Gating for Battery State of Health Prediction",
+          "authors": "Xu, Liu, Gao, Xu",
+          "year": 2026,
+          "venue": "arXiv preprint 2604.20438",
+          "doi": "",
+          "url": "https://arxiv.org/abs/2604.20438",
+          "relation": "Independent group",
+          "use": "Same quantum-gated LSTM on four CALCE CS2 cells (CS2_35 to CS2_38); reports about 20% lower MAE than a classical LSTM.",
+          "tasks": [
+            "SOH estimation"
+          ],
+          "methods": [
+            "Quantum LSTM",
+            "Variational quantum circuits",
+            "LSTM"
+          ],
+          "split": "Leave-one-cell-out over CS2_35–CS2_38.",
+          "evidence": "Section 3.3; Table 3",
+          "results": [
+            {
+              "benchmark": null,
+              "model": "Quantum LSTM",
+              "metric": "RMSE",
+              "value": 0.0148,
+              "unit": "SOH",
+              "test_set": "leave-one-cell-out, 4 CS2 cells",
+              "evidence": "Table 3",
+              "why": "No other study listed here uses the same cells and split."
+            },
+            {
+              "benchmark": null,
+              "model": "LSTM (classical baseline)",
+              "metric": "RMSE",
+              "value": 0.0191,
+              "unit": "SOH",
+              "test_set": "leave-one-cell-out, 4 CS2 cells",
+              "evidence": "Table 3",
+              "why": "Same split as above."
+            }
+          ],
+          "reviewed": false
+        },
+        {
+          "title": "Multi-dataset battery health prediction model for sustainable electric vehicle systems using quantum machine learning",
+          "authors": "Monika, Sood",
+          "year": 2026,
+          "venue": "The Journal of Supercomputing 82, 463",
+          "doi": "10.1007/s11227-026-08620-4",
+          "relation": "Independent group",
+          "use": "Hybrid quantum LSTM for battery health prediction, tested on NASA, CALCE and MIT data.",
+          "tasks": [
+            "SOH estimation"
+          ],
+          "methods": [
+            "Quantum LSTM",
+            "Variational quantum circuits"
+          ],
+          "split": "Battery-wise split; the cells in each set are not listed in the abstract.",
+          "evidence": "Abstract",
+          "results": [
+            {
+              "benchmark": null,
+              "model": "Hybrid quantum LSTM",
+              "metric": "RMSE",
+              "value": 0.0165,
+              "unit": "",
+              "test_set": "battery-wise split",
+              "evidence": "Abstract",
+              "why": "Own battery-wise split; which cells were tested is not stated in the abstract."
+            }
+          ],
           "reviewed": false
         }
       ]
