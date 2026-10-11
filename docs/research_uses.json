@@ -6,6 +6,50 @@
       "coverage": "A starting list of 9 papers, mostly picked from the most-cited work that cites Severson et al. (2019), which has over 3,000 citations. Not every paper that used this dataset.",
       "papers": [
         {
+          "title": "Coupled Quantum Reservoir Features for Multi-Chemistry Battery State-of-Health Estimation",
+          "authors": "Gunasekar, Rangarajan",
+          "year": 2026,
+          "venue": "IEEE Access 14, 132697–132718",
+          "doi": "10.1109/ACCESS.2026.3727788",
+          "url": "https://github.com/SakthiGs/CQRF-Quantum-Battery-SOH",
+          "relation": "Independent group",
+          "pinned": true,
+          "use": "Estimates state of health of the LFP cells from quantum reservoir features with a small classical readout, compared with a quantum recurrent reservoir; also runs a 50-sample feasibility check on IBM quantum hardware.",
+          "tasks": [
+            "SOH estimation"
+          ],
+          "methods": [
+            "Quantum reservoir computing",
+            "Compact bottleneck readout",
+            "Quantum recurrent reservoir (baseline)"
+          ],
+          "split": "Cell-disjoint 60/20/20 train/validation/test split; mean over 10 seeds.",
+          "evidence": "Paper's code repository (README and DATA.md)",
+          "results": [
+            {
+              "benchmark": null,
+              "model": "CQRF + compact readout, mean of 10 seeds",
+              "metric": "MAPE",
+              "value": 1.31,
+              "unit": "%",
+              "test_set": "cell-disjoint 20% test split",
+              "evidence": "Repository README, published values",
+              "why": "State-of-health estimation, not the cycle-life prediction ranked above, on the paper's own split."
+            },
+            {
+              "benchmark": null,
+              "model": "Quantum recurrent reservoir + compact readout",
+              "metric": "MAPE",
+              "value": 1.57,
+              "unit": "%",
+              "test_set": "cell-disjoint 20% test split",
+              "evidence": "Repository README, published values",
+              "why": "State-of-health estimation, not the cycle-life prediction ranked above, on the paper's own split."
+            }
+          ],
+          "reviewed": false
+        },
+        {
           "title": "Data-driven prediction of battery cycle life before capacity degradation",
           "authors": "Severson, Attia, Jin et al.",
           "year": 2019,
@@ -589,6 +633,27 @@
       "coverage": "A starting list of 5 studies, found by searching for papers that reuse these 130 cells. Not every paper that used this dataset.",
       "papers": [
         {
+          "title": "Coupled Quantum Reservoir Features for Multi-Chemistry Battery State-of-Health Estimation",
+          "authors": "Gunasekar, Rangarajan",
+          "year": 2026,
+          "venue": "IEEE Access 14, 132697–132718",
+          "doi": "10.1109/ACCESS.2026.3727788",
+          "url": "https://github.com/SakthiGs/CQRF-Quantum-Battery-SOH",
+          "relation": "Independent group",
+          "pinned": true,
+          "use": "One of four datasets used to estimate state of health from quantum reservoir features with a small classical readout; also part of a 50-sample feasibility check on IBM quantum hardware.",
+          "tasks": [
+            "SOH estimation"
+          ],
+          "methods": [
+            "Quantum reservoir computing",
+            "Compact bottleneck readout",
+            "Quantum recurrent reservoir (baseline)"
+          ],
+          "evidence": "Paper's code repository README; the protocol and results for this dataset are in the paper, not the public notebooks",
+          "reviewed": false
+        },
+        {
           "title": "Data-driven capacity estimation of commercial lithium-ion batteries from voltage relaxation",
           "authors": "Zhu, Wang, Huang et al.",
           "year": 2022,
@@ -1052,6 +1117,50 @@
       "more_label": "Full list kept by the dataset authors",
       "papers": [
         {
+          "title": "Coupled Quantum Reservoir Features for Multi-Chemistry Battery State-of-Health Estimation",
+          "authors": "Gunasekar, Rangarajan",
+          "year": 2026,
+          "venue": "IEEE Access 14, 132697–132718",
+          "doi": "10.1109/ACCESS.2026.3727788",
+          "url": "https://github.com/SakthiGs/CQRF-Quantum-Battery-SOH",
+          "relation": "Independent group",
+          "pinned": true,
+          "use": "Estimates state of health from 57 features measured on a fixed 10-qubit quantum reservoir, read out by a 125-parameter classical layer, and compares this with a quantum recurrent reservoir. One of four datasets in a multi-chemistry evaluation.",
+          "tasks": [
+            "SOH estimation"
+          ],
+          "methods": [
+            "Quantum reservoir computing",
+            "Compact bottleneck readout",
+            "Quantum recurrent reservoir (baseline)"
+          ],
+          "split": "Leave-one-cell-out within each of the six batches; first five cycles excluded; mean over 10 readout seeds.",
+          "evidence": "Paper's code repository (README and DATA.md)",
+          "results": [
+            {
+              "benchmark": null,
+              "model": "CQRF + compact readout, mean of 10 seeds",
+              "metric": "MAPE",
+              "value": 1.88,
+              "unit": "%",
+              "test_set": "leave-one-cell-out in each batch",
+              "evidence": "Repository README, published values",
+              "why": "State-of-health MAPE under the paper's own protocol; no other study listed here uses the same test cells."
+            },
+            {
+              "benchmark": null,
+              "model": "Quantum recurrent reservoir + compact readout",
+              "metric": "MAPE",
+              "value": 2.03,
+              "unit": "%",
+              "test_set": "leave-one-cell-out in each batch",
+              "evidence": "Repository README, published values",
+              "why": "State-of-health MAPE under the paper's own protocol; no other study listed here uses the same test cells."
+            }
+          ],
+          "reviewed": false
+        },
+        {
           "title": "Physics-informed neural network for lithium-ion battery degradation stable modeling and prognosis",
           "authors": "Wang, Zhai, Zhao et al.",
           "year": 2024,
@@ -1471,6 +1580,27 @@
     "real-time-personalized-health-status-prediction-via-deep-transfer-learning": {
       "coverage": "A starting list of 2 studies. Not every paper that used this dataset.",
       "papers": [
+        {
+          "title": "Coupled Quantum Reservoir Features for Multi-Chemistry Battery State-of-Health Estimation",
+          "authors": "Gunasekar, Rangarajan",
+          "year": 2026,
+          "venue": "IEEE Access 14, 132697–132718",
+          "doi": "10.1109/ACCESS.2026.3727788",
+          "url": "https://github.com/SakthiGs/CQRF-Quantum-Battery-SOH",
+          "relation": "Independent group",
+          "pinned": true,
+          "use": "One of four datasets used to estimate state of health from quantum reservoir features with a small classical readout; also part of a 50-sample feasibility check on IBM quantum hardware.",
+          "tasks": [
+            "SOH estimation"
+          ],
+          "methods": [
+            "Quantum reservoir computing",
+            "Compact bottleneck readout",
+            "Quantum recurrent reservoir (baseline)"
+          ],
+          "evidence": "Paper's code repository README; the protocol and results for this dataset are in the paper, not the public notebooks",
+          "reviewed": false
+        },
         {
           "title": "Real-time personalized health status prediction of lithium-ion batteries using deep transfer learning",
           "authors": "Ma, Xu, Jiang et al.",

@@ -282,6 +282,7 @@ dialog.sheet::backdrop{background:var(--scrim)}
 .use-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:12.5px;color:var(--muted)}
 .use-rel{font-weight:600;padding:1px 8px;border-radius:999px;background:var(--sunken);color:var(--ink-2);white-space:nowrap}
 .use-rel.orig{background:var(--accent-soft);color:var(--accent-ink)}
+.use-own{font-weight:600;padding:1px 8px;border-radius:999px;border:1px solid var(--accent);color:var(--accent-ink);white-space:nowrap}
 .use-pending{margin-left:auto;font-size:12px;color:var(--warn);white-space:nowrap}
 .use-title{font-size:14.5px;font-weight:650;line-height:1.35;color:var(--ink);text-decoration:none;overflow-wrap:anywhere}
 .use-title:hover{color:var(--accent-ink);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
@@ -638,6 +639,7 @@ const METHOD_FAMILIES = [
   ['Transformers & attention', /transformer|attention|cyclepatch/],
   ['Feed-forward networks (MLP)', /\bmlp\b|feed-?forward|kolmogorov/],
   ['Generative models', /autoencoder|\bgan\b|infogan|generative/],
+  ['Quantum machine learning', /quantum (reservoir|recurrent|kernel|neural|circuit|machine)|\bqml\b|\bpqc\b/],
   ['Physics-informed ML', /physics-informed|physics-guided|residual learning|universal differential/],
   ['Gaussian processes & Bayesian', /gaussian process|bayesian (monte carlo|updating)|hierarchical bayesian|relevance vector/],
   ['Tree ensembles (RF, XGBoost)', /random forest|xgboost|boosted trees|decision tree/],
@@ -1081,7 +1083,8 @@ function emptyState() {
 const dlg = $('#detail');
 /* "Used in research": published studies that used this dataset. Nothing renders when a dataset has no entries. */
 const isOriginal = p => /^original/i.test(p.relation || '');
-const sortedUses = d => usesOf(d).slice().sort((a, b) => isOriginal(b) - isOriginal(a) || (a.year || 0) - (b.year || 0));
+/* Studies by the IonSense maintainers are pinned first and tagged, so readers can see whose work it is. */
+const sortedUses = d => usesOf(d).slice().sort((a, b) => (b.pinned === true) - (a.pinned === true) || isOriginal(b) - isOriginal(a) || (a.year || 0) - (b.year || 0));
 const byLine = p => [String(p.authors || '').split(',')[0].replace(/ et al\.?$/, '') + (String(p.authors || '').includes(',') ? ' et al.' : ''), p.year].filter(Boolean).join(' ');
 const jumpTo = id => { const el = document.getElementById(id); if (el) el.scrollIntoView({ block: 'start', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }); };
 
@@ -1147,6 +1150,7 @@ function usesSection(d) {
     return h('li', { class: 'use', id: 'use-' + i },
       h('div', { class: 'use-top' },
         p.relation ? h('span', { class: 'use-rel' + (isOriginal(p) ? ' orig' : '') }, p.relation) : null,
+        p.pinned === true ? h('span', { class: 'use-own', title: 'Written by the people who maintain IonSense, and pinned to the top' }, 'IonSense authors') : null,
         p.reviewed === true ? null : h('span', { class: 'use-pending', title: 'Drafted from the paper; not yet checked by the IonSense maintainer' }, 'Awaiting review')),
       href ? h('a', { class: 'use-title', href, target: '_blank', rel: 'noopener noreferrer' }, p.title, ICON_EXT()) : h('span', { class: 'use-title' }, p.title),
       h('div', { class: 'use-by' }, [p.authors, p.year, p.venue].filter(Boolean).join(' · ')),
