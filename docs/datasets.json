@@ -38,11 +38,11 @@
       "Fault diagnosis",
       "Health monitoring"
     ],
-    "source": "Original field-data authors",
-    "scale": "28 portable systems · ~133 million rows",
-    "description": "Fault-biased operational battery data with cell voltages, pack current and temperatures, from returned portable systems.",
+    "source": "TU Darmstadt and MIT",
+    "scale": "28 systems (224 cells) · up to 5 years · ~133 million rows",
+    "description": "Field data from 28 portable 24 V LFP battery systems (about 160 Ah, 8 prismatic cells in series) that were returned to the manufacturer after unsatisfactory behaviour. Per-cell voltages, pack current and shared temperature sensors, recorded for one month to five years. Fault-biased by design.",
     "url": "https://zenodo.org/records/13715694",
-    "paper": "",
+    "paper": "https://doi.org/10.1016/j.xcrp.2024.102258",
     "access": "Open landing page",
     "signals": [
       "Voltage",
@@ -55,10 +55,19 @@
     "chemistries": [
       "LFP"
     ],
-    "chemistry_review_status": "catalogue_label_not_independently_verified",
+    "chemistry_review_status": "source_verified",
     "application_domains": [
       "Industrial & portable"
-    ]
+    ],
+    "license": "CC BY-NC 4.0",
+    "doi": "10.5281/zenodo.13715694",
+    "chemistry_evidence_url": "https://zenodo.org/records/13715694",
+    "chemistry_verification": "source_verified",
+    "chemistry_evidence": {
+      "status": "source_verified",
+      "url": "https://zenodo.org/records/13715694",
+      "note": "Zenodo record: lithium iron phosphate (LFP) battery systems."
+    }
   },
   {
     "id": "lithium-ion-battery-aging-dataset-based-on-ev-real-driving-profiles",
@@ -290,26 +299,38 @@
     "id": "electric-vehicle-usage-data-set-for-battery-aging-studies",
     "name": "Electric Vehicle Usage Data Set for Battery Aging Studies",
     "category": "Field & Real-World",
-    "chemistry": "LFP",
+    "chemistry": "NMC",
     "tasks": [
-      "Fault diagnosis",
-      "Degradation analysis"
+      "Degradation analysis",
+      "Charging analysis"
     ],
-    "source": "See original source",
-    "scale": "See original source",
-    "description": "Real-world field measurements from 28 portable 24 V LFP battery systems with 8 prismatic cells in series. All units were returned due to abnormal behaviour, making this a fault-biased dataset. Distinct from Field Dataset 2 — published separately with different scope.",
+    "source": "Technical University of Munich",
+    "scale": "7 vehicles (2 VW ID.3, 5 CUPRA Born) · over 72,000 km",
+    "description": "Real-world operating data from seven series-production electric cars (58 kWh packs, 108s2p), read from the vehicles over several years: state of charge, cell voltages and temperatures, charge and discharge rates, trips, charging sessions, parking and ambient temperature. Built to compare lab ageing tests with real driving.",
     "url": "https://github.com/TUMFTM/electric-vehicle-uds-dataset/tree/main",
-    "paper": "https://www.sciencedirect.com/science/article/pii/S2590116825001250?via%3Dihub#d1e4342",
+    "paper": "https://doi.org/10.1016/j.etran.2025.100518",
     "access": "Unverified",
-    "signals": [],
+    "signals": [
+      "SOC",
+      "Voltage",
+      "Current",
+      "Temperature",
+      "Charging data"
+    ],
     "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
     "source_type": "code_repository",
     "access_status": "not_checked",
     "chemistries": [
-      "LFP"
+      "NMC"
     ],
-    "chemistry_review_status": "catalogue_label_not_independently_verified",
-    "application_domains": []
+    "chemistry_review_status": "inferred_related_source",
+    "application_domains": [],
+    "license": "CC BY-NC 4.0",
+    "chemistry_evidence": {
+      "status": "inferred_related_source",
+      "url": "https://portal.fis.tum.de/en/publications/understanding-lithium-ion-battery-degradation-in-vehicle-applicat/",
+      "note": "The dataset page does not state the chemistry. It was previously listed as LFP, but the vehicles carry the 58 kWh pack that TUM's ID.3 cell study (Schreiber et al. 2025) describes as NMC/graphite."
+    }
   },
   {
     "id": "second-life-lithium-ion-battery-aging-dataset-based-on-grid-storage-cycling",
@@ -491,7 +512,7 @@
     "chemistries": [
       "NCA"
     ],
-    "chemistry_review_status": "catalogue_label_not_independently_verified",
+    "chemistry_review_status": "confirmed_by_users",
     "application_domains": [],
     "chemistry_evidence": {
       "status": "confirmed_by_users",
@@ -601,13 +622,14 @@
     "id": "prognosis-of-multivariate-battery-state-via-transformers",
     "name": "Prognosis of Multivariate Battery State via Transformers",
     "category": "Lab Aging & Degradation",
-    "chemistry": "LFP",
+    "chemistry": "Multiple / mixed",
     "tasks": [
-      "Degradation analysis"
+      "SOH estimation",
+      "Cycle life"
     ],
     "source": "See original source",
     "scale": "See original source",
-    "description": "Processed files for multivariate battery state prediction using transformer architectures. Includes LFP fast-charging and six cathode chemistry datasets.",
+    "description": "Processed cycling data from two datasets covering six cathode chemistries (LFP, NMC111, NMC532, NMC622, HE5050 and 5V spinel), with several electrolyte and anode variants. Used to predict 28 state-of-health descriptors, such as capacity, energy, impedances and open-circuit voltages, with transformer networks.",
     "url": "https://www.materialsdatafacility.org/detail/spacetimeformer_battery_v1.2",
     "paper": "https://arxiv.org/abs/2309.10014",
     "access": "Unverified",
@@ -618,10 +640,19 @@
     "source_type": "data_repository",
     "access_status": "not_checked",
     "chemistries": [
-      "LFP"
+      "LFP",
+      "NMC",
+      "LNMO"
     ],
-    "chemistry_review_status": "catalogue_label_not_independently_verified",
-    "application_domains": []
+    "chemistry_review_status": "source_verified",
+    "application_domains": [],
+    "chemistry_evidence_url": "https://arxiv.org/abs/2309.10014",
+    "chemistry_verification": "source_verified",
+    "chemistry_evidence": {
+      "status": "source_verified",
+      "url": "https://arxiv.org/abs/2309.10014",
+      "note": "arXiv abstract: six cathode chemistries, LFP, NMC111, NMC532, NMC622, HE5050 and 5V spinel."
+    }
   },
   {
     "id": "battery-aging-modes-across-nmc-compositions",
@@ -757,25 +788,37 @@
     "id": "stanford-long-term-calendar-aging-dataset",
     "name": "Stanford Long-Term Calendar Aging Dataset",
     "category": "Lab Aging & Degradation",
-    "chemistry": "LFP",
+    "chemistry": "Multiple / mixed",
     "tasks": [
       "Degradation analysis"
     ],
-    "source": "See original source",
-    "scale": "See original source",
-    "description": "Calendar aging data from eight cell types (LFP, NCR, VTC6, and others) stored at 24°C, 45°C, 60°C, and 85°C. Provides decade-scale aging insights.",
+    "source": "Stanford University",
+    "scale": "232 cells · 8 cell types · up to 13 years",
+    "description": "Calendar ageing of 232 commercial cells of eight types from five makers (LFP, NCA, NMC and LCO cathodes, all with graphite anodes), stored at 24, 45, 60 and 85 °C at 50% and 100% state of charge for up to 13 years.",
     "url": "https://osf.io/ju325/",
-    "paper": "https://www.cell.com/joule/fulltext/S2542-4351(24",
+    "paper": "https://doi.org/10.1016/j.joule.2024.11.013",
     "access": "Unverified",
-    "signals": [],
+    "signals": [
+      "Capacity"
+    ],
     "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
     "source_type": "data_repository",
     "access_status": "not_checked",
     "chemistries": [
-      "LFP"
+      "LFP",
+      "NCA",
+      "NMC",
+      "LCO"
     ],
-    "chemistry_review_status": "catalogue_label_not_independently_verified",
-    "application_domains": []
+    "chemistry_review_status": "source_verified",
+    "application_domains": [],
+    "chemistry_evidence_url": "https://pangea.stanford.edu/ERE/pdf/OnoriPDF/Journals/101.pdf",
+    "chemistry_verification": "source_verified",
+    "chemistry_evidence": {
+      "status": "source_verified",
+      "url": "https://pangea.stanford.edu/ERE/pdf/OnoriPDF/Journals/101.pdf",
+      "note": "Joule paper: K2 Energy LFP, Panasonic NCA and other NMC and LCO cells, all with graphite anodes."
+    }
   },
   {
     "id": "wmg-calendar-aging-dataset-lgm50-commercial-cells-39-storage-conditions",
@@ -1326,23 +1369,36 @@
     "category": "State Estimation & Health Monitoring",
     "chemistry": "LFP",
     "tasks": [
-      "Other research"
+      "SOH estimation",
+      "RUL prediction",
+      "Capacity estimation"
     ],
-    "source": "See original source",
-    "scale": "See original source",
-    "description": "Enables real-time health prediction using deep transfer learning across different usage profiles.",
+    "source": "Huazhong University of Science and Technology",
+    "scale": "77 cells (A123 APR18650M1A, 1.1 Ah) · 146,122 cycles",
+    "description": "77 commercial LFP/graphite cells, each discharged with its own multi-stage protocol after fast charging at 30 °C, with cycle lives of 1,100 to 2,700 cycles. Often called the HUST dataset.",
     "url": "https://data.mendeley.com/datasets/nsc7hnsg4s/2",
     "paper": "https://pubs.rsc.org/en/content/articlehtml/2022/ee/d2ee01676a",
     "access": "Unverified",
-    "signals": [],
+    "signals": [
+      "Cycling data",
+      "Capacity",
+      "Voltage"
+    ],
     "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
     "source_type": "data_repository",
     "access_status": "not_checked",
     "chemistries": [
       "LFP"
     ],
-    "chemistry_review_status": "catalogue_label_not_independently_verified",
-    "application_domains": []
+    "chemistry_review_status": "source_verified",
+    "application_domains": [],
+    "chemistry_evidence_url": "https://pubs.rsc.org/en/content/articlehtml/2022/ee/d2ee01676a",
+    "chemistry_verification": "source_verified",
+    "chemistry_evidence": {
+      "status": "source_verified",
+      "url": "https://pubs.rsc.org/en/content/articlehtml/2022/ee/d2ee01676a",
+      "note": "Energy & Environmental Science paper: 77 commercial LFP/graphite cells, 1.1 Ah."
+    }
   },
   {
     "id": "generative-learning-assisted-state-of-health-estimation-for-battery-recycling",
@@ -1523,11 +1579,11 @@
     "tasks": [
       "Other research"
     ],
-    "source": "See original source",
-    "scale": "See original source",
+    "source": "Technical University of Munich",
+    "scale": "3 commercial cells: 2 sodium-ion, 1 LFP",
     "description": "Comprehensive electrochemical characterisation of two sodium-ion batteries (layered oxide cathodes) and one LFP cell. Includes pseudo-OCV, GEIS-based OCV, GEIS, R-DC, and rate capability results. Designed for systematic comparison between sodium-ion and lithium-ion technologies.",
     "url": "https://doi.org/10.14459/2024mp1762675",
-    "paper": "https://www.sciencedirect.com/science/article/pii/S0378775325001260",
+    "paper": "https://doi.org/10.1016/j.jpowsour.2025.236290",
     "access": "Unverified",
     "signals": [
       "EIS"
@@ -1540,12 +1596,14 @@
       "Sodium-ion"
     ],
     "chemistry_evidence": {
-      "status": "catalogue_or_source_review",
-      "url": "https://doi.org/10.14459/2024mp1762675",
-      "note": "Catalogue description explicitly identifies LFP and sodium-ion batteries"
+      "status": "source_verified",
+      "url": "https://portal.fis.tum.de/en/publications/comparing-the-electrical-performance-of-commercial-sodium-ion-and/",
+      "note": "Journal of Power Sources abstract: two sodium-ion cells with layered oxide cathodes and one LFP lithium-ion cell."
     },
-    "chemistry_review_status": "catalogue_label_not_independently_verified",
-    "application_domains": []
+    "chemistry_review_status": "source_verified",
+    "application_domains": [],
+    "chemistry_evidence_url": "https://portal.fis.tum.de/en/publications/comparing-the-electrical-performance-of-commercial-sodium-ion-and/",
+    "chemistry_verification": "source_verified"
   },
   {
     "id": "data-repository-for-electrochemical-thermal-modelling-of-high-power-li-ion-pouch-cells",
@@ -1555,15 +1613,17 @@
     "tasks": [
       "Other research"
     ],
-    "source": "See original source",
-    "scale": "See original source",
-    "description": "Controlled CC discharge, pulse protocols, and high-resolution lock-in thermography for spatially resolved heat generation. Supports electrochemical–thermal model development for automotive high-power applications.",
+    "source": "University of Oxford",
+    "scale": "Large-format LFP pouch cell · 1C to 10C",
+    "description": "Lock-in thermography and electrical data from a large-format LFP/graphite pouch cell under constant-current charge and discharge and square-wave pulses at several states of charge, from 1C to 10C, for electrochemical-thermal model development.",
     "url": "https://ora.ox.ac.uk/objects/uuid:fe9bad3e-8a72-4e3b-8f01-fec3324b6758",
-    "paper": "https://www.sciencedirect.com/science/article/pii/S037877532502600X",
+    "paper": "https://doi.org/10.1016/j.jpowsour.2025.238764",
     "access": "Unverified",
     "signals": [
       "Temperature",
-      "Power"
+      "Power",
+      "Voltage",
+      "Current"
     ],
     "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
     "source_type": "data_repository",
@@ -1571,8 +1631,17 @@
     "chemistries": [
       "LFP"
     ],
-    "chemistry_review_status": "catalogue_label_not_independently_verified",
-    "application_domains": []
+    "chemistry_review_status": "source_verified",
+    "application_domains": [],
+    "license": "CC BY 4.0",
+    "doi": "10.5287/ora-eonzaxjpm",
+    "chemistry_evidence_url": "https://ora.ox.ac.uk/objects/uuid:fe9bad3e-8a72-4e3b-8f01-fec3324b6758",
+    "chemistry_verification": "source_verified",
+    "chemistry_evidence": {
+      "status": "source_verified",
+      "url": "https://ora.ox.ac.uk/objects/uuid:fe9bad3e-8a72-4e3b-8f01-fec3324b6758",
+      "note": "Oxford Research Archive record: lithium iron phosphate/graphite pouch cell."
+    }
   },
   {
     "id": "a-cross-scale-framework-for-evaluating-flexibility-values-of-battery-and-fuel-cell-evs",
@@ -1867,13 +1936,23 @@
     "doi": "10.5281/zenodo.20260147",
     "paper_url": "https://arxiv.org/abs/2605.20240",
     "code_url": "https://github.com/SakthiGs/MagBridge-Battery",
-    "license": "CC-BY-4.0",
+    "license": "CC BY 4.0",
     "samples": 6760,
     "chemistries": [
       "LFP"
     ],
     "dataset_kind": "Synthetic",
-    "chemistry_review_status": "catalogue_label_not_independently_verified",
-    "application_domains": []
+    "chemistry_review_status": "source_verified",
+    "application_domains": [],
+    "source": "Amrita Vishwa Vidyapeetham",
+    "scale": "6,760 labelled samples",
+    "paper": "https://arxiv.org/abs/2605.20240",
+    "chemistry_evidence_url": "https://zenodo.org/records/20260147",
+    "chemistry_verification": "source_verified",
+    "chemistry_evidence": {
+      "status": "source_verified",
+      "url": "https://zenodo.org/records/20260147",
+      "note": "Zenodo record: LFP cells; magnetometry signatures conditioned on PulseBat state-of-health labels."
+    }
   }
 ]

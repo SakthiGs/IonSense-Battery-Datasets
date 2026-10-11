@@ -1347,6 +1347,243 @@
           "reviewed": false
         }
       ]
+    },
+    "field-28-lfp": {
+      "coverage": "1 study, the one that produced the data. No use by other groups found yet.",
+      "papers": [
+        {
+          "title": "Gaussian process-based online health monitoring and fault analysis of lithium-ion battery systems from field data",
+          "authors": "Schaeffer, Lenz, Gulla, Bazant, Braatz, Findeisen",
+          "year": 2024,
+          "venue": "Cell Reports Physical Science 5(11)",
+          "doi": "10.1016/j.xcrp.2024.102258",
+          "open_access_url": "https://dspace.mit.edu/handle/1721.1/157659",
+          "relation": "Original study",
+          "use": "Fits Gaussian process resistance models to separate ageing from operating effects, and builds online fault detection. Problems usually start in a single cell of each system.",
+          "tasks": [
+            "Health monitoring",
+            "Fault diagnosis"
+          ],
+          "methods": [
+            "Gaussian process regression",
+            "Recursive spatiotemporal Gaussian processes"
+          ],
+          "split": "",
+          "evidence": "Abstract; Zenodo record links the paper and the BattGP code",
+          "reviewed": false
+        }
+      ]
+    },
+    "electric-vehicle-usage-data-set-for-battery-aging-studies": {
+      "coverage": "1 study, the one that produced the data. Released in 2025, so no reuse yet.",
+      "papers": [
+        {
+          "title": "Lab-to-field gap in battery aging studies: Mismatch of operating conditions between laboratory environments and real-world automotive applications",
+          "authors": "Schreiber, Köning, Balke et al.",
+          "year": 2026,
+          "venue": "eTransportation 27, 100518",
+          "doi": "10.1016/j.etran.2025.100518",
+          "relation": "Original study",
+          "use": "Compares how seven cars were actually driven and charged with the conditions used in laboratory ageing tests.",
+          "tasks": [
+            "Degradation analysis",
+            "Charging analysis"
+          ],
+          "methods": [
+            "Usage statistics"
+          ],
+          "split": "",
+          "evidence": "Dataset README cites this paper",
+          "reviewed": false
+        }
+      ]
+    },
+    "prognosis-of-multivariate-battery-state-via-transformers": {
+      "coverage": "1 study, the one that prepared these files. No other use found yet.",
+      "papers": [
+        {
+          "title": "Prognosis of multivariate battery state of performance and health via transformers",
+          "authors": "Paulson, Kubal, Babinec",
+          "year": 2023,
+          "venue": "arXiv preprint 2309.10014",
+          "doi": "",
+          "url": "https://arxiv.org/abs/2309.10014",
+          "relation": "Original study",
+          "use": "Predicts 28 health descriptors at once with transformer networks; on the LFP fast-charging data, end of life is predicted within 19 cycles on average.",
+          "tasks": [
+            "SOH estimation",
+            "Cycle life"
+          ],
+          "methods": [
+            "Transformer"
+          ],
+          "split": "",
+          "evidence": "Abstract",
+          "reviewed": false
+        }
+      ]
+    },
+    "stanford-long-term-calendar-aging-dataset": {
+      "coverage": "2 studies, both from the group that made the dataset. No use by other groups found yet.",
+      "papers": [
+        {
+          "title": "A decade of insights: Delving into calendar aging trends and implications",
+          "authors": "Lam, Cui, Stroebl, Uppaluri, Onori, Chueh",
+          "year": 2025,
+          "venue": "Joule 9, 101796",
+          "doi": "10.1016/j.joule.2024.11.013",
+          "open_access_url": "https://pangea.stanford.edu/ERE/pdf/OnoriPDF/Journals/101.pdf",
+          "relation": "Original study",
+          "use": "Releases up to 13 years of calendar ageing on 232 cells and tests common ageing models. Arrhenius and power-law trends hold only partly, and early data extrapolates poorly to end of life.",
+          "tasks": [
+            "Degradation analysis"
+          ],
+          "methods": [
+            "Arrhenius model",
+            "Power-law model"
+          ],
+          "split": "",
+          "evidence": "Data availability (OSF ju325)",
+          "reviewed": false
+        },
+        {
+          "title": "Long-term calendar aging across commercial lithium-ion cell chemistries—modeling and early prediction",
+          "authors": "Cui, Stroebl, Uppaluri, Lam, Chueh, Onori",
+          "year": 2025,
+          "venue": "Journal of The Electrochemical Society 172, 060521",
+          "doi": "10.1149/1945-7111/adde16",
+          "open_access_url": "https://pangea.stanford.edu/ERE/pdf/OnoriPDF/Journals/112.pdf",
+          "relation": "Same research group",
+          "use": "Models calendar ageing across the eight cell types and predicts it early; the 85 °C data is left out because those cells failed quickly.",
+          "tasks": [
+            "Degradation analysis"
+          ],
+          "methods": [
+            "Calendar ageing models",
+            "Early prediction"
+          ],
+          "split": "",
+          "evidence": "Introduction (data from Lam et al. 2025); Table I",
+          "reviewed": false
+        }
+      ]
+    },
+    "real-time-personalized-health-status-prediction-via-deep-transfer-learning": {
+      "coverage": "A starting list of 2 studies. Not every paper that used this dataset.",
+      "papers": [
+        {
+          "title": "Real-time personalized health status prediction of lithium-ion batteries using deep transfer learning",
+          "authors": "Ma, Xu, Jiang et al.",
+          "year": 2022,
+          "venue": "Energy & Environmental Science",
+          "doi": "10.1039/d2ee01676a",
+          "relation": "Original study",
+          "use": "Introduces the 77-cell dataset and predicts capacity and remaining life for unseen discharge protocols by fine-tuning only part of a CNN-LSTM model online.",
+          "tasks": [
+            "Capacity estimation",
+            "RUL prediction"
+          ],
+          "methods": [
+            "CNN",
+            "LSTM",
+            "Transfer learning"
+          ],
+          "split": "Model learned from 55 cells; tested on 22 cells with unseen protocols.",
+          "evidence": "Results (Task A)",
+          "reviewed": false
+        },
+        {
+          "title": "Physics-informed neural network for lithium-ion battery degradation stable modeling and prognosis",
+          "authors": "Wang, Zhai, Zhao et al.",
+          "year": 2024,
+          "venue": "Nature Communications 15, 4332",
+          "doi": "10.1038/s41467-024-48779-z",
+          "relation": "Independent group",
+          "use": "One of four datasets used to test a physics-informed state-of-health model (called the HUST dataset there).",
+          "tasks": [
+            "SOH estimation"
+          ],
+          "methods": [
+            "Physics-informed neural network"
+          ],
+          "split": "Cells divided about 6:2:2 into training, validation and test sets.",
+          "evidence": "Methods (datasets); Data availability",
+          "reviewed": false
+        }
+      ]
+    },
+    "rate-capability-ocv-impedance-and-half-cell-data-sodium-ion-and-lfp-batteries": {
+      "coverage": "1 study, the one that produced the data. No other use found yet.",
+      "papers": [
+        {
+          "title": "Comparing the electrical performance of commercial sodium-ion and lithium-iron-phosphate batteries",
+          "authors": "Rehm, Fischer, Rubio Gomez, Schütte, Sauer, Jossen",
+          "year": 2025,
+          "venue": "Journal of Power Sources 633, 236290",
+          "doi": "10.1016/j.jpowsour.2025.236290",
+          "relation": "Original study",
+          "use": "Compares two sodium-ion cells with an LFP cell from 10 to 45 °C. The sodium-ion cells are more sensitive to state of charge and lose more efficiency below 50% charge.",
+          "tasks": [
+            "Other research"
+          ],
+          "methods": [
+            "Pulse resistance",
+            "Impedance spectroscopy",
+            "Efficiency tests"
+          ],
+          "split": "",
+          "evidence": "Abstract",
+          "reviewed": false
+        }
+      ]
+    },
+    "data-repository-for-electrochemical-thermal-modelling-of-high-power-li-ion-pouch-cells": {
+      "coverage": "1 study, the one that produced the data. No other use found yet.",
+      "papers": [
+        {
+          "title": "Electrochemical-thermal modelling of high power Li-ion pouch cells",
+          "authors": "Wojtala et al.",
+          "year": 2026,
+          "venue": "Journal of Power Sources",
+          "doi": "10.1016/j.jpowsour.2025.238764",
+          "relation": "Original study",
+          "use": "Uses the thermography and electrical data to build and check an electrochemical-thermal model of a high-power LFP pouch cell.",
+          "tasks": [
+            "Other research"
+          ],
+          "methods": [
+            "Electrochemical-thermal model",
+            "Lock-in thermography"
+          ],
+          "split": "",
+          "evidence": "Oxford Research Archive record links this paper",
+          "reviewed": false
+        }
+      ]
+    },
+    "magbridge-battery-v1": {
+      "coverage": "1 study, the one that produced the data (released May 2026).",
+      "papers": [
+        {
+          "title": "MagBridge-Battery: A synthetic bridge dataset for Li-ion magnetometry and state-of-health diagnostics",
+          "authors": "Gunasekar, Rangarajan",
+          "year": 2026,
+          "venue": "arXiv preprint 2605.20240",
+          "doi": "",
+          "url": "https://arxiv.org/abs/2605.20240",
+          "relation": "Original study",
+          "use": "Combines real magnetic signatures from an open archive with PulseBat state-of-health labels, and defines benchmark tasks with a cell-disjoint split.",
+          "tasks": [
+            "SOH estimation",
+            "Second-life classification",
+            "Anomaly detection"
+          ],
+          "methods": [],
+          "split": "Cell-disjoint primary split with no parent–child leakage.",
+          "evidence": "Abstract; Zenodo record",
+          "reviewed": false
+        }
+      ]
     }
   }
 }
