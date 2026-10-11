@@ -62,10 +62,10 @@
       "url": "https://doi.org/10.5281/zenodo.17641542"
     },
     "battery-materials-database-chemdataextractor": {
-      "date": "2020-07-13",
-      "source": "DataCite record for doi:10.6084/m9.figshare.11888115.v2",
+      "date": "2020-02-22",
+      "source": "DataCite record for doi:10.6084/m9.figshare.11888115",
       "kind": "Released",
-      "url": "https://doi.org/10.6084/m9.figshare.11888115.v2"
+      "url": "https://doi.org/10.6084/m9.figshare.11888115"
     },
     "batterylife-benchmark": {
       "date": "2025-02-21",
@@ -97,10 +97,10 @@
       "url": "https://www.nature.com/articles/s41586-020-1994-5"
     },
     "cmu-evtol-battery-dataset": {
-      "date": "2023-04-06",
-      "source": "DataCite record for doi:10.1184/r1/14226830.v2",
+      "date": "2021-03-17",
+      "source": "DataCite record for doi:10.1184/r1/14226830",
       "kind": "Released",
-      "url": "https://doi.org/10.1184/r1/14226830.v2"
+      "url": "https://doi.org/10.1184/r1/14226830"
     },
     "comprehensive-battery-aging-dataset-nmc-c-sio-capacity-impedance-fade": {
       "date": "2024-03-07",
