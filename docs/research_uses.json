@@ -23,6 +23,62 @@
           ],
           "split": "41 training cells, 43 primary test cells, 40 secondary test cells. Later papers call this the original split.",
           "evidence": "Abstract; split described in Attia et al. (2021), Table I",
+          "results": [
+            {
+              "benchmark": "primary-all",
+              "model": "Variance model",
+              "value": 138,
+              "evidence": "Table 1"
+            },
+            {
+              "benchmark": "primary-all",
+              "model": "Discharge model",
+              "value": 91,
+              "evidence": "Table 1"
+            },
+            {
+              "benchmark": "primary-all",
+              "model": "Full model",
+              "value": 118,
+              "evidence": "Table 1"
+            },
+            {
+              "benchmark": "primary-excl",
+              "model": "Variance model",
+              "value": 138,
+              "evidence": "Table 1 (value in brackets)"
+            },
+            {
+              "benchmark": "primary-excl",
+              "model": "Discharge model",
+              "value": 86,
+              "evidence": "Table 1 (value in brackets)"
+            },
+            {
+              "benchmark": "primary-excl",
+              "model": "Full model",
+              "value": 100,
+              "evidence": "Table 1 (value in brackets)"
+            },
+            {
+              "benchmark": "secondary",
+              "model": "Variance model",
+              "value": 196,
+              "evidence": "Table 1"
+            },
+            {
+              "benchmark": "secondary",
+              "model": "Discharge model",
+              "value": 173,
+              "evidence": "Table 1"
+            },
+            {
+              "benchmark": "secondary",
+              "model": "Full model",
+              "value": 214,
+              "evidence": "Table 1"
+            }
+          ],
           "reviewed": false
         },
         {
@@ -69,6 +125,56 @@
           ],
           "split": "Original split (41 / 43 / 40 cells), with one outlier cell removed from the primary test set.",
           "evidence": "Summary of dataset and previous work; Table I; Table II",
+          "results": [
+            {
+              "benchmark": "primary-excl",
+              "model": "CNN on ΔQ(V), mean of 10 runs",
+              "value": 72,
+              "evidence": "Table II"
+            },
+            {
+              "benchmark": "primary-excl",
+              "model": "PCR on ΔQ100−10(V)",
+              "value": 97,
+              "evidence": "Table II"
+            },
+            {
+              "benchmark": "primary-excl",
+              "model": "PLSR on ΔQ100−10(V)",
+              "value": 100,
+              "evidence": "Table II"
+            },
+            {
+              "benchmark": "primary-excl",
+              "model": "log10 IQR of ΔQ100−10(V), one feature",
+              "value": 124,
+              "evidence": "Table II"
+            },
+            {
+              "benchmark": "secondary",
+              "model": "CNN on ΔQ(V), mean of 10 runs",
+              "value": 204,
+              "evidence": "Table II"
+            },
+            {
+              "benchmark": "secondary",
+              "model": "PCR on ΔQ100−10(V)",
+              "value": 193,
+              "evidence": "Table II"
+            },
+            {
+              "benchmark": "secondary",
+              "model": "PLSR on ΔQ100−10(V)",
+              "value": 176,
+              "evidence": "Table II"
+            },
+            {
+              "benchmark": "secondary",
+              "model": "log10 IQR of ΔQ100−10(V), one feature",
+              "value": 190,
+              "evidence": "Table II"
+            }
+          ],
           "reviewed": false
         },
         {
@@ -111,6 +217,28 @@
           ],
           "split": "Own split: 5-fold cross-validation (80/20), holding out whole cells or whole charging policies. Not the original split.",
           "evidence": "Introduction; Section 2.1; Section 4.1",
+          "results": [
+            {
+              "benchmark": null,
+              "model": "Discharge DNN, 100 input cycles",
+              "metric": "RMSE",
+              "value": 33,
+              "unit": "cycles",
+              "test_set": "their own 5-fold split (80/20)",
+              "evidence": "Section 2.2; Table 2",
+              "why": "Their own random split of cells, after removing cells with poor data, not the original test sets."
+            },
+            {
+              "benchmark": null,
+              "model": "Discharge DNN, 1 input cycle",
+              "metric": "RMSE",
+              "value": 57,
+              "unit": "cycles",
+              "test_set": "their own 5-fold split (80/20)",
+              "evidence": "Section 2.2; Table 2",
+              "why": "Same as above."
+            }
+          ],
           "reviewed": false
         },
         {
@@ -140,6 +268,28 @@
           ],
           "split": "MATR1 and MATR2 follow the original split (MATR2 tests on unseen charging policies); CLO is a random split.",
           "evidence": "Section 4.1; Table 1; Appendix A",
+          "results": [
+            {
+              "benchmark": null,
+              "model": "PCR (best on MATR1)",
+              "metric": "RMSE",
+              "value": 90,
+              "unit": "",
+              "test_set": "MATR1 test set",
+              "evidence": "Table 2",
+              "why": "Uses the original split, but the table gives no unit and does not say whether the outlier cell was removed. Its re-run of Severson's discharge model scored 329 on MATR1, against 86 in the original paper."
+            },
+            {
+              "benchmark": null,
+              "model": "Discharge model, re-run (best on MATR2)",
+              "metric": "RMSE",
+              "value": 149,
+              "unit": "",
+              "test_set": "MATR2 test set",
+              "evidence": "Table 2",
+              "why": "Same reasons as MATR1."
+            }
+          ],
           "reviewed": false
         },
         {
@@ -159,7 +309,57 @@
           ],
           "split": "Original split (41 / 43 / 40 cells); the Attia et al. cells are used as a third test set.",
           "evidence": "Section 4.1.1; Table 1",
+          "results": [
+            {
+              "benchmark": "primary-all",
+              "model": "Two-point feature + XGBoost",
+              "value": 129,
+              "evidence": "Table 1"
+            },
+            {
+              "benchmark": "primary-all",
+              "model": "Variance feature + XGBoost (their baseline)",
+              "value": 117,
+              "evidence": "Table 1"
+            },
+            {
+              "benchmark": "secondary",
+              "model": "Two-point feature + XGBoost",
+              "value": 197,
+              "evidence": "Table 1"
+            },
+            {
+              "benchmark": "secondary",
+              "model": "Variance feature + XGBoost (their baseline)",
+              "value": 191,
+              "evidence": "Table 1"
+            }
+          ],
           "reviewed": false
+        }
+      ],
+      "results_note": "Numbers as reported in each paper, not re-run by IonSense. Only results on the same test cells and metric are ranked together. All ranked results use data from the first 100 cycles. Lower RMSE is better.",
+      "benchmarks": [
+        {
+          "id": "primary-all",
+          "label": "Primary test, all 43 cells",
+          "metric": "RMSE",
+          "unit": "cycles",
+          "note": "Includes the one primary-test cell that Severson et al. describe as an outlier."
+        },
+        {
+          "id": "primary-excl",
+          "label": "Primary test, outlier cell removed (42 cells)",
+          "metric": "RMSE",
+          "unit": "cycles",
+          "note": "Severson et al. report this alongside the full set; Attia et al. (2021) use it throughout."
+        },
+        {
+          "id": "secondary",
+          "label": "Secondary test, 40 cells",
+          "metric": "RMSE",
+          "unit": "cycles",
+          "note": "Cells charged with policies not seen in training, so this set is harder."
         }
       ]
     },

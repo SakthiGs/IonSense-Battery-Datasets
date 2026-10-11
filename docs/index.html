@@ -293,6 +293,30 @@ dialog.sheet::backdrop{background:var(--scrim)}
 .use-links{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:13px}
 .use-links a{color:var(--accent-ink);text-underline-offset:2px;text-decoration-color:color-mix(in srgb,currentColor 40%,transparent)}
 
+/* Reported results: published numbers, ranked only within the same test set */
+.res-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.res-head h3{margin:0}
+.res-head .cnt{font-size:13px;color:var(--muted)}
+.bench{display:flex;flex-direction:column;gap:6px;margin-top:14px}
+.bench h4{margin:0;font-size:13.5px;font-weight:650}
+.bench-note{margin:0;font-size:12.5px;line-height:1.4;color:var(--muted)}
+.bench-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r-m)}
+table.bench-t{width:100%;border-collapse:collapse;font-size:13px}
+.bench-t th,.bench-t td{padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}
+.bench-t thead th{font-size:12px;font-weight:600;color:var(--muted);background:var(--sunken);white-space:nowrap;position:static}
+.bench-t tbody tr:last-child td{border-bottom:0}
+.bench-t .rv{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.bench-t td.who{min-width:118px}
+.bench-t td.who .link-btn{padding:0;font-size:inherit;text-align:left}
+.bench-t td.who small{display:block;color:var(--muted);font-size:12px}
+.bench-t tr.top td{background:color-mix(in srgb,var(--accent) 7%,transparent)}
+.bench-t tr.top td.rv{font-weight:700;color:var(--accent-ink)}
+.best{display:inline-block;margin-left:6px;font-size:11px;font-weight:650;padding:0 6px;border-radius:999px;background:var(--accent-soft);color:var(--accent-ink);vertical-align:1px}
+.unranked{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-direction:column;gap:8px}
+.unranked li{font-size:13px;line-height:1.45;padding:8px 10px;border-radius:var(--r-s);background:var(--sunken)}
+.unranked .num{font-weight:650;font-variant-numeric:tabular-nums}
+.unranked .why{display:block;color:var(--ink-2);font-size:12.5px;margin-top:2px}
+
 /* Compare: selection toggles, tray and side-by-side panel */
 .cmp-toggle{display:inline-flex;align-items:center;gap:7px;height:34px;padding:0 11px 0 9px;border-radius:var(--r-s);border:1px solid var(--line-strong);background:var(--panel);font-size:13.5px;font-weight:600;color:var(--ink-2);cursor:pointer;user-select:none;white-space:nowrap}
 .cmp-toggle input{width:15px;height:15px;margin:0;accent-color:var(--accent);cursor:pointer}
@@ -1011,11 +1035,58 @@ function emptyState() {
 const dlg = $('#detail');
 /* "Used in research": published studies that used this dataset. Nothing renders when a dataset has no entries. */
 const isOriginal = p => /^original/i.test(p.relation || '');
+const sortedUses = d => usesOf(d).slice().sort((a, b) => isOriginal(b) - isOriginal(a) || (a.year || 0) - (b.year || 0));
+const byLine = p => [String(p.authors || '').split(',')[0].replace(/ et al\.?$/, '') + (String(p.authors || '').includes(',') ? ' et al.' : ''), p.year].filter(Boolean).join(' ');
+const jumpTo = id => { const el = document.getElementById(id); if (el) el.scrollIntoView({ block: 'start', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }); };
+
+/* "Reported results": numbers as published. Results are ranked only against others
+   on the same benchmark (same test cells and metric); everything else is listed, unranked. */
+function resultsSection(d) {
+  const entry = USES[d.id] || {};
+  const papers = sortedUses(d);
+  const rows = [];
+  papers.forEach((p, i) => (Array.isArray(p.results) ? p.results : []).forEach(r => { if (r && typeof r.value === 'number') rows.push({ p, i, r }); }));
+  if (!rows.length) return null;
+  const benches = (Array.isArray(entry.benchmarks) ? entry.benchmarks : []).filter(b => rows.some(x => x.r.benchmark === b.id));
+  const known = new Set(benches.map(b => b.id));
+  const studyCell = x => h('td', { class: 'who' },
+    h('button', { type: 'button', class: 'link-btn', title: 'Show this study', onclick: () => jumpTo('use-' + x.i) }, byLine(x.p)));
+  const tables = benches.map(b => {
+    const list = rows.filter(x => x.r.benchmark === b.id).sort((a, c) => a.r.value - c.r.value);
+    const best = list[0].r.value;
+    const unit = [b.metric, b.unit ? `(${b.unit})` : ''].filter(Boolean).join(' ');
+    return h('div', { class: 'bench' },
+      h('h4', {}, b.label),
+      b.note ? h('p', { class: 'bench-note' }, b.note) : null,
+      h('div', { class: 'bench-wrap' }, h('table', { class: 'bench-t' },
+        h('caption', { class: 'sr-only' }, `${b.label}: ${unit}, lower is better`),
+        h('thead', {}, h('tr', {}, h('th', { scope: 'col' }, 'Study'), h('th', { scope: 'col' }, 'Model'), h('th', { scope: 'col', class: 'rv' }, unit))),
+        h('tbody', {}, list.map(x => h('tr', { class: x.r.value === best ? 'top' : null, title: x.r.evidence ? 'Source: ' + x.r.evidence : null },
+          studyCell(x),
+          h('td', {}, x.r.model || ''),
+          h('td', { class: 'rv' }, String(x.r.value), x.r.value === best ? h('span', { class: 'best' }, 'Lowest') : null)))))));
+  });
+  const loose = rows.filter(x => !known.has(x.r.benchmark));
+  const unranked = loose.length ? h('div', { class: 'bench' },
+    h('h4', {}, 'Reported, but not ranked'),
+    h('p', { class: 'bench-note' }, 'These were measured on different test cells or with details missing, so they are not compared with the tables above.'),
+    h('ul', { class: 'unranked' }, loose.map(x => h('li', {},
+      h('button', { type: 'button', class: 'link-btn', style: 'padding:0;font-size:inherit', onclick: () => jumpTo('use-' + x.i) }, byLine(x.p)), ' · ',
+      x.r.model || '', ' · ',
+      h('span', { class: 'num' }, [x.r.metric, x.r.value, x.r.unit].filter(v => v !== '' && v != null).join(' ')),
+      x.r.test_set ? ' on ' + x.r.test_set : '',
+      x.r.why ? h('span', { class: 'why' }, x.r.why) : null)))) : null;
+  return h('section', { class: 'uses', id: 'detail-results', 'aria-labelledby': 'results-h' },
+    h('div', { class: 'res-head' }, h('h3', { id: 'results-h' }, 'Reported results'), h('span', { class: 'cnt' }, 'Lower is better')),
+    entry.results_note ? h('p', { class: 'uses-intro' }, entry.results_note) : null,
+    tables, unranked);
+}
+
 function usesSection(d) {
-  const papers = usesOf(d).slice().sort((a, b) => isOriginal(b) - isOriginal(a) || (a.year || 0) - (b.year || 0));
+  const papers = sortedUses(d);
   if (!papers.length) return null;
   const entry = USES[d.id] || {};
-  const item = p => {
+  const item = (p, i) => {
     const doi = typeof p.doi === 'string' && p.doi.trim() ? 'https://doi.org/' + p.doi.trim().replace(/^https?:\/\/(dx\.)?doi\.org\//i, '') : '';
     const href = doi || http(p.url);
     const facts = h('dl', { class: 'facts' });
@@ -1024,8 +1095,10 @@ function usesSection(d) {
     add('Methods', (p.methods || []).length ? h('span', { class: 'chips' }, p.methods.map(m => h('span', { class: 'tag' }, m))) : '');
     add('Data split', p.split || '');
     add('Evidence', p.evidence || '');
+    const nRes = Array.isArray(p.results) ? p.results.length : 0;
+    if (nRes) add('Results', h('button', { type: 'button', class: 'link-btn', style: 'padding:0;font-size:inherit', onclick: () => jumpTo('detail-results') }, `See ${plural(nRes, 'reported result')}`));
     const oa = http(p.open_access_url);
-    return h('li', { class: 'use' },
+    return h('li', { class: 'use', id: 'use-' + i },
       h('div', { class: 'use-top' },
         p.relation ? h('span', { class: 'use-rel' + (isOriginal(p) ? ' orig' : '') }, p.relation) : null,
         p.reviewed === true ? null : h('span', { class: 'use-pending', title: 'Drafted from the paper; not yet checked by the IonSense maintainer' }, 'Awaiting review')),
@@ -1038,7 +1111,7 @@ function usesSection(d) {
   return h('section', { class: 'uses', id: 'detail-uses', 'aria-labelledby': 'uses-title' },
     h('div', { class: 'uses-head' }, h('h3', { id: 'uses-title' }, 'Used in research'), h('span', { class: 'cnt' }, plural(papers.length, 'study', 'studies'))),
     entry.coverage ? h('p', { class: 'uses-intro' }, entry.coverage) : null,
-    h('ol', { class: 'uses-list' }, papers.map(item)));
+    h('ol', { class: 'uses-list' }, papers.map((p, i) => item(p, i))));
 }
 
 function openDetail(d, jump) {
@@ -1088,6 +1161,7 @@ function openDetail(d, jump) {
     facts,
     notes.length ? h('div', {}, h('h3', {}, 'Notes'), h('p', { class: 'note' }, ICON_INFO(), h('span', {}, notes.join(' ')))) : null,
     ev && ev.note ? h('div', {}, h('h3', {}, 'Chemistry evidence'), h('p', { style: 'margin:0;font-size:14px;color:var(--ink-2)' }, ev.note, ' ', extLink(http(ev.url), 'Source', 'link-btn'))) : null,
+    resultsSection(d),
     usesSection(d),
     h('p', { class: 'caveat' }, d.access_status === 'verified_public'
       ? 'Public access confirmed. Check the licence on the original record before reuse.'
