@@ -12,6 +12,13 @@
       "source": "figshare record 25330501 (version 1)",
       "kind": "Released"
     },
+    "accelerated-battery-life-testing-nasa": {
+      "date": "2023-12-18",
+      "source": "data.nasa.gov record (Issued 2023-12-18)",
+      "kind": "Released",
+      "checked_by_person": true,
+      "url": "https://data.nasa.gov/dataset/randomized-and-recommissioned-battery-dataset"
+    },
     "aging-dataset-lco-battery-with-mechanical-measurements": {
       "date": "2025-02-25",
       "source": "DataCite record for doi:10.5281/zenodo.14914171",
@@ -35,6 +42,12 @@
       "source": "DataCite record for doi:10.5281/zenodo.10293071",
       "kind": "Released",
       "url": "https://doi.org/10.5281/zenodo.10293071"
+    },
+    "battery-aging-modes-across-nmc-compositions": {
+      "date": "2022-10-25",
+      "source": "DataCite record for doi:10.5281/zenodo.7250552",
+      "kind": "Released",
+      "url": "https://doi.org/10.5281/zenodo.7250552"
     },
     "battery-degradation-dataset-based-on-a-forklift-mission-profile": {
       "date": "2023-08-29",
@@ -76,6 +89,13 @@
       "source": "figshare record 24421210 (version 1)",
       "kind": "Released"
     },
+    "closed-loop-fast-charging-optimisation": {
+      "date": "2020-02-19",
+      "source": "Attia et al., Nature (published 19 Feb 2020)",
+      "kind": "Released with paper",
+      "checked_by_person": true,
+      "url": "https://www.nature.com/articles/s41586-020-1994-5"
+    },
     "cmu-evtol-battery-dataset": {
       "date": "2023-04-06",
       "source": "DataCite record for doi:10.1184/r1/14226830.v2",
@@ -106,10 +126,36 @@
       "kind": "Released",
       "url": "https://doi.org/10.5287/ora-eonzaxjpm"
     },
+    "discovery-learning-predicts-battery-cycle-life-from-minimal-experiments": {
+      "date": "2025-11-19",
+      "source": "DataCite record for doi:10.5281/zenodo.17654406",
+      "kind": "Released",
+      "url": "https://doi.org/10.5281/zenodo.17654406"
+    },
+    "dynamic-cycling-enhances-battery-lifetime": {
+      "date": "2024-11-12",
+      "source": "DataCite record for doi:10.25740/td676xr4322",
+      "kind": "Released",
+      "url": "https://doi.org/10.25740/td676xr4322"
+    },
+    "early-cycle-life": {
+      "date": "2019-03-25",
+      "source": "Severson et al., Nature Energy (published 25 Mar 2019); data at data.matr.io/1",
+      "kind": "Released with paper",
+      "checked_by_person": true,
+      "url": "https://www.nature.com/articles/s41560-019-0356-8"
+    },
     "electric-vehicle-usage-data-set-for-battery-aging-studies": {
       "date": "2025-08-28",
       "source": "GitHub repository TUMFTM/electric-vehicle-uds-dataset",
       "kind": "Repository created"
+    },
+    "evbattery-large-scale-ev-dataset": {
+      "date": "2022-01-28",
+      "source": "arXiv 2201.12358, version 1 (28 Jan 2022)",
+      "kind": "Released with preprint",
+      "checked_by_person": true,
+      "url": "https://arxiv.org/abs/2201.12358v1"
     },
     "experimental-data-galvanostatic-discharge-at-different-c-rates-and-temperatures": {
       "date": "2021-02-04",
@@ -128,6 +174,13 @@
       "source": "DataCite record for doi:10.17632/zh58byr53c",
       "kind": "Released",
       "url": "https://doi.org/10.17632/zh58byr53c"
+    },
+    "generative-learning-assisted-state-of-health-estimation-for-battery-recycling": {
+      "date": "2024-11-23",
+      "source": "Tao et al., Nature Communications (published 23 Nov 2024)",
+      "kind": "Released with paper",
+      "checked_by_person": true,
+      "url": "https://www.nature.com/articles/s41467-024-54454-0"
     },
     "gic-nmc-solar-battery-synthetic-data": {
       "date": "2022-08-11",
@@ -195,6 +248,13 @@
       "kind": "Released",
       "url": "https://doi.org/10.34810/data2395"
     },
+    "liiondb-parameter-database": {
+      "date": "2022-05-30",
+      "source": "Wang et al., Progress in Energy (online 30 May 2022)",
+      "kind": "Released with paper",
+      "checked_by_person": true,
+      "url": "https://spiral.imperial.ac.uk/entities/publication/7dbbf9d5-74bc-448a-89a3-aceb52b2edcf"
+    },
     "lithium-inventory-tracking-as-a-nondestructive-battery-evaluation-method": {
       "date": "2024-01-19",
       "source": "OSF project 2w4k3",
@@ -217,11 +277,24 @@
       "kind": "Released",
       "url": "https://doi.org/10.17632/sn2kv34r4h"
     },
+    "mechanistically-guided-residual-learning-dataset-for-battery-state-monitoring": {
+      "date": "2025-11-12",
+      "source": "DataCite record for doi:10.5281/zenodo.15606246",
+      "kind": "Released",
+      "url": "https://doi.org/10.5281/zenodo.15606246"
+    },
     "multi-stage-lithium-ion-battery-aging-study": {
       "date": "2024-08-06",
       "source": "DataCite record for doi:10.6084/m9.figshare.25975315",
       "kind": "Released",
       "url": "https://doi.org/10.6084/m9.figshare.25975315"
+    },
+    "nasa-battery-data-set": {
+      "date": "2010-09-13",
+      "source": "data.nasa.gov 'Li-ion Battery Aging Datasets' (Issued 2010-09-13)",
+      "kind": "Listed on data.nasa.gov",
+      "checked_by_person": true,
+      "url": "https://data.nasa.gov/dataset/li-ion-battery-aging-datasets"
     },
     "online-fault-zenodo": {
       "date": "2024-02-14",
@@ -304,6 +377,20 @@
       "source": "OSF project 8jnr5",
       "kind": "Project created"
     },
+    "small-satellite-power-simulation-nasa": {
+      "date": "2023-11-02",
+      "source": "data.nasa.gov record (Issued 2023-11-02)",
+      "kind": "Released",
+      "checked_by_person": true,
+      "url": "https://data.nasa.gov/dataset/small-satellite-power-simulation"
+    },
+    "source-data-internal-sensors-in-a-smart-battery-impact-on-local-graphite-lithiation": {
+      "date": "2024-11-26",
+      "source": "Nature Communications source data (published 26 Nov 2024)",
+      "kind": "Released with paper",
+      "checked_by_person": true,
+      "url": "https://www.nature.com/articles/s41467-024-54656-6"
+    },
     "source-data-reuse-and-recycling-pathway-of-retired-batteries": {
       "date": "2024-05-31",
       "source": "GitHub repository RuifeiMa/Reuse-and-recycling-pathway-of-retired-batteries",
@@ -313,6 +400,12 @@
       "date": "2024-11-11",
       "source": "OSF project ju325",
       "kind": "Project created"
+    },
+    "synthetic-duty-cycles-from-real-world-autonomous-ev-driving": {
+      "date": "2023-03-30",
+      "source": "DataCite record for doi:10.25740/ky011nj6376",
+      "kind": "Released",
+      "url": "https://doi.org/10.25740/ky011nj6376"
     },
     "tsinghua-ev": {
       "date": "2024-04-16",
@@ -369,34 +462,20 @@
     }
   },
   "not_found": [
-    "accelerated-battery-life-testing-nasa",
-    "battery-aging-modes-across-nmc-compositions",
     "battery-archive",
     "battery-failure-databank-nrel",
     "battery-imaging-library-bil",
     "calce-battery-data",
-    "closed-loop-fast-charging-optimisation",
     "cycle-aging-data-of-automotive-grade-li-ion-cells-under-realistic-conditions-vw-id-3",
-    "discovery-learning-predicts-battery-cycle-life-from-minimal-experiments",
-    "dynamic-cycling-enhances-battery-lifetime",
-    "early-cycle-life",
-    "evbattery-large-scale-ev-dataset",
     "formation-tri",
-    "generative-learning-assisted-state-of-health-estimation-for-battery-recycling",
     "hirf-battery-data-set-nasa",
     "hnei-lg-icr18650c2-variability",
     "improving-real-world-execution-of-optimised-trading-schedules-for-large-scale-battery-storage",
-    "liiondb-parameter-database",
     "lithium-ion-battery-aging-dataset-based-on-ev-real-driving-profiles",
-    "mechanistically-guided-residual-learning-dataset-for-battery-state-monitoring",
-    "nasa-battery-data-set",
     "predicting-battery-end-of-life-from-solar-off-grid-field-data",
     "prognosis-of-multivariate-battery-state-via-transformers",
     "randomized-battery-usage-data-set-nasa",
     "sandia-commercial-cell-degradation",
-    "small-satellite-power-simulation-nasa",
-    "source-data-internal-sensors-in-a-smart-battery-impact-on-local-graphite-lithiation",
-    "synthetic-duty-cycles-from-real-world-autonomous-ev-driving",
     "tum-commercial-aging",
     "uconn-lco-gr-battery-fast-charging-dataset",
     "ul-purdue-degradation-safety",
