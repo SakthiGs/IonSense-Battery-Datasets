@@ -1,0 +1,565 @@
+{
+  "about": "Published studies that used each dataset. Each entry was checked against the paper's own text. Set \"reviewed\" to true once you have checked an entry yourself.",
+  "updated": "2026-10-11",
+  "datasets": {
+    "early-cycle-life": {
+      "coverage": "A starting list of 7 papers, mostly picked from the most-cited work that cites Severson et al. (2019), which has over 3,000 citations. Not every paper that used this dataset.",
+      "papers": [
+        {
+          "title": "Data-driven prediction of battery cycle life before capacity degradation",
+          "authors": "Severson, Attia, Jin et al.",
+          "year": 2019,
+          "venue": "Nature Energy 4, 383–391",
+          "doi": "10.1038/s41560-019-0356-8",
+          "relation": "Original study",
+          "use": "Introduces the dataset: 124 commercial LFP/graphite cells (A123 APR18650M1A) cycled under fast-charging conditions, with cycle lives from about 150 to 2,300 cycles.",
+          "tasks": [
+            "Cycle life",
+            "Short/long-life classification"
+          ],
+          "methods": [
+            "Elastic net",
+            "Logistic regression"
+          ],
+          "split": "41 training cells, 43 primary test cells, 40 secondary test cells. Later papers call this the original split.",
+          "evidence": "Abstract; split described in Attia et al. (2021), Table I",
+          "reviewed": false
+        },
+        {
+          "title": "Closed-loop optimization of fast-charging protocols for batteries with machine learning",
+          "authors": "Attia, Grover, Jin et al.",
+          "year": 2020,
+          "venue": "Nature 578, 397–402",
+          "doi": "10.1038/s41586-020-1994-5",
+          "relation": "Same research group",
+          "use": "Uses the early-prediction model built on this dataset to shorten each experiment, then searches 224 six-step fast-charging protocols with Bayesian optimisation. The new cells it cycled are also published on data.matr.io.",
+          "tasks": [
+            "Cycle life",
+            "Fast-charging optimisation"
+          ],
+          "methods": [
+            "Elastic net",
+            "Bayesian optimisation"
+          ],
+          "split": "",
+          "evidence": "Abstract; Extended Data Fig. 1",
+          "reviewed": false
+        },
+        {
+          "title": "Statistical learning for accurate and interpretable battery lifetime prediction",
+          "authors": "Attia, Severson, Witmer",
+          "year": 2021,
+          "venue": "Journal of The Electrochemical Society",
+          "doi": "10.1149/1945-7111/ac2704",
+          "open_access_url": "https://arxiv.org/abs/2101.01885",
+          "relation": "Same research group",
+          "use": "Re-analyses this dataset with simple, interpretable models and compares them with the original models and a CNN.",
+          "tasks": [
+            "Cycle life"
+          ],
+          "methods": [
+            "Univariate models",
+            "Ridge",
+            "Elastic net",
+            "PLSR",
+            "PCR",
+            "Random forest",
+            "MLP",
+            "CNN"
+          ],
+          "split": "Original split (41 / 43 / 40 cells), with one outlier cell removed from the primary test set.",
+          "evidence": "Summary of dataset and previous work; Table I; Table II",
+          "reviewed": false
+        },
+        {
+          "title": "Elbows of internal resistance rise curves in Li-ion cells",
+          "authors": "Strange, Li, Gilchrist, dos Reis",
+          "year": 2021,
+          "venue": "Energies 14(4), 1206",
+          "doi": "10.3390/en14041206",
+          "relation": "Independent group",
+          "use": "Trains a model on the internal-resistance data of these 124 cells to fill in the missing resistance values for the 233 cells of Attia et al. (2020), then predicts the elbow point of resistance rise from early cycles.",
+          "tasks": [
+            "Internal resistance",
+            "Degradation analysis"
+          ],
+          "methods": [
+            "CNN",
+            "Feed-forward neural network",
+            "Relevance vector machine"
+          ],
+          "split": "Resistance model trained on these 124 cells (batches 1–3) and applied to batches 4–8.",
+          "evidence": "Section 2.1 (Data description); Section 2.2",
+          "reviewed": false
+        },
+        {
+          "title": "Deep neural network battery life and voltage prediction by using data of one cycle only",
+          "authors": "Hsu, Xiong, Chen, Li, Tsou",
+          "year": 2022,
+          "venue": "Applied Energy 306, 118134",
+          "doi": "10.1016/j.apenergy.2021.118134",
+          "open_access_url": "https://par.nsf.gov/biblio/10366159",
+          "relation": "Independent group",
+          "use": "Uses 81 to 115 of the 124 cells, after removing cells with poor-quality data, to predict end of life, remaining life and voltage curves from as little as one cycle.",
+          "tasks": [
+            "Cycle life",
+            "RUL prediction",
+            "Voltage curve prediction"
+          ],
+          "methods": [
+            "CNN"
+          ],
+          "split": "Own split: 5-fold cross-validation (80/20), holding out whole cells or whole charging policies. Not the original split.",
+          "evidence": "Introduction; Section 2.1; Section 4.1",
+          "reviewed": false
+        },
+        {
+          "title": "BatteryML: An open-source platform for machine learning on battery degradation",
+          "authors": "Zhang, Gui, Zheng, Lu, Li, Bian",
+          "year": 2023,
+          "venue": "arXiv preprint 2310.14714",
+          "doi": "",
+          "url": "https://arxiv.org/abs/2310.14714",
+          "relation": "Independent group",
+          "use": "Packages this dataset, together with the Attia et al. (2020) cells, as the MATR benchmark and compares many models on it with fixed splits.",
+          "tasks": [
+            "Cycle life",
+            "SOH estimation",
+            "SOC estimation"
+          ],
+          "methods": [
+            "Linear models",
+            "PLSR",
+            "Gaussian process",
+            "Random forest",
+            "XGBoost",
+            "MLP",
+            "CNN",
+            "LSTM",
+            "Transformer"
+          ],
+          "split": "MATR1 and MATR2 follow the original split (MATR2 tests on unseen charging policies); CLO is a random split.",
+          "evidence": "Section 4.1; Table 1; Appendix A",
+          "reviewed": false
+        },
+        {
+          "title": "Two points are enough",
+          "authors": "Liu, Zhao, Zheng et al.",
+          "year": 2024,
+          "venue": "arXiv preprint 2408.11872",
+          "doi": "",
+          "url": "https://arxiv.org/abs/2408.11872",
+          "relation": "Independent group",
+          "use": "Uses the 124 cells, plus 45 cells from Attia et al. (2020) as an extra test set, to show that a feature built from just two voltage points predicts cycle life about as well as published features.",
+          "tasks": [
+            "Cycle life"
+          ],
+          "methods": [
+            "Two-point feature"
+          ],
+          "split": "Original split (41 / 43 / 40 cells); the Attia et al. cells are used as a third test set.",
+          "evidence": "Section 4.1.1; Table 1",
+          "reviewed": false
+        }
+      ]
+    },
+    "nasa-battery-data-set": {
+      "coverage": "A starting list of 4 studies. This is one of the most widely used battery datasets, so the list covers only a few of the papers that used it.",
+      "papers": [
+        {
+          "title": "Battery Data Set",
+          "authors": "Saha, Goebel",
+          "year": 2007,
+          "venue": "NASA Prognostics Data Repository, NASA Ames Research Center",
+          "doi": "",
+          "url": "https://www.nasa.gov/intelligent-systems-division/discovery-and-systems-health/pcoe/pcoe-data-set-repository/",
+          "relation": "Original data release",
+          "use": "Releases the data: Li-ion cells repeatedly charged and discharged at several ambient temperatures, with impedance measured along the way.",
+          "tasks": [
+            "SOH estimation",
+            "RUL prediction"
+          ],
+          "methods": [],
+          "split": "",
+          "evidence": "NASA PCoE data repository, item 5 (citation given there)",
+          "reviewed": false
+        },
+        {
+          "title": "Transformer network for remaining useful life prediction of lithium-ion batteries",
+          "authors": "Chen, Hong, Zhou",
+          "year": 2022,
+          "venue": "IEEE Access 10, 19621–19628",
+          "doi": "10.1109/ACCESS.2022.3151975",
+          "relation": "Independent group",
+          "use": "Predicts remaining useful life from the capacity curves of cells B0005, B0006, B0007 and B0018, after denoising them with an autoencoder.",
+          "tasks": [
+            "RUL prediction"
+          ],
+          "methods": [
+            "Denoising autoencoder",
+            "Transformer"
+          ],
+          "split": "Leave one battery out across the four cells.",
+          "evidence": "Abstract; companion code (github.com/XiuzeZhou/RUL) loads B0005, B0006, B0007 and B0018",
+          "reviewed": false
+        },
+        {
+          "title": "A framework for Li-ion battery prognosis based on hybrid Bayesian physics-informed neural networks",
+          "authors": "Nascimento, Viana, Corbetta et al.",
+          "year": 2023,
+          "venue": "Scientific Reports 13, 13856",
+          "doi": "10.1038/s41598-023-33018-0",
+          "relation": "Same research group",
+          "use": "Uses full discharges from this dataset to fit a hybrid physics-informed model and its ageing parameters, together with NASA's randomized-usage data.",
+          "tasks": [
+            "Discharge voltage prediction",
+            "Capacity forecasting"
+          ],
+          "methods": [
+            "Physics-informed neural network",
+            "Bayesian updating"
+          ],
+          "split": "Predictions for batteries left out of training; battery IDs are not listed in the main text.",
+          "evidence": "Results; Data availability (NASA repository sets 5 and 11)",
+          "reviewed": false
+        },
+        {
+          "title": "SambaMixer: State of health prediction of Li-ion batteries using Mamba state space models",
+          "authors": "Olalde-Verano, Kirch, Pérez-Molina, Martin",
+          "year": 2025,
+          "venue": "IEEE Access",
+          "doi": "10.1109/ACCESS.2024.3524321",
+          "open_access_url": "https://arxiv.org/abs/2411.00233",
+          "relation": "Independent group",
+          "use": "Predicts state of health from discharge cycles of 19 batteries tested at 4, 24 and 43 °C.",
+          "tasks": [
+            "SOH estimation"
+          ],
+          "methods": [
+            "Mamba state space model"
+          ],
+          "split": "Tests on batteries #6, #7 and #47; three training sets of 4, 5 or 11 other batteries.",
+          "evidence": "Section V-A; Tables II and III",
+          "reviewed": false
+        }
+      ]
+    },
+    "identifying-degradation-patterns-via-impedance-spectroscopy-and-machine-learning": {
+      "coverage": "A starting list of 4 studies, found by searching for papers that reuse these 12 coin cells. Not every paper that used this dataset.",
+      "papers": [
+        {
+          "title": "Identifying degradation patterns of lithium ion batteries from impedance spectroscopy using machine learning",
+          "authors": "Zhang, Tang, Zhang et al.",
+          "year": 2020,
+          "venue": "Nature Communications 11, 1706",
+          "doi": "10.1038/s41467-020-15235-7",
+          "relation": "Original study",
+          "use": "Introduces the dataset: more than 20,000 impedance spectra from 12 LiCoO2/graphite coin cells (Eunicell LR2032) cycled at 25, 35 and 45 °C.",
+          "tasks": [
+            "SOH estimation",
+            "RUL prediction"
+          ],
+          "methods": [
+            "Gaussian process regression"
+          ],
+          "split": "6 training cells (25C01–25C04, 35C01, 45C01) and 6 test cells (25C05–25C08, 35C02, 45C02).",
+          "evidence": "Results; Methods (Data generation)",
+          "reviewed": false
+        },
+        {
+          "title": "Impedance-based capacity estimation for lithium-ion batteries using generative adversarial network",
+          "authors": "Kim, Choi, Choi",
+          "year": 2022,
+          "venue": "Applied Energy 308, 118317",
+          "doi": "10.1016/j.apenergy.2021.118317",
+          "open_access_url": "https://arxiv.org/abs/2107.06177",
+          "relation": "Independent group",
+          "use": "Uses the 8 cells cycled at 25 °C to learn features from the spectra without labels, then estimates capacity from them.",
+          "tasks": [
+            "Capacity estimation"
+          ],
+          "methods": [
+            "InfoGAN",
+            "Gaussian process regression"
+          ],
+          "split": "25C01–25C04 for training, 25C05–25C08 for testing.",
+          "evidence": "Sections 3.1 and 3.2",
+          "reviewed": false
+        },
+        {
+          "title": "Feature extraction from electrochemical impedance spectroscopy for state of health estimation of lithium-ion batteries under different temperatures",
+          "authors": "Liu, Zhang, Li, Bauer, Qin",
+          "year": 2024,
+          "venue": "IEEE IPEMC 2024-ECCE Asia, pp. 3374–3378",
+          "doi": "",
+          "url": "https://repository.tudelft.nl/file/File_71aa9e20-95ef-470f-8280-129f09ddc024",
+          "relation": "Independent group",
+          "use": "Picks the single most informative impedance feature by correlation and uses it to estimate state of health at all three temperatures.",
+          "tasks": [
+            "SOH estimation"
+          ],
+          "methods": [
+            "Spearman correlation",
+            "Feed-forward neural network"
+          ],
+          "split": "Tested on cells 25C05, 35C02 and 45C02.",
+          "evidence": "Section II (Battery data sets); Sections III and IV",
+          "reviewed": false
+        },
+        {
+          "title": "Two points are enough",
+          "authors": "Liu, Zhao, Zheng et al.",
+          "year": 2024,
+          "venue": "arXiv preprint 2408.11872",
+          "doi": "",
+          "url": "https://arxiv.org/abs/2408.11872",
+          "relation": "Independent group",
+          "use": "Estimates capacity from the impedance at just two frequencies and compares this with the original study's features.",
+          "tasks": [
+            "Capacity estimation"
+          ],
+          "methods": [
+            "Two-point feature",
+            "XGBoost"
+          ],
+          "split": "Same 6 / 6 cell split as the original study.",
+          "evidence": "Section 4.2.2; Table 4",
+          "reviewed": false
+        }
+      ]
+    },
+    "data-driven-capacity-estimation-from-voltage-relaxation": {
+      "coverage": "A starting list of 4 studies, found by searching for papers that reuse these 130 cells. Not every paper that used this dataset.",
+      "papers": [
+        {
+          "title": "Data-driven capacity estimation of commercial lithium-ion batteries from voltage relaxation",
+          "authors": "Zhu, Wang, Huang et al.",
+          "year": 2022,
+          "venue": "Nature Communications 13, 2261",
+          "doi": "10.1038/s41467-022-29837-w",
+          "relation": "Original study",
+          "use": "Introduces the dataset: 130 commercial 18650 cells in three chemistries (NCA, NCM and an NCM+NCA blend) cycled at 25, 35 and 45 °C, with the voltage relaxation after every full charge.",
+          "tasks": [
+            "Capacity estimation"
+          ],
+          "methods": [
+            "ElasticNet",
+            "XGBoost",
+            "Support vector regression",
+            "Transfer learning"
+          ],
+          "split": "Split by cell, about 4:1, so no cell is in both training and test. The NCM and blend cells test transfer to new chemistries.",
+          "evidence": "Results (Data generation, Capacity estimation); Methods",
+          "reviewed": false
+        },
+        {
+          "title": "Long short-term memory network with transfer learning for lithium-ion battery capacity fade and cycle life prediction",
+          "authors": "Wang, Zhu, Cao, Gopaluni, Cao",
+          "year": 2023,
+          "venue": "Applied Energy 350, 121660",
+          "doi": "10.1016/j.apenergy.2023.121660",
+          "open_access_url": "https://dais.chbe.ubc.ca/assets/preprints/2023J10_yixiu_apen.pdf",
+          "relation": "Same research group",
+          "use": "Pre-trains a model on the NCA cells' capacity curves, then adapts it to NCM cells with very little data to predict capacity fade and cycle life.",
+          "tasks": [
+            "Cycle life",
+            "Capacity forecasting"
+          ],
+          "methods": [
+            "LSTM",
+            "Transfer learning"
+          ],
+          "split": "Pre-trained on 20 NCA cells (25 and 45 °C), retrained on 2 NCM cells at 25 °C, tested on 10 NCM cells at 45 °C.",
+          "evidence": "Section 2 (Data acquisition), which points to Zhu et al. (2022) for the data",
+          "reviewed": false
+        },
+        {
+          "title": "Comprehensive performance comparison among different types of features in data-driven battery state of health estimation",
+          "authors": "Feng, Zhang, Xiong, Wang",
+          "year": 2023,
+          "venue": "arXiv preprint 2308.13993",
+          "doi": "",
+          "url": "https://arxiv.org/abs/2308.13993",
+          "relation": "Independent group",
+          "use": "Compares equivalent-circuit, statistical and raw-voltage features of the relaxation curve on 118 of the cells.",
+          "tasks": [
+            "SOH estimation"
+          ],
+          "methods": [
+            "Gaussian process regression",
+            "XGBoost",
+            "Support vector regression"
+          ],
+          "split": "Several splits compared: half the cells per condition, random ratios, leave one temperature out, and first 80% / last 20% of cycles.",
+          "evidence": "Section II (Data generation); Table I; Section IV.B",
+          "reviewed": false
+        },
+        {
+          "title": "Two points are enough",
+          "authors": "Liu, Zhao, Zheng et al.",
+          "year": 2024,
+          "venue": "arXiv preprint 2408.11872",
+          "doi": "",
+          "url": "https://arxiv.org/abs/2408.11872",
+          "relation": "Independent group",
+          "use": "Estimates capacity from two points of the relaxation voltage and compares this with the original study's three statistical features.",
+          "tasks": [
+            "Capacity estimation"
+          ],
+          "methods": [
+            "Two-point feature"
+          ],
+          "split": "",
+          "evidence": "Section 4.2.3; Table 5",
+          "reviewed": false
+        }
+      ]
+    },
+    "battery-failure-databank-nrel": {
+      "coverage": "A starting list of 4 studies, found by searching for papers that use the databank. Not every paper that used it.",
+      "papers": [
+        {
+          "title": "The battery failure databank: Insights from an open-access database of thermal runaway behaviors of Li-ion cells and a resource for benchmarking risks",
+          "authors": "Finegan et al.",
+          "year": 2024,
+          "venue": "Journal of Power Sources 597, 234106",
+          "doi": "10.1016/j.jpowsour.2024.234106",
+          "open_access_url": "https://nrel.gov/docs/fy24osti/87431.pdf",
+          "relation": "Original study",
+          "use": "Describes the databank and analyses 364 fractional thermal runaway calorimetry tests on 18650, 21700 and D-cell formats, some with high-speed X-ray videos.",
+          "tasks": [
+            "Safety analysis"
+          ],
+          "methods": [
+            "Calorimetry",
+            "X-ray radiography"
+          ],
+          "split": "",
+          "evidence": "Section 3.1 (Databank contents); Table 1",
+          "reviewed": false
+        },
+        {
+          "title": "Thermal runaway of Li-ion cells: how internal dynamics, mass ejection and heat vary with cell geometry and abuse type",
+          "authors": "Sharp, Darst, Hughes et al.",
+          "year": 2022,
+          "venue": "Journal of The Electrochemical Society 169, 020526",
+          "doi": "10.1149/1945-7111/ac4fef",
+          "relation": "Same research group",
+          "use": "Compares heat output, mass ejection and internal dynamics across four cell models from the databank under nail, heater and internal-short tests.",
+          "tasks": [
+            "Safety analysis"
+          ],
+          "methods": [
+            "Statistical analysis",
+            "X-ray radiography"
+          ],
+          "split": "",
+          "evidence": "Introduction (cites the databank); Table I",
+          "reviewed": false
+        },
+        {
+          "title": "Predicting the heat release variability of Li-ion cells under thermal runaway with few or no calorimetry data",
+          "authors": "Masalkovaitė, Gasper, Finegan",
+          "year": 2024,
+          "venue": "Nature Communications 15, 8399",
+          "doi": "10.1038/s41467-024-52653-3",
+          "relation": "Same research group",
+          "use": "Uses 139 calorimetry tests on 8 cell types (databank version 2) to predict how much heat a cell releases, from ejected mass and the manufacturer's specifications.",
+          "tasks": [
+            "Thermal runaway heat prediction"
+          ],
+          "methods": [
+            "Linear regression",
+            "Support vector machine",
+            "XGBoost"
+          ],
+          "split": "One cell type held out at a time, with none or a few of its tests added to training.",
+          "evidence": "Results (Training data); Methods (Data collection, Data pre-processing)",
+          "reviewed": false
+        },
+        {
+          "title": "Thermal runaway diagnosis of lithium-ion cells using data-driven method",
+          "authors": "Choi, Park",
+          "year": 2024,
+          "venue": "Applied Sciences 14(19), 9107",
+          "doi": "10.3390/app14199107",
+          "relation": "Independent group",
+          "use": "Classifies the cause of thermal runaway (heater, internal short or nail) from 26 measured features of the 364 tests.",
+          "tasks": [
+            "Fault diagnosis"
+          ],
+          "methods": [
+            "Support vector machine",
+            "Naive Bayes",
+            "Boosted trees",
+            "MLP"
+          ],
+          "split": "80:20 split (291 training, 73 test tests) and 10-fold cross-validation.",
+          "evidence": "Section 2 (Open battery failure dataset)",
+          "reviewed": false
+        }
+      ]
+    },
+    "lithium-ion-battery-aging-dataset-based-on-ev-real-driving-profiles": {
+      "coverage": "A starting list of 3 studies, found by searching for papers that reuse these cells. Not every paper that used this dataset.",
+      "papers": [
+        {
+          "title": "Lithium-ion battery aging dataset based on electric vehicle real-driving profiles",
+          "authors": "Pozzato, Allam, Onori",
+          "year": 2022,
+          "venue": "Data in Brief 41, 107995",
+          "doi": "10.1016/j.dib.2022.107995",
+          "relation": "Original study",
+          "use": "Introduces the dataset: 10 NMC/graphite-silicon 21700 cells (INR21700-M50T) discharged with repeated UDDS driving cycles for about 30 months, with periodic capacity, HPPC and impedance tests.",
+          "tasks": [
+            "SOH estimation",
+            "Degradation analysis"
+          ],
+          "methods": [],
+          "split": "",
+          "evidence": "Data article; cell details as reported by Lanubile et al. (2024) and Wang et al. (2025)",
+          "reviewed": false
+        },
+        {
+          "title": "Domain knowledge-guided machine learning framework for state of health estimation in lithium-ion batteries",
+          "authors": "Lanubile, Bosoni, Pozzato et al.",
+          "year": 2024,
+          "venue": "Communications Engineering 3",
+          "doi": "10.1038/s44172-024-00304-2",
+          "open_access_url": "https://arxiv.org/abs/2409.14575",
+          "relation": "Same research group",
+          "use": "Uses 5 of the 10 cells to build health indicators that can be computed from battery-management signals while driving and charging, then estimates state of health.",
+          "tasks": [
+            "SOH estimation"
+          ],
+          "methods": [
+            "Health indicators",
+            "Linear regression"
+          ],
+          "split": "Trained on one cell, or on all cells but the test cell.",
+          "evidence": "Data section (cites Pozzato et al. 2022); Results",
+          "reviewed": false
+        },
+        {
+          "title": "Capacity estimation of lithium-ion batteries using invariance property in open circuit voltage relationship",
+          "authors": "Wang, Zagorowska, Ferrari",
+          "year": 2025,
+          "venue": "arXiv preprint 2511.06989",
+          "doi": "",
+          "url": "https://arxiv.org/abs/2511.06989",
+          "relation": "Independent group",
+          "use": "Uses cell W5 to test a capacity estimate based on the open-circuit-voltage curve keeping its shape as the cell ages.",
+          "tasks": [
+            "Capacity estimation"
+          ],
+          "methods": [
+            "OCV curve fitting"
+          ],
+          "split": "Single cell: OCV checks at cycles 159 to 344 and 12 driving cycles.",
+          "evidence": "Section 3 (3.1 OCV test data, 3.2 dynamic discharge data)",
+          "reviewed": false
+        }
+      ]
+    }
+  }
+}

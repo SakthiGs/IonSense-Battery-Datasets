@@ -270,6 +270,29 @@ dialog.sheet::backdrop{background:var(--scrim)}
 .copy-out{width:100%;font-size:13px;padding:6px 8px;border:1px solid var(--line-strong);border-radius:var(--r-s);background:var(--sunken)}
 .caveat{font-size:13px;color:var(--muted);margin:0;padding-top:14px;border-top:1px solid var(--line)}
 
+/* Used in research: published studies that used a dataset (research_uses.json) */
+.uses{padding-top:16px;border-top:1px solid var(--line)}
+.uses-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.uses-head h3{margin:0}
+.uses-head .cnt{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.uses-intro{margin:6px 0 12px;font-size:13px;line-height:1.45;color:var(--ink-2)}
+.uses-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.use{border:1px solid var(--line);border-radius:var(--r-m);padding:12px 14px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.use-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:12.5px;color:var(--muted)}
+.use-rel{font-weight:600;padding:1px 8px;border-radius:999px;background:var(--sunken);color:var(--ink-2);white-space:nowrap}
+.use-rel.orig{background:var(--accent-soft);color:var(--accent-ink)}
+.use-pending{margin-left:auto;font-size:12px;color:var(--warn);white-space:nowrap}
+.use-title{font-size:14.5px;font-weight:650;line-height:1.35;color:var(--ink);text-decoration:none;overflow-wrap:anywhere}
+.use-title:hover{color:var(--accent-ink);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.use-title svg{width:12px;height:12px;margin-left:5px;vertical-align:-1px;color:var(--muted)}
+.use-by{font-size:13px;color:var(--ink-2)}
+.use-how{margin:0;font-size:13.5px;line-height:1.5;color:var(--ink)}
+.use .facts{font-size:13px;gap:4px 12px}
+.use .chips{gap:5px}
+.tag{border-radius:6px;padding:1px 7px;font-size:12px;line-height:1.5;background:var(--sunken);color:var(--ink-2)}
+.use-links{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:13px}
+.use-links a{color:var(--accent-ink);text-underline-offset:2px;text-decoration-color:color-mix(in srgb,currentColor 40%,transparent)}
+
 /* Compare: selection toggles, tray and side-by-side panel */
 .cmp-toggle{display:inline-flex;align-items:center;gap:7px;height:34px;padding:0 11px 0 9px;border-radius:var(--r-s);border:1px solid var(--line-strong);background:var(--panel);font-size:13.5px;font-weight:600;color:var(--ink-2);cursor:pointer;user-select:none;white-space:nowrap}
 .cmp-toggle input{width:15px;height:15px;margin:0;accent-color:var(--accent);cursor:pointer}
@@ -597,6 +620,8 @@ const state = {
   expanded: {}
 };
 let data = [], results = [], categoryOrder = [];
+let USES = {};  /* research_uses.json, keyed by dataset id; empty if the file is missing */
+const usesOf = d => (USES[d.id] && Array.isArray(USES[d.id].papers)) ? USES[d.id].papers.filter(p => p && p.title) : [];
 
 /* ---------- DOM helpers ---------- */
 const $ = s => document.querySelector(s);
@@ -882,6 +907,8 @@ function card(d) {
   addFact('Chemistry', chemOf(d).join(', '));
   addFact('Scale', known(d.scale));
   addFact('Source', known(d.source));
+  const nUses = usesOf(d).length;
+  if (nUses) addFact('Used in', h('button', { type: 'button', class: 'link-btn', style: 'padding:0;font-size:inherit', onclick: () => openDetail(d, 'uses') }, plural(nUses, 'published study', 'published studies')));
   const notes = notesOf(d);
   return h('article', { class: 'ds' + (isCompared(d) ? ' is-compared' : ''), 'data-card': d.id },
     h('div', { class: 'ds-top' }, h('span', {}, d.category || 'Uncategorised'), h('span', { class: 'res' }, resourceOf(d))),
@@ -982,7 +1009,39 @@ function emptyState() {
 
 /* ---------- Detail sheet ---------- */
 const dlg = $('#detail');
-function openDetail(d) {
+/* "Used in research": published studies that used this dataset. Nothing renders when a dataset has no entries. */
+const isOriginal = p => /^original/i.test(p.relation || '');
+function usesSection(d) {
+  const papers = usesOf(d).slice().sort((a, b) => isOriginal(b) - isOriginal(a) || (a.year || 0) - (b.year || 0));
+  if (!papers.length) return null;
+  const entry = USES[d.id] || {};
+  const item = p => {
+    const doi = typeof p.doi === 'string' && p.doi.trim() ? 'https://doi.org/' + p.doi.trim().replace(/^https?:\/\/(dx\.)?doi\.org\//i, '') : '';
+    const href = doi || http(p.url);
+    const facts = h('dl', { class: 'facts' });
+    const add = (k, v) => { if (v) facts.append(h('dt', {}, k), h('dd', {}, v)); };
+    add('Task', (p.tasks || []).join(', '));
+    add('Methods', (p.methods || []).length ? h('span', { class: 'chips' }, p.methods.map(m => h('span', { class: 'tag' }, m))) : '');
+    add('Data split', p.split || '');
+    add('Evidence', p.evidence || '');
+    const oa = http(p.open_access_url);
+    return h('li', { class: 'use' },
+      h('div', { class: 'use-top' },
+        p.relation ? h('span', { class: 'use-rel' + (isOriginal(p) ? ' orig' : '') }, p.relation) : null,
+        p.reviewed === true ? null : h('span', { class: 'use-pending', title: 'Drafted from the paper; not yet checked by the IonSense maintainer' }, 'Awaiting review')),
+      href ? h('a', { class: 'use-title', href, target: '_blank', rel: 'noopener noreferrer' }, p.title, ICON_EXT()) : h('span', { class: 'use-title' }, p.title),
+      h('div', { class: 'use-by' }, [p.authors, p.year, p.venue].filter(Boolean).join(' · ')),
+      p.use ? h('p', { class: 'use-how' }, p.use) : null,
+      facts.childNodes.length ? facts : null,
+      oa && oa !== href ? h('div', { class: 'use-links' }, h('a', { href: oa, target: '_blank', rel: 'noopener noreferrer' }, 'Free full text')) : null);
+  };
+  return h('section', { class: 'uses', id: 'detail-uses', 'aria-labelledby': 'uses-title' },
+    h('div', { class: 'uses-head' }, h('h3', { id: 'uses-title' }, 'Used in research'), h('span', { class: 'cnt' }, plural(papers.length, 'study', 'studies'))),
+    entry.coverage ? h('p', { class: 'uses-intro' }, entry.coverage) : null,
+    h('ol', { class: 'uses-list' }, papers.map(item)));
+}
+
+function openDetail(d, jump) {
   hideTip();
   const focusKey = dlg.open && dlg.contains(document.activeElement) ? document.activeElement.dataset.fk : null;
   const keepScroll = dlg.open && state.open === d.id ? $('#detail-body').scrollTop : 0;
@@ -1029,11 +1088,13 @@ function openDetail(d) {
     facts,
     notes.length ? h('div', {}, h('h3', {}, 'Notes'), h('p', { class: 'note' }, ICON_INFO(), h('span', {}, notes.join(' ')))) : null,
     ev && ev.note ? h('div', {}, h('h3', {}, 'Chemistry evidence'), h('p', { style: 'margin:0;font-size:14px;color:var(--ink-2)' }, ev.note, ' ', extLink(http(ev.url), 'Source', 'link-btn'))) : null,
+    usesSection(d),
     h('p', { class: 'caveat' }, d.access_status === 'verified_public'
       ? 'Public access confirmed. Check the licence on the original record before reuse.'
       : 'IonSense has not yet confirmed access or licence for this record. Check the terms on the original page before you download or publish results.')
   ].filter(Boolean));
   if (!dlg.open) { dlg.showModal(); $('#detail-body').scrollTop = 0; }
+  if (jump === 'uses' && $('#detail-uses')) $('#detail-uses').scrollIntoView({ block: 'start' });
   else {
     $('#detail-body').scrollTop = keepScroll;
     const again = focusKey && [...$('#detail-body').querySelectorAll('[data-fk]')].find(el => el.dataset.fk === focusKey);
@@ -1331,8 +1392,14 @@ document.addEventListener('keydown', e => {
 });
 
 /* ---------- Load ---------- */
+/* research_uses.json is optional: if it is missing or malformed the catalogue still loads, just without "Used in research". */
+const usesReady = fetch('./research_uses.json', { cache: 'no-cache' })
+  .then(r => r.ok ? r.json() : null)
+  .then(j => { if (j && j.datasets && typeof j.datasets === 'object') USES = j.datasets; })
+  .catch(() => {});
 fetch('./datasets.json', { cache: 'no-cache' })
   .then(r => { if (!r.ok) throw new Error('The catalogue file returned HTTP ' + r.status + '.'); return r.json(); })
+  .then(json => usesReady.then(() => json))
   .then(json => {
     if (!Array.isArray(json)) throw new Error('datasets.json should contain a list of datasets.');
     data = json.filter(d => d && d.name).map((d, i) => {
