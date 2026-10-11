@@ -35,7 +35,9 @@ BATTERY = re.compile(r"\b(batter(y|ies)|li-?ion|lithium[- ]ion|sodium[- ]ion|na-
 MUST = re.compile(r"\b(batter(y|ies)|li-?ion|lithium[- ]ion|sodium[- ]ion|zinc[- ]ion)\b", re.I)
 TOPIC = re.compile(r"\b(ag(e)?ing|degradation|cycl(e|ing)|state[- ]of[- ](health|charge)|soh|soc|rul|remaining useful|capacity|impedance|eis|thermal runaway|charging|discharg|calendar|second[- ]life|retired|recycl|fault|diagnos|prognos|electric vehicle|\bev\b|field data|fleet|energy storage|pack|module)\b", re.I)
 DATA_WORDS = re.compile(r"\b(data ?set|data descriptor|database|benchmark|open data|data release|measurement data|test data|raw data)\b", re.I)
-NOT_BATTERY = re.compile(r"\b(test battery|cognitive|neuropsycholog|questionnaire|assessment battery|battery of (tests|assays)|artillery|battery cage|hens?)\b", re.I)
+NOT_BATTERY = re.compile(r"(\btest battery|\bcognitive|neuropsycholog|questionnaire|assessment battery|battery of (tests|assays)|artillery|battery cage|\bhens?\b|battery-free|search intelligence|logistics 20\d\d|ontology)", re.I)
+# Beam-time records from large facilities describe experiments, not released data.
+SKIP_PUBLISHERS = re.compile(r"synchrotron|isis facility|neutron source|diamond light", re.I)
 SOURCE_DATA_ONLY = re.compile(r"^(source data|supplementary|supporting (data|information)|data for figure|figure \d)", re.I)
 
 
@@ -197,8 +199,10 @@ def main():
         t = norm(c["title"])
         if not c["title"] or key in seen or c["doi"] in dois or t in titles or c["landing"].rstrip("/").lower() in urls:
             continue
-        if SOURCE_DATA_ONLY.search(c["title"]):
+        if SOURCE_DATA_ONLY.search(c["title"]) or SKIP_PUBLISHERS.search(c["publisher"] or ""):
             continue
+        if not (TOPIC.search(c["title"]) or DATA_WORDS.search(c["title"])):
+            continue  # the title should say what kind of battery data it is
         s = score(c["title"], c["desc"])
         if s < 3:
             continue
