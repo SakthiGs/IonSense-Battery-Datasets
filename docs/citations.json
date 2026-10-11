@@ -277,6 +277,126 @@
       "count": 0,
       "openalex": "https://openalex.org/W7162013792",
       "title": "MagBridge-Battery: A synthetic bridge dataset for Li-ion magnetometry and state-of-health diagnostics"
+    },
+    "calce-battery-data": {
+      "count": 1100,
+      "openalex": "https://openalex.org/W2078279667",
+      "title": "Prognostics of lithium-ion batteries based on Dempster–Shafer theory and the Bayesian Monte Carlo method"
+    },
+    "oxford-battery-degradation-dataset-1": {
+      "count": 128,
+      "openalex": "https://openalex.org/W2889862006",
+      "title": "Diagnosis and prognosis of degradation in lithium-ion batteries"
+    },
+    "oxford-path-dependent-degradation": {
+      "count": 157,
+      "openalex": "https://openalex.org/W3081277493",
+      "title": "Investigation of Path-Dependent Degradation in Lithium-Ion Batteries"
+    },
+    "sandia-commercial-cell-degradation": {
+      "count": 611,
+      "openalex": "https://openalex.org/W3048596141",
+      "title": "Degradation of Commercial Lithium-Ion Cells as a Function of Chemistry and Cycling Conditions"
+    },
+    "hnei-lg-icr18650c2-variability": {
+      "count": 135,
+      "openalex": "https://openalex.org/W2799437548",
+      "title": "Intrinsic Variability in the Degradation of a Batch of Commercial 18650 Lithium-Ion Cells"
+    },
+    "closed-loop-fast-charging-optimisation": {
+      "count": 1158,
+      "openalex": "https://openalex.org/W3007217854",
+      "title": "Closed-loop optimization of fast-charging protocols for batteries with machine learning"
+    },
+    "cmu-evtol-battery-dataset": {
+      "count": 76,
+      "openalex": "https://openalex.org/W4379197289",
+      "title": "A battery dataset for electric vertical takeoff and landing aircraft"
+    },
+    "evbattery-large-scale-ev-dataset": {
+      "count": 1,
+      "openalex": "https://openalex.org/W4221145764",
+      "title": "EVBattery: A Large-Scale Electric Vehicle Dataset for Battery Health and Capacity Estimation"
+    },
+    "osf-battery-magnetometry-archive": {
+      "count": 86,
+      "openalex": "https://openalex.org/W3022639876",
+      "title": "Sensitive magnetometry reveals inhomogeneities in charge storage and weak transient internal currents in Li-ion cells"
+    },
+    "panasonic-18650pf-data": {
+      "count": 899,
+      "openalex": "https://openalex.org/W2776458183",
+      "title": "Long Short-Term Memory Networks for Accurate State-of-Charge Estimation of Li-ion Batteries"
+    },
+    "unibo-powertools-dataset": {
+      "count": 38,
+      "openalex": "https://openalex.org/W3194992794",
+      "title": "Li-Ion Batteries State-of-Charge Estimation Using Deep LSTM at Various Battery Specifications and Discharge Cycles"
+    },
+    "umich-battery-expansion": {
+      "count": 149,
+      "openalex": "https://openalex.org/W3201822678",
+      "title": "Reversible and Irreversible Expansion of Lithium-Ion Batteries Under a Wide Range of Stress Factors"
+    },
+    "umich-formation-protocols": {
+      "count": 174,
+      "openalex": "https://openalex.org/W3207967096",
+      "title": "Predicting the impact of formation protocols on battery lifetime immediately after manufacturing"
+    },
+    "rwth-48-cell-cycle-ageing": {
+      "count": 232,
+      "openalex": "https://openalex.org/W3171353223",
+      "title": "One-shot battery degradation trajectory prediction with deep learning"
+    },
+    "bmw-i3-real-driving-battery-heating": {
+      "count": 17,
+      "openalex": "https://openalex.org/W3026566860",
+      "title": "Range Extension via Electrothermal Recuperation"
+    },
+    "argonne-camp-2023": {
+      "count": 178,
+      "openalex": "https://openalex.org/W4214667576",
+      "title": "Feature engineering for machine learning enabled early prediction of battery lifetime"
+    },
+    "ul-purdue-degradation-safety": {
+      "count": 76,
+      "openalex": "https://openalex.org/W3109793512",
+      "title": "Degradation-Safety Analytics in Lithium-Ion Cells: Part I. Aging under Charge/Discharge Cycling"
+    },
+    "batterylife-benchmark": {
+      "count": 21,
+      "openalex": "https://openalex.org/W4412876883",
+      "title": "BatteryLife: A Comprehensive Dataset and Benchmark for Battery Life Prediction"
+    },
+    "mechanical-thermal-runaway-ornl-snl": {
+      "count": 44,
+      "openalex": "https://openalex.org/W4319316037",
+      "title": "Mechanically induced thermal runaway severity analysis for Li-ion batteries"
+    },
+    "liiondb-parameter-database": {
+      "count": 99,
+      "openalex": "https://openalex.org/W4224291353",
+      "title": "Review of parameterisation and a novel database (LiionDB) for continuum Li-ion battery models"
+    },
+    "battery-materials-database-chemdataextractor": {
+      "count": 163,
+      "openalex": "https://openalex.org/W3047398431",
+      "title": "A database of battery materials auto-generated using ChemDataExtractor"
+    },
+    "hnei-lfp-synthetic-diagnosis-prognosis": {
+      "count": 155,
+      "openalex": "https://openalex.org/W3082892770",
+      "title": "Big data training data for artificial intelligence-based Li-ion diagnosis and prognosis"
+    },
+    "lg-m50-parameterisation-data": {
+      "count": 615,
+      "openalex": "https://openalex.org/W3023537476",
+      "title": "Development of Experimental Techniques for Parameterization of Multi-scale Lithium-ion Battery Models"
+    },
+    "hnei-blended-electrode-synthetic": {
+      "count": 8,
+      "openalex": "https://openalex.org/W4396733615",
+      "title": "Electrode Blending Simulations Using the Mechanistic Degradation Modes Modeling Approach"
     }
   }
 }
