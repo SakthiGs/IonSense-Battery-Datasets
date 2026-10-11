@@ -1584,6 +1584,496 @@
           "reviewed": false
         }
       ]
+    },
+    "wmg-calendar-aging-dataset-lgm50-commercial-cells-39-storage-conditions": {
+      "coverage": "Only the original study is listed; reuse by other groups has not been searched yet.",
+      "papers": [
+        {
+          "title": "Lithium-ion battery degradation modelling using universal differential equations: Development of a cost-effective parameterisation methodology",
+          "authors": "Kuzhiyil, Damoulas, Brosa Planella, Widanage",
+          "year": 2025,
+          "venue": "Applied Energy 382",
+          "doi": "10.1016/j.apenergy.2024.125221",
+          "relation": "Original study",
+          "use": "Embeds neural networks in a physics-based degradation model and fits it to the 39 storage conditions.",
+          "tasks": [
+            "Degradation analysis"
+          ],
+          "methods": [
+            "Universal differential equations",
+            "Physics-based model"
+          ],
+          "split": "",
+          "evidence": "Zenodo record links this paper; abstract",
+          "reviewed": false
+        }
+      ]
+    },
+    "comprehensive-cycle-aging-data-and-analysis-for-commercial-21700-cells": {
+      "coverage": "Only the original study is listed; reuse by other groups has not been searched yet.",
+      "papers": [
+        {
+          "title": "Lithium-ion battery degradation: comprehensive cycle ageing data and analysis for commercial 21700 cells",
+          "authors": "Kirkaldy, Samieian, Offer, Marinescu, Patel",
+          "year": 2024,
+          "venue": "Journal of Power Sources",
+          "doi": "10.1016/j.jpowsour.2024.234185",
+          "relation": "Original study",
+          "use": "Presents the ageing data with capacity, resistance and degradation-mode analysis across temperatures and state-of-charge windows.",
+          "tasks": [
+            "Degradation analysis"
+          ],
+          "methods": [
+            "Degradation mode analysis"
+          ],
+          "split": "",
+          "evidence": "Zenodo record links this paper",
+          "reviewed": false
+        }
+      ]
+    },
+    "underlying-dataset-for-battery-pack-degradation-under-thermal-gradients": {
+      "coverage": "Only the original study is listed; reuse by other groups has not been searched yet.",
+      "papers": [
+        {
+          "title": "Degradation in parallel-connected lithium-ion battery packs under thermal gradients",
+          "authors": "Naylor Marlow, Chen, Wu",
+          "year": 2024,
+          "venue": "Communications Engineering 3, 2",
+          "doi": "10.1038/s44172-023-00153-5",
+          "relation": "Original study",
+          "use": "Shows that thermal gradients make parallel cells age apart, through cathode impedance growth that feeds uneven current sharing.",
+          "tasks": [
+            "Degradation analysis"
+          ],
+          "methods": [
+            "Impedance analysis",
+            "Degradation mode analysis"
+          ],
+          "split": "",
+          "evidence": "Paper states the ageing dataset is public",
+          "reviewed": false
+        }
+      ]
+    },
+    "multi-stage-lithium-ion-battery-aging-study": {
+      "coverage": "Only the original study is listed; reuse by other groups has not been searched yet.",
+      "papers": [
+        {
+          "title": "A multi-stage lithium-ion battery aging dataset using various experimental design methodologies",
+          "authors": "Stroebl, Petersohn, Schricker et al.",
+          "year": 2024,
+          "venue": "Scientific Data 11, 1020",
+          "doi": "10.1038/s41597-024-03859-z",
+          "relation": "Original study",
+          "use": "Describes the two-stage ageing campaign and its experimental designs.",
+          "tasks": [
+            "Degradation analysis"
+          ],
+          "methods": [
+            "Design of experiments",
+            "Optimal experimental design"
+          ],
+          "split": "",
+          "evidence": "Data descriptor",
+          "reviewed": false
+        }
+      ]
+    },
+    "battery-failure-detection-and-fpi-estimation-during-cycling-to-failure": {
+      "coverage": "Only the original study is listed; reuse by other groups has not been searched yet.",
+      "papers": [
+        {
+          "title": "Seeing the unseen: real-time tracking of battery cycling-to-failure via surface strain",
+          "authors": "Gao, Bao, Zhang, Brandon, Offer",
+          "year": 2026,
+          "venue": "Joule 10(3), 102272",
+          "doi": "10.1016/j.joule.2025.102272",
+          "relation": "Original study",
+          "use": "Uses surface strain to flag the start of failure earlier than temperature, and estimates how close a cell is to failure.",
+          "tasks": [
+            "Fault diagnosis"
+          ],
+          "methods": [
+            "Strain sensing",
+            "Machine learning"
+          ],
+          "split": "",
+          "evidence": "Imperial repository record (abstract)",
+          "reviewed": false
+        }
+      ]
+    },
+    "mechanistically-guided-residual-learning-dataset-for-battery-state-monitoring": {
+      "coverage": "Only the original study is listed; reuse by other groups has not been searched yet.",
+      "papers": [
+        {
+          "title": "Mechanistically guided residual learning for battery state monitoring throughout life",
+          "authors": "Che, Zheng, Rhyu et al.",
+          "year": 2026,
+          "venue": "Nature Communications 17, 855",
+          "doi": "10.1038/s41467-025-67565-z",
+          "relation": "Original study",
+          "use": "Corrects adaptive-filter estimates of state of charge and health with residual learners, across pouch and prismatic cells.",
+          "tasks": [
+            "SOC estimation",
+            "SOH estimation"
+          ],
+          "methods": [
+            "Adaptive filter",
+            "Residual learning"
+          ],
+          "split": "",
+          "evidence": "Results; Data availability",
+          "reviewed": false
+        }
+      ]
+    },
+    "probability-distributed-equivalent-circuit-model-dataset": {
+      "coverage": "Only the original study is listed; reuse by other groups has not been searched yet.",
+      "papers": [
+        {
+          "title": "A physically motivated voltage hysteresis model for lithium-ion batteries using a probability distributed equivalent circuit",
+          "authors": "Jahn, Mößle, Röder, Danzer",
+          "year": 2024,
+          "venue": "Communications Engineering 3, 74",
+          "doi": "10.1038/s44172-024-00221-4",
+          "relation": "Original study",
+          "use": "Models open-circuit voltage hysteresis of an LFP cell with parallel strings that charge one after another.",
+          "tasks": [
+            "Other research"
+          ],
+          "methods": [
+            "Equivalent circuit model"
+          ],
+          "split": "",
+          "evidence": "Data availability (Zenodo 10852930)",
+          "reviewed": false
+        }
+      ]
+    },
+    "source-data-internal-sensors-in-a-smart-battery-impact-on-local-graphite-lithiation": {
+      "coverage": "Only the original study is listed; reuse by other groups has not been searched yet.",
+      "papers": [
+        {
+          "title": "Revealing how internal sensors in a smart battery impact the local graphite lithiation mechanism",
+          "authors": "Olgo, Genies, Franchi et al.",
+          "year": 2024,
+          "venue": "Nature Communications 15, 10258",
+          "doi": "10.1038/s41467-024-54656-6",
+          "relation": "Original study",
+          "use": "Shows with operando X-ray diffraction that an embedded optical fibre locally delays graphite lithiation.",
+          "tasks": [
+            "Other research"
+          ],
+          "methods": [
+            "Operando X-ray diffraction"
+          ],
+          "split": "",
+          "evidence": "Source data file of the paper",
+          "reviewed": false
+        }
+      ]
+    },
+    "dynamic-cycling-enhances-battery-lifetime": {
+      "coverage": "Only the original study is listed; reuse by other groups has not been searched yet.",
+      "papers": [
+        {
+          "title": "Dynamic cycling enhances battery lifetime",
+          "authors": "Geslin, Xu, Ganapathi et al.",
+          "year": 2025,
+          "venue": "Nature Energy 10, 172–180",
+          "doi": "10.1038/s41560-024-01675-8",
+          "relation": "Original study",
+          "use": "Finds that realistic dynamic discharge gives up to about 38% more equivalent full cycles than constant current at the same average rate.",
+          "tasks": [
+            "Degradation analysis",
+            "Cycle life"
+          ],
+          "methods": [
+            "Machine learning (feature analysis)"
+          ],
+          "split": "",
+          "evidence": "Data availability (Stanford Digital Repository td676xr4322)",
+          "reviewed": false
+        }
+      ]
+    },
+    "air-cooled-li-ion-battery-pack-from-a-plug-in-hybrid-vehicle-phev": {
+      "coverage": "Only the original study is listed; reuse by other groups has not been searched yet.",
+      "papers": [
+        {
+          "title": "Thermal fault detection of lithium-ion battery packs through an integrated physics and deep neural network based model",
+          "authors": "Naguib, Chen, Kollmeyer et al.",
+          "year": 2025,
+          "venue": "Communications Engineering 4, 79",
+          "doi": "10.1038/s44172-025-00409-2",
+          "relation": "Original study",
+          "use": "Detects sensor, fan and airflow faults from the residual between measured and modelled cell temperatures, using 8 of the 72 sensors.",
+          "tasks": [
+            "Fault diagnosis"
+          ],
+          "methods": [
+            "Lumped thermal model",
+            "Feed-forward neural network"
+          ],
+          "split": "",
+          "evidence": "Data availability (Borealis 10.5683/SP3/THZTJC)",
+          "reviewed": false
+        }
+      ]
+    },
+    "long-term-sweat-testing-data-for-second-life-batteries": {
+      "coverage": "Only the original study is listed; reuse by other groups has not been searched yet.",
+      "papers": [
+        {
+          "title": "Long-term sweat testing dataset for second-life batteries",
+          "authors": "Beatty, Strickland, Warren et al.",
+          "year": 2025,
+          "venue": "Scientific Data 12, 1068",
+          "doi": "10.1038/s41597-025-05360-7",
+          "relation": "Original study",
+          "use": "Describes six years of second-life cycling of retired EV modules in six grid applications.",
+          "tasks": [
+            "Degradation analysis"
+          ],
+          "methods": [],
+          "split": "",
+          "evidence": "Data descriptor",
+          "reviewed": false
+        }
+      ]
+    },
+    "experimental-data-galvanostatic-discharge-at-different-c-rates-and-temperatures": {
+      "coverage": "Only the original study is listed; reuse by other groups has not been searched yet.",
+      "papers": [
+        {
+          "title": "Experimental data of lithium-ion batteries under galvanostatic discharge tests at different rates and temperatures of operation",
+          "authors": "",
+          "year": 2021,
+          "venue": "Data in Brief",
+          "doi": "",
+          "url": "https://www.sciencedirect.com/science/article/pii/S2352340921001785",
+          "open_access_url": "https://doaj.org/article/68b752677dc84eed99dac571bdddf4d4",
+          "relation": "Original study",
+          "use": "Describes discharge tests of NCA, NMC and LFP cells across rates and temperatures.",
+          "tasks": [
+            "Other research"
+          ],
+          "methods": [],
+          "split": "",
+          "evidence": "Data article abstract",
+          "reviewed": false
+        }
+      ]
+    },
+    "isu-ilcc-battery-aging-dataset": {
+      "coverage": "Only the original study is listed; reuse by other groups has not been searched yet.",
+      "papers": [
+        {
+          "title": "Predicting battery lifetime under varying usage conditions from early aging data",
+          "authors": "Li, Zhou, Thelen, Howey, Hu",
+          "year": 2023,
+          "venue": "arXiv preprint 2307.08382",
+          "doi": "",
+          "url": "https://arxiv.org/abs/2307.08382",
+          "relation": "Original study",
+          "use": "Predicts end of life from the first three weeks of reference tests, with elastic net and hierarchical Bayesian models.",
+          "tasks": [
+            "Cycle life"
+          ],
+          "methods": [
+            "Elastic net",
+            "Hierarchical Bayesian model"
+          ],
+          "split": "High depth-of-discharge cells as in-distribution test; low depth-of-discharge cells as out-of-distribution test.",
+          "evidence": "Sections 2.1 and 3.2",
+          "reviewed": false
+        }
+      ]
+    },
+    "wmg-dib-dataset-rapid-soh-estimation-via-eis-and-ml": {
+      "coverage": "Only the original study is listed; reuse by other groups has not been searched yet.",
+      "papers": [
+        {
+          "title": "Dataset for rapid state of health estimation of lithium batteries using EIS and machine learning: Training and validation",
+          "authors": "Rashid, Faraji-Niri, Sansom et al.",
+          "year": 2023,
+          "venue": "Data in Brief 48, 109157",
+          "doi": "10.1016/j.dib.2023.109157",
+          "open_access_url": "https://wrap.warwick.ac.uk/175923/",
+          "relation": "Original study",
+          "use": "Describes impedance and reference tests on cells aged to five health levels, for fast health grading.",
+          "tasks": [
+            "SOH estimation"
+          ],
+          "methods": [],
+          "split": "",
+          "evidence": "Data article",
+          "reviewed": false
+        }
+      ]
+    },
+    "impedance-based-forecasting-of-battery-performance-amid-uneven-usage": {
+      "coverage": "2 studies found so far. Not every paper that used this dataset.",
+      "papers": [
+        {
+          "title": "Impedance-based forecasting of lithium-ion battery performance amid uneven usage",
+          "authors": "Jones, Stimming, Lee",
+          "year": 2022,
+          "venue": "Nature Communications 13, 4806",
+          "doi": "10.1038/s41467-022-32422-w",
+          "relation": "Original study",
+          "use": "Forecasts next-cycle and future capacity from one impedance spectrum plus the planned charging and discharging currents.",
+          "tasks": [
+            "Capacity estimation"
+          ],
+          "methods": [
+            "XGBoost ensemble"
+          ],
+          "split": "Leave two cells out, repeated.",
+          "evidence": "Results; Methods",
+          "reviewed": false
+        },
+        {
+          "title": "Two points are enough",
+          "authors": "Liu, Zhao, Zheng et al.",
+          "year": 2024,
+          "venue": "arXiv preprint 2408.11872",
+          "doi": "",
+          "url": "https://arxiv.org/abs/2408.11872",
+          "relation": "Independent group",
+          "use": "Uses the 88 coin cells as one of six datasets for testing a two-point health feature.",
+          "tasks": [
+            "SOH estimation"
+          ],
+          "methods": [
+            "Two-point feature"
+          ],
+          "split": "",
+          "evidence": "Section 4.2.1; Table 3",
+          "reviewed": false
+        }
+      ]
+    },
+    "formation-tri": {
+      "coverage": "Only the original study is listed; reuse by other groups has not been searched yet.",
+      "papers": [
+        {
+          "title": "Data-driven analysis of battery formation reveals the role of electrode utilization in extending cycle life",
+          "authors": "Cui, Kang, Wang et al.",
+          "year": 2024,
+          "venue": "Joule 8(11), 3072–3087",
+          "doi": "",
+          "url": "https://www.tri.global/research/data-driven-analysis-battery-formation-reveals-role-electrode-utilization-extending-cycle",
+          "relation": "Original study",
+          "use": "Tests 62 formation protocols on 186 cells; fast first-cycle formation extends cycle life by about 50% by shifting how each electrode is used.",
+          "tasks": [
+            "Cycle life"
+          ],
+          "methods": [
+            "Data-driven analysis"
+          ],
+          "split": "",
+          "evidence": "Data page asks users to cite this paper",
+          "reviewed": false
+        }
+      ]
+    },
+    "increasing-generalization-capability-of-battery-health-estimation-continual-learning": {
+      "coverage": "Only the original study is listed; reuse by other groups has not been searched yet.",
+      "papers": [
+        {
+          "title": "Increasing generalization capability of battery health estimation using continual learning",
+          "authors": "Che, Zheng, Onori, Hu, Teodorescu",
+          "year": 2023,
+          "venue": "Cell Reports Physical Science 4, 101743",
+          "doi": "10.1016/j.xcrp.2023.101743",
+          "open_access_url": "https://vbn.aau.dk/files/698872376/1-s2.0-S266638642300588X-main.pdf",
+          "relation": "Original study",
+          "use": "Keeps a health-estimation model accurate across new datasets with continual learning, without retraining from scratch.",
+          "tasks": [
+            "SOH estimation"
+          ],
+          "methods": [
+            "Continual learning"
+          ],
+          "split": "",
+          "evidence": "Datasets section; Data availability",
+          "reviewed": false
+        }
+      ]
+    },
+    "ultrasonic-and-deep-learning-dataset-for-real-time-soc-estimation-in-large-format-cells": {
+      "coverage": "Only the original study is listed; reuse by other groups has not been searched yet.",
+      "papers": [
+        {
+          "title": "Large format battery SoC estimation: An ultrasonic sensing and deep transfer learning predictions for heterogeneity",
+          "authors": "Farhadi Tolie, Reichmann, Marco, Sharif Khodaei, Faraji Niri",
+          "year": 2025,
+          "venue": "Energy and AI 22, 100662",
+          "doi": "10.1016/j.egyai.2025.100662",
+          "relation": "Original study",
+          "use": "Estimates state of charge from ultrasonic waveforms between sensor pairs on a large pouch cell, with transfer learning across sensor locations.",
+          "tasks": [
+            "SOC estimation"
+          ],
+          "methods": [
+            "Deep transfer learning"
+          ],
+          "split": "",
+          "evidence": "Repository README links this paper",
+          "reviewed": false
+        }
+      ]
+    },
+    "battery-degradation-dataset-based-on-a-forklift-mission-profile": {
+      "coverage": "Only the original study is listed; reuse by other groups has not been searched yet.",
+      "papers": [
+        {
+          "title": "Dataset of lithium-ion battery degradation based on a forklift mission profile for state-of-health estimation and lifetime prediction",
+          "authors": "Vilsen, Stroe",
+          "year": 2024,
+          "venue": "Data in Brief 52, 109861",
+          "doi": "",
+          "url": "https://www.sciencedirect.com/science/article/pii/S2352340923009228",
+          "open_access_url": "https://doaj.org/article/470ba2e18e4543c89ca31cc5ee3b8822",
+          "relation": "Original study",
+          "use": "Describes three cells aged at 35, 40 and 45 °C on a two-week forklift profile condensed from four months of field use.",
+          "tasks": [
+            "Degradation analysis"
+          ],
+          "methods": [],
+          "split": "",
+          "evidence": "Data article",
+          "reviewed": false
+        }
+      ]
+    },
+    "accelerated-battery-life-testing-nasa": {
+      "coverage": "Only the original study is listed; reuse by other groups has not been searched yet.",
+      "papers": [
+        {
+          "title": "Prognosis of Li-ion batteries under large load variations using hybrid physics-informed neural networks",
+          "authors": "Fricke, Nascimento, Corbetta, Kulkarni, Viana",
+          "year": 2023,
+          "venue": "Annual Conference of the PHM Society 15",
+          "doi": "10.36001/phmconf.2023.v15i1.3463",
+          "relation": "Original study",
+          "use": "Predicts discharge voltage and ageing under widely varying loads with a hybrid physics-informed model, using packs aged on the authors' testbed.",
+          "tasks": [
+            "SOH estimation",
+            "Degradation analysis"
+          ],
+          "methods": [
+            "Physics-informed neural network",
+            "Gaussian process"
+          ],
+          "split": "",
+          "evidence": "Abstract; dataset creators match the paper's authors",
+          "reviewed": false
+        }
+      ]
     }
   }
 }

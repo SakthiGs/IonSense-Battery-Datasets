@@ -224,8 +224,8 @@
     "tasks": [
       "Other research"
     ],
-    "source": "See original source",
-    "scale": "See original source",
+    "source": "Stanford University",
+    "scale": "31 cells cycled on synthetic driving profiles",
     "description": "Synthetic load profiles derived from autonomous EV real-world driving data, enabling controlled lab experiments that are grounded in realistic usage.",
     "url": "https://purl.stanford.edu/ky011nj6376",
     "paper": "https://www.sciencedirect.com/science/article/pii/S2666386423003314",
@@ -240,7 +240,13 @@
     "chemistry_review_status": "needs_source_verification",
     "application_domains": [
       "Electric mobility"
-    ]
+    ],
+    "license": "CC BY-NC-SA 4.0",
+    "chemistry_evidence": {
+      "status": "not_stated",
+      "url": "https://purl.stanford.edu/ky011nj6376",
+      "note": "Checked: the data record mentions 31 cycled cells but not their chemistry."
+    }
   },
   {
     "id": "online-fault-zenodo",
@@ -378,8 +384,8 @@
       "Cycle life",
       "Degradation analysis"
     ],
-    "source": "Toyota Research Institute / MATR",
-    "scale": "Formation and cycling data",
+    "source": "Toyota Research Institute and Stanford",
+    "scale": "186 cells · 62 formation protocols",
     "description": "Processed formation and aging measurements with cycle summaries.",
     "url": "https://data.matr.io/8/",
     "paper": "",
@@ -393,7 +399,13 @@
     "access_status": "not_checked",
     "chemistries": [],
     "chemistry_review_status": "needs_source_verification",
-    "application_domains": []
+    "application_domains": [],
+    "license": "CC BY-NC 4.0",
+    "chemistry_evidence": {
+      "status": "not_stated",
+      "url": "https://www.tri.global/research/data-driven-analysis-battery-formation-reveals-role-electrode-utilization-extending-cycle",
+      "note": "Checked: the data page and summary do not state the chemistry."
+    }
   },
   {
     "id": "full-factorial-doe-dataset-for-parallel-connected-lithium-ion-cells",
@@ -437,13 +449,13 @@
     "id": "experimental-data-galvanostatic-discharge-at-different-c-rates-and-temperatures",
     "name": "Experimental Data — Galvanostatic Discharge at Different C-Rates and Temperatures",
     "category": "Lab Aging & Degradation",
-    "chemistry": "Unspecified",
+    "chemistry": "Multiple / mixed",
     "tasks": [
       "Degradation analysis"
     ],
-    "source": "See original source",
-    "scale": "See original source",
-    "description": "Detailed measurements of voltage, current, and skin temperature for three lithium-ion batteries tested under galvanostatic discharge at various C-rates and temperatures via Arbin system.",
+    "source": "Stanford Energy Control Laboratory",
+    "scale": "3 cell types · 6 cells each",
+    "description": "Full galvanostatic discharges of three commercial cells, Panasonic NCR18650B (NCA), LG INR21700-M50 (NMC) and A123 ANR26650m1-B (LFP), at 5, 25 and 35 °C and rates from C/20 up to 5C (20C for LFP), with voltage and surface temperature.",
     "url": "https://data.mendeley.com/datasets/kxsbr4x3j2/2",
     "paper": "https://www.sciencedirect.com/science/article/pii/S2352340921001785?via%3Dihub",
     "access": "Unverified",
@@ -455,9 +467,21 @@
     "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
     "source_type": "data_repository",
     "access_status": "not_checked",
-    "chemistries": [],
-    "chemistry_review_status": "needs_source_verification",
-    "application_domains": []
+    "chemistries": [
+      "NCA",
+      "NMC",
+      "LFP"
+    ],
+    "chemistry_review_status": "source_verified",
+    "application_domains": [],
+    "doi": "10.17632/kxsbr4x3j2.2",
+    "chemistry_evidence_url": "https://doaj.org/article/68b752677dc84eed99dac571bdddf4d4",
+    "chemistry_verification": "source_verified",
+    "chemistry_evidence": {
+      "status": "source_verified",
+      "url": "https://doaj.org/article/68b752677dc84eed99dac571bdddf4d4",
+      "note": "Data in Brief article: NCA (Panasonic NCR18650B), NMC (LG INR21700-M50) and LFP (A123 ANR26650m1-B) cells."
+    }
   },
   {
     "id": "increasing-generalization-capability-of-battery-health-estimation-continual-learning",
@@ -465,14 +489,13 @@
     "category": "Lab Aging & Degradation",
     "chemistry": "Unspecified",
     "tasks": [
-      "SOH estimation",
-      "Degradation analysis"
+      "SOH estimation"
     ],
-    "source": "See original source",
-    "scale": "See original source",
+    "source": "Aalborg University and Stanford",
+    "scale": "55 pouch and prismatic cells · 116,681 cycles",
     "description": "Pouch and prismatic cells aged under various temperatures and loading profiles. Includes partial Q curves during charging, capacities, and normalised SOH curves, with non-accelerated degradation experiment data.",
     "url": "https://data.mendeley.com/datasets/n3b54nsw8m/9",
-    "paper": "https://www.sciencedirect.com/science/article/pii/S266638642300588X#abs0020",
+    "paper": "https://doi.org/10.1016/j.xcrp.2023.101743",
     "access": "Unverified",
     "signals": [
       "Temperature",
@@ -484,7 +507,12 @@
     "access_status": "not_checked",
     "chemistries": [],
     "chemistry_review_status": "needs_source_verification",
-    "application_domains": []
+    "application_domains": [],
+    "chemistry_evidence": {
+      "status": "not_stated",
+      "url": "https://vbn.aau.dk/files/698872376/1-s2.0-S266638642300588X-main.pdf",
+      "note": "Checked: the paper describes pouch, 100 Ah prismatic and small polymer cells but does not state their chemistries."
+    }
   },
   {
     "id": "tum-commercial-aging",
@@ -524,15 +552,15 @@
     "id": "underlying-dataset-for-battery-pack-degradation-under-thermal-gradients",
     "name": "Underlying Dataset for Battery Pack Degradation Under Thermal Gradients",
     "category": "Lab Aging & Degradation",
-    "chemistry": "Unspecified",
+    "chemistry": "Multiple / mixed",
     "tasks": [
       "Degradation analysis"
     ],
-    "source": "See original source",
-    "scale": "See original source",
-    "description": "Raw and processed data plus analysis codes for investigating aging in parallel-connected Li-ion battery packs under thermal gradients.",
+    "source": "Imperial College London",
+    "scale": "6 two-cell parallel packs · 2,000 cycles",
+    "description": "Ageing of six 1S2P packs of 5 Ah Kokam pouch cells cycled at 2C for 2,000 cycles, three at uniform temperatures (20, 32.5, 45 °C) and three with applied thermal gradients. Includes cycling, impedance and OCV-fitting data, raw data and analysis code.",
     "url": "https://zenodo.org/records/10207731",
-    "paper": "https://www.nature.com/articles/s44172-023-00153-5#Abs1",
+    "paper": "https://doi.org/10.1038/s44172-023-00153-5",
     "access": "Unverified",
     "signals": [
       "Temperature"
@@ -540,9 +568,21 @@
     "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
     "source_type": "data_repository",
     "access_status": "not_checked",
-    "chemistries": [],
-    "chemistry_review_status": "needs_source_verification",
-    "application_domains": []
+    "chemistries": [
+      "NMC",
+      "LCO"
+    ],
+    "chemistry_review_status": "source_verified",
+    "application_domains": [],
+    "license": "CC BY 4.0",
+    "doi": "10.5281/zenodo.10207731",
+    "chemistry_evidence_url": "https://www.nature.com/articles/s44172-023-00153-5",
+    "chemistry_verification": "source_verified",
+    "chemistry_evidence": {
+      "status": "source_verified",
+      "url": "https://www.nature.com/articles/s44172-023-00153-5",
+      "note": "Communications Engineering paper: Dow Kokam SLPB11543140H5 pouch cells with a blended NMC + LCO cathode and graphite anode."
+    }
   },
   {
     "id": "early-cycle-life",
@@ -696,15 +736,16 @@
     "id": "isu-ilcc-battery-aging-dataset",
     "name": "ISU-ILCC Battery Aging Dataset",
     "category": "Lab Aging & Degradation",
-    "chemistry": "Unspecified",
+    "chemistry": "NMC",
     "tasks": [
-      "Degradation analysis"
+      "Degradation analysis",
+      "Cycle life"
     ],
-    "source": "See original source",
-    "scale": "See original source",
-    "description": "Li-ion polymer cells cycled under varying charge rate, discharge rate, and depth of discharge. Designed for studying stress factor dependencies in capacity fade.",
+    "source": "Iowa State University and Iowa Lakes Community College",
+    "scale": "251 pouch cells (250 mAh) · 63 conditions",
+    "description": "Cycle ageing of 502030-size lithium-polymer pouch cells (250 mAh, NMC/graphite) under 63 combinations of charge rate, discharge rate and depth of discharge at 30 °C, four cells per condition.",
     "url": "https://iastate.figshare.com/articles/dataset/_b_ISU-ILCC_Battery_Aging_Dataset_b_/22582234",
-    "paper": "https://www.cell.com/cell-reports-physical-science/fulltext/S2666-3864(24",
+    "paper": "https://arxiv.org/abs/2307.08382",
     "access": "Unverified",
     "signals": [
       "Capacity",
@@ -713,9 +754,19 @@
     "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
     "source_type": "data_repository",
     "access_status": "not_checked",
-    "chemistries": [],
-    "chemistry_review_status": "needs_source_verification",
-    "application_domains": []
+    "chemistries": [
+      "NMC"
+    ],
+    "chemistry_review_status": "source_verified",
+    "application_domains": [],
+    "doi": "10.25380/iastate.22582234",
+    "chemistry_evidence_url": "https://arxiv.org/abs/2307.08382",
+    "chemistry_verification": "source_verified",
+    "chemistry_evidence": {
+      "status": "source_verified",
+      "url": "https://arxiv.org/abs/2307.08382",
+      "note": "Dataset authors' paper: NMC cathode and graphite anode (they cite it as the ISU & ILCC NMC/Gr dataset)."
+    }
   },
   {
     "id": "comprehensive-battery-aging-dataset-nmc-c-sio-capacity-impedance-fade",
@@ -761,15 +812,16 @@
     "id": "dynamic-cycling-enhances-battery-lifetime",
     "name": "Dynamic Cycling Enhances Battery Lifetime",
     "category": "Lab Aging & Degradation",
-    "chemistry": "Unspecified",
+    "chemistry": "NCA",
     "tasks": [
-      "Degradation analysis"
+      "Degradation analysis",
+      "Cycle life"
     ],
-    "source": "See original source",
-    "scale": "See original source",
-    "description": "Dynamic discharge profiles representative of EV driving vs. constant-current profiles. Findings show up to 38% increase in equivalent full cycles at end-of-life under dynamic profiles.",
+    "source": "Stanford University",
+    "scale": "92 cells · 47 discharge profiles",
+    "description": "92 commercial EV cylindrical cells (NCA cathode, silicon oxide-graphite anode) cycled at 35 °C under 47 discharge profiles, from constant current to real driving cycles, to compare dynamic and constant-current ageing.",
     "url": "https://purl.stanford.edu/td676xr4322",
-    "paper": "https://www.nature.com/articles/s41560-024-01675-8#data-availability",
+    "paper": "https://doi.org/10.1038/s41560-024-01675-8",
     "access": "Unverified",
     "signals": [
       "Current",
@@ -778,11 +830,20 @@
     "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
     "source_type": "data_repository",
     "access_status": "not_checked",
-    "chemistries": [],
-    "chemistry_review_status": "needs_source_verification",
+    "chemistries": [
+      "NCA"
+    ],
+    "chemistry_review_status": "source_verified",
     "application_domains": [
       "Electric mobility"
-    ]
+    ],
+    "chemistry_evidence_url": "https://www.nature.com/articles/s41560-024-01675-8",
+    "chemistry_verification": "source_verified",
+    "chemistry_evidence": {
+      "status": "source_verified",
+      "url": "https://www.nature.com/articles/s41560-024-01675-8",
+      "note": "Nature Energy paper: nickel-cobalt-aluminium cathode with a silicon oxide-graphite anode."
+    }
   },
   {
     "id": "stanford-long-term-calendar-aging-dataset",
@@ -824,15 +885,15 @@
     "id": "wmg-calendar-aging-dataset-lgm50-commercial-cells-39-storage-conditions",
     "name": "WMG Calendar Aging Dataset — LGM50 Commercial Cells (39 Storage Conditions)",
     "category": "Lab Aging & Degradation",
-    "chemistry": "Unspecified",
+    "chemistry": "NMC",
     "tasks": [
       "Degradation analysis"
     ],
-    "source": "See original source",
-    "scale": "See original source",
+    "source": "WMG, University of Warwick",
+    "scale": "LG M50 cells · 39 storage conditions · about 2 years",
     "description": "Calendar aging from LGM50 cells at 0°C, 25°C, and 45°C across 13 SOC levels per temperature. Two-year per condition storage tests with regular RPTs.",
     "url": "https://zenodo.org/records/14577286",
-    "paper": "https://www.sciencedirect.com/science/article/pii/S0306261924026059",
+    "paper": "https://doi.org/10.1016/j.apenergy.2024.125221",
     "access": "Unverified",
     "signals": [
       "Temperature"
@@ -840,9 +901,18 @@
     "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
     "source_type": "data_repository",
     "access_status": "not_checked",
-    "chemistries": [],
-    "chemistry_review_status": "needs_source_verification",
-    "application_domains": []
+    "chemistries": [
+      "NMC"
+    ],
+    "chemistry_review_status": "inferred_related_source",
+    "application_domains": [],
+    "license": "CC BY 4.0",
+    "doi": "10.5281/zenodo.14577286",
+    "chemistry_evidence": {
+      "status": "inferred_related_source",
+      "url": "https://wrap.warwick.ac.uk/193742",
+      "note": "The data record does not state the chemistry. WMG studies of the same LG M50 cell describe an NMC811 cathode with a silicon oxide-graphite anode (Rashid et al. 2023; Majherova et al. 2025)."
+    }
   },
   {
     "id": "cycle-aging-data-of-automotive-grade-li-ion-cells-under-realistic-conditions-vw-id-3",
@@ -883,15 +953,15 @@
     "id": "comprehensive-cycle-aging-data-and-analysis-for-commercial-21700-cells",
     "name": "Comprehensive Cycle Aging Data and Analysis for Commercial 21700 Cells",
     "category": "Lab Aging & Degradation",
-    "chemistry": "Unspecified",
+    "chemistry": "NMC",
     "tasks": [
       "Degradation analysis"
     ],
-    "source": "See original source",
-    "scale": "See original source",
-    "description": "Well-structured repository containing summary data, processed time-series, and raw data. Includes degradation mode analysis, resistance measurements, and aging statistics with Jupyter notebook for easy parsing.",
+    "source": "Imperial College London",
+    "scale": "40 cells (LG M50T) · 5 experiments",
+    "description": "Cycle ageing of 40 LG M50T 21700 cells at 10, 25 and 40 °C over different state-of-charge windows, with drive-cycle and constant-current discharge. Includes capacity, resistance, degradation-mode analysis, processed reference tests and raw data.",
     "url": "https://zenodo.org/records/10637534",
-    "paper": "https://www.sciencedirect.com/science/article/pii/S0378775324001368",
+    "paper": "https://doi.org/10.1016/j.jpowsour.2024.234185",
     "access": "Unverified",
     "signals": [
       "Cycling data"
@@ -899,9 +969,18 @@
     "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
     "source_type": "data_repository",
     "access_status": "not_checked",
-    "chemistries": [],
-    "chemistry_review_status": "needs_source_verification",
-    "application_domains": []
+    "chemistries": [
+      "NMC"
+    ],
+    "chemistry_review_status": "inferred_related_source",
+    "application_domains": [],
+    "license": "CC BY 4.0",
+    "doi": "10.5281/zenodo.10637534",
+    "chemistry_evidence": {
+      "status": "inferred_related_source",
+      "url": "https://onorilab.stanford.edu/products/code-and-data-set",
+      "note": "The data record does not state the cathode. Other datasets using INR21700-M50T cells describe them as NMC with a graphite-silicon anode (Stanford Energy Control Lab)."
+    }
   },
   {
     "id": "aging-dataset-lco-battery-with-mechanical-measurements",
@@ -948,10 +1027,11 @@
     "category": "Lab Aging & Degradation",
     "chemistry": "Unspecified",
     "tasks": [
+      "SOH estimation",
       "Degradation analysis"
     ],
-    "source": "See original source",
-    "scale": "See original source",
+    "source": "Aalborg University",
+    "scale": "3 prismatic cells · 35, 40 and 45 °C",
     "description": "Degradation data from cells cycled under a forklift mission profile — an under-represented industrial application in the literature.",
     "url": "https://www.sciencedirect.com/science/article/pii/S2352340923009228",
     "paper": "https://www.sciencedirect.com/science/article/pii/S2352340923009228",
@@ -964,19 +1044,25 @@
     "chemistry_review_status": "needs_source_verification",
     "application_domains": [
       "Industrial & portable"
-    ]
+    ],
+    "doi": "10.17632/yz4pttm73n.2",
+    "chemistry_evidence": {
+      "status": "not_stated",
+      "url": "https://data.mendeley.com/datasets/yz4pttm73n",
+      "note": "Checked: the data record and article describe three prismatic cells but not their chemistry."
+    }
   },
   {
     "id": "multi-stage-lithium-ion-battery-aging-study",
     "name": "Multi-Stage Lithium-Ion Battery Aging Study",
     "category": "Lab Aging & Degradation",
-    "chemistry": "Unspecified",
+    "chemistry": "NCA",
     "tasks": [
       "Degradation analysis"
     ],
     "source": "See original source",
-    "scale": "See original source",
-    "description": "Two experimental phases combining non-model-based and model-based optimal experimental design. Supports lifetime prediction, physics-based model parameterisation, and aging relationship discovery.",
+    "scale": "279 cells (Samsung INR21700-50E, 4.9 Ah) · 71 test points",
+    "description": "Calendar and cycle ageing of 279 Samsung INR21700-50E cells at 10–45 °C, planned in two stages: classic designs of experiments, then model-based optimal designs. Reference tests record capacity, pseudo-OCV and pulse resistance.",
     "url": "https://figshare.com/articles/dataset/Multi-Stage_Lithium_Ion_Battery_Aging_Study/25975315",
     "paper": "https://www.nature.com/articles/s41597-024-03859-z",
     "access": "Unverified",
@@ -984,9 +1070,18 @@
     "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
     "source_type": "data_repository",
     "access_status": "not_checked",
-    "chemistries": [],
-    "chemistry_review_status": "needs_source_verification",
-    "application_domains": []
+    "chemistries": [
+      "NCA"
+    ],
+    "chemistry_review_status": "inferred_related_source",
+    "application_domains": [],
+    "license": "CC BY 4.0",
+    "doi": "10.6084/m9.figshare.25975315",
+    "chemistry_evidence": {
+      "status": "inferred_related_source",
+      "url": "https://wrap.warwick.ac.uk/183745/1/1-s2.0-S2352340924001987-main.pdf",
+      "note": "The data descriptor does not state the chemistry. The parallel-cell dataset by Piombo et al. (2024) describes the same Samsung INR21700-50E cell as NCA."
+    }
   },
   {
     "id": "uconn-lco-gr-battery-fast-charging-dataset",
@@ -1093,11 +1188,11 @@
     "tasks": [
       "Fault diagnosis"
     ],
-    "source": "See original source",
-    "scale": "See original source",
+    "source": "McMaster University",
+    "scale": "72-cell air-cooled pack (SB Limotive, 5.2 Ah prismatic)",
     "description": "Real-world battery pack data extracted from a PHEV, enabling physics-informed deep learning for thermal fault detection.",
     "url": "https://borealisdata.ca/dataset.xhtml?persistentId=doi:10.5683/SP3/THZTJC",
-    "paper": "https://www.nature.com/articles/s44172-025-00409-2",
+    "paper": "https://doi.org/10.1038/s44172-025-00409-2",
     "access": "Unverified",
     "signals": [
       "Temperature"
@@ -1109,7 +1204,12 @@
     "chemistry_review_status": "needs_source_verification",
     "application_domains": [
       "Electric mobility"
-    ]
+    ],
+    "chemistry_evidence": {
+      "status": "not_stated",
+      "url": "https://www.nature.com/articles/s44172-025-00409-2",
+      "note": "Checked: the paper names SB Limotive 5.2 Ah prismatic cells but not their chemistry."
+    }
   },
   {
     "id": "battery-failure-detection-and-fpi-estimation-during-cycling-to-failure",
@@ -1119,11 +1219,11 @@
     "tasks": [
       "Fault diagnosis"
     ],
-    "source": "See original source",
-    "scale": "See original source",
+    "source": "Imperial College London",
+    "scale": "Commercial 21700 cells",
     "description": "Real-time tracking of battery cycling-to-failure, including Faradaic process indicator (FPI) estimation. Includes surface strain measurements for failure detection.",
     "url": "https://zenodo.org/records/17651045",
-    "paper": "https://www.cell.com/joule/fulltext/S2542-4351(25",
+    "paper": "https://doi.org/10.1016/j.joule.2025.102272",
     "access": "Unverified",
     "signals": [
       "Cycling data"
@@ -1133,7 +1233,14 @@
     "access_status": "not_checked",
     "chemistries": [],
     "chemistry_review_status": "needs_source_verification",
-    "application_domains": []
+    "application_domains": [],
+    "license": "CC BY 4.0",
+    "doi": "10.5281/zenodo.17651045",
+    "chemistry_evidence": {
+      "status": "not_stated",
+      "url": "https://spiral.imperial.ac.uk/entities/publication/beb15717-db10-4304-8485-efb7e9619057",
+      "note": "Checked: the paper and data record describe commercial 21700 cells but do not name the cell or chemistry."
+    }
   },
   {
     "id": "li-ion-battery-pack-cycling-dataset-with-cc-cv-charging-and-wltp-constant-discharge-profiles",
@@ -1307,25 +1414,32 @@
     "category": "State Estimation & Health Monitoring",
     "chemistry": "Unspecified",
     "tasks": [
-      "Other research"
+      "Capacity estimation",
+      "SOH estimation"
     ],
-    "source": "See original source",
-    "scale": "See original source",
+    "source": "University of Cambridge",
+    "scale": "88 coin cells (Powerstream and RS Pro LiR2032)",
     "description": "Cycled under multistage constant current with randomly changed currents between cycles to simulate realistic usage. Explores impedance as a predictor for future performance under non-uniform usage.",
     "url": "https://zenodo.org/records/6645536",
     "paper": "https://www.nature.com/articles/s41467-022-32422-w",
     "access": "Unverified",
     "signals": [
-      "Current",
       "EIS",
-      "Cycling data"
+      "Capacity"
     ],
     "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
     "source_type": "data_repository",
     "access_status": "not_checked",
     "chemistries": [],
     "chemistry_review_status": "needs_source_verification",
-    "application_domains": []
+    "application_domains": [],
+    "license": "CC BY 4.0",
+    "doi": "10.5281/zenodo.6645536",
+    "chemistry_evidence": {
+      "status": "not_stated",
+      "url": "https://zenodo.org/records/6645536",
+      "note": "Checked: neither the paper nor the data record states the chemistry. The Powerstream LiR2032 model is LCO/graphite in the UConn dataset, but the RS Pro cells are filed as a second chemistry."
+    }
   },
   {
     "id": "identifying-degradation-patterns-via-impedance-spectroscopy-and-machine-learning",
@@ -1429,26 +1543,36 @@
     "id": "wmg-dib-dataset-rapid-soh-estimation-via-eis-and-ml",
     "name": "WMG-DIB Dataset — Rapid SoH Estimation via EIS and ML",
     "category": "State Estimation & Health Monitoring",
-    "chemistry": "Unspecified",
+    "chemistry": "NMC",
     "tasks": [
       "SOH estimation"
     ],
-    "source": "See original source",
-    "scale": "See original source",
-    "description": "Reference performance tests, EIS measurements across SOC and temperature, and derived metrics from EIS plots. Designed specifically for rapid SoH estimation.",
+    "source": "WMG, University of Warwick",
+    "scale": "25 cells (LG M50, 5 Ah) · 5 health levels",
+    "description": "Reference tests and impedance spectra of 25 LG M50 21700 cells aged to 100, 95, 90, 85 and 80% state of health, with impedance measured at five states of charge and three temperatures. Built for fast health grading of retired cells.",
     "url": "https://data.mendeley.com/datasets/mn9fb7xdx6/3",
     "paper": "https://www.sciencedirect.com/science/article/pii/S2352340923002767",
     "access": "Unverified",
     "signals": [
-      "Temperature",
-      "EIS"
+      "EIS",
+      "Capacity"
     ],
     "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
     "source_type": "data_repository",
     "access_status": "not_checked",
-    "chemistries": [],
-    "chemistry_review_status": "needs_source_verification",
-    "application_domains": []
+    "chemistries": [
+      "NMC"
+    ],
+    "chemistry_review_status": "source_verified",
+    "application_domains": [],
+    "license": "CC BY 4.0",
+    "chemistry_evidence_url": "https://wrap.warwick.ac.uk/175923/1/1-s2.0-S2352340923002767-main.pdf",
+    "chemistry_verification": "source_verified",
+    "chemistry_evidence": {
+      "status": "source_verified",
+      "url": "https://wrap.warwick.ac.uk/175923/1/1-s2.0-S2352340923002767-main.pdf",
+      "note": "Data in Brief article: LGM50 21700 cells with an NMC811 cathode."
+    }
   },
   {
     "id": "retired-lithium-ion-batteries-dataset",
@@ -1483,13 +1607,13 @@
     "category": "State Estimation & Health Monitoring",
     "chemistry": "Unspecified",
     "tasks": [
-      "Other research"
+      "SOC estimation"
     ],
-    "source": "See original source",
-    "scale": "See original source",
+    "source": "WMG, University of Warwick",
+    "scale": "Large-format pouch cell · 4 ultrasonic sensors",
     "description": "Experimentally collected ultrasonic waveforms from large-format Li-ion pouch cells during controlled charge/discharge. Four sensors arranged for multiple actuator–receiver paths. Provided as both raw CSV waveforms and CNN-ready image representations.",
     "url": "https://github.com/hfarhaditolie/Ultrasonic-SoC",
-    "paper": "https://www.sciencedirect.com/science/article/pii/S2666546825001946",
+    "paper": "https://doi.org/10.1016/j.egyai.2025.100662",
     "access": "Unverified",
     "signals": [
       "Charging data"
@@ -1499,21 +1623,28 @@
     "access_status": "not_checked",
     "chemistries": [],
     "chemistry_review_status": "needs_source_verification",
-    "application_domains": []
+    "application_domains": [],
+    "license": "MIT",
+    "chemistry_evidence": {
+      "status": "not_stated",
+      "url": "https://github.com/hfarhaditolie/Ultrasonic-SoC",
+      "note": "Checked: the repository describes large-format pouch cells but not their chemistry."
+    }
   },
   {
     "id": "mechanistically-guided-residual-learning-dataset-for-battery-state-monitoring",
     "name": "Mechanistically Guided Residual Learning Dataset for Battery State Monitoring",
     "category": "State Estimation & Health Monitoring",
-    "chemistry": "Unspecified",
+    "chemistry": "Multiple / mixed",
     "tasks": [
-      "Degradation analysis"
+      "SOH estimation",
+      "SOC estimation"
     ],
     "source": "See original source",
-    "scale": "See original source",
-    "description": "Electrochemical characterisation and long-term cycling data from prismatic and pouch cells. Combines OCV measurements, cycling trajectories, and physics-based features with data-driven residual learning. Covers full-life degradation modelling.",
+    "scale": "13 pouch cells (8 Ah) and 3 prismatic cells (50 Ah)",
+    "description": "Lifelong cycling and OCV data from 13 NCA/graphite pouch cells aged under urban, highway and mixed driving discharge at constant and varying temperature, and 3 NMC/graphite prismatic cells discharged with WLTP and charged with constant or pulsed current.",
     "url": "https://zenodo.org/records/17591942",
-    "paper": "https://www.nature.com/articles/s41467-025-67565-z",
+    "paper": "https://doi.org/10.1038/s41467-025-67565-z",
     "access": "Unverified",
     "signals": [
       "Cycling data"
@@ -1521,23 +1652,33 @@
     "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
     "source_type": "data_repository",
     "access_status": "not_checked",
-    "chemistries": [],
-    "chemistry_review_status": "needs_source_verification",
-    "application_domains": []
+    "chemistries": [
+      "NCA",
+      "NMC"
+    ],
+    "chemistry_review_status": "source_verified",
+    "application_domains": [],
+    "chemistry_evidence_url": "https://www.nature.com/articles/s41467-025-67565-z",
+    "chemistry_verification": "source_verified",
+    "chemistry_evidence": {
+      "status": "source_verified",
+      "url": "https://www.nature.com/articles/s41467-025-67565-z",
+      "note": "Nature Communications paper: NCA/graphite pouch cells (MGL SPIM08HP) and NMC/graphite prismatic cells (L148N50B)."
+    }
   },
   {
     "id": "probability-distributed-equivalent-circuit-model-dataset",
     "name": "Probability Distributed Equivalent Circuit Model Dataset",
     "category": "Electrochemical Characterisation",
-    "chemistry": "Unspecified",
+    "chemistry": "LFP",
     "tasks": [
       "Degradation analysis"
     ],
     "source": "See original source",
-    "scale": "See original source",
-    "description": "Supports development of a physically motivated voltage hysteresis model leveraging probability distributed equivalent circuits for enhanced performance prediction accuracy.",
+    "scale": "A123 18650M1A cell plus half-cells",
+    "description": "Measurements from an A123 18650M1A LFP/graphite cell and half-cells built from its electrodes, used to develop a voltage hysteresis model based on a probability distributed equivalent circuit.",
     "url": "https://zenodo.org/records/10852930",
-    "paper": "https://www.nature.com/articles/s44172-024-00221-4",
+    "paper": "https://doi.org/10.1038/s44172-024-00221-4",
     "access": "Unverified",
     "signals": [
       "Voltage"
@@ -1545,21 +1686,31 @@
     "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
     "source_type": "data_repository",
     "access_status": "not_checked",
-    "chemistries": [],
-    "chemistry_review_status": "needs_source_verification",
-    "application_domains": []
+    "chemistries": [
+      "LFP"
+    ],
+    "chemistry_review_status": "source_verified",
+    "application_domains": [],
+    "doi": "10.5281/zenodo.10852930",
+    "chemistry_evidence_url": "https://www.nature.com/articles/s44172-024-00221-4",
+    "chemistry_verification": "source_verified",
+    "chemistry_evidence": {
+      "status": "source_verified",
+      "url": "https://www.nature.com/articles/s44172-024-00221-4",
+      "note": "Communications Engineering paper: A123 18650M1A cell, LFP cathode and graphite anode."
+    }
   },
   {
     "id": "source-data-internal-sensors-in-a-smart-battery-impact-on-local-graphite-lithiation",
     "name": "Source Data: Internal Sensors in a Smart Battery — Impact on Local Graphite Lithiation",
     "category": "Electrochemical Characterisation",
-    "chemistry": "Unspecified",
+    "chemistry": "NMC",
     "tasks": [
       "Other research"
     ],
     "source": "See original source",
-    "scale": "See original source",
-    "description": "Reveals how embedded internal sensors affect the graphite lithiation mechanism, providing rare insight into instrumented cell behaviour.",
+    "scale": "1.1 Ah pouch cell with embedded sensors",
+    "description": "Source data for operando X-ray diffraction of a 1.1 Ah NMC622/graphite pouch cell fitted with an internal reference electrode and an optical-fibre temperature sensor, showing how the fibre locally delays graphite lithiation.",
     "url": "https://www.nature.com/articles/s41467-024-54656-6#Sec14",
     "paper": "https://www.nature.com/articles/s41467-024-54656-6#Sec14",
     "access": "Unverified",
@@ -1567,9 +1718,18 @@
     "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
     "source_type": "source_data",
     "access_status": "not_checked",
-    "chemistries": [],
-    "chemistry_review_status": "needs_source_verification",
-    "application_domains": []
+    "chemistries": [
+      "NMC"
+    ],
+    "chemistry_review_status": "source_verified",
+    "application_domains": [],
+    "chemistry_evidence_url": "https://www.nature.com/articles/s41467-024-54656-6",
+    "chemistry_verification": "source_verified",
+    "chemistry_evidence": {
+      "status": "source_verified",
+      "url": "https://www.nature.com/articles/s41467-024-54656-6",
+      "note": "Nature Communications paper: Li-FUN pouch cell with an NMC622 cathode and graphite anode."
+    }
   },
   {
     "id": "rate-capability-ocv-impedance-and-half-cell-data-sodium-ion-and-lfp-batteries",
@@ -1766,15 +1926,15 @@
     "id": "long-term-sweat-testing-data-for-second-life-batteries",
     "name": "Long-Term Sweat Testing Data for Second-Life Batteries",
     "category": "Second-Life & Recycling",
-    "chemistry": "Unspecified",
+    "chemistry": "Multiple / mixed",
     "tasks": [
       "Other research"
     ],
-    "source": "See original source",
-    "scale": "See original source",
-    "description": "Long-term cycling from repurposed EV batteries under six real-world scenarios: time-of-use tariffs, PV self-consumption, and frequency response services. Recorded with Chroma 17020 battery cycler; processed into individual charge–discharge cycle CSV files.",
+    "source": "Loughborough University",
+    "scale": "6 second-life EV modules (66 Ah, 2S2P) · 2019–2025",
+    "description": "Long-term cycling of six retired EV battery modules (pouch cells, 2S2P, 66 Ah when new) in six grid uses: solar self-consumption, time-of-use tariffs, frequency response and day-ahead trading. Voltage, current and temperature logged about every 3 seconds.",
     "url": "https://repository.lboro.ac.uk/articles/online_resource/Long-Term_Sweat_Testing_Data_for_Second-Life_Batteries/28732490/2",
-    "paper": "https://www.nature.com/articles/s41597-025-05360-7",
+    "paper": "https://doi.org/10.1038/s41597-025-05360-7",
     "access": "Unverified",
     "signals": [
       "Charging data",
@@ -1783,12 +1943,22 @@
     "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
     "source_type": "data_repository",
     "access_status": "not_checked",
-    "chemistries": [],
-    "chemistry_review_status": "needs_source_verification",
+    "chemistries": [
+      "LMO",
+      "LNO"
+    ],
+    "chemistry_review_status": "source_verified",
     "application_domains": [
       "Stationary energy storage",
       "Second-life & recycling"
-    ]
+    ],
+    "chemistry_evidence_url": "https://www.nature.com/articles/s41597-025-05360-7",
+    "chemistry_verification": "source_verified",
+    "chemistry_evidence": {
+      "status": "source_verified",
+      "url": "https://www.nature.com/articles/s41597-025-05360-7",
+      "note": "Scientific Data descriptor: lithium manganese oxide and lithium nickel oxide cathodes."
+    }
   },
   {
     "id": "nasa-battery-data-set",
@@ -1900,8 +2070,8 @@
     "tasks": [
       "Other research"
     ],
-    "source": "See original source",
-    "scale": "See original source",
+    "source": "University of Central Florida, hosted by NASA PCoE",
+    "scale": "26 two-cell 18650 packs",
     "description": "Accelerated lifecycle data for 18650-cell Li-ion packs under constant, random loading, and second-life conditions.",
     "url": "https://data.nasa.gov/dataset/randomized-and-recommissioned-battery-dataset",
     "paper": "https://papers.phmsociety.org/index.php/phmconf/article/view/3463",
@@ -1912,7 +2082,12 @@
     "access_status": "not_checked",
     "chemistries": [],
     "chemistry_review_status": "needs_source_verification",
-    "application_domains": []
+    "application_domains": [],
+    "chemistry_evidence": {
+      "status": "not_stated",
+      "url": "https://data.nasa.gov/dataset/randomized-and-recommissioned-battery-dataset",
+      "note": "Checked: the NASA page describes two-cell 18650 packs but not the cell model or chemistry."
+    }
   },
   {
     "id": "magbridge-battery-v1",
