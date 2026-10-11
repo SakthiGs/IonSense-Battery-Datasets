@@ -364,15 +364,17 @@
     "tasks": [
       "Degradation analysis"
     ],
-    "source": "See original source",
-    "scale": "See original source",
-    "description": "Full factorial design of experiments on ladder-configured parallel strings. Varies temperature, cell-to-cell interconnection resistance, chemistry (NCA/NMC), and aging level. Includes individual cell current and temperature distributions.",
+    "source": "Stanford Energy Control Laboratory",
+    "scale": "54 module tests · 39 cells characterised",
+    "description": "Four 21700 cells connected in parallel, tested under a full factorial design: interconnection resistance (0, 1, 3 mΩ), temperature (10, 25, 40 °C), chemistry (NMC, NCA or mixed) and ageing state. Logs every cell's current and surface temperature, plus capacity and resistance of each cell.",
     "url": "https://data.mendeley.com/datasets/zh58byr53c/1",
     "paper": "https://www.sciencedirect.com/science/article/pii/S2352152X24003670?via%3Dihub",
     "access": "Unverified",
     "signals": [
       "Current",
-      "Temperature"
+      "Voltage",
+      "Temperature",
+      "Capacity"
     ],
     "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
     "source_type": "data_repository",
@@ -382,12 +384,15 @@
       "NMC"
     ],
     "chemistry_evidence": {
-      "status": "catalogue_or_source_review",
-      "url": "https://data.mendeley.com/datasets/zh58byr53c/1",
-      "note": "Catalogue description explicitly identifies NCA/NMC"
+      "status": "source_verified",
+      "url": "https://wrap.warwick.ac.uk/183745/1/1-s2.0-S2352340924001987-main.pdf",
+      "note": "Data in Brief article: Samsung INR21700-50E (NCA) and LG Chem INR21700-M50T (NMC) cells, both with silicon-containing graphite anodes."
     },
-    "chemistry_review_status": "catalogue_label_not_independently_verified",
-    "application_domains": []
+    "chemistry_review_status": "source_verified",
+    "application_domains": [],
+    "license": "CC BY 4.0",
+    "chemistry_evidence_url": "https://wrap.warwick.ac.uk/183745/1/1-s2.0-S2352340924001987-main.pdf",
+    "chemistry_verification": "source_verified"
   },
   {
     "id": "experimental-data-galvanostatic-discharge-at-different-c-rates-and-temperatures",
@@ -452,14 +457,15 @@
       "Degradation analysis"
     ],
     "source": "Technical University of Munich",
-    "scale": "196 cells",
-    "description": "Calendar and cycling aging under varied conditions for silicon-doped graphite/NCA cells.",
+    "scale": "196 cells (Sony Murata US18650VTC5A, 2.5 Ah)",
+    "description": "Calendar and cyclic ageing of 196 commercial 18650 cells with an NCA cathode and a silicon-graphite anode, tested under a wide range of storage and cycling conditions with regular reference tests, including relaxation voltage after discharge.",
     "url": "https://mediatum.ub.tum.de/1713382",
-    "paper": "",
+    "paper": "https://doi.org/10.1016/j.jpowsour.2022.232498",
     "access": "Repository",
     "signals": [
+      "Cycling data",
       "Capacity",
-      "Cycling data"
+      "Voltage"
     ],
     "notes": "Check documentation for complete measurement inventory.",
     "source_type": "data_repository",
@@ -468,7 +474,12 @@
       "NCA"
     ],
     "chemistry_review_status": "catalogue_label_not_independently_verified",
-    "application_domains": []
+    "application_domains": [],
+    "chemistry_evidence": {
+      "status": "confirmed_by_users",
+      "url": "https://arxiv.org/abs/2604.26545",
+      "note": "Two papers that use this data describe NCA cathode / silicon-graphite anode cells (Philipp et al. 2026; Liu et al. 2024). The dataset page and the original paper could not be opened to check directly."
+    }
   },
   {
     "id": "underlying-dataset-for-battery-pack-degradation-under-thermal-gradients",
@@ -1134,27 +1145,36 @@
     "category": "State Estimation & Health Monitoring",
     "chemistry": "Multiple / mixed",
     "tasks": [
-      "Capacity estimation"
+      "Capacity estimation",
+      "SOH estimation"
     ],
     "source": "See original source",
-    "scale": "See original source",
-    "description": "Cycling data, impedance measurements, and voltage relaxation tests. Useful for capacity estimation without full charge/discharge cycles.",
+    "scale": "130 cells (18650) in three chemistries",
+    "description": "Cycling data from 130 commercial 18650 cells with NCA, NCM or blended NCM+NCA cathodes, cycled at 25, 35 and 45 °C, including the voltage relaxation after every full charge. Built for estimating capacity without full charge or discharge cycles.",
     "url": "https://zenodo.org/records/6405084",
     "paper": "https://www.nature.com/articles/s41467-022-29837-w",
     "access": "Unverified",
     "signals": [
+      "Cycling data",
       "Voltage",
-      "Capacity",
-      "EIS",
-      "Charging data",
-      "Cycling data"
+      "Capacity"
     ],
     "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
     "source_type": "data_repository",
     "access_status": "not_checked",
-    "chemistries": [],
-    "chemistry_review_status": "needs_source_verification",
-    "application_domains": []
+    "chemistries": [
+      "NCA",
+      "NMC"
+    ],
+    "chemistry_review_status": "source_verified",
+    "application_domains": [],
+    "chemistry_evidence_url": "https://www.nature.com/articles/s41467-022-29837-w",
+    "chemistry_verification": "source_verified",
+    "chemistry_evidence": {
+      "status": "source_verified",
+      "url": "https://www.nature.com/articles/s41467-022-29837-w",
+      "note": "Nature Communications paper: dataset 1 NCA, dataset 2 NCM, dataset 3 an NCM+NCA blend."
+    }
   },
   {
     "id": "impedance-based-forecasting-of-battery-performance-amid-uneven-usage",

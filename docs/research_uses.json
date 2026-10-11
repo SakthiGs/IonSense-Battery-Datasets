@@ -831,6 +831,109 @@
           "reviewed": false
         }
       ]
+    },
+    "tum-commercial-aging": {
+      "coverage": "A starting list of 3 studies, found by searching for papers that reuse these 196 cells. Not every paper that used this dataset.",
+      "papers": [
+        {
+          "title": "Experimental degradation study of a commercial lithium-ion battery",
+          "authors": "Wildfeuer, Karger, Aygül, Wassiliadis, Jossen, Lienkamp",
+          "year": 2023,
+          "venue": "Journal of Power Sources 560, 232498",
+          "doi": "10.1016/j.jpowsour.2022.232498",
+          "relation": "Original study",
+          "use": "Introduces the dataset: calendar and cyclic ageing of commercial NCA / silicon-graphite 18650 cells under many storage and cycling conditions.",
+          "tasks": [
+            "Degradation analysis"
+          ],
+          "methods": [],
+          "split": "",
+          "evidence": "Cited as the source of the data by Philipp et al. (2026, ref. 24) and Liu et al. (2024, ref. 22); the paper itself could not be opened here",
+          "reviewed": false
+        },
+        {
+          "title": "Two points are enough",
+          "authors": "Liu, Zhao, Zheng et al.",
+          "year": 2024,
+          "venue": "arXiv preprint 2408.11872",
+          "doi": "",
+          "url": "https://arxiv.org/abs/2408.11872",
+          "relation": "Independent group",
+          "use": "Estimates state of health from two points of the relaxation voltage after discharge, compared with the statistical features of Zhu et al. (2022).",
+          "tasks": [
+            "SOH estimation"
+          ],
+          "methods": [
+            "Two-point feature"
+          ],
+          "split": "Random split by cell: 157 cells for training, 39 for testing.",
+          "evidence": "Section 4.2.4; Table 6",
+          "reviewed": false
+        },
+        {
+          "title": "Physics-based modeling of cyclic and calendar aging of LIBs with Si-Gr composite anodes",
+          "authors": "Philipp, Köbbing, Karger, Jossen, Latz, Horstmann",
+          "year": 2026,
+          "venue": "arXiv preprint 2604.26545",
+          "doi": "",
+          "url": "https://arxiv.org/abs/2604.26545",
+          "relation": "Same research group",
+          "use": "Builds a physics-based ageing model that separates SEI growth from silicon-specific effects and checks it against the calendar and cyclic ageing data.",
+          "tasks": [
+            "Degradation analysis"
+          ],
+          "methods": [
+            "Physics-based model (SPMe, PyBaMM)"
+          ],
+          "split": "",
+          "evidence": "Section II A (Experimental data); Table I",
+          "reviewed": false
+        }
+      ]
+    },
+    "full-factorial-doe-dataset-for-parallel-connected-lithium-ion-cells": {
+      "coverage": "2 papers from the team that made the dataset. The data article is cited about 14 times, but no reuse by other groups was confirmed yet.",
+      "papers": [
+        {
+          "title": "Full factorial design of experiments dataset for parallel-connected lithium-ion cells imbalanced performance investigation",
+          "authors": "Piombo, Fasolato, Heymer et al.",
+          "year": 2024,
+          "venue": "Data in Brief 53, 110227",
+          "doi": "10.1016/j.dib.2024.110227",
+          "open_access_url": "https://wrap.warwick.ac.uk/183745/",
+          "relation": "Original data release",
+          "use": "Describes the 54 module tests on four parallel-connected cells and the single-cell characterisation of 39 cells.",
+          "tasks": [
+            "Degradation analysis"
+          ],
+          "methods": [],
+          "split": "",
+          "evidence": "Data article (Experimental design, materials and methods)",
+          "reviewed": false
+        },
+        {
+          "title": "Unveiling the performance impact of module level features on parallel-connected lithium-ion cells via explainable machine learning techniques on a full factorial design of experiments",
+          "authors": "Piombo, Fasolato, Heymer et al.",
+          "year": 2024,
+          "venue": "Journal of Energy Storage 84, 110783",
+          "doi": "10.1016/j.est.2024.110783",
+          "open_access_url": "https://wrap.warwick.ac.uk/183420",
+          "relation": "Original study",
+          "use": "Finds which module features drive uneven current, state of charge and temperature across parallel cells; interconnection resistance matters most.",
+          "tasks": [
+            "Degradation analysis",
+            "Energy management"
+          ],
+          "methods": [
+            "Multivariate linear model",
+            "SHAP",
+            "Partial dependence plots"
+          ],
+          "split": "",
+          "evidence": "Abstract",
+          "reviewed": false
+        }
+      ]
     }
   }
 }
