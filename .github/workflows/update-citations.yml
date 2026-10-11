@@ -2,7 +2,7 @@ name: Update citation counts
 
 on:
   schedule:
-    - cron: "17 3 1 * *"   # 03:17 UTC on the 1st of every month
+    - cron: "17 3 * * 0"   # 03:17 UTC every Sunday
   workflow_dispatch:
   push:
     branches: [main]
