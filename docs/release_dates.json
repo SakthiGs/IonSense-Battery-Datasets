@@ -1,0 +1,406 @@
+{
+  "updated": "2026-10-11",
+  "note": "When each dataset was first made public, from the hosting repository. 'Project created' and 'Repository created' are used where the host records no release date.",
+  "datasets": {
+    "a-cross-scale-framework-for-evaluating-flexibility-values-of-battery-and-fuel-cell-evs": {
+      "date": "2021-11-01",
+      "source": "GitHub repository macroenergy/Dolphyn.jl",
+      "kind": "Repository created"
+    },
+    "a-dataset-of-over-1-000-computed-tomography-scans-of-battery-cells": {
+      "date": "2024-03-15",
+      "source": "figshare record 25330501 (version 1)",
+      "kind": "Released"
+    },
+    "aging-dataset-lco-battery-with-mechanical-measurements": {
+      "date": "2025-02-25",
+      "source": "DataCite record for doi:10.5281/zenodo.14914171",
+      "kind": "Released",
+      "url": "https://doi.org/10.5281/zenodo.14914171"
+    },
+    "air-cooled-li-ion-battery-pack-from-a-plug-in-hybrid-vehicle-phev": {
+      "date": "2025-03-18",
+      "source": "DataCite record for doi:10.5683/sp3/thztjc",
+      "kind": "Released",
+      "url": "https://doi.org/10.5683/sp3/thztjc"
+    },
+    "argonne-camp-2023": {
+      "date": "2023-01-25",
+      "source": "DataCite record for doi:10.18126/fdxq-7yul",
+      "kind": "Released",
+      "url": "https://doi.org/10.18126/fdxq-7yul"
+    },
+    "attention-towards-chemistry-agnostic-and-explainable-battery-lifetime-prediction-arcana": {
+      "date": "2023-12-08",
+      "source": "DataCite record for doi:10.5281/zenodo.10293071",
+      "kind": "Released",
+      "url": "https://doi.org/10.5281/zenodo.10293071"
+    },
+    "battery-degradation-dataset-based-on-a-forklift-mission-profile": {
+      "date": "2023-08-29",
+      "source": "DataCite record for doi:10.17632/yz4pttm73n",
+      "kind": "Released",
+      "url": "https://doi.org/10.17632/yz4pttm73n"
+    },
+    "battery-failure-detection-and-fpi-estimation-during-cycling-to-failure": {
+      "date": "2025-11-18",
+      "source": "DataCite record for doi:10.5281/zenodo.17641542",
+      "kind": "Released",
+      "url": "https://doi.org/10.5281/zenodo.17641542"
+    },
+    "battery-materials-database-chemdataextractor": {
+      "date": "2020-07-13",
+      "source": "DataCite record for doi:10.6084/m9.figshare.11888115.v2",
+      "kind": "Released",
+      "url": "https://doi.org/10.6084/m9.figshare.11888115.v2"
+    },
+    "batterylife-benchmark": {
+      "date": "2025-02-21",
+      "source": "GitHub repository Ruifeng-Tan/BatteryLife",
+      "kind": "Repository created"
+    },
+    "bev-energy-kuleuven": {
+      "date": "2025-06-27",
+      "source": "DataCite record for doi:10.48804/8kpdtw",
+      "kind": "Released",
+      "url": "https://doi.org/10.48804/8kpdtw"
+    },
+    "bmw-i3-real-driving-battery-heating": {
+      "date": "2020-10-19",
+      "source": "DataCite record for doi:10.21227/6jr9-5235",
+      "kind": "Released",
+      "url": "https://doi.org/10.21227/6jr9-5235"
+    },
+    "challenges-and-opportunities-in-truck-electrification-big-operational-data": {
+      "date": "2024-08-13",
+      "source": "figshare record 24421210 (version 1)",
+      "kind": "Released"
+    },
+    "cmu-evtol-battery-dataset": {
+      "date": "2023-04-06",
+      "source": "DataCite record for doi:10.1184/r1/14226830.v2",
+      "kind": "Released",
+      "url": "https://doi.org/10.1184/r1/14226830.v2"
+    },
+    "comprehensive-battery-aging-dataset-nmc-c-sio-capacity-impedance-fade": {
+      "date": "2024-03-07",
+      "source": "DataCite record for doi:10.35097/1947",
+      "kind": "Released",
+      "url": "https://doi.org/10.35097/1947"
+    },
+    "comprehensive-cycle-aging-data-and-analysis-for-commercial-21700-cells": {
+      "date": "2024-02-08",
+      "source": "DataCite record for doi:10.5281/zenodo.10637533",
+      "kind": "Released",
+      "url": "https://doi.org/10.5281/zenodo.10637533"
+    },
+    "data-driven-capacity-estimation-from-voltage-relaxation": {
+      "date": "2022-03-24",
+      "source": "DataCite record for doi:10.5281/zenodo.6379165",
+      "kind": "Released",
+      "url": "https://doi.org/10.5281/zenodo.6379165"
+    },
+    "data-repository-for-electrochemical-thermal-modelling-of-high-power-li-ion-pouch-cells": {
+      "date": "2025-11-18",
+      "source": "DataCite record for doi:10.5287/ora-eonzaxjpm",
+      "kind": "Released",
+      "url": "https://doi.org/10.5287/ora-eonzaxjpm"
+    },
+    "electric-vehicle-usage-data-set-for-battery-aging-studies": {
+      "date": "2025-08-28",
+      "source": "GitHub repository TUMFTM/electric-vehicle-uds-dataset",
+      "kind": "Repository created"
+    },
+    "experimental-data-galvanostatic-discharge-at-different-c-rates-and-temperatures": {
+      "date": "2021-02-04",
+      "source": "DataCite record for doi:10.17632/kxsbr4x3j2",
+      "kind": "Released",
+      "url": "https://doi.org/10.17632/kxsbr4x3j2"
+    },
+    "field-28-lfp": {
+      "date": "2024-09-14",
+      "source": "DataCite record for doi:10.5281/zenodo.13715693",
+      "kind": "Released",
+      "url": "https://doi.org/10.5281/zenodo.13715693"
+    },
+    "full-factorial-doe-dataset-for-parallel-connected-lithium-ion-cells": {
+      "date": "2023-12-20",
+      "source": "DataCite record for doi:10.17632/zh58byr53c",
+      "kind": "Released",
+      "url": "https://doi.org/10.17632/zh58byr53c"
+    },
+    "gic-nmc-solar-battery-synthetic-data": {
+      "date": "2022-08-11",
+      "source": "DataCite record for doi:10.17632/rg8b2k2k28",
+      "kind": "Released",
+      "url": "https://doi.org/10.17632/rg8b2k2k28"
+    },
+    "hnei-blended-electrode-synthetic": {
+      "date": "2024-05-09",
+      "source": "DataCite record for doi:10.17632/w48j7rn4x3",
+      "kind": "Released",
+      "url": "https://doi.org/10.17632/w48j7rn4x3"
+    },
+    "hnei-lfp-synthetic-diagnosis-prognosis": {
+      "date": "2020-05-07",
+      "source": "DataCite record for doi:10.17632/bs2j56pn7y",
+      "kind": "Released",
+      "url": "https://doi.org/10.17632/bs2j56pn7y"
+    },
+    "home-storage-rwth": {
+      "date": "2024-08-26",
+      "source": "DataCite record for doi:10.5281/zenodo.12091222",
+      "kind": "Released",
+      "url": "https://doi.org/10.5281/zenodo.12091222"
+    },
+    "identifying-degradation-patterns-via-impedance-spectroscopy-and-machine-learning": {
+      "date": "2020-02-01",
+      "source": "DataCite record for doi:10.5281/zenodo.3633834",
+      "kind": "Released",
+      "url": "https://doi.org/10.5281/zenodo.3633834"
+    },
+    "impedance-based-forecasting-of-battery-performance-amid-uneven-usage": {
+      "date": "2021-11-16",
+      "source": "DataCite record for doi:10.5281/zenodo.5704795",
+      "kind": "Released",
+      "url": "https://doi.org/10.5281/zenodo.5704795"
+    },
+    "increasing-generalization-capability-of-battery-health-estimation-continual-learning": {
+      "date": "2023-10-24",
+      "source": "DataCite record for doi:10.17632/n3b54nsw8m",
+      "kind": "Released",
+      "url": "https://doi.org/10.17632/n3b54nsw8m"
+    },
+    "isu-ilcc-battery-aging-dataset": {
+      "date": "2023-08-07",
+      "source": "DataCite record for doi:10.25380/iastate.22582234",
+      "kind": "Released",
+      "url": "https://doi.org/10.25380/iastate.22582234"
+    },
+    "lg-18650hg2-mcmaster": {
+      "date": "2020-02-25",
+      "source": "DataCite record for doi:10.17632/cp3473x7xv",
+      "kind": "Released",
+      "url": "https://doi.org/10.17632/cp3473x7xv"
+    },
+    "lg-m50-parameterisation-data": {
+      "date": "2020-05-15",
+      "source": "DataCite record for doi:10.5281/zenodo.4032560",
+      "kind": "Released",
+      "url": "https://doi.org/10.5281/zenodo.4032560"
+    },
+    "li-ion-battery-pack-cycling-dataset-with-cc-cv-charging-and-wltp-constant-discharge-profiles": {
+      "date": "2025-06-26",
+      "source": "DataCite record for doi:10.34810/data2395",
+      "kind": "Released",
+      "url": "https://doi.org/10.34810/data2395"
+    },
+    "lithium-inventory-tracking-as-a-nondestructive-battery-evaluation-method": {
+      "date": "2024-01-19",
+      "source": "OSF project 2w4k3",
+      "kind": "Project created"
+    },
+    "long-term-sweat-testing-data-for-second-life-batteries": {
+      "date": "2025-04-07",
+      "source": "figshare record 28732490 (version 1)",
+      "kind": "Released"
+    },
+    "magbridge-battery-v1": {
+      "date": "2026-05-17",
+      "source": "DataCite record for doi:10.5281/zenodo.20260146",
+      "kind": "Released",
+      "url": "https://doi.org/10.5281/zenodo.20260146"
+    },
+    "mechanical-thermal-runaway-ornl-snl": {
+      "date": "2023-11-10",
+      "source": "DataCite record for doi:10.17632/sn2kv34r4h",
+      "kind": "Released",
+      "url": "https://doi.org/10.17632/sn2kv34r4h"
+    },
+    "multi-stage-lithium-ion-battery-aging-study": {
+      "date": "2024-08-06",
+      "source": "DataCite record for doi:10.6084/m9.figshare.25975315",
+      "kind": "Released",
+      "url": "https://doi.org/10.6084/m9.figshare.25975315"
+    },
+    "online-fault-zenodo": {
+      "date": "2024-02-14",
+      "source": "DataCite record for doi:10.5281/zenodo.10656499",
+      "kind": "Released",
+      "url": "https://doi.org/10.5281/zenodo.10656499"
+    },
+    "onroad-capacity": {
+      "date": "2025-01-06",
+      "source": "GitHub repository shiyunliu-battery/battery-charging-data-of-on-road-electric-vehicles",
+      "kind": "Repository created"
+    },
+    "osf-battery-magnetometry-archive": {
+      "date": "2020-02-27",
+      "source": "OSF project cw8zv",
+      "kind": "Project created"
+    },
+    "oxford-battery-degradation-dataset-1": {
+      "date": "2017-06-20",
+      "source": "DataCite record for doi:10.5287/bodleian:ko2kdmygg",
+      "kind": "Released",
+      "url": "https://doi.org/10.5287/bodleian:ko2kdmygg"
+    },
+    "oxford-path-dependent-degradation": {
+      "date": "2020-08-25",
+      "source": "DataCite record for doi:10.5287/bodleian:v0ervbv6p",
+      "kind": "Released",
+      "url": "https://doi.org/10.5287/bodleian:v0ervbv6p"
+    },
+    "panasonic-18650pf-data": {
+      "date": "2018-06-21",
+      "source": "DataCite record for doi:10.17632/wykht8y7tg.1",
+      "kind": "Released",
+      "url": "https://doi.org/10.17632/wykht8y7tg.1"
+    },
+    "physics-informed-neural-network-for-lithium-ion-battery-degradation-modelling": {
+      "date": "2024-04-12",
+      "source": "DataCite record for doi:10.5281/zenodo.10963338",
+      "kind": "Released",
+      "url": "https://doi.org/10.5281/zenodo.10963338"
+    },
+    "probability-distributed-equivalent-circuit-model-dataset": {
+      "date": "2024-03-22",
+      "source": "DataCite record for doi:10.5281/zenodo.10852929",
+      "kind": "Released",
+      "url": "https://doi.org/10.5281/zenodo.10852929"
+    },
+    "rate-capability-ocv-impedance-and-half-cell-data-sodium-ion-and-lfp-batteries": {
+      "date": "2025-01-31",
+      "source": "DataCite record for doi:10.14459/2024mp1762675",
+      "kind": "Released",
+      "url": "https://doi.org/10.14459/2024mp1762675"
+    },
+    "real-time-personalized-health-status-prediction-via-deep-transfer-learning": {
+      "date": "2022-05-23",
+      "source": "DataCite record for doi:10.17632/nsc7hnsg4s",
+      "kind": "Released",
+      "url": "https://doi.org/10.17632/nsc7hnsg4s"
+    },
+    "retired-lithium-ion-batteries-dataset": {
+      "date": "2024-12-27",
+      "source": "DataCite record for doi:10.5281/zenodo.14562265",
+      "kind": "Released",
+      "url": "https://doi.org/10.5281/zenodo.14562265"
+    },
+    "rwth-48-cell-cycle-ageing": {
+      "date": "2021-06-10",
+      "source": "DataCite record for doi:10.18154/rwth-2021-04545",
+      "kind": "Released",
+      "url": "https://doi.org/10.18154/rwth-2021-04545"
+    },
+    "samsung-50e-second-life-hppc": {
+      "date": "2024-03-28",
+      "source": "DataCite record for doi:10.5281/zenodo.10891870",
+      "kind": "Released",
+      "url": "https://doi.org/10.5281/zenodo.10891870"
+    },
+    "second-life-lithium-ion-battery-aging-dataset-based-on-grid-storage-cycling": {
+      "date": "2024-07-11",
+      "source": "OSF project 8jnr5",
+      "kind": "Project created"
+    },
+    "source-data-reuse-and-recycling-pathway-of-retired-batteries": {
+      "date": "2024-05-31",
+      "source": "GitHub repository RuifeiMa/Reuse-and-recycling-pathway-of-retired-batteries",
+      "kind": "Repository created"
+    },
+    "stanford-long-term-calendar-aging-dataset": {
+      "date": "2024-11-11",
+      "source": "OSF project ju325",
+      "kind": "Project created"
+    },
+    "tsinghua-ev": {
+      "date": "2024-04-16",
+      "source": "DataCite record for doi:10.17632/mcsh4hnb8b",
+      "kind": "Released",
+      "url": "https://doi.org/10.17632/mcsh4hnb8b"
+    },
+    "turnigy-graphene-5ah-data": {
+      "date": "2020-08-14",
+      "source": "DataCite record for doi:10.17632/4fx8cjprxm",
+      "kind": "Released",
+      "url": "https://doi.org/10.17632/4fx8cjprxm"
+    },
+    "ultrasonic-and-deep-learning-dataset-for-real-time-soc-estimation-in-large-format-cells": {
+      "date": "2025-06-16",
+      "source": "GitHub repository hfarhaditolie/Ultrasonic-SoC",
+      "kind": "Repository created"
+    },
+    "underlying-dataset-for-battery-pack-degradation-under-thermal-gradients": {
+      "date": "2023-11-26",
+      "source": "DataCite record for doi:10.5281/zenodo.10207730",
+      "kind": "Released",
+      "url": "https://doi.org/10.5281/zenodo.10207730"
+    },
+    "unibo-powertools-dataset": {
+      "date": "2021-07-23",
+      "source": "DataCite record for doi:10.17632/n6xg5fzsbv",
+      "kind": "Released",
+      "url": "https://doi.org/10.17632/n6xg5fzsbv"
+    },
+    "vito-module-driving-profile-ageing": {
+      "date": "2021-02-23",
+      "source": "DataCite record for doi:10.4121/14096567",
+      "kind": "Released",
+      "url": "https://doi.org/10.4121/14096567"
+    },
+    "vito-ni-rich-18650-lifecycle-ageing": {
+      "date": "2021-02-08",
+      "source": "DataCite record for doi:10.4121/13739296",
+      "kind": "Released",
+      "url": "https://doi.org/10.4121/13739296"
+    },
+    "wmg-calendar-aging-dataset-lgm50-commercial-cells-39-storage-conditions": {
+      "date": "2024-12-30",
+      "source": "DataCite record for doi:10.5281/zenodo.14577285",
+      "kind": "Released",
+      "url": "https://doi.org/10.5281/zenodo.14577285"
+    },
+    "wmg-dib-dataset-rapid-soh-estimation-via-eis-and-ml": {
+      "date": "2023-01-19",
+      "source": "DataCite record for doi:10.17632/mn9fb7xdx6",
+      "kind": "Released",
+      "url": "https://doi.org/10.17632/mn9fb7xdx6"
+    }
+  },
+  "not_found": [
+    "accelerated-battery-life-testing-nasa",
+    "battery-aging-modes-across-nmc-compositions",
+    "battery-archive",
+    "battery-failure-databank-nrel",
+    "battery-imaging-library-bil",
+    "calce-battery-data",
+    "closed-loop-fast-charging-optimisation",
+    "cycle-aging-data-of-automotive-grade-li-ion-cells-under-realistic-conditions-vw-id-3",
+    "discovery-learning-predicts-battery-cycle-life-from-minimal-experiments",
+    "dynamic-cycling-enhances-battery-lifetime",
+    "early-cycle-life",
+    "evbattery-large-scale-ev-dataset",
+    "formation-tri",
+    "generative-learning-assisted-state-of-health-estimation-for-battery-recycling",
+    "hirf-battery-data-set-nasa",
+    "hnei-lg-icr18650c2-variability",
+    "improving-real-world-execution-of-optimised-trading-schedules-for-large-scale-battery-storage",
+    "liiondb-parameter-database",
+    "lithium-ion-battery-aging-dataset-based-on-ev-real-driving-profiles",
+    "mechanistically-guided-residual-learning-dataset-for-battery-state-monitoring",
+    "nasa-battery-data-set",
+    "predicting-battery-end-of-life-from-solar-off-grid-field-data",
+    "prognosis-of-multivariate-battery-state-via-transformers",
+    "randomized-battery-usage-data-set-nasa",
+    "sandia-commercial-cell-degradation",
+    "small-satellite-power-simulation-nasa",
+    "source-data-internal-sensors-in-a-smart-battery-impact-on-local-graphite-lithiation",
+    "synthetic-duty-cycles-from-real-world-autonomous-ev-driving",
+    "tum-commercial-aging",
+    "uconn-lco-gr-battery-fast-charging-dataset",
+    "ul-purdue-degradation-safety",
+    "umich-battery-expansion",
+    "umich-formation-protocols"
+  ]
+}
