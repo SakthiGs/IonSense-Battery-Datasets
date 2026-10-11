@@ -1,0 +1,51 @@
+name: Find new datasets
+
+on:
+  schedule:
+    - cron: "17 4 * * 0"   # 04:17 UTC every Sunday, after the citation and link checks
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - scripts/find_new_datasets.py
+      - .github/workflows/find-new-datasets.yml
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: find-new-datasets
+  cancel-in-progress: false
+
+jobs:
+  find:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Search DataCite and OpenAlex
+        run: python scripts/find_new_datasets.py
+      - name: Open an issue with the candidates
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ -s finder_report.md ]; then
+            cat finder_report.md >> "$GITHUB_STEP_SUMMARY"
+            gh issue create \
+              --title "New dataset candidates – week of $(date -u +%Y-%m-%d)" \
+              --body-file finder_report.md
+          else
+            echo "No new candidates this week." >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: Remember what was reported
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add scripts/finder_seen.json
+          if git diff --cached --quiet; then echo "No change"; exit 0; fi
+          git commit -m "Dataset finder: record items reviewed this week"
+          git pull --rebase origin main
+          git push

@@ -2,3 +2,4 @@
 __pycache__/
 *.pyc
 link_check_report*.txt
+finder_report.md
