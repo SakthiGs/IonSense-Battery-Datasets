@@ -1,0 +1,39 @@
+name: Check dataset links
+
+on:
+  schedule:
+    - cron: "47 3 * * 0"   # 03:47 UTC every Sunday
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - docs/datasets.json
+      - scripts/check_dataset_links.py
+      - .github/workflows/check-dataset-links.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: check-dataset-links
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check every dataset link
+        run: python scripts/check_dataset_links.py
+      - name: Commit results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/link_status.json
+          if git diff --cached --quiet; then echo "No change"; exit 0; fi
+          git commit -m "Weekly dataset link check"
+          git pull --rebase origin main
+          git push

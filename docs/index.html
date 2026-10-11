@@ -942,6 +942,7 @@ function card(d) {
   const nUses = usesOf(d).length;
   if (nUses) addFact('Used in', h('button', { type: 'button', class: 'link-btn', style: 'padding:0;font-size:inherit', onclick: () => openDetail(d, 'uses') }, plural(nUses, 'published study', 'published studies')));
   const notes = notesOf(d);
+  const lk = linkOf(d);
   return h('article', { class: 'ds' + (isCompared(d) ? ' is-compared' : ''), 'data-card': d.id },
     h('div', { class: 'ds-top' }, h('span', {}, d.category || 'Uncategorised'), h('span', { class: 'res' }, resourceOf(d))),
     h('h3', { class: 'ds-title' }, h('button', { type: 'button', 'data-fk': 'open|' + d.id, onclick: () => openDetail(d) }, highlight(d.name))),
@@ -949,6 +950,7 @@ function card(d) {
     facts,
     h('div', { class: 'chips' }, (d.tasks || []).map(t => chip('task', t, d)), (d.signals || []).map(s => chip('signal', s, d))),
     notes.length ? h('p', { class: 'note' }, ICON_INFO(), h('span', {}, notes.join(' '))) : null,
+    lk && lk.status === 'broken' ? h('p', { class: 'note' }, ICON_INFO(), h('span', {}, `Data link may be broken (failed checks since ${fmtDay(lk.last_ok ? lk.last_ok : lk.checked)}).`)) : null,
     h('div', { class: 'ds-actions' },
       extLink(http(d.url), PRIMARY_LABEL[d.source_type] || 'Open source', 'btn primary'),
       extLink(paperOf(d), 'Paper', 'btn'),
@@ -1144,6 +1146,11 @@ function openDetail(d, jump) {
   add('Measurements', (d.signals && d.signals.length) ? h('span', { class: 'chips' }, d.signals.map(s => chip('signal', s, d))) : 'Not listed');
   const nCite = citeOf(d);
   if (nCite != null) add('Citations', `${nCite.toLocaleString()}`, h('span', { style: 'color:var(--muted);font-size:13px;margin-left:6px' }, `original paper · ${CITES_META.source || 'OpenAlex'}, ${citeAsOf()}`));
+  const lk = linkOf(d);
+  if (lk) add('Data link', lk.status === 'ok' ? h('span', { class: 'status ok', style: 'margin-left:0' }, ICON_CHECK(), 'Working')
+      : lk.status === 'broken' ? h('span', { class: 'status', style: 'margin-left:0' }, 'May be broken')
+      : h('span', { style: 'color:var(--ink-2)' }, 'Site blocks automated checks'),
+    h('span', { style: 'color:var(--muted);font-size:13px;margin-left:6px' }, `checked ${fmtDay(lk.checked)}`));
   add('Licence', d.license || '');
   add('Samples', typeof d.samples === 'number' ? d.samples.toLocaleString() : '');
   add('Data kind', d.dataset_kind || '');
@@ -1482,6 +1489,13 @@ const citesReady = fetch('./citations.json', { cache: 'no-cache' })
   .then(r => r.ok ? r.json() : null)
   .then(j => { if (j && j.datasets && typeof j.datasets === 'object') { CITES = j.datasets; CITES_META = j; } })
   .catch(() => {});
+let LINKS = {};
+const linksReady = fetch('./link_status.json', { cache: 'no-cache' })
+  .then(r => r.ok ? r.json() : null)
+  .then(j => { if (j && j.datasets && typeof j.datasets === 'object') LINKS = j.datasets; })
+  .catch(() => {});
+const fmtDay = iso => { try { return new Date(iso + 'T00:00:00').toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }); } catch (e) { return iso || ''; } };
+const linkOf = d => LINKS[d.id] || null;
 const citeOf = d => (CITES[d.id] && typeof CITES[d.id].count === 'number') ? CITES[d.id].count : null;
 const citeAsOf = () => { try { return new Date(CITES_META.updated + 'T00:00:00').toLocaleDateString('en-GB', { month: 'short', year: 'numeric' }); } catch (e) { return ''; } };
 const usesReady = fetch('./research_uses.json', { cache: 'no-cache' })
@@ -1490,7 +1504,7 @@ const usesReady = fetch('./research_uses.json', { cache: 'no-cache' })
   .catch(() => {});
 fetch('./datasets.json', { cache: 'no-cache' })
   .then(r => { if (!r.ok) throw new Error('The catalogue file returned HTTP ' + r.status + '.'); return r.json(); })
-  .then(json => Promise.all([usesReady, citesReady]).then(() => json))
+  .then(json => Promise.all([usesReady, citesReady, linksReady]).then(() => json))
   .then(json => {
     if (!Array.isArray(json)) throw new Error('datasets.json should contain a list of datasets.');
     data = json.filter(d => d && d.name).map((d, i) => {
