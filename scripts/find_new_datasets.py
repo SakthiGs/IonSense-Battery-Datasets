@@ -78,6 +78,7 @@ def known_items():
             if v.startswith("http"):
                 urls.add(v.rstrip("/").lower())
         titles.add(norm(d.get("name")))
+        titles.update(norm(a) for a in d.get("aka", []) if len(a) > 12)
     try:
         uses = json.loads((DOCS / "research_uses.json").read_text(encoding="utf-8"))
         for entry in uses.get("datasets", {}).values():

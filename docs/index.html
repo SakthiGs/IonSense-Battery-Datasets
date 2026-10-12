@@ -1191,6 +1191,8 @@ function openDetail(d, jump) {
   state.open = d.id;
   const facts = h('dl', { class: 'facts' });
   const add = (k, ...v) => { if (v.some(x => x)) facts.append(h('dt', {}, k), h('dd', {}, ...v)); };
+  const akaTitle = Array.isArray(d.aka) ? d.aka.find(a => a.length > 12) : '';
+  add('Also known as', akaTitle || '');
   add('Source', known(d.source) || 'See the original record');
   add('Application domain', domainOf(d).join(', '));
   add('Scale', known(d.scale) || 'See the original record');
@@ -1582,7 +1584,7 @@ fetch('./datasets.json', { cache: 'no-cache' })
       d.id = d.id || 'dataset-' + i;
       d._v = {};
       for (const f of FACETS) d._v[f.key] = [...new Set(f.get(d).filter(Boolean))];
-      d._hay = [d.name, d.source, d.description, d.category, d.chemistry, d.scale, d.notes, d.resource_note, resourceOf(d),
+      d._hay = [d.name, ...(Array.isArray(d.aka) ? d.aka : []), d.source, d.description, d.category, d.chemistry, d.scale, d.notes, d.resource_note, resourceOf(d),
         ...(d.application_domains || []),
         ...(d.chemistries || []), ...(d.chemistry_families || []), ...(d.tasks || []), ...(d.signals || []),
         ...usesOf(d).flatMap(p => p.methods || [])].filter(Boolean).join(' ').toLowerCase();

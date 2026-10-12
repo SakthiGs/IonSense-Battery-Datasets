@@ -624,7 +624,7 @@
   },
   {
     "id": "early-cycle-life",
-    "name": "Data-Driven Prediction of Battery Cycle Life",
+    "name": "MIT–Stanford–TRI Battery Cycle Life Dataset (MATR)",
     "category": "Lab Aging & Degradation",
     "chemistry": "LFP",
     "tasks": [
@@ -655,11 +655,19 @@
       "note": "Source study uses LFP/graphite fast-charging cells"
     },
     "chemistry_review_status": "catalogue_label_not_independently_verified",
-    "application_domains": []
+    "application_domains": [],
+    "aka": [
+      "Data-Driven Prediction of Battery Cycle Life",
+      "MIT",
+      "MATR",
+      "Severson",
+      "Stanford",
+      "TRI"
+    ]
   },
   {
     "id": "physics-informed-neural-network-for-lithium-ion-battery-degradation-modelling",
-    "name": "Physics-Informed Neural Network for Lithium-Ion Battery Degradation Modelling",
+    "name": "XJTU Battery Degradation Dataset",
     "category": "Lab Aging & Degradation",
     "chemistry": "NMC",
     "tasks": [
@@ -694,7 +702,12 @@
       "status": "source_verified",
       "url": "https://zenodo.org/records/10963339",
       "note": "Zenodo record and Nature Communications paper: LISHEN cells with a LiNi0.5Co0.2Mn0.3O2 (NCM523) cathode."
-    }
+    },
+    "aka": [
+      "Physics-Informed Neural Network for Lithium-Ion Battery Degradation Modelling",
+      "XJTU",
+      "Xi'an Jiaotong"
+    ]
   },
   {
     "id": "prognosis-of-multivariate-battery-state-via-transformers",
@@ -1439,7 +1452,7 @@
   },
   {
     "id": "data-driven-capacity-estimation-from-voltage-relaxation",
-    "name": "Data-Driven Capacity Estimation from Voltage Relaxation",
+    "name": "Tongji (TJU) Battery Dataset: Voltage Relaxation",
     "category": "State Estimation & Health Monitoring",
     "chemistry": "Multiple / mixed",
     "tasks": [
@@ -1472,7 +1485,12 @@
       "status": "source_verified",
       "url": "https://www.nature.com/articles/s41467-022-29837-w",
       "note": "Nature Communications paper: dataset 1 NCA, dataset 2 NCM, dataset 3 an NCM+NCA blend."
-    }
+    },
+    "aka": [
+      "Data-Driven Capacity Estimation from Voltage Relaxation",
+      "TJU",
+      "Tongji"
+    ]
   },
   {
     "id": "impedance-based-forecasting-of-battery-performance-amid-uneven-usage",
@@ -1545,7 +1563,7 @@
   },
   {
     "id": "real-time-personalized-health-status-prediction-via-deep-transfer-learning",
-    "name": "Real-Time Personalized Health Status Prediction via Deep Transfer Learning",
+    "name": "HUST Battery Dataset (77 LFP cells)",
     "category": "State Estimation & Health Monitoring",
     "chemistry": "LFP",
     "tasks": [
@@ -1578,7 +1596,12 @@
       "status": "source_verified",
       "url": "https://pubs.rsc.org/en/content/articlehtml/2022/ee/d2ee01676a",
       "note": "Energy & Environmental Science paper: 77 commercial LFP/graphite cells, 1.1 Ah."
-    }
+    },
+    "aka": [
+      "Real-Time Personalized Health Status Prediction via Deep Transfer Learning",
+      "HUST",
+      "Huazhong"
+    ]
   },
   {
     "id": "generative-learning-assisted-state-of-health-estimation-for-battery-recycling",
