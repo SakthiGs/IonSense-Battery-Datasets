@@ -398,6 +398,15 @@ button.cmp-name:hover{color:var(--accent-ink);text-decoration:underline;text-und
 .foot{border-top:1px solid var(--line);background:var(--panel)}
 .foot-in{max-width:1360px;margin:0 auto;padding:28px 24px;display:flex;flex-wrap:wrap;gap:12px 32px;justify-content:space-between;font-size:13.5px;color:var(--ink-2)}
 .foot-in p{margin:0;max-width:72ch}
+.cite-us{max-width:1360px;margin:0 auto;padding:28px 24px 0;font-size:14px;color:var(--ink-2)}
+.cite-us h2{font-size:16px;margin:0 0 8px;color:var(--ink)}
+.cite-us p{margin:0 0 8px;max-width:90ch}
+.cite-ref{color:var(--ink);overflow-wrap:anywhere}
+.cite-ref a,.cite-us a{color:var(--accent-ink)}
+.cite-note{font-size:13px;color:var(--muted)}
+.cite-bib summary{cursor:pointer;color:var(--accent-ink);font-weight:600;font-size:13.5px;width:max-content}
+.cite-bib pre{margin:8px 0;padding:12px;background:var(--sunken);border:1px solid var(--line);border-radius:var(--r-s);font-size:12.5px;line-height:1.5;overflow-x:auto;white-space:pre;max-width:100%}
+@media (max-width:640px){.cite-us{padding-inline:16px}}
 .foot-in a{color:var(--accent-ink)}
 .scrim{position:fixed;inset:0;background:var(--scrim);z-index:39}
 
@@ -457,6 +466,7 @@ button.cmp-name:hover{color:var(--accent-ink);text-decoration:underline;text-und
     </a>
     <nav aria-label="Project links">
       <a class="navlink wide" href="https://github.com/SakthiGs/IonSense-Battery-Datasets/issues/new" target="_blank" rel="noopener noreferrer">Suggest a dataset</a>
+      <a class="navlink" href="#cite">Cite</a>
       <a class="navlink" href="https://github.com/SakthiGs/IonSense-Battery-Datasets" target="_blank" rel="noopener noreferrer">GitHub</a>
       <button class="icon-btn" id="theme" type="button" aria-label="Switch to dark theme"></button>
     </nav>
@@ -532,6 +542,26 @@ button.cmp-name:hover{color:var(--accent-ink);text-decoration:underline;text-und
 </main>
 
 <footer class="foot">
+  <section class="cite-us" id="cite" aria-labelledby="cite-h">
+    <h2 id="cite-h">Cite IonSense</h2>
+    <p>If IonSense helped you find or compare datasets, please cite:</p>
+    <p class="cite-ref">Gunasekar, S. P., &amp; Rangarajan, P. K. (2026). IonSense-QKG: A Quantum-Readiness Metadata Framework for Lithium-Ion Battery Dataset Discovery. <i>arXiv preprint</i> arXiv:2607.01286. <a href="https://arxiv.org/abs/2607.01286" target="_blank" rel="noopener noreferrer">arxiv.org/abs/2607.01286</a></p>
+    <p class="cite-note">Please also cite the original creators of every dataset you use; each dataset's details panel lists its original study.</p>
+    <details class="cite-bib">
+      <summary>BibTeX</summary>
+      <pre id="cite-bibtex">@misc{gunasekar2026ionsenseqkg,
+  title         = {{IonSense-QKG}: A Quantum-Readiness Metadata Framework for Lithium-Ion Battery Dataset Discovery},
+  author        = {Gunasekar, Sakthi Prabhu and Rangarajan, Prasanna Kumar},
+  year          = {2026},
+  eprint        = {2607.01286},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.LG},
+  doi           = {10.48550/arXiv.2607.01286},
+  url           = {https://arxiv.org/abs/2607.01286}
+}</pre>
+      <button type="button" class="btn" id="cite-copy">Copy BibTeX</button>
+    </details>
+  </section>
   <div class="foot-in">
     <p>IonSense is a cross-domain battery research directory, not a dataset host. Entries may link to datasets, source data, papers, code or models. Check original access terms and cite the creators. Application labels and other metadata are provisional until verified at source.</p>
     <p><a href="https://github.com/SakthiGs/IonSense-Battery-Datasets/issues" target="_blank" rel="noopener noreferrer">Report a correction</a></p>
@@ -1608,6 +1638,16 @@ fetch('./datasets.json', { cache: 'no-cache' })
     $('#view').replaceChildren(h('div', { class: 'empty' },
       h('h3', {}, 'Couldn’t read datasets.json'),
       h('p', {}, err.message + ' If you opened this file straight from disk, serve the folder instead, for example with “python3 -m http.server” in the docs folder, then reload.')));
+  });
+})();
+/* ---------- Cite IonSense: copy BibTeX ---------- */
+(() => {
+  const btn = document.getElementById('cite-copy'), pre = document.getElementById('cite-bibtex');
+  if (!btn || !pre) return;
+  btn.addEventListener('click', () => {
+    const done = () => { btn.textContent = 'Copied'; setTimeout(() => { btn.textContent = 'Copy BibTeX'; }, 2000); };
+    const fallback = () => { const r = document.createRange(); r.selectNodeContents(pre); const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r); btn.textContent = 'Press Ctrl+C to copy'; };
+    try { navigator.clipboard.writeText(pre.textContent).then(done, fallback); } catch (e) { fallback(); }
   });
 })();
 </script>

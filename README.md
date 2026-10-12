@@ -66,6 +66,27 @@ Category counts are for indexed **records**, not confirmed independent datasets 
 
 We welcome dataset suggestions, corrections to domain or chemistry labels, source updates, missing licences and documentation, and reports of duplicate or unavailable records. Please [open a GitHub issue](https://github.com/SakthiGs/IonSense-Battery-Datasets/issues/new) and include a link supporting the requested change. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
+## Citing IonSense
+
+If IonSense helped you find or compare datasets, please cite:
+
+> Gunasekar, S. P., & Rangarajan, P. K. (2026). *IonSense-QKG: A Quantum-Readiness Metadata Framework for Lithium-Ion Battery Dataset Discovery.* arXiv:2607.01286. https://arxiv.org/abs/2607.01286
+
+```bibtex
+@misc{gunasekar2026ionsenseqkg,
+  title         = {{IonSense-QKG}: A Quantum-Readiness Metadata Framework for Lithium-Ion Battery Dataset Discovery},
+  author        = {Gunasekar, Sakthi Prabhu and Rangarajan, Prasanna Kumar},
+  year          = {2026},
+  eprint        = {2607.01286},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.LG},
+  doi           = {10.48550/arXiv.2607.01286},
+  url           = {https://arxiv.org/abs/2607.01286}
+}
+```
+
+Please also cite the original creators of every dataset you use. Machine-readable metadata is in [`CITATION.cff`](CITATION.cff).
+
 ## Licensing and attribution
 
 Repository code is distributed under the terms in [LICENSE](LICENSE) (GNU GPL v3). **Third-party datasets, source material, images, publications and linked resources retain their respective original licences**; this repository licence does not override them. This directory does not rehost the third-party datasets.
