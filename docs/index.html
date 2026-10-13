@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap">
 <style>
-/* Layout: a sticky filter rail on the left scopes everything to its right: search, an overview band
+/* Layout: search, then a row of filter dropdowns (a slide-in panel on narrow screens), then an overview band
    (match count + a battery-pack map where every dataset is one cell), and results as Cards / Table / Coverage. */
 :root{
   --bg:#f1f4f3; --panel:#ffffff; --sunken:#e8edeb;
@@ -91,6 +91,7 @@ a svg{width:.9em;height:.9em;flex:none}
 .rail-head{display:flex;align-items:baseline;justify-content:space-between;gap:8px;padding-bottom:10px}
 .rail-head h2{font-size:17px;font-weight:700;font-stretch:110%}
 .rail-close,.rail-foot{display:none}
+.fdrop-btn{display:none}
 .facet{border-top:1px solid var(--line);padding-block:14px 12px}
 .facet-head{display:flex;align-items:center;gap:8px;min-height:28px;margin-bottom:6px}
 .facet-head h3{font-size:14px;font-weight:650;flex:1}
@@ -117,6 +118,27 @@ a svg{width:.9em;height:.9em;flex:none}
 .facet-hint{font-size:12.5px;color:var(--muted);margin:6px 8px 0}
 .facet-note{font-size:12.5px;line-height:1.45;color:var(--muted);margin:2px 8px 8px}
 
+/* Wide screens: filters are a row of dropdown buttons above the overview */
+@media (min-width:1024px){
+  .rail{position:static;max-height:none;overflow:visible;padding:0;display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+  .rail-head{display:contents}
+  .rail-head h2{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  #clear-rail{order:99;margin-left:4px}
+  #facets{display:contents}
+  .facet{position:relative;border-top:0;padding:0}
+  .fdrop-btn{display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 10px 0 12px;border:1px solid var(--line-strong);border-radius:999px;background:var(--panel);font-size:13.5px;font-weight:600;color:var(--ink);white-space:nowrap}
+  .fdrop-btn:hover{border-color:var(--accent)}
+  .fdrop-btn svg{width:14px;height:14px;color:var(--muted);transition:transform .15s}
+  .facet.open .fdrop-btn svg{transform:rotate(180deg)}
+  .fdrop-btn.is-active{background:var(--accent-soft);border-color:var(--accent);color:var(--accent-ink)}
+  .fdrop-n:empty{display:none}
+  .fdrop-n{min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:var(--accent);color:var(--on-accent);font-size:11.5px;font-weight:700;display:inline-grid;place-items:center}
+  .fdrop-pop{display:none;position:absolute;top:calc(100% + 6px);left:0;z-index:30;width:340px;max-height:min(62vh,520px);overflow:auto;overscroll-behavior:contain;padding:10px 8px 10px;background:var(--panel);border:1px solid var(--line);border-radius:var(--r-m);box-shadow:var(--shadow)}
+  .fdrop-pop.flip{left:auto;right:0}
+  .facet.open .fdrop-pop{display:block}
+  .fdrop-pop .facet-head{padding:0 6px}
+  .layout{grid-template-columns:minmax(0,1fr)}
+}
 /* Search row */
 .search-row{display:flex;gap:10px;align-items:stretch}
 .search{position:relative;flex:1;min-width:0}
@@ -489,15 +511,6 @@ button.cmp-name:hover{color:var(--accent-ink);text-decoration:underline;text-und
 </header>
 
 <main class="layout">
-  <aside class="rail" id="rail" aria-label="Filters">
-    <div class="rail-head">
-      <h2>Filters</h2>
-      <button class="link-btn" id="clear-rail" type="button" hidden>Clear all</button>
-      <button class="icon-btn rail-close" id="close-rail" type="button" aria-label="Close filters"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 5l10 10M15 5 5 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
-    </div>
-    <div id="facets"></div>
-    <div class="rail-foot"><button class="btn primary" id="apply-rail" type="button">Show datasets</button></div>
-  </aside>
   <div class="scrim" id="scrim" hidden></div>
 
   <div class="content">
@@ -513,6 +526,15 @@ button.cmp-name:hover{color:var(--accent-ink);text-decoration:underline;text-und
         Filters <span class="badge" id="filter-badge" hidden>0</span>
       </button>
     </div>
+    <aside class="rail" id="rail" aria-label="Filters">
+      <div class="rail-head">
+        <h2>Filters</h2>
+        <button class="link-btn" id="clear-rail" type="button" hidden>Clear all</button>
+        <button class="icon-btn rail-close" id="close-rail" type="button" aria-label="Close filters"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 5l10 10M15 5 5 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+      </div>
+      <div id="facets"></div>
+      <div class="rail-foot"><button class="btn primary" id="apply-rail" type="button">Show datasets</button></div>
+    </aside>
 
     <section class="overview" aria-label="Catalogue overview">
       <div class="hero">
@@ -726,16 +748,16 @@ function methodFamiliesOf(d) {
 }
 
 const FACETS = [
-  { key: 'category', title: 'Category', get: d => [d.category || 'Uncategorised'] },
-  { key: 'domain', title: 'Application domain', get: domainOf },
-  { key: 'chemistry', title: 'Cell chemistry', get: chemOf },
-  { key: 'task', title: 'Research task', get: d => d.tasks || [], switchable: true },
-  { key: 'method', title: 'Methods used in studies', get: methodFamiliesOf, switchable: true, order: () => METHOD_FAMILIES.map(x => x[0]),
+  { key: 'category', title: 'Category', short: 'Category', get: d => [d.category || 'Uncategorised'] },
+  { key: 'domain', title: 'Application domain', short: 'Application', get: domainOf },
+  { key: 'chemistry', title: 'Cell chemistry', short: 'Chemistry', get: chemOf },
+  { key: 'task', title: 'Research task', short: 'Task', get: d => d.tasks || [], switchable: true },
+  { key: 'method', title: 'Methods used in studies', short: 'Methods', get: methodFamiliesOf, switchable: true, order: () => METHOD_FAMILIES.map(x => x[0]),
     note: 'From the published studies listed for each dataset. Most datasets list only their original study so far.' },
-  { key: 'signal', title: 'Measurements', get: d => (d.signals && d.signals.length) ? d.signals : ['Not listed'], switchable: true },
-  { key: 'released', title: 'First released', get: relBucket, order: () => REL_BUCKETS },
-  { key: 'resource', title: 'Resource type', get: d => [resourceOf(d)] },
-  { key: 'includes', title: 'Must include', get: includesOf, fixed: 'all' }
+  { key: 'signal', title: 'Measurements', short: 'Measurements', get: d => (d.signals && d.signals.length) ? d.signals : ['Not listed'], switchable: true },
+  { key: 'released', title: 'First released', short: 'Released', get: relBucket, order: () => REL_BUCKETS },
+  { key: 'resource', title: 'Resource type', short: 'Resource', get: d => [resourceOf(d)] },
+  { key: 'includes', title: 'Must include', short: 'Must include', get: includesOf, fixed: 'all' }
 ];
 const FACET = Object.fromEntries(FACETS.map(f => [f.key, f]));
 const COLLAPSE_OVER = 10, COLLAPSED_ROWS = 8;
@@ -846,13 +868,19 @@ function buildFacets() {
       list.append(row);
       return { v, input, n, bar, row };
     });
-    const section = h('section', { class: 'facet' },
+    const popId = 'pop-' + f.key;
+    f.ui.n = h('span', { class: 'fdrop-n' });
+    f.ui.trig = h('button', { type: 'button', class: 'fdrop-btn', 'aria-expanded': 'false', 'aria-controls': popId, onclick: () => toggleDrop(f) },
+      h('span', {}, f.short || f.title), f.ui.n, svg('<path d="m4 6 4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>'));
+    f.ui.pop = h('div', { class: 'fdrop-pop', id: popId },
       h('div', { class: 'facet-head' }, h('h3', { id: headId }, f.title), f.ui.mode, f.ui.clear),
       f.note ? h('p', { class: 'facet-note' }, f.note) : null,
       list, f.ui.hint);
+    const section = h('section', { class: 'facet', 'data-key': f.key }, f.ui.trig, f.ui.pop);
+    f.ui.section = section;
     if (f.options.length > COLLAPSE_OVER) {
       f.ui.more = h('button', { type: 'button', class: 'link-btn more', onclick: () => { state.expanded[f.key] = !state.expanded[f.key]; renderFacets(queryTokens()); } });
-      section.append(f.ui.more);
+      f.ui.pop.append(f.ui.more);
     }
     wrap.append(section);
   }
@@ -925,6 +953,34 @@ function buildNews() {
   box.hidden = false;
   render();
 }
+
+/* ---------- Filter dropdowns (wide screens) ---------- */
+const dropMode = () => matchMedia('(min-width: 1024px)').matches;
+let openDrop = null;
+function toggleDrop(f, force) {
+  const open = force !== undefined ? force : openDrop !== f;
+  if (openDrop && openDrop !== f) closeDrop(false);
+  if (!open) { closeDrop(false); return; }
+  openDrop = f;
+  f.ui.section.classList.add('open');
+  f.ui.trig.setAttribute('aria-expanded', 'true');
+  const pop = f.ui.pop;
+  pop.classList.remove('flip');
+  const r = pop.getBoundingClientRect();
+  if (r.right > document.documentElement.clientWidth - 12) pop.classList.add('flip');
+  const first = pop.querySelector('input:not(:disabled)');
+  if (first) first.focus({ preventScroll: true });
+}
+function closeDrop(refocus) {
+  if (!openDrop) return;
+  const f = openDrop; openDrop = null;
+  f.ui.section.classList.remove('open');
+  f.ui.trig.setAttribute('aria-expanded', 'false');
+  if (refocus) f.ui.trig.focus();
+}
+document.addEventListener('pointerdown', e => { if (openDrop && !openDrop.ui.section.contains(e.target)) closeDrop(false); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && openDrop) { e.stopPropagation(); closeDrop(true); } }, true);
+document.addEventListener('focusin', e => { if (openDrop && !openDrop.ui.section.contains(e.target)) closeDrop(false); });
 
 function buildPack() {
   const pack = $('#pack');
@@ -1012,6 +1068,7 @@ function renderFacets(tokens) {
       if (visible) shown++; else tucked++;
     }
     f.ui.clear.hidden = !sel.size;
+    if (f.ui.n) { f.ui.n.textContent = sel.size || ''; f.ui.trig.classList.toggle('is-active', sel.size > 0); f.ui.trig.setAttribute('aria-label', `${f.title}${sel.size ? `, ${sel.size} selected` : ''}`); }
     if (f.ui.mode) {
       f.ui.mode.hidden = !sel.size;
       f.ui.mode.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.mode === state.mode[f.key])));

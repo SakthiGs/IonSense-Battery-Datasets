@@ -3,6 +3,10 @@
   "notes": [
     {
       "date": "2026-10-13",
+      "text": "Filters are now compact dropdowns above the results, so the catalogue uses the full screen width"
+    },
+    {
+      "date": "2026-10-13",
       "text": "This 'What's new' strip, and a 'New' badge on datasets added in the last 30 days"
     },
     {
