@@ -167,6 +167,21 @@ a svg{width:.9em;height:.9em;flex:none}
 .tip small{display:block;opacity:.75;font-size:12px;margin-top:2px}
 
 /* Results */
+.news{background:var(--panel);border:1px solid var(--line);border-radius:var(--r-l);padding:14px 20px 12px;font-size:13.5px;color:var(--ink-2)}
+.news-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+.news-head h2{font-size:14px;margin:0;color:var(--ink);display:flex;align-items:center;gap:7px}
+.news-head h2::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent)}
+.news-head .sub{color:var(--muted);font-size:12.5px}
+.news-head .acts{margin-left:auto;display:flex;gap:12px}
+.news-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:max-content minmax(0,1fr);gap:6px 14px}
+.news-day{font-variant-numeric:tabular-nums;color:var(--muted);font-size:12.5px;white-space:nowrap;padding-top:1px}
+.news-txt{min-width:0;overflow-wrap:anywhere;line-height:1.5}
+.news-txt b{color:var(--ink);font-weight:600}
+.news-txt .link-btn{padding:0;font-size:inherit}
+.news-kind{display:inline-block;font-size:11.5px;font-weight:600;padding:0 7px;border-radius:999px;margin-right:6px;background:var(--sunken);color:var(--ink-2)}
+.news-kind.k-datasets{background:var(--accent-soft);color:var(--accent-ink)}
+.ds-new{font-size:11.5px;font-weight:700;padding:0 7px;border-radius:999px;background:var(--accent-soft);color:var(--accent-ink);margin-left:8px;letter-spacing:.02em}
+@media (max-width:640px){.news{padding:12px 14px}.news-list{grid-template-columns:1fr;gap:2px 0}.news-day{padding-top:6px}}
 .results{display:flex;flex-direction:column;gap:14px;scroll-margin-top:16px}
 .toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px 16px;flex-wrap:wrap}
 .toolbar h2{font-size:20px;font-weight:700;font-stretch:108%}
@@ -516,6 +531,8 @@ button.cmp-name:hover{color:var(--accent-ink);text-decoration:underline;text-und
       </div>
     </section>
 
+    <section class="news" id="news" aria-labelledby="news-h" hidden></section>
+
     <section class="results" id="results" aria-labelledby="results-title">
       <div class="toolbar">
         <h2 id="results-title" aria-live="polite">Loading catalogue…</h2>
@@ -841,6 +858,74 @@ function buildFacets() {
   }
 }
 
+/* ---------- What's new ---------- */
+const NEWS_COLLAPSED = 4;
+function buildNews() {
+  const box = $('#news');
+  const byId = new Map(data.map(d => [d.id, d]));
+  const events = (WN.events || []).filter(e => e.type === 'note' || (e.items || []).some(it => byId.has(it.id) || (it.datasets || []).some(x => byId.has(x.id))));
+  if (!events.length) { box.hidden = true; return; }
+  let hiddenAt = null;
+  try { hiddenAt = localStorage.getItem('ionsense-news-hidden'); } catch (e) {}
+  const latest = events[0].date;
+  let expanded = false;
+  const openBtn = (id, label) => byId.has(id) ? h('button', { type: 'button', class: 'link-btn', onclick: () => openDetail(byId.get(id)) }, label) : label;
+  const openUses = (id, label) => byId.has(id) ? h('button', { type: 'button', class: 'link-btn', onclick: () => openDetail(byId.get(id), 'uses') }, label) : label;
+  const list = (arr, show, more) => {
+    const out = [];
+    arr.slice(0, show).forEach((x, i) => { if (i) out.push(i === arr.length - 1 && arr.length <= show ? ' and ' : ', '); out.push(x); });
+    if (arr.length > show) out.push(', ', h('button', { type: 'button', class: 'link-btn', onclick: more }, `and ${arr.length - show} more`));
+    return out;
+  };
+  const row = e => {
+    if (e.type === 'note') {
+      const link = e.link ? (e.link.startsWith('#') ? h('a', { href: e.link }, 'Go') : h('a', { href: e.link, target: '_blank', rel: 'noopener noreferrer' }, 'More')) : null;
+      return h('span', {}, h('span', { class: 'news-kind' }, 'Feature'), ' ', e.text, link ? [' · ', link] : null);
+    }
+    if (e.type === 'datasets') {
+      const items = e.items.filter(it => byId.has(it.id)).sort((a, b) => (citeOf(byId.get(b.id)) || 0) - (citeOf(byId.get(a.id)) || 0));
+      const span = h('span', {});
+      const draw = n => span.replaceChildren(h('span', { class: 'news-kind k-datasets' }, plural(items.length, 'dataset') + ' added'), ' ',
+        ...list(items.map(it => openBtn(it.id, it.name)), n, () => draw(items.length)));
+      draw(4);
+      return span;
+    }
+    const papers = e.items.filter(p => (p.datasets || []).some(x => byId.has(x.id)));
+    const nDs = new Set(papers.flatMap(p => p.datasets.map(x => x.id))).size;
+    const span = h('span', {});
+    const by = p => [String(p.authors || '').split(',')[0].trim() + (String(p.authors || '').includes(',') ? ' et al.' : ''), p.year].filter(Boolean).join(' ');
+    const draw = n => span.replaceChildren(h('span', { class: 'news-kind' }, `${plural(papers.length, 'study', 'studies')} added`), ' ',
+      `on ${plural(nDs, 'dataset')}, including `,
+      ...list(papers.map(p => h('span', {}, openUses(p.datasets[0].id, by(p)), p.datasets.length > 1 ? ` (${p.datasets.length} datasets)` : '')), n, () => draw(papers.length)));
+    draw(3);
+    return span;
+  };
+  const render = () => {
+    if (hiddenAt && hiddenAt >= latest) {
+      box.replaceChildren(h('div', { class: 'news-head' }, h('h2', { id: 'news-h' }, 'What’s new'),
+        h('span', { class: 'sub' }, 'Hidden'), h('div', { class: 'acts' }, h('button', { type: 'button', class: 'link-btn', onclick: () => { hiddenAt = null; try { localStorage.removeItem('ionsense-news-hidden'); } catch (e) {} render(); } }, 'Show'))));
+      return;
+    }
+    const shown = expanded ? events : events.slice(0, NEWS_COLLAPSED);
+    const ul = h('ul', { class: 'news-list' });
+    let lastDay = '';
+    shown.forEach(e => {
+      ul.append(h('li', { class: 'news-day', 'aria-hidden': e.date === lastDay ? 'true' : null }, e.date === lastDay ? '' : fmtDay(e.date)), h('li', { class: 'news-txt' }, row(e)));
+      lastDay = e.date;
+    });
+    box.replaceChildren(
+      h('div', { class: 'news-head' },
+        h('h2', { id: 'news-h' }, 'What’s new'),
+        h('span', { class: 'sub' }, 'Recent additions to IonSense'),
+        h('div', { class: 'acts' },
+          events.length > NEWS_COLLAPSED ? h('button', { type: 'button', class: 'link-btn', 'aria-expanded': String(expanded), onclick: () => { expanded = !expanded; render(); } }, expanded ? 'Show less' : `Show all (${events.length})`) : null,
+          h('button', { type: 'button', class: 'link-btn', title: 'Hide until something new is added', onclick: () => { hiddenAt = latest; try { localStorage.setItem('ionsense-news-hidden', latest); } catch (e) {} render(); } }, 'Hide'))),
+      ul);
+  };
+  box.hidden = false;
+  render();
+}
+
 function buildPack() {
   const pack = $('#pack');
   pack.replaceChildren();
@@ -1031,7 +1116,7 @@ function card(d) {
   const notes = notesOf(d);
   const lk = linkOf(d);
   return h('article', { class: 'ds' + (isCompared(d) ? ' is-compared' : ''), 'data-card': d.id },
-    h('div', { class: 'ds-top' }, h('span', {}, d.category || 'Uncategorised'), h('span', { class: 'res' }, resourceOf(d))),
+    h('div', { class: 'ds-top' }, h('span', {}, d.category || 'Uncategorised', isNew(d) ? h('span', { class: 'ds-new', title: 'Added to IonSense on ' + fmtDay(WN.new_datasets[d.id]) }, 'New') : null), h('span', { class: 'res' }, resourceOf(d))),
     h('h3', { class: 'ds-title' }, h('button', { type: 'button', 'data-fk': 'open|' + d.id, onclick: () => openDetail(d) }, highlight(d.name))),
     h('p', { class: 'ds-desc' }, highlight(d.description || 'No description yet.')),
     facts,
@@ -1592,6 +1677,12 @@ const relReady = fetch('./release_dates.json', { cache: 'no-cache' })
   .then(r => r.ok ? r.json() : null)
   .then(j => { if (j && j.datasets && typeof j.datasets === 'object') RELEASES = j.datasets; })
   .catch(() => {});
+let WN = { events: [], new_datasets: {} };  /* whats_new.json: what was added and when */
+const wnReady = fetch('./whats_new.json', { cache: 'no-cache' })
+  .then(r => r.ok ? r.json() : null)
+  .then(j => { if (j && Array.isArray(j.events)) WN = { events: j.events, new_datasets: j.new_datasets || {}, updated: j.updated }; })
+  .catch(() => {});
+const isNew = d => !!(WN.new_datasets && WN.new_datasets[d.id]);
 let LINKS = {};
 const linksReady = fetch('./link_status.json', { cache: 'no-cache' })
   .then(r => r.ok ? r.json() : null)
@@ -1607,7 +1698,7 @@ const usesReady = fetch('./research_uses.json', { cache: 'no-cache' })
   .catch(() => {});
 fetch('./datasets.json', { cache: 'no-cache' })
   .then(r => { if (!r.ok) throw new Error('The catalogue file returned HTTP ' + r.status + '.'); return r.json(); })
-  .then(json => Promise.all([usesReady, citesReady, linksReady, relReady]).then(() => json))
+  .then(json => Promise.all([usesReady, citesReady, linksReady, relReady, wnReady]).then(() => json))
   .then(json => {
     if (!Array.isArray(json)) throw new Error('datasets.json should contain a list of datasets.');
     data = json.filter(d => d && d.name).map((d, i) => {
@@ -1626,6 +1717,7 @@ fetch('./datasets.json', { cache: 'no-cache' })
     categoryOrder = [...catCount.keys()].sort((a, b) => catCount.get(b) - catCount.get(a) || a.localeCompare(b));
     buildFacets();
     buildPack();
+    buildNews();
     const fromUrl = readUrl();
     update(false);
     syncCompare();

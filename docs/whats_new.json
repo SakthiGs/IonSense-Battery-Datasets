@@ -1,0 +1,1410 @@
+{
+  "updated": "2026-10-13",
+  "note": "Datasets and studies added to IonSense, by the day they first appeared in the catalogue.",
+  "new_datasets": {
+    "argonne-camp-2023": "2026-10-11",
+    "battery-archive": "2026-10-11",
+    "battery-materials-database-chemdataextractor": "2026-10-11",
+    "batterylife-benchmark": "2026-10-11",
+    "bmw-i3-real-driving-battery-heating": "2026-10-11",
+    "calce-battery-data": "2026-10-11",
+    "closed-loop-fast-charging-optimisation": "2026-10-11",
+    "cmu-evtol-battery-dataset": "2026-10-11",
+    "evbattery-large-scale-ev-dataset": "2026-10-11",
+    "hnei-blended-electrode-synthetic": "2026-10-11",
+    "hnei-lfp-synthetic-diagnosis-prognosis": "2026-10-11",
+    "hnei-lg-icr18650c2-variability": "2026-10-11",
+    "lg-18650hg2-mcmaster": "2026-10-11",
+    "lg-m50-parameterisation-data": "2026-10-11",
+    "liiondb-parameter-database": "2026-10-11",
+    "mechanical-thermal-runaway-ornl-snl": "2026-10-11",
+    "osf-battery-magnetometry-archive": "2026-10-11",
+    "oxford-battery-degradation-dataset-1": "2026-10-11",
+    "oxford-path-dependent-degradation": "2026-10-11",
+    "panasonic-18650pf-data": "2026-10-11",
+    "rwth-48-cell-cycle-ageing": "2026-10-11",
+    "samsung-50e-second-life-hppc": "2026-10-11",
+    "sandia-commercial-cell-degradation": "2026-10-11",
+    "turnigy-graphene-5ah-data": "2026-10-11",
+    "ul-purdue-degradation-safety": "2026-10-11",
+    "umich-battery-expansion": "2026-10-11",
+    "umich-formation-protocols": "2026-10-11",
+    "unibo-powertools-dataset": "2026-10-11",
+    "vito-module-driving-profile-ageing": "2026-10-11",
+    "vito-ni-rich-18650-lifecycle-ageing": "2026-10-11"
+  },
+  "events": [
+    {
+      "date": "2026-10-13",
+      "type": "note",
+      "text": "This 'What's new' strip, and a 'New' badge on datasets added in the last 30 days",
+      "link": ""
+    },
+    {
+      "date": "2026-10-12",
+      "type": "note",
+      "text": "Cite IonSense: copy a ready BibTeX reference for the IonSense-QKG paper",
+      "link": "#cite"
+    },
+    {
+      "date": "2026-10-12",
+      "type": "note",
+      "text": "XJTU, HUST, Tongji (TJU) and MIT datasets now use their common names; search finds either name",
+      "link": ""
+    },
+    {
+      "date": "2026-10-11",
+      "type": "datasets",
+      "items": [
+        {
+          "id": "argonne-camp-2023",
+          "name": "Argonne CAMP Cycle-Life Dataset (2023 release)"
+        },
+        {
+          "id": "battery-archive",
+          "name": "Battery Archive"
+        },
+        {
+          "id": "osf-battery-magnetometry-archive",
+          "name": "Battery Magnetometry Data 2019–2020 (OSF)"
+        },
+        {
+          "id": "battery-materials-database-chemdataextractor",
+          "name": "Battery Materials Database (auto-generated with ChemDataExtractor)"
+        },
+        {
+          "id": "bmw-i3-real-driving-battery-heating",
+          "name": "Battery and Heating Data in Real Driving Cycles (BMW i3)"
+        },
+        {
+          "id": "batterylife-benchmark",
+          "name": "BatteryLife: Dataset and Benchmark for Battery Life Prediction"
+        },
+        {
+          "id": "calce-battery-data",
+          "name": "CALCE Battery Data (University of Maryland)"
+        },
+        {
+          "id": "closed-loop-fast-charging-optimisation",
+          "name": "Closed-Loop Fast-Charging Optimisation Dataset"
+        },
+        {
+          "id": "evbattery-large-scale-ev-dataset",
+          "name": "EVBattery: Large-Scale EV Charging Dataset"
+        },
+        {
+          "id": "hnei-lfp-synthetic-diagnosis-prognosis",
+          "name": "Graphite//LFP Synthetic Datasets for Diagnosis and Prognosis (HNEI)"
+        },
+        {
+          "id": "hnei-lg-icr18650c2-variability",
+          "name": "HNEI Cell-to-Cell Variability Dataset (LG ICR18650 C2)"
+        },
+        {
+          "id": "lg-18650hg2-mcmaster",
+          "name": "LG 18650HG2 Li-ion Battery Data (McMaster)"
+        },
+        {
+          "id": "lg-m50-parameterisation-data",
+          "name": "LG M50 Parameterisation Data (Chen et al.)"
+        },
+        {
+          "id": "liiondb-parameter-database",
+          "name": "LiionDB: Parameter Database for Li-ion Battery Models"
+        },
+        {
+          "id": "mechanical-thermal-runaway-ornl-snl",
+          "name": "Mechanically Induced Thermal Runaway Dataset (ORNL & Sandia)"
+        },
+        {
+          "id": "umich-battery-expansion",
+          "name": "Michigan Battery Expansion Dataset"
+        },
+        {
+          "id": "umich-formation-protocols",
+          "name": "Michigan Formation Protocol Dataset"
+        },
+        {
+          "id": "oxford-battery-degradation-dataset-1",
+          "name": "Oxford Battery Degradation Dataset 1"
+        },
+        {
+          "id": "oxford-path-dependent-degradation",
+          "name": "Oxford Path-Dependent Battery Degradation Dataset"
+        },
+        {
+          "id": "panasonic-18650pf-data",
+          "name": "Panasonic 18650PF Li-ion Battery Data"
+        },
+        {
+          "id": "rwth-48-cell-cycle-ageing",
+          "name": "RWTH 48-Cell Cycle Ageing Dataset (Sanyo/Panasonic UR18650E)"
+        },
+        {
+          "id": "samsung-50e-second-life-hppc",
+          "name": "Samsung INR21700-50E Second-Life Capacity and HPPC Tests"
+        },
+        {
+          "id": "sandia-commercial-cell-degradation",
+          "name": "Sandia Commercial Cell Degradation Dataset (SNL)"
+        },
+        {
+          "id": "hnei-blended-electrode-synthetic",
+          "name": "Synthetic Blended-Electrode Datasets (HNEI)"
+        },
+        {
+          "id": "turnigy-graphene-5ah-data",
+          "name": "Turnigy Graphene 5000 mAh 65C Li-ion Battery Data"
+        },
+        {
+          "id": "ul-purdue-degradation-safety",
+          "name": "UL–Purdue Degradation-Safety Dataset (UL-PUR)"
+        },
+        {
+          "id": "unibo-powertools-dataset",
+          "name": "UNIBO Powertools Dataset"
+        },
+        {
+          "id": "vito-module-driving-profile-ageing",
+          "name": "VITO Battery Module Ageing with Driving Profile"
+        },
+        {
+          "id": "vito-ni-rich-18650-lifecycle-ageing",
+          "name": "VITO Lifecycle Ageing Tests on Ni-Rich 18650 Cells"
+        },
+        {
+          "id": "cmu-evtol-battery-dataset",
+          "name": "eVTOL Battery Dataset (Carnegie Mellon)"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-11",
+      "type": "studies",
+      "items": [
+        {
+          "datasets": [
+            {
+              "id": "physics-informed-neural-network-for-lithium-ion-battery-degradation-modelling",
+              "name": "XJTU Battery Degradation Dataset"
+            },
+            {
+              "id": "early-cycle-life",
+              "name": "MIT–Stanford–TRI Battery Cycle Life Dataset (MATR)"
+            },
+            {
+              "id": "real-time-personalized-health-status-prediction-via-deep-transfer-learning",
+              "name": "HUST Battery Dataset (77 LFP cells)"
+            },
+            {
+              "id": "data-driven-capacity-estimation-from-voltage-relaxation",
+              "name": "Tongji (TJU) Battery Dataset: Voltage Relaxation"
+            }
+          ],
+          "title": "Battery health prognosis using Physics-informed neural network with Quantum Feature mapping",
+          "year": 2026,
+          "authors": "Hossain, Rafy, Solanki, Srivastava",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "early-cycle-life",
+              "name": "MIT–Stanford–TRI Battery Cycle Life Dataset (MATR)"
+            },
+            {
+              "id": "data-driven-capacity-estimation-from-voltage-relaxation",
+              "name": "Tongji (TJU) Battery Dataset: Voltage Relaxation"
+            },
+            {
+              "id": "real-time-personalized-health-status-prediction-via-deep-transfer-learning",
+              "name": "HUST Battery Dataset (77 LFP cells)"
+            },
+            {
+              "id": "physics-informed-neural-network-for-lithium-ion-battery-degradation-modelling",
+              "name": "XJTU Battery Degradation Dataset"
+            }
+          ],
+          "title": "Coupled Quantum Reservoir Features for Multi-Chemistry Battery State-of-Health Estimation",
+          "year": 2026,
+          "authors": "Gunasekar, Rangarajan",
+          "pinned": true
+        },
+        {
+          "datasets": [
+            {
+              "id": "data-driven-capacity-estimation-from-voltage-relaxation",
+              "name": "Tongji (TJU) Battery Dataset: Voltage Relaxation"
+            },
+            {
+              "id": "physics-informed-neural-network-for-lithium-ion-battery-degradation-modelling",
+              "name": "XJTU Battery Degradation Dataset"
+            },
+            {
+              "id": "early-cycle-life",
+              "name": "MIT–Stanford–TRI Battery Cycle Life Dataset (MATR)"
+            },
+            {
+              "id": "real-time-personalized-health-status-prediction-via-deep-transfer-learning",
+              "name": "HUST Battery Dataset (77 LFP cells)"
+            }
+          ],
+          "title": "Physics-informed neural network for lithium-ion battery degradation stable modeling and prognosis",
+          "year": 2024,
+          "authors": "Wang, Zhai, Zhao et al.",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "calce-battery-data",
+              "name": "CALCE Battery Data (University of Maryland)"
+            },
+            {
+              "id": "nasa-battery-data-set",
+              "name": "NASA Battery Data Set"
+            },
+            {
+              "id": "early-cycle-life",
+              "name": "MIT–Stanford–TRI Battery Cycle Life Dataset (MATR)"
+            }
+          ],
+          "title": "Multi-dataset battery health prediction model for sustainable electric vehicle systems using quantum machine learning",
+          "year": 2026,
+          "authors": "Monika, Sood",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "early-cycle-life",
+              "name": "MIT–Stanford–TRI Battery Cycle Life Dataset (MATR)"
+            },
+            {
+              "id": "data-driven-capacity-estimation-from-voltage-relaxation",
+              "name": "Tongji (TJU) Battery Dataset: Voltage Relaxation"
+            },
+            {
+              "id": "calce-battery-data",
+              "name": "CALCE Battery Data (University of Maryland)"
+            }
+          ],
+          "title": "Quantum-Enhanced Recurrent Neural Networks via Variational Quantum Gating for Battery State of Health Prediction",
+          "year": 2026,
+          "authors": "Xu, Liu, Gao, Xu",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "tum-commercial-aging",
+              "name": "Experimental Degradation Study of Commercial Li-Ion Cells"
+            },
+            {
+              "id": "discovery-learning-predicts-battery-cycle-life-from-minimal-experiments",
+              "name": "Discovery Learning Predicts Battery Cycle Life from Minimal Experiments"
+            }
+          ],
+          "title": "Discovery Learning predicts battery cycle life from minimal experiments",
+          "year": 2026,
+          "authors": "Zhang, Zhang, Yi et al.",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "magbridge-battery-v1",
+              "name": "MagBridge-Battery v1.0"
+            },
+            {
+              "id": "osf-battery-magnetometry-archive",
+              "name": "Battery Magnetometry Data 2019–2020 (OSF)"
+            }
+          ],
+          "title": "MagBridge-Battery: A synthetic bridge dataset for Li-ion magnetometry and state-of-health diagnostics",
+          "year": 2026,
+          "authors": "Gunasekar, Rangarajan",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "physics-informed-neural-network-for-lithium-ion-battery-degradation-modelling",
+              "name": "XJTU Battery Degradation Dataset"
+            },
+            {
+              "id": "early-cycle-life",
+              "name": "MIT–Stanford–TRI Battery Cycle Life Dataset (MATR)"
+            }
+          ],
+          "title": "Physical information-guided Kolmogorov–Arnold networks for battery state of health estimation",
+          "year": 2025,
+          "authors": "Liu, Ye, Cui, Ma",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "lithium-ion-battery-aging-dataset-based-on-ev-real-driving-profiles",
+              "name": "Lithium-Ion Battery Aging Dataset Based on EV Real-Driving Profiles"
+            },
+            {
+              "id": "second-life-lithium-ion-battery-aging-dataset-based-on-grid-storage-cycling",
+              "name": "Second-Life Lithium-Ion Battery Aging Dataset Based on Grid Storage Cycling"
+            }
+          ],
+          "title": "Second-life lithium-ion battery aging dataset based on grid storage cycling",
+          "year": 2024,
+          "authors": "Moy, Khan, Fasolato, Pozzato, Allam, Onori",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "nasa-battery-data-set",
+              "name": "NASA Battery Data Set"
+            },
+            {
+              "id": "physics-informed-neural-network-for-lithium-ion-battery-degradation-modelling",
+              "name": "XJTU Battery Degradation Dataset"
+            }
+          ],
+          "title": "State of health estimation for lithium-ion batteries based on transferable long short-term memory optimized using Harris hawk algorithm",
+          "year": 2024,
+          "authors": "Yang, Wang, Li, Zhang",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "tum-commercial-aging",
+              "name": "Experimental Degradation Study of Commercial Li-Ion Cells"
+            },
+            {
+              "id": "impedance-based-forecasting-of-battery-performance-amid-uneven-usage",
+              "name": "Impedance-Based Forecasting of Battery Performance Amid Uneven Usage"
+            }
+          ],
+          "title": "Two points are enough",
+          "year": 2024,
+          "authors": "Liu, Zhao, Zheng et al.",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "nasa-battery-data-set",
+              "name": "NASA Battery Data Set"
+            }
+          ],
+          "title": "A Quantum Neural Network Regression for Modeling Lithium-ion Battery Capacity Degradation",
+          "year": 2023,
+          "authors": "Ngo, Le, Nguyen, Eroglu, Nguyen",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "small-satellite-power-simulation-nasa",
+              "name": "Small Satellite Power Simulation (NASA)"
+            }
+          ],
+          "title": "A battery certification testbed for small satellite missions",
+          "year": 2015,
+          "authors": "Cameron, Kulkarni, Guarneros, Goebel, Poll",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "cmu-evtol-battery-dataset",
+              "name": "eVTOL Battery Dataset (Carnegie Mellon)"
+            }
+          ],
+          "title": "A battery dataset for electric vertical takeoff and landing aircraft",
+          "year": 2023,
+          "authors": "Bills, Sripad, Fredericks et al.",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "battery-materials-database-chemdataextractor",
+              "name": "Battery Materials Database (auto-generated with ChemDataExtractor)"
+            }
+          ],
+          "title": "A database of battery materials auto-generated using ChemDataExtractor",
+          "year": 2020,
+          "authors": "Huang, Cole",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "a-dataset-of-over-1-000-computed-tomography-scans-of-battery-cells",
+              "name": "A Dataset of Over 1,000 Computed Tomography Scans of Battery Cells"
+            }
+          ],
+          "title": "A dataset of over one thousand computed tomography scans of battery cells",
+          "year": 2024,
+          "authors": "Condon, Buscarino, Moch et al.",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "stanford-long-term-calendar-aging-dataset",
+              "name": "Stanford Long-Term Calendar Aging Dataset"
+            }
+          ],
+          "title": "A decade of insights: Delving into calendar aging trends and implications",
+          "year": 2025,
+          "authors": "Lam, Cui, Stroebl, Uppaluri, Onori, Chueh",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "multi-stage-lithium-ion-battery-aging-study",
+              "name": "Multi-Stage Lithium-Ion Battery Aging Study"
+            }
+          ],
+          "title": "A multi-stage lithium-ion battery aging dataset using various experimental design methodologies",
+          "year": 2024,
+          "authors": "Stroebl, Petersohn, Schricker et al.",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "probability-distributed-equivalent-circuit-model-dataset",
+              "name": "Probability Distributed Equivalent Circuit Model Dataset"
+            }
+          ],
+          "title": "A physically motivated voltage hysteresis model for lithium-ion batteries using a probability distributed equivalent circuit",
+          "year": 2024,
+          "authors": "Jahn, Mößle, Röder, Danzer",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "randomized-battery-usage-data-set-nasa",
+              "name": "Randomized Battery Usage Data Set (NASA)"
+            }
+          ],
+          "title": "Adaptation of an electrochemistry-based Li-ion battery model to account for deterioration observed under randomized use",
+          "year": 2014,
+          "authors": "Bole, Kulkarni, Daigle",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "aging-dataset-lco-battery-with-mechanical-measurements",
+              "name": "Aging Dataset — LCO Battery with Mechanical Measurements"
+            }
+          ],
+          "title": "Aging diagnostics in lithium-ion batteries with differential mechanical measurements",
+          "year": 2025,
+          "authors": "Clerici, Pistorio, Somà",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "attention-towards-chemistry-agnostic-and-explainable-battery-lifetime-prediction-arcana",
+              "name": "Attention Towards Chemistry-Agnostic and Explainable Battery Lifetime Prediction (ARCANA)"
+            }
+          ],
+          "title": "Attention towards chemistry agnostic and explainable battery lifetime prediction",
+          "year": 2024,
+          "authors": "Rahmanian, Lee, Linzner et al.",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "battery-aging-modes-across-nmc-compositions",
+              "name": "Battery Aging Modes Across NMC Compositions"
+            }
+          ],
+          "title": "Battery aging mode identification across NMC compositions and designs using machine learning",
+          "year": 2022,
+          "authors": "Chen, Walker, Kim, Kunz, Tanim, Dufek",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "batterylife-benchmark",
+              "name": "BatteryLife: Dataset and Benchmark for Battery Life Prediction"
+            }
+          ],
+          "title": "BatteryLife: A Comprehensive Dataset and Benchmark for Battery Life Prediction",
+          "year": 2025,
+          "authors": "Tan, Hong, Tang et al.",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "hnei-lfp-synthetic-diagnosis-prognosis",
+              "name": "Graphite//LFP Synthetic Datasets for Diagnosis and Prognosis (HNEI)"
+            }
+          ],
+          "title": "Big data training data for artificial intelligence-based Li-ion diagnosis and prognosis",
+          "year": 2020,
+          "authors": "Dubarry, Beck",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "challenges-and-opportunities-in-truck-electrification-big-operational-data",
+              "name": "Challenges and Opportunities in Truck Electrification — Big Operational Data"
+            }
+          ],
+          "title": "Challenges and opportunities in truck electrification revealed by big operational data",
+          "year": 2024,
+          "authors": "Zhao, Zhang, Santi et al.",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "closed-loop-fast-charging-optimisation",
+              "name": "Closed-Loop Fast-Charging Optimisation Dataset"
+            }
+          ],
+          "title": "Closed-loop optimization of fast-charging protocols for batteries with machine learning",
+          "year": 2020,
+          "authors": "Attia, Grover, Jin et al.",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "rate-capability-ocv-impedance-and-half-cell-data-sodium-ion-and-lfp-batteries",
+              "name": "Rate Capability, OCV, Impedance, and Half-Cell Data — Sodium-Ion and LFP Batteries"
+            }
+          ],
+          "title": "Comparing the electrical performance of commercial sodium-ion and lithium-iron-phosphate batteries",
+          "year": 2025,
+          "authors": "Rehm, Fischer, Rubio Gomez, Schütte, Sauer, Jossen",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "comprehensive-battery-aging-dataset-nmc-c-sio-capacity-impedance-fade",
+              "name": "Comprehensive Battery Aging Dataset: NMC/C-SiO Capacity & Impedance Fade"
+            }
+          ],
+          "title": "Comprehensive battery aging dataset: capacity and impedance fade measurements of a lithium-ion NMC/C-SiO cell",
+          "year": 2024,
+          "authors": "Luh, Blank",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "uconn-lco-gr-battery-fast-charging-dataset",
+              "name": "UConn LCO/Gr Battery Fast Charging Dataset"
+            }
+          ],
+          "title": "Coulombic efficiency-driven optimization of health-aware charging protocols: an experimental investigation on LCO/graphite lithium-ion cells",
+          "year": 2026,
+          "authors": "Navidi, Das, Nowacki, Shrotriya, Xu, Hu",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "formation-tri",
+              "name": "Battery Formation and Structured Aging Cycling Data"
+            }
+          ],
+          "title": "Data-driven analysis of battery formation reveals the role of electrode utilization in extending cycle life",
+          "year": 2024,
+          "authors": "Cui, Kang, Wang et al.",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "gic-nmc-solar-battery-synthetic-data",
+              "name": "GIC/NMC Solar Battery Synthetic Data"
+            }
+          ],
+          "title": "Data-driven direct diagnosis of Li-ion batteries connected to photovoltaics",
+          "year": 2023,
+          "authors": "Dubarry, Costa, Matthews",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "wmg-dib-dataset-rapid-soh-estimation-via-eis-and-ml",
+              "name": "WMG-DIB Dataset — Rapid SoH Estimation via EIS and ML"
+            }
+          ],
+          "title": "Dataset for rapid state of health estimation of lithium batteries using EIS and machine learning: Training and validation",
+          "year": 2023,
+          "authors": "Rashid, Faraji-Niri, Sansom et al.",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "battery-degradation-dataset-based-on-a-forklift-mission-profile",
+              "name": "Battery Degradation Dataset Based on a Forklift Mission Profile"
+            }
+          ],
+          "title": "Dataset of lithium-ion battery degradation based on a forklift mission profile for state-of-health estimation and lifetime prediction",
+          "year": 2024,
+          "authors": "Vilsen, Stroe",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "underlying-dataset-for-battery-pack-degradation-under-thermal-gradients",
+              "name": "Underlying Dataset for Battery Pack Degradation Under Thermal Gradients"
+            }
+          ],
+          "title": "Degradation in parallel-connected lithium-ion battery packs under thermal gradients",
+          "year": 2024,
+          "authors": "Naylor Marlow, Chen, Wu",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "sandia-commercial-cell-degradation",
+              "name": "Sandia Commercial Cell Degradation Dataset (SNL)"
+            }
+          ],
+          "title": "Degradation of Commercial Lithium-Ion Cells as a Function of Chemistry and Cycling Conditions",
+          "year": 2020,
+          "authors": "Preger, Barkholtz, Fresquez et al.",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "ul-purdue-degradation-safety",
+              "name": "UL–Purdue Degradation-Safety Dataset (UL-PUR)"
+            }
+          ],
+          "title": "Degradation-Safety Analytics in Lithium-Ion Cells: Part I. Aging under Charge/Discharge Cycling",
+          "year": 2020,
+          "authors": "Juarez-Robles, Jeevarajan, Mukherjee",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "lg-m50-parameterisation-data",
+              "name": "LG M50 Parameterisation Data (Chen et al.)"
+            }
+          ],
+          "title": "Development of Experimental Techniques for Parameterization of Multi-scale Lithium-ion Battery Models",
+          "year": 2020,
+          "authors": "Chen, Brosa Planella, O'Regan, Gastol, Widanage, Kendrick",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "oxford-battery-degradation-dataset-1",
+              "name": "Oxford Battery Degradation Dataset 1"
+            }
+          ],
+          "title": "Diagnosis and prognosis of degradation in lithium-ion batteries",
+          "year": 2017,
+          "authors": "Birkl",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "dynamic-cycling-enhances-battery-lifetime",
+              "name": "Dynamic Cycling Enhances Battery Lifetime"
+            }
+          ],
+          "title": "Dynamic cycling enhances battery lifetime",
+          "year": 2025,
+          "authors": "Geslin, Xu, Ganapathi et al.",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "evbattery-large-scale-ev-dataset",
+              "name": "EVBattery: Large-Scale EV Charging Dataset"
+            }
+          ],
+          "title": "EVBattery: A Large-Scale Electric Vehicle Dataset for Battery Health and Capacity Estimation",
+          "year": 2022,
+          "authors": "He, Zhang, Wang et al.",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "data-repository-for-electrochemical-thermal-modelling-of-high-power-li-ion-pouch-cells",
+              "name": "Data Repository for Electrochemical-Thermal Modelling of High Power Li-Ion Pouch Cells"
+            }
+          ],
+          "title": "Electrochemical-thermal modelling of high power Li-ion pouch cells",
+          "year": 2026,
+          "authors": "Wojtala et al.",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "hnei-blended-electrode-synthetic",
+              "name": "Synthetic Blended-Electrode Datasets (HNEI)"
+            }
+          ],
+          "title": "Electrode Blending Simulations Using the Mechanistic Degradation Modes Modeling Approach",
+          "year": 2024,
+          "authors": "Beck, Dubarry",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "comprehensive-battery-aging-dataset-nmc-c-sio-capacity-impedance-fade",
+              "name": "Comprehensive Battery Aging Dataset: NMC/C-SiO Capacity & Impedance Fade"
+            }
+          ],
+          "title": "Estimation of the state of charge and health of lithium-ion batteries based on deep learning",
+          "year": 2026,
+          "authors": "Zanganeh",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "experimental-data-galvanostatic-discharge-at-different-c-rates-and-temperatures",
+              "name": "Experimental Data — Galvanostatic Discharge at Different C-Rates and Temperatures"
+            }
+          ],
+          "title": "Experimental data of lithium-ion batteries under galvanostatic discharge tests at different rates and temperatures of operation",
+          "year": 2021,
+          "authors": "",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "tum-commercial-aging",
+              "name": "Experimental Degradation Study of Commercial Li-Ion Cells"
+            }
+          ],
+          "title": "Experimental degradation study of a commercial lithium-ion battery",
+          "year": 2023,
+          "authors": "Wildfeuer, Karger, Aygül, Wassiliadis, Jossen, Lienkamp",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "argonne-camp-2023",
+              "name": "Argonne CAMP Cycle-Life Dataset (2023 release)"
+            }
+          ],
+          "title": "Feature engineering for machine learning enabled early prediction of battery lifetime",
+          "year": 2022,
+          "authors": "Paulson, Kubal, Ward, Saxena, Lu, Babinec",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "early-cycle-life",
+              "name": "MIT–Stanford–TRI Battery Cycle Life Dataset (MATR)"
+            }
+          ],
+          "title": "Framework for Early Prediction of Lithium-Ion Battery Lifetime: A Hybrid Quantum-Classical Approach",
+          "year": 2025,
+          "authors": "Anggita, Akrom",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "full-factorial-doe-dataset-for-parallel-connected-lithium-ion-cells",
+              "name": "Full Factorial DOE Dataset for Parallel-Connected Lithium-Ion Cells"
+            }
+          ],
+          "title": "Full factorial design of experiments dataset for parallel-connected lithium-ion cells imbalanced performance investigation",
+          "year": 2024,
+          "authors": "Piombo, Fasolato, Heymer et al.",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "field-28-lfp",
+              "name": "Lithium-Ion Battery Field Data: 28 LFP Systems"
+            }
+          ],
+          "title": "Gaussian process-based online health monitoring and fault analysis of lithium-ion battery systems from field data",
+          "year": 2024,
+          "authors": "Schaeffer, Lenz, Gulla, Bazant, Braatz, Findeisen",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "generative-learning-assisted-state-of-health-estimation-for-battery-recycling",
+              "name": "Generative Learning Assisted State-of-Health Estimation for Battery Recycling"
+            }
+          ],
+          "title": "Generative learning assisted state-of-health estimation for sustainable battery recycling with random retirement conditions",
+          "year": 2024,
+          "authors": "Tao, Ma, Zhao et al.",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "impedance-based-forecasting-of-battery-performance-amid-uneven-usage",
+              "name": "Impedance-Based Forecasting of Battery Performance Amid Uneven Usage"
+            }
+          ],
+          "title": "Impedance-based forecasting of lithium-ion battery performance amid uneven usage",
+          "year": 2022,
+          "authors": "Jones, Stimming, Lee",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "increasing-generalization-capability-of-battery-health-estimation-continual-learning",
+              "name": "Increasing Generalization Capability of Battery Health Estimation — Continual Learning"
+            }
+          ],
+          "title": "Increasing generalization capability of battery health estimation using continual learning",
+          "year": 2023,
+          "authors": "Che, Zheng, Onori, Hu, Teodorescu",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "physics-informed-neural-network-for-lithium-ion-battery-degradation-modelling",
+              "name": "XJTU Battery Degradation Dataset"
+            }
+          ],
+          "title": "Integrated mixed attention U-Net mechanisms with multi-stage division strategy customized for accurate estimation of lithium-ion battery state of health",
+          "year": 2024,
+          "authors": "Fan, Yang, Hou",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "hnei-lg-icr18650c2-variability",
+              "name": "HNEI Cell-to-Cell Variability Dataset (LG ICR18650 C2)"
+            }
+          ],
+          "title": "Intrinsic Variability in the Degradation of a Batch of Commercial 18650 Lithium-Ion Cells",
+          "year": 2018,
+          "authors": "Devie, Baure, Dubarry",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "oxford-path-dependent-degradation",
+              "name": "Oxford Path-Dependent Battery Degradation Dataset"
+            }
+          ],
+          "title": "Investigation of Path-Dependent Degradation in Lithium-Ion Batteries",
+          "year": 2020,
+          "authors": "Raj et al.",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "electric-vehicle-usage-data-set-for-battery-aging-studies",
+              "name": "Electric Vehicle Usage Data Set for Battery Aging Studies"
+            }
+          ],
+          "title": "Lab-to-field gap in battery aging studies: Mismatch of operating conditions between laboratory environments and real-world automotive applications",
+          "year": 2026,
+          "authors": "Schreiber, Köning, Balke et al.",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "ultrasonic-and-deep-learning-dataset-for-real-time-soc-estimation-in-large-format-cells",
+              "name": "Ultrasonic and Deep-Learning Dataset for Real-Time SoC Estimation in Large-Format Cells"
+            }
+          ],
+          "title": "Large format battery SoC estimation: An ultrasonic sensing and deep transfer learning predictions for heterogeneity",
+          "year": 2025,
+          "authors": "Farhadi Tolie, Reichmann, Marco, Sharif Khodaei, Faraji Niri",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "unibo-powertools-dataset",
+              "name": "UNIBO Powertools Dataset"
+            }
+          ],
+          "title": "Li-Ion Batteries State-of-Charge Estimation Using Deep LSTM at Various Battery Specifications and Discharge Cycles",
+          "year": 2021,
+          "authors": "Wong, Bosello, Tse et al.",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "lithium-inventory-tracking-as-a-nondestructive-battery-evaluation-method",
+              "name": "Lithium Inventory Tracking as a Nondestructive Battery Evaluation Method"
+            }
+          ],
+          "title": "Lithium inventory tracking as a non-destructive battery evaluation and monitoring method",
+          "year": 2024,
+          "authors": "Li, Zhang, Zhou et al.",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "wmg-calendar-aging-dataset-lgm50-commercial-cells-39-storage-conditions",
+              "name": "WMG Calendar Aging Dataset — LGM50 Commercial Cells (39 Storage Conditions)"
+            }
+          ],
+          "title": "Lithium-ion battery degradation modelling using universal differential equations: Development of a cost-effective parameterisation methodology",
+          "year": 2025,
+          "authors": "Kuzhiyil, Damoulas, Brosa Planella, Widanage",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "comprehensive-cycle-aging-data-and-analysis-for-commercial-21700-cells",
+              "name": "Comprehensive Cycle Aging Data and Analysis for Commercial 21700 Cells"
+            }
+          ],
+          "title": "Lithium-ion battery degradation: comprehensive cycle ageing data and analysis for commercial 21700 cells",
+          "year": 2024,
+          "authors": "Kirkaldy, Samieian, Offer, Marinescu, Patel",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "panasonic-18650pf-data",
+              "name": "Panasonic 18650PF Li-ion Battery Data"
+            }
+          ],
+          "title": "Long Short-Term Memory Networks for Accurate State-of-Charge Estimation of Li-ion Batteries",
+          "year": 2018,
+          "authors": "Chemali et al.",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "stanford-long-term-calendar-aging-dataset",
+              "name": "Stanford Long-Term Calendar Aging Dataset"
+            }
+          ],
+          "title": "Long-term calendar aging across commercial lithium-ion cell chemistries—modeling and early prediction",
+          "year": 2025,
+          "authors": "Cui, Stroebl, Uppaluri, Lam, Chueh, Onori",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "long-term-sweat-testing-data-for-second-life-batteries",
+              "name": "Long-Term Sweat Testing Data for Second-Life Batteries"
+            }
+          ],
+          "title": "Long-term sweat testing dataset for second-life batteries",
+          "year": 2025,
+          "authors": "Beatty, Strickland, Warren et al.",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "mechanical-thermal-runaway-ornl-snl",
+              "name": "Mechanically Induced Thermal Runaway Dataset (ORNL & Sandia)"
+            }
+          ],
+          "title": "Mechanically induced thermal runaway severity analysis for Li-ion batteries",
+          "year": 2023,
+          "authors": "Lin, Li, Fishman et al.",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "aging-dataset-lco-battery-with-mechanical-measurements",
+              "name": "Aging Dataset — LCO Battery with Mechanical Measurements"
+            }
+          ],
+          "title": "Mechanics of lithium-ion batteries: aging and diagnostics",
+          "year": 2026,
+          "authors": "Clerici, Pistorio, Somà",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "mechanistically-guided-residual-learning-dataset-for-battery-state-monitoring",
+              "name": "Mechanistically Guided Residual Learning Dataset for Battery State Monitoring"
+            }
+          ],
+          "title": "Mechanistically guided residual learning for battery state monitoring throughout life",
+          "year": 2026,
+          "authors": "Che, Zheng, Rhyu et al.",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "home-storage-rwth",
+              "name": "Multi-Year Home Storage Field Measurements"
+            }
+          ],
+          "title": "Multi-year field measurements of home storage systems and their use in capacity estimation",
+          "year": 2024,
+          "authors": "Figgener, van Ouwerkerk, Haberschusz et al.",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "rwth-48-cell-cycle-ageing",
+              "name": "RWTH 48-Cell Cycle Ageing Dataset (Sanyo/Panasonic UR18650E)"
+            }
+          ],
+          "title": "One-shot battery degradation trajectory prediction with deep learning",
+          "year": 2021,
+          "authors": "Li, Sengupta, Dechent, Howey, Annaswamy, Sauer",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "physics-informed-neural-network-for-lithium-ion-battery-degradation-modelling",
+              "name": "XJTU Battery Degradation Dataset"
+            }
+          ],
+          "title": "Open access dataset, code library and benchmarking deep learning approaches for state-of-health estimation of lithium-ion batteries",
+          "year": 2024,
+          "authors": "Wang, Zhai, Liu et al.",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "source-data-reuse-and-recycling-pathway-of-retired-batteries",
+              "name": "Source Data: Reuse and Recycling Pathway of Retired Batteries"
+            }
+          ],
+          "title": "Pathway decisions for reuse and recycling of retired lithium-ion batteries considering economic and environmental functions",
+          "year": 2024,
+          "authors": "",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "tum-commercial-aging",
+              "name": "Experimental Degradation Study of Commercial Li-Ion Cells"
+            }
+          ],
+          "title": "Physics-based modeling of cyclic and calendar aging of LIBs with Si-Gr composite anodes",
+          "year": 2026,
+          "authors": "Philipp, Köbbing, Karger, Jossen, Latz, Horstmann",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "isu-ilcc-battery-aging-dataset",
+              "name": "ISU-ILCC Battery Aging Dataset"
+            }
+          ],
+          "title": "Predicting battery lifetime under varying usage conditions from early aging data",
+          "year": 2023,
+          "authors": "Li, Zhou, Thelen, Howey, Hu",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "umich-formation-protocols",
+              "name": "Michigan Formation Protocol Dataset"
+            }
+          ],
+          "title": "Predicting the impact of formation protocols on battery lifetime immediately after manufacturing",
+          "year": 2021,
+          "authors": "Weng, Mohtat, Attia et al.",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "accelerated-battery-life-testing-nasa",
+              "name": "Accelerated Battery Life Testing (NASA)"
+            }
+          ],
+          "title": "Prognosis of Li-ion batteries under large load variations using hybrid physics-informed neural networks",
+          "year": 2023,
+          "authors": "Fricke, Nascimento, Corbetta, Kulkarni, Viana",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "prognosis-of-multivariate-battery-state-via-transformers",
+              "name": "Prognosis of Multivariate Battery State via Transformers"
+            }
+          ],
+          "title": "Prognosis of multivariate battery state of performance and health via transformers",
+          "year": 2023,
+          "authors": "Paulson, Kubal, Babinec",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "onroad-capacity",
+              "name": "Battery Capacity Prognostics for On-Road EVs"
+            }
+          ],
+          "title": "Prognostics of battery capacity based on charging data and data-driven methods for on-road vehicles",
+          "year": 2023,
+          "authors": "Deng, Xu, Liu, Hu, Duan, Xu",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "calce-battery-data",
+              "name": "CALCE Battery Data (University of Maryland)"
+            }
+          ],
+          "title": "Prognostics of lithium-ion batteries based on Dempster–Shafer theory and the Bayesian Monte Carlo method",
+          "year": 2011,
+          "authors": "He, Williard, Osterman, Pecht",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "generative-learning-assisted-state-of-health-estimation-for-battery-recycling",
+              "name": "Generative Learning Assisted State-of-Health Estimation for Battery Recycling"
+            }
+          ],
+          "title": "PulseBat: A field-accessible dataset for second-life battery diagnostics from realistic histories using multidimensional rapid pulse test",
+          "year": 2025,
+          "authors": "Tao, Ma, Yang et al.",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "nasa-battery-data-set",
+              "name": "NASA Battery Data Set"
+            }
+          ],
+          "title": "Quantum-Enhanced Battery Anomaly Detection in Smart Transportation Systems",
+          "year": 2025,
+          "authors": "Mutua, de Fréin",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "bmw-i3-real-driving-battery-heating",
+              "name": "Battery and Heating Data in Real Driving Cycles (BMW i3)"
+            }
+          ],
+          "title": "Range Extension via Electrothermal Recuperation",
+          "year": 2020,
+          "authors": "Steinstraeter, Lewke, Buberger, Hentrich, Lienkamp",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "real-time-personalized-health-status-prediction-via-deep-transfer-learning",
+              "name": "HUST Battery Dataset (77 LFP cells)"
+            }
+          ],
+          "title": "Real-time personalized health status prediction of lithium-ion batteries using deep transfer learning",
+          "year": 2022,
+          "authors": "Ma, Xu, Jiang et al.",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "source-data-internal-sensors-in-a-smart-battery-impact-on-local-graphite-lithiation",
+              "name": "Source Data: Internal Sensors in a Smart Battery — Impact on Local Graphite Lithiation"
+            }
+          ],
+          "title": "Revealing how internal sensors in a smart battery impact the local graphite lithiation mechanism",
+          "year": 2024,
+          "authors": "Olgo, Genies, Franchi et al.",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "umich-battery-expansion",
+              "name": "Michigan Battery Expansion Dataset"
+            }
+          ],
+          "title": "Reversible and Irreversible Expansion of Lithium-Ion Batteries Under a Wide Range of Stress Factors",
+          "year": 2021,
+          "authors": "Mohtat, Lee, Siegel, Stefanopoulou",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "liiondb-parameter-database",
+              "name": "LiionDB: Parameter Database for Li-ion Battery Models"
+            }
+          ],
+          "title": "Review of parameterisation and a novel database (LiionDB) for continuum Li-ion battery models",
+          "year": 2022,
+          "authors": "Wang, O'Kane, Brosa Planella et al.",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "lg-18650hg2-mcmaster",
+              "name": "LG 18650HG2 Li-ion Battery Data (McMaster)"
+            }
+          ],
+          "title": "Robust xEV Battery State-of-Charge Estimator Design using Deep Neural Networks",
+          "year": 2020,
+          "authors": "Vidal et al.",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "battery-failure-detection-and-fpi-estimation-during-cycling-to-failure",
+              "name": "Battery Failure Detection and FPI Estimation During Cycling-to-Failure"
+            }
+          ],
+          "title": "Seeing the unseen: real-time tracking of battery cycling-to-failure via surface strain",
+          "year": 2026,
+          "authors": "Gao, Bao, Zhang, Brandon, Offer",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "osf-battery-magnetometry-archive",
+              "name": "Battery Magnetometry Data 2019–2020 (OSF)"
+            }
+          ],
+          "title": "Sensitive magnetometry reveals inhomogeneities in charge storage and weak transient internal currents in Li-ion cells",
+          "year": 2020,
+          "authors": "Hu, Iwata, Mohammadi et al.",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "air-cooled-li-ion-battery-pack-from-a-plug-in-hybrid-vehicle-phev",
+              "name": "Air-Cooled Li-Ion Battery Pack from a Plug-In Hybrid Vehicle (PHEV)"
+            }
+          ],
+          "title": "Thermal fault detection of lithium-ion battery packs through an integrated physics and deep neural network based model",
+          "year": 2025,
+          "authors": "Naguib, Chen, Kollmeyer et al.",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "cycle-aging-data-of-automotive-grade-li-ion-cells-under-realistic-conditions-vw-id-3",
+              "name": "Cycle Aging Data of Automotive-Grade Li-ion Cells Under Realistic Conditions (VW ID.3)"
+            }
+          ],
+          "title": "Understanding lithium-ion battery degradation in vehicle applications: Insights from realistic and accelerated aging tests using Volkswagen ID.3 pouch cells",
+          "year": 2025,
+          "authors": "Schreiber, Abo Gamra, Bilfinger et al.",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "full-factorial-doe-dataset-for-parallel-connected-lithium-ion-cells",
+              "name": "Full Factorial DOE Dataset for Parallel-Connected Lithium-Ion Cells"
+            }
+          ],
+          "title": "Unveiling the performance impact of module level features on parallel-connected lithium-ion cells via explainable machine learning techniques on a full factorial design of experiments",
+          "year": 2024,
+          "authors": "Piombo, Fasolato, Heymer et al.",
+          "pinned": false
+        },
+        {
+          "datasets": [
+            {
+              "id": "hirf-battery-data-set-nasa",
+              "name": "HIRF Battery Data Set (NASA)"
+            }
+          ],
+          "title": "Verification of a remaining flying time prediction system for small electric aircraft",
+          "year": 2015,
+          "authors": "Hogge, Bole, Vazquez, Celaya",
+          "pinned": false
+        }
+      ]
+    },
+    {
+      "date": "2026-10-11",
+      "type": "note",
+      "text": "First release dates for 77 datasets, with a 'Newest release' sort and a 'First released' filter",
+      "link": ""
+    },
+    {
+      "date": "2026-10-11",
+      "type": "note",
+      "text": "New 'Methods used in studies' filter, including quantum machine learning",
+      "link": ""
+    },
+    {
+      "date": "2026-10-11",
+      "type": "note",
+      "text": "Citation counts and weekly link checks for every dataset",
+      "link": ""
+    },
+    {
+      "date": "2026-10-11",
+      "type": "note",
+      "text": "Cell chemistry checked at source for every dataset, with the evidence shown",
+      "link": ""
+    },
+    {
+      "date": "2026-10-11",
+      "type": "note",
+      "text": "Reported results, ranked only when studies used the same test cells and metric",
+      "link": ""
+    }
+  ]
+}

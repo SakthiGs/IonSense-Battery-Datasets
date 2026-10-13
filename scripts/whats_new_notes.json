@@ -1,0 +1,38 @@
+{
+  "about": "Feature announcements for the What's new strip, written by hand. Newest first; each needs a date (YYYY-MM-DD) and a short text. 'link' is optional.",
+  "notes": [
+    {
+      "date": "2026-10-13",
+      "text": "This 'What's new' strip, and a 'New' badge on datasets added in the last 30 days"
+    },
+    {
+      "date": "2026-10-12",
+      "text": "Cite IonSense: copy a ready BibTeX reference for the IonSense-QKG paper",
+      "link": "#cite"
+    },
+    {
+      "date": "2026-10-12",
+      "text": "XJTU, HUST, Tongji (TJU) and MIT datasets now use their common names; search finds either name"
+    },
+    {
+      "date": "2026-10-11",
+      "text": "First release dates for 77 datasets, with a 'Newest release' sort and a 'First released' filter"
+    },
+    {
+      "date": "2026-10-11",
+      "text": "New 'Methods used in studies' filter, including quantum machine learning"
+    },
+    {
+      "date": "2026-10-11",
+      "text": "Citation counts and weekly link checks for every dataset"
+    },
+    {
+      "date": "2026-10-11",
+      "text": "Cell chemistry checked at source for every dataset, with the evidence shown"
+    },
+    {
+      "date": "2026-10-11",
+      "text": "Reported results, ranked only when studies used the same test cells and metric"
+    }
+  ]
+}
