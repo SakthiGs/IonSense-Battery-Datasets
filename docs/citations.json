@@ -279,7 +279,7 @@
       "title": "MagBridge-Battery: A synthetic bridge dataset for Li-ion magnetometry and state-of-health diagnostics"
     },
     "calce-battery-data": {
-      "count": 1089,
+      "count": 1091,
       "openalex": "https://openalex.org/W2078279667",
       "title": "Prognostics of lithium-ion batteries based on Dempster–Shafer theory and the Bayesian Monte Carlo method"
     },
