@@ -1,6 +1,6 @@
 # IonSense — Battery Research Dataset Finder
 
-![IonSense banner — battery research dataset discovery](battery_banner.png)
+![IonSense — Battery Research Dataset Finder, 96 indexed resources](battery_banner_96.webp)
 
 **Discover battery research resources across electric mobility, stationary energy storage, laboratory testing, diagnostics, safety, recycling, and specialised applications.**
 
@@ -10,7 +10,7 @@
 
 IonSense is a **curated discovery catalogue**, not an EV-only dataset collection and not a host of third-party data. It helps researchers locate and compare links to battery datasets and associated research resources, then navigate to the original publishers and authors.
 
-The current index contains **66 entries in 9 research categories**. It covers real-world battery telemetry, experimental cell testing, electrochemical characterisation, imaging, second-life studies, synthetic data and certain related code or model resources. **An indexed record does not automatically mean a downloadable or independently verified dataset.**
+The current index contains **96 entries in 9 research categories**. It covers real-world battery telemetry, experimental cell testing, electrochemical characterisation, imaging, second-life studies, synthetic data and certain related code or model resources. **An indexed record does not automatically mean a downloadable or independently verified dataset.**
 
 ## What you can do
 
@@ -30,16 +30,16 @@ The current index contains **66 entries in 9 research categories**. It covers re
 
 | Category | Entries |
 |---|---:|
-| Field & Real-World | 10 |
-| Safety & Failure | 5 |
-| Lab Aging & Degradation | 23 |
-| State Estimation & Health Monitoring | 12 |
-| Electrochemical Characterisation | 6 |
+| Field & Real-World | 12 |
+| Safety & Failure | 7 |
+| Lab Aging & Degradation | 36 |
+| State Estimation & Health Monitoring | 16 |
+| Electrochemical Characterisation | 8 |
 | Battery Imaging | 2 |
-| Second-Life & Recycling | 2 |
-| Aerospace & Specialised | 5 |
-| Synthetic & Derived Battery Datasets | 1 |
-| **Total** | **66** |
+| Second-Life & Recycling | 3 |
+| Aerospace & Specialised | 7 |
+| Synthetic & Derived Battery Datasets | 5 |
+| **Total** | **96** |
 
 Category counts are for indexed **records**, not confirmed independent datasets or verified downloads. The index can include publications, repositories, code or model resources; potential overlaps and duplicates need source-level review.
 
@@ -56,7 +56,7 @@ Category counts are for indexed **records**, not confirmed independent datasets 
 ## Metadata quality and research cautions
 
 1. **Original sources first.** Read the dataset owner's description, licence, documentation, and associated papers before using or redistributing data. Cite **the original dataset creators**.
-2. **Application labels are provisional.** The new application filter is based on information already present in the catalogue; it has **not** been independently verified for all 66 records. Uncertain end-uses are marked **Not specified**.
+2. **Application labels are provisional.** The new application filter is based on information already present in the catalogue; it has **not** been independently verified for all 96 records. Uncertain end-uses are marked **Not specified**.
 3. **Chemistry is not guessed.** An unknown cathode chemistry is not inferred merely from lithium-ion or from a battery product name.
 4. **Access is not guaranteed.** Links may lead to a paper, software repository or landing page rather than raw measurements. An accessible URL is not proof that a dataset can be downloaded or reused.
 5. **Synthetic data is identified as such.** For example, MagBridge-Battery is a synthetic research resource, not an experimental magnetometry recording.
