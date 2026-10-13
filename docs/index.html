@@ -1335,6 +1335,7 @@ function resultsSection(d) {
     h('div', { class: 'res-head' }, h('h3', { id: 'results-h' }, 'Reported results'),
       h('button', { type: 'button', class: 'link-btn', onclick: () => openMetrics(d) }, 'Open metrics table')),
     entry.results_note ? h('p', { class: 'uses-intro' }, entry.results_note) : null,
+    CITE_NOTE(),
     tables, unranked);
 }
 
@@ -1374,6 +1375,9 @@ function usesSection(d) {
 
 /* ---------- Metrics view: every reported number for one dataset, best first within each metric ---------- */
 const HIGHER_BETTER = /(^|[^a-z])(r2|r²|r\^2|accuracy|acc|auc|roc-auc|f1|precision|recall|score)(?![a-z])/i;
+/* Shown wherever reported numbers appear: they are summaries, so readers should cite the paper. */
+const CITE_NOTE = () => h('p', { class: 'note cite-src' }, ICON_INFO(), h('span', {},
+  'Numbers here are summarised from each paper and may be rounded or averaged by IonSense. Before citing or comparing a result, please check it in the original paper (use the study link).'));
 function metricRows(d) {
   const entry = USES[d.id] || {};
   const benches = new Map((Array.isArray(entry.benchmarks) ? entry.benchmarks : []).map(b => [b.id, b]));
@@ -1437,6 +1441,7 @@ function metricsView(d) {
   draw();
   return h('section', { class: 'uses', id: 'detail-metrics', 'aria-labelledby': 'metrics-h' },
     h('div', { class: 'res-head' }, h('h3', { id: 'metrics-h' }, 'Metrics'), h('span', { class: 'cnt' }, plural(rows.length, 'reported result'))),
+    CITE_NOTE(),
     h('p', { class: 'uses-intro' }, 'Numbers as reported in each paper, not re-run by IonSense, sorted best first within each metric. Rows are only directly comparable when they share a benchmark (identical test cells): pick one in “Show” for a fair ranking. “Own split” rows used different cells or did not say.'),
     wrap);
 }
