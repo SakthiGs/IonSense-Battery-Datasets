@@ -336,6 +336,17 @@ dialog.sheet::backdrop{background:var(--scrim)}
 .res-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .res-head h3{margin:0}
 .res-head .cnt{font-size:13px;color:var(--muted)}
+dialog.sheet.wide{width:min(1080px,100vw);max-width:min(1080px,100vw)}
+.metrics{display:flex;flex-direction:column;gap:8px}
+.metric-tabs{flex-wrap:wrap;width:max-content;max-width:100%}
+.metric-tabs .n{opacity:.7}
+.metric-only{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--ink-2)}
+.metric-only select{font-size:13px;padding:4px 8px;border:1px solid var(--line-strong);border-radius:var(--r-s);background:var(--panel);color:var(--ink);max-width:100%}
+.metric-t td.num{color:var(--muted);font-variant-numeric:tabular-nums;width:2.5em}
+.metric-t .why{display:block;margin-top:3px;font-size:12px;line-height:1.35;color:var(--muted)}
+.cmp-ok,.cmp-own{display:inline-block;font-size:11.5px;font-weight:600;padding:0 7px;border-radius:999px;white-space:nowrap}
+.cmp-ok{background:var(--accent-soft);color:var(--accent-ink)}
+.cmp-own{background:var(--sunken);color:var(--ink-2)}
 .bench{display:flex;flex-direction:column;gap:6px;margin-top:14px}
 .bench h4{margin:0;font-size:13.5px;font-weight:650}
 .bench-note{margin:0;font-size:12.5px;line-height:1.4;color:var(--muted)}
@@ -1184,6 +1195,7 @@ function card(d) {
       extLink(http(d.url), PRIMARY_LABEL[d.source_type] || 'Open source', 'btn primary'),
       extLink(paperOf(d), 'Paper', 'btn'),
       extLink(codeOf(d), 'Code', 'btn'),
+      nMetrics(d) ? h('button', { type: 'button', class: 'btn', title: `Compare the ${plural(nMetrics(d), 'reported result')} for this dataset`, onclick: () => openMetrics(d) }, 'Metrics') : null,
       h('span', { class: 'ds-aside' },
         compareToggle(d),
         h('button', { type: 'button', class: 'btn ghost', onclick: () => openDetail(d) }, 'Details')))
@@ -1317,7 +1329,8 @@ function resultsSection(d) {
       x.r.test_set ? ' on ' + x.r.test_set : '',
       x.r.why ? h('span', { class: 'why' }, x.r.why) : null)))) : null;
   return h('section', { class: 'uses', id: 'detail-results', 'aria-labelledby': 'results-h' },
-    h('div', { class: 'res-head' }, h('h3', { id: 'results-h' }, 'Reported results'), h('span', { class: 'cnt' }, 'Lower is better')),
+    h('div', { class: 'res-head' }, h('h3', { id: 'results-h' }, 'Reported results'),
+      h('button', { type: 'button', class: 'link-btn', onclick: () => openMetrics(d) }, 'Open metrics table')),
     entry.results_note ? h('p', { class: 'uses-intro' }, entry.results_note) : null,
     tables, unranked);
 }
@@ -1356,11 +1369,90 @@ function usesSection(d) {
     h('ol', { class: 'uses-list' }, papers.map((p, i) => item(p, i))));
 }
 
+/* ---------- Metrics view: every reported number for one dataset, best first within each metric ---------- */
+const HIGHER_BETTER = /^(r2|r²|r\^2|accuracy|acc\b|auc|roc-auc|f1|precision|recall|score)/i;
+function metricRows(d) {
+  const entry = USES[d.id] || {};
+  const benches = new Map((Array.isArray(entry.benchmarks) ? entry.benchmarks : []).map(b => [b.id, b]));
+  const rows = [];
+  sortedUses(d).forEach((p, i) => (Array.isArray(p.results) ? p.results : []).forEach(r => {
+    if (!r || typeof r.value !== 'number') return;
+    const b = r.benchmark && benches.get(r.benchmark);
+    rows.push({
+      p, i, model: r.model || '', value: r.value, evidence: r.evidence || '',
+      metric: (b ? b.metric : r.metric) || 'Value',
+      unit: (b ? b.unit : r.unit) || '',
+      test: b ? b.label : (r.test_set || ''),
+      bench: b ? b.label : '', why: b ? (b.note || '') : (r.why || '')
+    });
+  }));
+  return rows;
+}
+const nMetrics = d => metricRows(d).length;
+function metricsView(d) {
+  const rows = metricRows(d);
+  const groups = new Map();
+  rows.forEach(r => { const k = r.metric + '|' + r.unit; if (!groups.has(k)) groups.set(k, []); groups.get(k).push(r); });
+  const keys = [...groups.keys()].sort((a, b) => groups.get(b).length - groups.get(a).length);
+  let cur = keys[0], onlyBench = '';
+  const label = k => { const [m, u] = k.split('|'); return u ? `${m} (${u})` : `${m} (unit not stated)`; };
+  const wrap = h('div', { class: 'metrics' });
+  const draw = () => {
+    const [metric] = cur.split('|');
+    const higher = HIGHER_BETTER.test(metric);
+    const all = groups.get(cur).slice().sort((a, b) => higher ? b.value - a.value : a.value - b.value);
+    const hasBench = all.some(r => r.bench), hasOwn = all.some(r => !r.bench);
+    const list = onlyBench ? all.filter(r => r.bench === onlyBench) : all;
+    const tabs = keys.length > 1 ? h('div', { class: 'seg metric-tabs', role: 'group', 'aria-label': 'Metric' },
+      keys.map(k => h('button', { type: 'button', 'aria-pressed': String(k === cur), onclick: () => { cur = k; onlyBench = ''; draw(); } }, label(k), h('span', { class: 'n' }, ' ' + groups.get(k).length)))) : null;
+    const benchNames = [...new Set(all.filter(r => r.bench).map(r => r.bench))];
+    const toggle = benchNames.length && (hasOwn || benchNames.length > 1) ? h('label', { class: 'metric-only' }, 'Show ',
+      h('select', { onchange: e => { onlyBench = e.target.value; draw(); } },
+        h('option', { value: '' }, 'all results (different test sets mixed)'),
+        benchNames.map(n => h('option', { value: n, selected: n === onlyBench || null }, 'only ' + n + ' (fair ranking)')))) : null;
+    wrap.replaceChildren(
+      tabs,
+      h('p', { class: 'bench-note' }, `${label(cur)} · ${higher ? 'higher' : 'lower'} is better · ${plural(list.length, 'result')}`),
+      toggle,
+      h('div', { class: 'bench-wrap' }, h('table', { class: 'bench-t metric-t' },
+        h('caption', { class: 'sr-only' }, `${label(cur)} reported for ${d.name}, best first`),
+        h('thead', {}, h('tr', {}, ['#', 'Study', 'Model', label(cur), 'Test set', 'Comparable?'].map((t, j) => h('th', { scope: 'col', class: j === 3 ? 'rv' : null }, t)))),
+        h('tbody', {}, list.map((r, j) => h('tr', { class: j === 0 ? 'top' : null, title: r.evidence ? 'Source: ' + r.evidence : null },
+          h('td', { class: 'num' }, String(j + 1)),
+          h('td', { class: 'who' }, h('button', { type: 'button', class: 'link-btn', title: 'Show this study', onclick: () => openDetail(d, 'use-' + r.i) }, byLine(r.p)),
+            r.p.pinned === true ? h('span', { class: 'use-own', style: 'margin-left:6px' }, 'IonSense authors') : null),
+          h('td', {}, r.model),
+          h('td', { class: 'rv' }, String(r.value), j === 0 ? h('span', { class: 'best' }, higher ? 'Highest' : 'Lowest') : null),
+          h('td', {}, r.test),
+          h('td', {}, r.bench ? h('span', { class: 'cmp-ok', title: r.why }, 'Same benchmark') : h('span', { class: 'cmp-own', title: r.why || 'Own split or split not reported' }, 'Own split'),
+            !r.bench && r.why ? h('span', { class: 'why' }, r.why) : null)))))));
+  };
+  draw();
+  return h('section', { class: 'uses', id: 'detail-metrics', 'aria-labelledby': 'metrics-h' },
+    h('div', { class: 'res-head' }, h('h3', { id: 'metrics-h' }, 'Metrics'), h('span', { class: 'cnt' }, plural(rows.length, 'reported result'))),
+    h('p', { class: 'uses-intro' }, 'Numbers as reported in each paper, not re-run by IonSense, sorted best first within each metric. Rows are only directly comparable when they share a benchmark (identical test cells): pick one in “Show” for a fair ranking. “Own split” rows used different cells or did not say.'),
+    wrap);
+}
+function openMetrics(d) {
+  hideTip();
+  state.open = d.id; state.metrics = true;
+  dlg.classList.add('wide');
+  $('#detail-crumb').textContent = 'Metrics';
+  $('#detail-body').replaceChildren(
+    h('h2', { id: 'detail-title' }, d.name),
+    metricsView(d),
+    h('p', {}, h('button', { type: 'button', class: 'btn', onclick: () => openDetail(d) }, 'All dataset details')));
+  if (!dlg.open) dlg.showModal();
+  $('#detail-body').scrollTop = 0;
+  writeUrl();
+}
+
 function openDetail(d, jump) {
   hideTip();
   const focusKey = dlg.open && dlg.contains(document.activeElement) ? document.activeElement.dataset.fk : null;
   const keepScroll = dlg.open && state.open === d.id ? $('#detail-body').scrollTop : 0;
-  state.open = d.id;
+  state.open = d.id; state.metrics = false;
+  dlg.classList.remove('wide');
   const facts = h('dl', { class: 'facts' });
   const add = (k, ...v) => { if (v.some(x => x)) facts.append(h('dt', {}, k), h('dd', {}, ...v)); };
   const akaTitle = Array.isArray(d.aka) ? d.aka.find(a => a.length > 12) : '';
@@ -1427,6 +1519,7 @@ function openDetail(d, jump) {
   ].filter(Boolean));
   if (!dlg.open) { dlg.showModal(); $('#detail-body').scrollTop = 0; }
   if (jump === 'uses' && $('#detail-uses')) $('#detail-uses').scrollIntoView({ block: 'start' });
+  else if (jump && jump.startsWith('use-') && document.getElementById(jump)) document.getElementById(jump).scrollIntoView({ block: 'start' });
   else {
     $('#detail-body').scrollTop = keepScroll;
     const again = focusKey && [...$('#detail-body').querySelectorAll('[data-fk]')].find(el => el.dataset.fk === focusKey);
@@ -1434,7 +1527,7 @@ function openDetail(d, jump) {
   }
   writeUrl();
 }
-dlg.addEventListener('close', () => { state.open = null; writeUrl(); });
+dlg.addEventListener('close', () => { state.open = null; state.metrics = false; writeUrl(); });
 $('#detail-close').addEventListener('click', () => dlg.close());
 dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
 /* Chips inside the sheet change filters; refresh the sheet so their pressed state stays true. */
@@ -1653,6 +1746,7 @@ function writeUrl() {
     if (state.open) p.set('dataset', state.open);
     if (state.compare.length) p.set('compare', state.compare.join(','));
     if (cmpDlg.open) p.set('panel', 'compare');
+    else if (state.open && state.metrics) p.set('panel', 'metrics');
     const s = p.toString().replace(/%2C/g, ',');
     history.replaceState(null, '', (s ? '?' + s : location.pathname) + location.hash);
   } catch (e) { /* sandboxed frames may refuse; the page works without it */ }
@@ -1780,7 +1874,7 @@ fetch('./datasets.json', { cache: 'no-cache' })
     syncCompare();
     if (fromUrl.panel === 'compare' && state.compare.length) openCompare();
     const d = fromUrl.dataset && data.find(x => x.id === fromUrl.dataset);
-    if (d) openDetail(d);
+    if (d) (fromUrl.panel === 'metrics' && nMetrics(d) ? openMetrics(d) : openDetail(d));
   })
   .catch(err => {
     $('#results-title').textContent = 'The catalogue didn’t load';

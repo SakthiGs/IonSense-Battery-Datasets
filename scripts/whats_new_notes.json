@@ -3,6 +3,10 @@
   "notes": [
     {
       "date": "2026-10-13",
+      "text": "New 'Metrics' button on datasets with reported results: every number in one table, best first, with a fair ranking per benchmark"
+    },
+    {
+      "date": "2026-10-13",
       "text": "Filters are now compact dropdowns above the results, so the catalogue uses the full screen width"
     },
     {
