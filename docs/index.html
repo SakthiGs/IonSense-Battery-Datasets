@@ -1304,21 +1304,23 @@ function resultsSection(d) {
   const studyCell = x => h('td', { class: 'who' },
     h('button', { type: 'button', class: 'link-btn', title: 'Show this study', onclick: () => jumpTo('use-' + x.i) }, byLine(x.p)));
   const tables = benches.map(b => {
-    const list = rows.filter(x => x.r.benchmark === b.id).sort((a, c) => a.r.value - c.r.value);
+    const hi = HIGHER_BETTER.test(b.metric || '');
+    const list = rows.filter(x => x.r.benchmark === b.id).sort((a, c) => hi ? c.r.value - a.r.value : a.r.value - c.r.value).slice(0, 8);
     const best = list[0].r.value;
     const unit = [b.metric, b.unit ? `(${b.unit})` : ''].filter(Boolean).join(' ');
     return h('div', { class: 'bench' },
       h('h4', {}, b.label),
       b.note ? h('p', { class: 'bench-note' }, b.note) : null,
       h('div', { class: 'bench-wrap' }, h('table', { class: 'bench-t' },
-        h('caption', { class: 'sr-only' }, `${b.label}: ${unit}, lower is better`),
+        h('caption', { class: 'sr-only' }, `${b.label}: ${unit}, ${hi ? 'higher' : 'lower'} is better`),
         h('thead', {}, h('tr', {}, h('th', { scope: 'col' }, 'Study'), h('th', { scope: 'col' }, 'Model'), h('th', { scope: 'col', class: 'rv' }, unit))),
         h('tbody', {}, list.map(x => h('tr', { class: x.r.value === best ? 'top' : null, title: x.r.evidence ? 'Source: ' + x.r.evidence : null },
           studyCell(x),
           h('td', {}, x.r.model || ''),
-          h('td', { class: 'rv' }, String(x.r.value), x.r.value === best ? h('span', { class: 'best' }, 'Lowest') : null)))))));
+          h('td', { class: 'rv' }, String(x.r.value), x.r.value === best ? h('span', { class: 'best' }, hi ? 'Highest' : 'Lowest') : null)))))));
   });
-  const loose = rows.filter(x => !known.has(x.r.benchmark));
+  const looseAll = rows.filter(x => !known.has(x.r.benchmark));
+  const loose = looseAll.slice(0, 8);
   const unranked = loose.length ? h('div', { class: 'bench' },
     h('h4', {}, 'Reported, but not ranked'),
     h('p', { class: 'bench-note' }, 'These were measured on different test cells or with details missing, so they are not compared with the tables above.'),
@@ -1327,7 +1329,8 @@ function resultsSection(d) {
       x.r.model || '', ' · ',
       h('span', { class: 'num' }, [x.r.metric, x.r.value, x.r.unit].filter(v => v !== '' && v != null).join(' ')),
       x.r.test_set ? ' on ' + x.r.test_set : '',
-      x.r.why ? h('span', { class: 'why' }, x.r.why) : null)))) : null;
+      x.r.why ? h('span', { class: 'why' }, x.r.why) : null))),
+    looseAll.length > loose.length ? h('button', { type: 'button', class: 'link-btn', style: 'align-self:flex-start', onclick: () => openMetrics(d) }, `See all ${looseAll.length} in the metrics table`) : null) : null;
   return h('section', { class: 'uses', id: 'detail-results', 'aria-labelledby': 'results-h' },
     h('div', { class: 'res-head' }, h('h3', { id: 'results-h' }, 'Reported results'),
       h('button', { type: 'button', class: 'link-btn', onclick: () => openMetrics(d) }, 'Open metrics table')),
@@ -1370,7 +1373,7 @@ function usesSection(d) {
 }
 
 /* ---------- Metrics view: every reported number for one dataset, best first within each metric ---------- */
-const HIGHER_BETTER = /^(r2|r²|r\^2|accuracy|acc\b|auc|roc-auc|f1|precision|recall|score)/i;
+const HIGHER_BETTER = /(^|[^a-z])(r2|r²|r\^2|accuracy|acc|auc|roc-auc|f1|precision|recall|score)\b/i;
 function metricRows(d) {
   const entry = USES[d.id] || {};
   const benches = new Map((Array.isArray(entry.benchmarks) ? entry.benchmarks : []).map(b => [b.id, b]));
@@ -1394,7 +1397,8 @@ function metricsView(d) {
   const groups = new Map();
   rows.forEach(r => { const k = r.metric + '|' + r.unit; if (!groups.has(k)) groups.set(k, []); groups.get(k).push(r); });
   const keys = [...groups.keys()].sort((a, b) => groups.get(b).length - groups.get(a).length);
-  let cur = keys[0], onlyBench = '';
+  let cur = keys[0], onlyBench = '', showAll = false;
+  const TOP = 8;  /* show only the best few by default */
   const label = k => { const [m, u] = k.split('|'); return u ? `${m} (${u})` : `${m} (unit not stated)`; };
   const wrap = h('div', { class: 'metrics' });
   const draw = () => {
@@ -1402,17 +1406,19 @@ function metricsView(d) {
     const higher = HIGHER_BETTER.test(metric);
     const all = groups.get(cur).slice().sort((a, b) => higher ? b.value - a.value : a.value - b.value);
     const hasBench = all.some(r => r.bench), hasOwn = all.some(r => !r.bench);
-    const list = onlyBench ? all.filter(r => r.bench === onlyBench) : all;
+    const full = onlyBench ? all.filter(r => r.bench === onlyBench) : all;
+    const list = showAll ? full : full.slice(0, TOP);
     const tabs = keys.length > 1 ? h('div', { class: 'seg metric-tabs', role: 'group', 'aria-label': 'Metric' },
-      keys.map(k => h('button', { type: 'button', 'aria-pressed': String(k === cur), onclick: () => { cur = k; onlyBench = ''; draw(); } }, label(k), h('span', { class: 'n' }, ' ' + groups.get(k).length)))) : null;
+      keys.map(k => h('button', { type: 'button', 'aria-pressed': String(k === cur), onclick: () => { cur = k; onlyBench = ''; showAll = false; draw(); } }, label(k), h('span', { class: 'n' }, ' ' + groups.get(k).length)))) : null;
     const benchNames = [...new Set(all.filter(r => r.bench).map(r => r.bench))];
     const toggle = benchNames.length && (hasOwn || benchNames.length > 1) ? h('label', { class: 'metric-only' }, 'Show ',
-      h('select', { onchange: e => { onlyBench = e.target.value; draw(); } },
+      h('select', { onchange: e => { onlyBench = e.target.value; showAll = false; draw(); } },
         h('option', { value: '' }, 'all results (different test sets mixed)'),
         benchNames.map(n => h('option', { value: n, selected: n === onlyBench || null }, 'only ' + n + ' (fair ranking)')))) : null;
     wrap.replaceChildren(
       tabs,
-      h('p', { class: 'bench-note' }, `${label(cur)} · ${higher ? 'higher' : 'lower'} is better · ${plural(list.length, 'result')}`),
+      h('p', { class: 'bench-note' }, `${label(cur)} · ${higher ? 'higher' : 'lower'} is better · `,
+        full.length > TOP && !showAll ? `best ${TOP} of ${full.length} results` : plural(full.length, 'result')),
       toggle,
       h('div', { class: 'bench-wrap' }, h('table', { class: 'bench-t metric-t' },
         h('caption', { class: 'sr-only' }, `${label(cur)} reported for ${d.name}, best first`),
@@ -1425,7 +1431,8 @@ function metricsView(d) {
           h('td', { class: 'rv' }, String(r.value), j === 0 ? h('span', { class: 'best' }, higher ? 'Highest' : 'Lowest') : null),
           h('td', {}, r.test),
           h('td', {}, r.bench ? h('span', { class: 'cmp-ok', title: r.why }, 'Same benchmark') : h('span', { class: 'cmp-own', title: r.why || 'Own split or split not reported' }, 'Own split'),
-            !r.bench && r.why ? h('span', { class: 'why' }, r.why) : null)))))));
+            !r.bench && r.why ? h('span', { class: 'why' }, r.why) : null)))))),
+      full.length > TOP ? h('button', { type: 'button', class: 'link-btn', style: 'align-self:flex-start', onclick: () => { showAll = !showAll; draw(); } }, showAll ? `Show the best ${TOP} only` : `Show all ${full.length}`) : null);
   };
   draw();
   return h('section', { class: 'uses', id: 'detail-metrics', 'aria-labelledby': 'metrics-h' },

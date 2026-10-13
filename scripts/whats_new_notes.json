@@ -3,6 +3,10 @@
   "notes": [
     {
       "date": "2026-10-13",
+      "text": "Reported results added for the most-used datasets (MIT, XJTU, HUST, Tongji, NASA, Oxford, Sandia, ISU-ILCC, RWTH) and BatteryLife; the Metrics table shows the best 8"
+    },
+    {
+      "date": "2026-10-13",
       "text": "New 'Metrics' button on datasets with reported results: every number in one table, best first, with a fair ranking per benchmark"
     },
     {

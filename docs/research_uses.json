@@ -310,28 +310,158 @@
             "LSTM",
             "Transformer"
           ],
-          "split": "MATR1 and MATR2 follow the original split (MATR2 tests on unseen charging policies); CLO is a random split.",
-          "evidence": "Section 4.1; Table 1; Appendix A",
+          "split": "MATR1: Severson et al.'s primary test with the outlier cell b2c1 removed (42 cells). MATR2: the secondary test (40 cells).",
+          "evidence": "Benchmark table in the paper and the BatteryML README; test cells from MATR_split.py (primary test without cell b2c1)",
           "results": [
             {
-              "benchmark": null,
-              "model": "PCR (best on MATR1)",
-              "metric": "RMSE",
+              "benchmark": "primary-excl",
+              "model": "PCR",
               "value": 90,
-              "unit": "",
-              "test_set": "MATR1 test set",
-              "evidence": "Table 2",
-              "why": "Uses the original split, but the table gives no unit and does not say whether the outlier cell was removed. Its re-run of Severson's discharge model scored 329 on MATR1, against 86 in the original paper."
+              "evidence": "BatteryML README benchmark table (mean of 10 seeds for random forest and neural networks); test cells from the code's split files"
             },
             {
-              "benchmark": null,
-              "model": "Discharge model, re-run (best on MATR2)",
-              "metric": "RMSE",
+              "benchmark": "primary-excl",
+              "model": "CNN",
+              "value": 102,
+              "evidence": "BatteryML README benchmark table (mean of 10 seeds for random forest and neural networks); test cells from the code's split files"
+            },
+            {
+              "benchmark": "primary-excl",
+              "model": "PLSR",
+              "value": 104,
+              "evidence": "BatteryML README benchmark table (mean of 10 seeds for random forest and neural networks); test cells from the code's split files"
+            },
+            {
+              "benchmark": "primary-excl",
+              "model": "Ridge regression",
+              "value": 116,
+              "evidence": "BatteryML README benchmark table (mean of 10 seeds for random forest and neural networks); test cells from the code's split files"
+            },
+            {
+              "benchmark": "primary-excl",
+              "model": "LSTM",
+              "value": 119,
+              "evidence": "BatteryML README benchmark table (mean of 10 seeds for random forest and neural networks); test cells from the code's split files"
+            },
+            {
+              "benchmark": "primary-excl",
+              "model": "Transformer",
+              "value": 135,
+              "evidence": "BatteryML README benchmark table (mean of 10 seeds for random forest and neural networks); test cells from the code's split files"
+            },
+            {
+              "benchmark": "primary-excl",
+              "model": "Variance model, re-run",
+              "value": 136,
+              "evidence": "BatteryML README benchmark table (mean of 10 seeds for random forest and neural networks); test cells from the code's split files"
+            },
+            {
+              "benchmark": "primary-excl",
+              "model": "MLP",
               "value": 149,
-              "unit": "",
-              "test_set": "MATR2 test set",
-              "evidence": "Table 2",
-              "why": "Same reasons as MATR1."
+              "evidence": "BatteryML README benchmark table (mean of 10 seeds for random forest and neural networks); test cells from the code's split files"
+            },
+            {
+              "benchmark": "primary-excl",
+              "model": "Gaussian process",
+              "value": 154,
+              "evidence": "BatteryML README benchmark table (mean of 10 seeds for random forest and neural networks); test cells from the code's split files"
+            },
+            {
+              "benchmark": "primary-excl",
+              "model": "Full model, re-run",
+              "value": 167,
+              "evidence": "BatteryML README benchmark table (mean of 10 seeds for random forest and neural networks); test cells from the code's split files"
+            },
+            {
+              "benchmark": "primary-excl",
+              "model": "Random forest",
+              "value": 168,
+              "evidence": "BatteryML README benchmark table (mean of 10 seeds for random forest and neural networks); test cells from the code's split files"
+            },
+            {
+              "benchmark": "primary-excl",
+              "model": "Discharge model, re-run",
+              "value": 329,
+              "evidence": "BatteryML README benchmark table (mean of 10 seeds for random forest and neural networks); test cells from the code's split files"
+            },
+            {
+              "benchmark": "primary-excl",
+              "model": "XGBoost",
+              "value": 334,
+              "evidence": "BatteryML README benchmark table (mean of 10 seeds for random forest and neural networks); test cells from the code's split files"
+            },
+            {
+              "benchmark": "secondary",
+              "model": "Discharge model, re-run",
+              "value": 149,
+              "evidence": "BatteryML README benchmark table (mean of 10 seeds for random forest and neural networks); test cells from the code's split files"
+            },
+            {
+              "benchmark": "secondary",
+              "model": "PLSR",
+              "value": 181,
+              "evidence": "BatteryML README benchmark table (mean of 10 seeds for random forest and neural networks); test cells from the code's split files"
+            },
+            {
+              "benchmark": "secondary",
+              "model": "Ridge regression",
+              "value": 184,
+              "evidence": "BatteryML README benchmark table (mean of 10 seeds for random forest and neural networks); test cells from the code's split files"
+            },
+            {
+              "benchmark": "secondary",
+              "model": "PCR",
+              "value": 187,
+              "evidence": "BatteryML README benchmark table (mean of 10 seeds for random forest and neural networks); test cells from the code's split files"
+            },
+            {
+              "benchmark": "secondary",
+              "model": "Variance model, re-run",
+              "value": 211,
+              "evidence": "BatteryML README benchmark table (mean of 10 seeds for random forest and neural networks); test cells from the code's split files"
+            },
+            {
+              "benchmark": "secondary",
+              "model": "LSTM",
+              "value": 219,
+              "evidence": "BatteryML README benchmark table (mean of 10 seeds for random forest and neural networks); test cells from the code's split files"
+            },
+            {
+              "benchmark": "secondary",
+              "model": "Gaussian process",
+              "value": 224,
+              "evidence": "BatteryML README benchmark table (mean of 10 seeds for random forest and neural networks); test cells from the code's split files"
+            },
+            {
+              "benchmark": "secondary",
+              "model": "CNN",
+              "value": 228,
+              "evidence": "BatteryML README benchmark table (mean of 10 seeds for random forest and neural networks); test cells from the code's split files"
+            },
+            {
+              "benchmark": "secondary",
+              "model": "Random forest",
+              "value": 233,
+              "evidence": "BatteryML README benchmark table (mean of 10 seeds for random forest and neural networks); test cells from the code's split files"
+            },
+            {
+              "benchmark": "secondary",
+              "model": "MLP",
+              "value": 275,
+              "evidence": "BatteryML README benchmark table (mean of 10 seeds for random forest and neural networks); test cells from the code's split files"
+            },
+            {
+              "benchmark": "secondary",
+              "model": "Transformer",
+              "value": 364,
+              "evidence": "BatteryML README benchmark table (mean of 10 seeds for random forest and neural networks); test cells from the code's split files"
+            },
+            {
+              "benchmark": "secondary",
+              "model": "XGBoost",
+              "value": 799,
+              "evidence": "BatteryML README benchmark table (mean of 10 seeds for random forest and neural networks); test cells from the code's split files"
             }
           ],
           "reviewed": false
@@ -395,9 +525,17 @@
           "methods": [
             "Physics-informed neural network"
           ],
-          "split": "Own split: cells divided about 6:2:2 into training, validation and test sets.",
+          "split": "Cells split about 6:2:2 into training, validation and test; 10 repeated runs.",
           "evidence": "Methods (datasets); Data availability",
-          "reviewed": false
+          "reviewed": false,
+          "results": [
+            {
+              "benchmark": "wang2024-split",
+              "model": "Physics-informed neural network (PINN)",
+              "value": 0.65,
+              "evidence": "Authors' result files in the PINN4SOH repository (mean of 10 runs); matches the averages quoted in the paper"
+            }
+          ]
         },
         {
           "title": "Physical information-guided Kolmogorov–Arnold networks for battery state of health estimation",
@@ -589,6 +727,13 @@
           "metric": "RMSE",
           "unit": "cycles",
           "note": "Cells charged with policies not seen in training, so this set is harder."
+        },
+        {
+          "id": "wang2024-split",
+          "label": "Wang et al. (2024) cell split (about 6:2:2)",
+          "metric": "MAPE",
+          "unit": "%",
+          "note": "Train, validation and test cells split about 6:2:2, spread evenly across the dataset (Supplementary Tables S3–S6 of Wang et al. 2024)."
         }
       ]
     },
@@ -669,7 +814,21 @@
           ],
           "split": "Tests on batteries #6, #7 and #47; three training sets of 4, 5 or 11 other batteries.",
           "evidence": "Section V-A; Tables II and III",
-          "reviewed": false
+          "reviewed": false,
+          "results": [
+            {
+              "benchmark": "nasa-l",
+              "model": "SambaMixer (Mamba)",
+              "value": 1.333,
+              "evidence": "Table IV; mean of batteries #6, #7, #47 computed by IonSense"
+            },
+            {
+              "benchmark": "nasa-l",
+              "model": "Mazzi et al. (2024), as reported in this paper",
+              "value": 2.841,
+              "evidence": "Table IV; mean of batteries #6, #7, #47 computed by IonSense"
+            }
+          ]
         },
         {
           "title": "State of health estimation for lithium-ion batteries based on transferable long short-term memory optimized using Harris hawk algorithm",
@@ -759,6 +918,15 @@
           "split": "",
           "evidence": "Abstract (ASU research portal)",
           "reviewed": false
+        }
+      ],
+      "benchmarks": [
+        {
+          "id": "nasa-l",
+          "label": "SambaMixer split: test batteries #6, #7 and #47",
+          "metric": "RMSE",
+          "unit": "% SOH",
+          "note": "Trained on 11 other batteries (NASA-L split). Averages over the three test batteries computed by IonSense from Table IV."
         }
       ]
     },
@@ -890,7 +1058,39 @@
           ],
           "split": "Split by cell, about 4:1, so no cell is in both training and test. The NCM and blend cells test transfer to new chemistries.",
           "evidence": "Results (Data generation, Capacity estimation); Methods",
-          "reviewed": false
+          "reviewed": false,
+          "results": [
+            {
+              "benchmark": "zhu-nca",
+              "model": "Random forest regression",
+              "value": 1.0,
+              "evidence": "Table 2"
+            },
+            {
+              "benchmark": "zhu-nca",
+              "model": "XGBoost on relaxation features (proposed)",
+              "value": 1.1,
+              "evidence": "Results; Fig. 4a"
+            },
+            {
+              "benchmark": "zhu-nca",
+              "model": "Gaussian process regression",
+              "value": 1.1,
+              "evidence": "Table 2"
+            },
+            {
+              "benchmark": "zhu-nca",
+              "model": "Incremental capacity method",
+              "value": 1.3,
+              "evidence": "Table 2"
+            },
+            {
+              "benchmark": "zhu-nca",
+              "model": "Linear model (Baghdadi et al.)",
+              "value": 2.5,
+              "evidence": "Table 2"
+            }
+          ]
         },
         {
           "title": "Long short-term memory network with transfer learning for lithium-ion battery capacity fade and cycle life prediction",
@@ -967,9 +1167,17 @@
           "methods": [
             "Physics-informed neural network"
           ],
-          "split": "Cells divided about 6:2:2 into training, validation and test sets.",
+          "split": "Cells split about 6:2:2 into training, validation and test; 10 repeated runs.",
           "evidence": "Methods (datasets); Data availability",
-          "reviewed": false
+          "reviewed": false,
+          "results": [
+            {
+              "benchmark": "wang2024-split",
+              "model": "Physics-informed neural network (PINN)",
+              "value": 1.21,
+              "evidence": "Authors' result files in the PINN4SOH repository (mean of 10 runs); matches the averages quoted in the paper"
+            }
+          ]
         },
         {
           "title": "Battery health prognosis using Physics-informed neural network with Quantum Feature mapping",
@@ -1034,6 +1242,22 @@
             }
           ],
           "reviewed": false
+        }
+      ],
+      "benchmarks": [
+        {
+          "id": "wang2024-split",
+          "label": "Wang et al. (2024) cell split (about 6:2:2)",
+          "metric": "MAPE",
+          "unit": "%",
+          "note": "Train, validation and test cells split about 6:2:2, spread evenly across the dataset (Supplementary Tables S3–S6 of Wang et al. 2024)."
+        },
+        {
+          "id": "zhu-nca",
+          "label": "Zhu et al. NCA test cells (about 1 in 5 cells held out)",
+          "metric": "RMSE",
+          "unit": "% of nominal capacity",
+          "note": "Dataset 1 (NCA), cell-stratified split of about 4:1 (Supplementary Table 9 of Zhu et al. 2022)."
         }
       ]
     },
@@ -1394,7 +1618,7 @@
       ]
     },
     "physics-informed-neural-network-for-lithium-ion-battery-degradation-modelling": {
-      "coverage": "A starting list of 7 studies. The dataset's authors keep a much longer list of papers that use it, with their reported results. Quantum machine learning studies were searched separately (October 2026).",
+      "coverage": "A starting list of 8 studies. The dataset's authors keep a much longer list of papers that use it, with their reported results. Quantum machine learning studies were searched separately (October 2026).",
       "more_url": "https://github.com/wang-fujin/XJTU-Battery-Dataset-Papers-Summary",
       "more_label": "Full list kept by the dataset authors",
       "papers": [
@@ -1460,14 +1684,22 @@
           ],
           "split": "Cells split about 6:2:2 into training, validation and test sets within each dataset; 10 repeats.",
           "evidence": "Results; Methods; Data availability (Zenodo 10.5281/zenodo.10963339)",
-          "reviewed": false
+          "reviewed": false,
+          "results": [
+            {
+              "benchmark": "wang2024-split",
+              "model": "Physics-informed neural network (PINN)",
+              "value": 0.85,
+              "evidence": "Authors' result files in the PINN4SOH repository (mean of 10 runs); matches the averages quoted in the paper"
+            }
+          ]
         },
         {
           "title": "Open access dataset, code library and benchmarking deep learning approaches for state-of-health estimation of lithium-ion batteries",
           "authors": "Wang, Zhai, Liu et al.",
           "year": 2024,
           "venue": "Journal of Energy Storage 77, 109884",
-          "doi": "",
+          "doi": "10.1016/j.est.2023.109884",
           "url": "https://www.sciencedirect.com/science/article/pii/S2352152X23032826",
           "relation": "Same research group",
           "use": "Benchmarks CNN, LSTM, GRU, MLP and attention models for state-of-health estimation on all 55 cells.",
@@ -1483,7 +1715,39 @@
           ],
           "split": "Train and test on different cells.",
           "evidence": "Listed with results in the dataset authors' summary of papers; the article itself was not opened here",
-          "reviewed": false
+          "reviewed": false,
+          "results": [
+            {
+              "benchmark": "xjtu-all-ab",
+              "model": "GRU",
+              "value": 0.776,
+              "evidence": "Dataset authors' results summary (MAPE averaged over all batteries)"
+            },
+            {
+              "benchmark": "xjtu-all-ab",
+              "model": "MLP",
+              "value": 0.844,
+              "evidence": "Dataset authors' results summary (MAPE averaged over all batteries)"
+            },
+            {
+              "benchmark": "xjtu-all-ab",
+              "model": "LSTM",
+              "value": 0.861,
+              "evidence": "Dataset authors' results summary (MAPE averaged over all batteries)"
+            },
+            {
+              "benchmark": "xjtu-all-ab",
+              "model": "CNN",
+              "value": 0.926,
+              "evidence": "Dataset authors' results summary (MAPE averaged over all batteries)"
+            },
+            {
+              "benchmark": "xjtu-all-ab",
+              "model": "Attention",
+              "value": 0.95,
+              "evidence": "Dataset authors' results summary (MAPE averaged over all batteries)"
+            }
+          ]
         },
         {
           "title": "Integrated mixed attention U-Net mechanisms with multi-stage division strategy customized for accurate estimation of lithium-ion battery state of health",
@@ -1565,6 +1829,73 @@
           "split": "",
           "evidence": "Table I (mean of 10 runs); split not reported",
           "reviewed": false
+        },
+        {
+          "title": "A physics-guided approach for accurate battery SOH estimation using RCMHCRE and BatteryPINN",
+          "authors": "Liu, Chen, Yao et al.",
+          "year": 2025,
+          "venue": "Advanced Engineering Informatics 65, 103211",
+          "doi": "10.1016/j.aei.2025.103211",
+          "relation": "Independent group",
+          "use": "Estimates state of health with refined entropy features and a physics-informed network, tested batch by batch on batches 1–3.",
+          "tasks": [
+            "SOH estimation"
+          ],
+          "methods": [
+            "Physics-informed neural network",
+            "Feature engineering"
+          ],
+          "split": "Within each batch, trains and tests on different cells.",
+          "evidence": "Dataset authors' results summary (averages over the batteries in each batch)",
+          "results": [
+            {
+              "benchmark": null,
+              "model": "BatteryPINN, batch 1",
+              "value": 0.3443,
+              "evidence": "Dataset authors' results summary",
+              "metric": "MAPE",
+              "unit": "%",
+              "test_set": "batch 1, held-out cells",
+              "why": "Batch-level split defined by the paper; cells not listed in the summary."
+            },
+            {
+              "benchmark": null,
+              "model": "BatteryPINN, batch 2",
+              "value": 0.2014,
+              "evidence": "Dataset authors' results summary",
+              "metric": "MAPE",
+              "unit": "%",
+              "test_set": "batch 2, held-out cells",
+              "why": "Batch-level split defined by the paper; cells not listed in the summary."
+            },
+            {
+              "benchmark": null,
+              "model": "BatteryPINN, batch 3",
+              "value": 0.5817,
+              "evidence": "Dataset authors' results summary",
+              "metric": "MAPE",
+              "unit": "%",
+              "test_set": "batch 3, held-out cells",
+              "why": "Batch-level split defined by the paper; cells not listed in the summary."
+            }
+          ],
+          "reviewed": false
+        }
+      ],
+      "benchmarks": [
+        {
+          "id": "wang2024-split",
+          "label": "Wang et al. (2024) cell split (about 6:2:2)",
+          "metric": "MAPE",
+          "unit": "%",
+          "note": "Train, validation and test cells split about 6:2:2, spread evenly across the dataset (Supplementary Tables S3–S6 of Wang et al. 2024)."
+        },
+        {
+          "id": "xjtu-all-ab",
+          "label": "All 55 cells, train and test on different cells (Wang et al. 2024a)",
+          "metric": "MAPE",
+          "unit": "%",
+          "note": "Benchmark set up by the dataset's authors in Journal of Energy Storage 77 (2024)."
         }
       ]
     },
@@ -1881,7 +2212,7 @@
       ]
     },
     "real-time-personalized-health-status-prediction-via-deep-transfer-learning": {
-      "coverage": "A starting list of 4 studies. Not every paper that used this dataset. Quantum machine learning studies were searched separately (October 2026).",
+      "coverage": "A starting list of 5 studies. Not every paper that used this dataset. Quantum machine learning studies were searched separately (October 2026).",
       "papers": [
         {
           "title": "Coupled Quantum Reservoir Features for Multi-Chemistry Battery State-of-Health Estimation",
@@ -1921,9 +2252,31 @@
             "LSTM",
             "Transfer learning"
           ],
-          "split": "Model learned from 55 cells; tested on 22 cells with unseen protocols.",
+          "split": "55 of the 77 cells train a base model; the other 22, each with an unseen discharge protocol, are tested.",
           "evidence": "Results (Task A)",
-          "reviewed": false
+          "reviewed": false,
+          "results": [
+            {
+              "benchmark": null,
+              "model": "Transfer from own 55 cells (Task A), capacity",
+              "value": 0.176,
+              "evidence": "Results tables (Task A)",
+              "metric": "MAPE",
+              "unit": "%",
+              "test_set": "22 held-out cells",
+              "why": "Capacity estimation on the paper's own 22 test cells."
+            },
+            {
+              "benchmark": null,
+              "model": "Transfer from own 55 cells (Task A), remaining life",
+              "value": 186,
+              "evidence": "Results tables (Task A)",
+              "metric": "RMSE",
+              "unit": "cycles",
+              "test_set": "22 held-out cells",
+              "why": "Remaining-useful-life prediction along each cell's life, not cycle life from early cycles, so not ranked with BatteryML."
+            }
+          ]
         },
         {
           "title": "Physics-informed neural network for lithium-ion battery degradation stable modeling and prognosis",
@@ -1939,9 +2292,17 @@
           "methods": [
             "Physics-informed neural network"
           ],
-          "split": "Cells divided about 6:2:2 into training, validation and test sets.",
+          "split": "Cells split about 6:2:2 into training, validation and test; 10 repeated runs.",
           "evidence": "Methods (datasets); Data availability",
-          "reviewed": false
+          "reviewed": false,
+          "results": [
+            {
+              "benchmark": "wang2024-split",
+              "model": "Physics-informed neural network (PINN)",
+              "value": 0.78,
+              "evidence": "Authors' result files in the PINN4SOH repository (mean of 10 runs); matches the averages quoted in the paper"
+            }
+          ]
         },
         {
           "title": "Battery health prognosis using Physics-informed neural network with Quantum Feature mapping",
@@ -1985,6 +2346,117 @@
             }
           ],
           "reviewed": false
+        },
+        {
+          "title": "BatteryML: An open-source platform for machine learning on battery degradation",
+          "authors": "Zhang, Gui, Zheng, Lu, Li, Bian",
+          "year": 2023,
+          "venue": "arXiv preprint 2310.14714",
+          "doi": "",
+          "url": "https://arxiv.org/abs/2310.14714",
+          "relation": "Independent group",
+          "use": "Benchmarks cycle-life prediction models on the HUST cells with a fixed 55/22 cell split.",
+          "tasks": [
+            "Cycle life"
+          ],
+          "methods": [
+            "Linear models",
+            "PLSR",
+            "Gaussian process",
+            "Random forest",
+            "XGBoost",
+            "MLP",
+            "CNN",
+            "LSTM",
+            "Transformer"
+          ],
+          "split": "55 training cells listed in the code; the remaining 22 are tested.",
+          "evidence": "BatteryML README benchmark table (mean of 10 seeds for random forest and neural networks); test cells from the code's split files",
+          "reviewed": false,
+          "results": [
+            {
+              "benchmark": "bml-hust",
+              "model": "Discharge model",
+              "value": 322,
+              "evidence": "BatteryML README benchmark table (mean of 10 seeds for random forest and neural networks); test cells from the code's split files"
+            },
+            {
+              "benchmark": "bml-hust",
+              "model": "Full model",
+              "value": 335,
+              "evidence": "BatteryML README benchmark table (mean of 10 seeds for random forest and neural networks); test cells from the code's split files"
+            },
+            {
+              "benchmark": "bml-hust",
+              "model": "Random forest",
+              "value": 368,
+              "evidence": "BatteryML README benchmark table (mean of 10 seeds for random forest and neural networks); test cells from the code's split files"
+            },
+            {
+              "benchmark": "bml-hust",
+              "model": "Transformer",
+              "value": 391,
+              "evidence": "BatteryML README benchmark table (mean of 10 seeds for random forest and neural networks); test cells from the code's split files"
+            },
+            {
+              "benchmark": "bml-hust",
+              "model": "XGBoost",
+              "value": 395,
+              "evidence": "BatteryML README benchmark table (mean of 10 seeds for random forest and neural networks); test cells from the code's split files"
+            },
+            {
+              "benchmark": "bml-hust",
+              "model": "Variance model",
+              "value": 398,
+              "evidence": "BatteryML README benchmark table (mean of 10 seeds for random forest and neural networks); test cells from the code's split files"
+            },
+            {
+              "benchmark": "bml-hust",
+              "model": "PLSR",
+              "value": 431,
+              "evidence": "BatteryML README benchmark table (mean of 10 seeds for random forest and neural networks); test cells from the code's split files"
+            },
+            {
+              "benchmark": "bml-hust",
+              "model": "PCR",
+              "value": 435,
+              "evidence": "BatteryML README benchmark table (mean of 10 seeds for random forest and neural networks); test cells from the code's split files"
+            },
+            {
+              "benchmark": "bml-hust",
+              "model": "LSTM",
+              "value": 443,
+              "evidence": "BatteryML README benchmark table (mean of 10 seeds for random forest and neural networks); test cells from the code's split files"
+            },
+            {
+              "benchmark": "bml-hust",
+              "model": "MLP",
+              "value": 459,
+              "evidence": "BatteryML README benchmark table (mean of 10 seeds for random forest and neural networks); test cells from the code's split files"
+            },
+            {
+              "benchmark": "bml-hust",
+              "model": "CNN",
+              "value": 465,
+              "evidence": "BatteryML README benchmark table (mean of 10 seeds for random forest and neural networks); test cells from the code's split files"
+            }
+          ]
+        }
+      ],
+      "benchmarks": [
+        {
+          "id": "bml-hust",
+          "label": "BatteryML split: 22 test cells",
+          "metric": "RMSE",
+          "unit": "cycles",
+          "note": "Train on 55 named cells, test on the other 22 (BatteryML HUST_split.py)."
+        },
+        {
+          "id": "wang2024-split",
+          "label": "Wang et al. (2024) cell split (about 6:2:2)",
+          "metric": "MAPE",
+          "unit": "%",
+          "note": "Train, validation and test cells split about 6:2:2, spread evenly across the dataset (Supplementary Tables S3–S6 of Wang et al. 2024)."
         }
       ]
     },
@@ -2350,8 +2822,8 @@
           "title": "Predicting battery lifetime under varying usage conditions from early aging data",
           "authors": "Li, Zhou, Thelen, Howey, Hu",
           "year": 2023,
-          "venue": "arXiv preprint 2307.08382",
-          "doi": "",
+          "venue": "Cell Reports Physical Science (2024); arXiv preprint 2307.08382",
+          "doi": "10.1016/j.xcrp.2024.101891",
           "url": "https://arxiv.org/abs/2307.08382",
           "relation": "Original study",
           "use": "Predicts end of life from the first three weeks of reference tests, with elastic net and hierarchical Bayesian models.",
@@ -2364,7 +2836,29 @@
           ],
           "split": "High depth-of-discharge cells as in-distribution test; low depth-of-discharge cells as out-of-distribution test.",
           "evidence": "Sections 2.1 and 3.2",
-          "reviewed": false
+          "reviewed": false,
+          "results": [
+            {
+              "benchmark": null,
+              "model": "Lifetime from early data, in-distribution cells",
+              "value": 15.1,
+              "evidence": "Abstract",
+              "metric": "MAPE",
+              "unit": "%",
+              "test_set": "in-distribution test cells",
+              "why": "The paper's own in-distribution test cells."
+            },
+            {
+              "benchmark": null,
+              "model": "Hierarchical Bayesian model, out-of-distribution cells",
+              "value": 21.8,
+              "evidence": "Abstract",
+              "metric": "MAPE",
+              "unit": "%",
+              "test_set": "out-of-distribution test cells",
+              "why": "Harder test on usage conditions not seen in training."
+            }
+          ]
         }
       ]
     },
@@ -2896,7 +3390,7 @@
       ]
     },
     "oxford-battery-degradation-dataset-1": {
-      "coverage": "Only the original study is listed; reuse by other groups has not been searched yet.",
+      "coverage": "The original thesis plus two studies with reported results; other reuse has not been searched yet.",
       "papers": [
         {
           "title": "Diagnosis and prognosis of degradation in lithium-ion batteries",
@@ -2914,6 +3408,96 @@
           "split": "",
           "evidence": "Related item on the Oxford data record",
           "reviewed": false
+        },
+        {
+          "title": "Machine learning pipeline for battery state-of-health estimation",
+          "authors": "Roman, Saxena, Robu, Pecht, Flynn",
+          "year": 2021,
+          "venue": "Nature Machine Intelligence 3, 447–456",
+          "doi": "10.1038/s42256-021-00312-3",
+          "open_access_url": "https://arxiv.org/abs/2102.00837",
+          "relation": "Independent group",
+          "use": "Builds a full machine-learning pipeline for state of health with calibrated uncertainty, tested on the Oxford cells among others.",
+          "tasks": [
+            "SOH estimation"
+          ],
+          "methods": [
+            "Bayesian ridge regression",
+            "Gaussian process regression",
+            "Random forest",
+            "Neural network ensemble"
+          ],
+          "split": "Cells 1–3 train, cell 4 calibrates, cells 5–8 are tested.",
+          "evidence": "Table 7 (averages over test cells); Supplementary Note 5",
+          "results": [
+            {
+              "benchmark": "ox-roman",
+              "model": "Bayesian ridge regression",
+              "value": 0.26,
+              "evidence": "Table 7"
+            },
+            {
+              "benchmark": "ox-roman",
+              "model": "Neural network ensemble (dNNe)",
+              "value": 0.3,
+              "evidence": "Table 7"
+            },
+            {
+              "benchmark": "ox-roman",
+              "model": "Random forest",
+              "value": 0.36,
+              "evidence": "Table 7"
+            },
+            {
+              "benchmark": "ox-roman",
+              "model": "Gaussian process regression",
+              "value": 0.52,
+              "evidence": "Table 7"
+            }
+          ],
+          "reviewed": false
+        },
+        {
+          "title": "Dual time-scale state-coupled co-estimation of SOC, SOH and RUL for lithium-ion batteries (DIICAN)",
+          "authors": "Cai, Qin, Chen, Wu",
+          "year": 2022,
+          "venue": "arXiv preprint 2210.11941",
+          "doi": "",
+          "url": "https://arxiv.org/abs/2210.11941",
+          "relation": "Independent group",
+          "use": "Estimates state of charge, state of health and remaining life together with an attention network working within and across cycles.",
+          "tasks": [
+            "SOH estimation",
+            "SOC estimation",
+            "RUL prediction"
+          ],
+          "methods": [
+            "Attention network"
+          ],
+          "split": "Leave one cell out: each of the 8 cells is tested once.",
+          "evidence": "Tables 3 and 4",
+          "results": [
+            {
+              "benchmark": null,
+              "model": "DIICAN (attention network)",
+              "value": 0.41,
+              "evidence": "Table 3; mean of the 8 held-out cells computed by IonSense",
+              "metric": "RMSE",
+              "unit": "% SOH",
+              "test_set": "leave-one-cell-out, 8 cells",
+              "why": "Leave-one-cell-out over all 8 cells; no other study listed here uses it."
+            }
+          ],
+          "reviewed": false
+        }
+      ],
+      "benchmarks": [
+        {
+          "id": "ox-roman",
+          "label": "Roman et al. split: cells 5–8 tested",
+          "metric": "MAPE",
+          "unit": "%",
+          "note": "Cells 1–3 for training and cell 4 for calibration."
         }
       ]
     },
@@ -2942,7 +3526,7 @@
       ]
     },
     "sandia-commercial-cell-degradation": {
-      "coverage": "Only the original study is listed; reuse by other groups has not been searched yet.",
+      "coverage": "The original study and the BatteryML benchmark; other reuse has not been searched yet.",
       "papers": [
         {
           "title": "Degradation of Commercial Lithium-Ion Cells as a Function of Chemistry and Cycling Conditions",
@@ -2962,6 +3546,122 @@
           "split": "",
           "evidence": "Battery Archive study summary cites this paper",
           "reviewed": false
+        },
+        {
+          "title": "BatteryML: An open-source platform for machine learning on battery degradation",
+          "authors": "Zhang, Gui, Zheng, Lu, Li, Bian",
+          "year": 2023,
+          "venue": "arXiv preprint 2310.14714",
+          "doi": "",
+          "url": "https://arxiv.org/abs/2310.14714",
+          "relation": "Independent group",
+          "use": "Benchmarks cycle-life prediction models on the Sandia cells, mixing LFP, NCA and NMC chemistries, with a fixed cell split.",
+          "tasks": [
+            "Cycle life"
+          ],
+          "methods": [
+            "Linear models",
+            "PLSR",
+            "Gaussian process",
+            "Random forest",
+            "XGBoost",
+            "MLP",
+            "CNN",
+            "LSTM",
+            "Transformer"
+          ],
+          "split": "25 test cells listed in the code; the rest are used for training.",
+          "evidence": "BatteryML README benchmark table (mean of 10 seeds for random forest and neural networks); test cells from the code's split files",
+          "reviewed": false,
+          "results": [
+            {
+              "benchmark": "bml-snl",
+              "model": "PCR",
+              "value": 200,
+              "evidence": "BatteryML README benchmark table (mean of 10 seeds for random forest and neural networks); test cells from the code's split files"
+            },
+            {
+              "benchmark": "bml-snl",
+              "model": "Ridge regression",
+              "value": 242,
+              "evidence": "BatteryML README benchmark table (mean of 10 seeds for random forest and neural networks); test cells from the code's split files"
+            },
+            {
+              "benchmark": "bml-snl",
+              "model": "PLSR",
+              "value": 242,
+              "evidence": "BatteryML README benchmark table (mean of 10 seeds for random forest and neural networks); test cells from the code's split files"
+            },
+            {
+              "benchmark": "bml-snl",
+              "model": "Gaussian process",
+              "value": 251,
+              "evidence": "BatteryML README benchmark table (mean of 10 seeds for random forest and neural networks); test cells from the code's split files"
+            },
+            {
+              "benchmark": "bml-snl",
+              "model": "Discharge model",
+              "value": 267,
+              "evidence": "BatteryML README benchmark table (mean of 10 seeds for random forest and neural networks); test cells from the code's split files"
+            },
+            {
+              "benchmark": "bml-snl",
+              "model": "Variance model",
+              "value": 360,
+              "evidence": "BatteryML README benchmark table (mean of 10 seeds for random forest and neural networks); test cells from the code's split files"
+            },
+            {
+              "benchmark": "bml-snl",
+              "model": "MLP",
+              "value": 370,
+              "evidence": "BatteryML README benchmark table (mean of 10 seeds for random forest and neural networks); test cells from the code's split files"
+            },
+            {
+              "benchmark": "bml-snl",
+              "model": "Transformer",
+              "value": 424,
+              "evidence": "BatteryML README benchmark table (mean of 10 seeds for random forest and neural networks); test cells from the code's split files"
+            },
+            {
+              "benchmark": "bml-snl",
+              "model": "Full model",
+              "value": 433,
+              "evidence": "BatteryML README benchmark table (mean of 10 seeds for random forest and neural networks); test cells from the code's split files"
+            },
+            {
+              "benchmark": "bml-snl",
+              "model": "Random forest",
+              "value": 532,
+              "evidence": "BatteryML README benchmark table (mean of 10 seeds for random forest and neural networks); test cells from the code's split files"
+            },
+            {
+              "benchmark": "bml-snl",
+              "model": "LSTM",
+              "value": 539,
+              "evidence": "BatteryML README benchmark table (mean of 10 seeds for random forest and neural networks); test cells from the code's split files"
+            },
+            {
+              "benchmark": "bml-snl",
+              "model": "XGBoost",
+              "value": 547,
+              "evidence": "BatteryML README benchmark table (mean of 10 seeds for random forest and neural networks); test cells from the code's split files"
+            },
+            {
+              "benchmark": "bml-snl",
+              "model": "CNN",
+              "value": 924,
+              "evidence": "BatteryML README benchmark table (mean of 10 seeds for random forest and neural networks); test cells from the code's split files"
+            }
+          ]
+        }
+      ],
+      "benchmarks": [
+        {
+          "id": "bml-snl",
+          "label": "BatteryML split: 25 test cells",
+          "metric": "RMSE",
+          "unit": "cycles",
+          "note": "25 named LFP, NCA and NMC cells held out (BatteryML SNL_split.py); the rest are used for training."
         }
       ]
     },
@@ -3240,7 +3940,19 @@
           ],
           "split": "42 cells for training, 5 for testing (supplementary information).",
           "evidence": "Supplementary information: 48 UR18650E NMC cells",
-          "reviewed": false
+          "reviewed": false,
+          "results": [
+            {
+              "benchmark": null,
+              "model": "Sequence-to-sequence network, best case",
+              "value": 1.1,
+              "evidence": "Abstract",
+              "metric": "Median error",
+              "unit": "%",
+              "test_set": "5 held-out cells",
+              "why": "Median error along the predicted capacity trajectory, from 100 cycles of data."
+            }
+          ]
         }
       ]
     },
@@ -3338,9 +4050,142 @@
           ],
           "split": "",
           "evidence": "Paper",
-          "reviewed": false
+          "reviewed": false,
+          "results": [
+            {
+              "benchmark": "bl-liion-mape",
+              "model": "CPMLP",
+              "value": 0.179,
+              "evidence": "BatteryLife README benchmark table (mean over runs)"
+            },
+            {
+              "benchmark": "bl-liion-mape",
+              "model": "CPTransformer",
+              "value": 0.184,
+              "evidence": "BatteryLife README benchmark table (mean over runs)"
+            },
+            {
+              "benchmark": "bl-liion-mape",
+              "model": "CPGRU",
+              "value": 0.189,
+              "evidence": "BatteryLife README benchmark table (mean over runs)"
+            },
+            {
+              "benchmark": "bl-liion-mape",
+              "model": "CPBiGRU",
+              "value": 0.19,
+              "evidence": "BatteryLife README benchmark table (mean over runs)"
+            },
+            {
+              "benchmark": "bl-liion-mape",
+              "model": "CPBiLSTM",
+              "value": 0.191,
+              "evidence": "BatteryLife README benchmark table (mean over runs)"
+            },
+            {
+              "benchmark": "bl-liion-mape",
+              "model": "CPLSTM",
+              "value": 0.196,
+              "evidence": "BatteryLife README benchmark table (mean over runs)"
+            },
+            {
+              "benchmark": "bl-liion-mape",
+              "model": "iTransformer",
+              "value": 0.209,
+              "evidence": "BatteryLife README benchmark table (mean over runs)"
+            },
+            {
+              "benchmark": "bl-liion-mape",
+              "model": "MLP",
+              "value": 0.233,
+              "evidence": "BatteryLife README benchmark table (mean over runs)"
+            },
+            {
+              "benchmark": "bl-liion-mape",
+              "model": "MICN",
+              "value": 0.249,
+              "evidence": "BatteryLife README benchmark table (mean over runs)"
+            },
+            {
+              "benchmark": "bl-liion-mape",
+              "model": "PatchTST",
+              "value": 0.288,
+              "evidence": "BatteryLife README benchmark table (mean over runs)"
+            },
+            {
+              "benchmark": "bl-liion-mape",
+              "model": "CNN",
+              "value": 0.337,
+              "evidence": "BatteryLife README benchmark table (mean over runs)"
+            },
+            {
+              "benchmark": "bl-liion-acc",
+              "model": "CPMLP",
+              "value": 0.62,
+              "evidence": "BatteryLife README benchmark table (mean over runs)"
+            },
+            {
+              "benchmark": "bl-liion-acc",
+              "model": "CPGRU",
+              "value": 0.585,
+              "evidence": "BatteryLife README benchmark table (mean over runs)"
+            },
+            {
+              "benchmark": "bl-liion-acc",
+              "model": "CPLSTM",
+              "value": 0.585,
+              "evidence": "BatteryLife README benchmark table (mean over runs)"
+            },
+            {
+              "benchmark": "bl-liion-acc",
+              "model": "CPTransformer",
+              "value": 0.573,
+              "evidence": "BatteryLife README benchmark table (mean over runs)"
+            },
+            {
+              "benchmark": "bl-liion-acc",
+              "model": "CPBiGRU",
+              "value": 0.566,
+              "evidence": "BatteryLife README benchmark table (mean over runs)"
+            },
+            {
+              "benchmark": "bl-liion-acc",
+              "model": "iTransformer",
+              "value": 0.516,
+              "evidence": "BatteryLife README benchmark table (mean over runs)"
+            },
+            {
+              "benchmark": "bl-liion-acc",
+              "model": "MLP",
+              "value": 0.503,
+              "evidence": "BatteryLife README benchmark table (mean over runs)"
+            },
+            {
+              "benchmark": "bl-liion-acc",
+              "model": "MICN",
+              "value": 0.494,
+              "evidence": "BatteryLife README benchmark table (mean over runs)"
+            }
+          ]
         }
-      ]
+      ],
+      "benchmarks": [
+        {
+          "id": "bl-liion-mape",
+          "label": "Li-ion domain test set (13 public datasets pooled)",
+          "metric": "MAPE",
+          "unit": "fraction",
+          "note": "Life predicted from the first 100 cycles; mean of three runs (BatteryLife README)."
+        },
+        {
+          "id": "bl-liion-acc",
+          "label": "Li-ion domain test set (13 public datasets pooled)",
+          "metric": "15%-Acc",
+          "unit": "fraction",
+          "note": "Share of cells predicted within 15% of their true life; higher is better."
+        }
+      ],
+      "results_note": "Results pooled over the 13 public Li-ion datasets in BatteryLife, as reported in its README."
     },
     "mechanical-thermal-runaway-ornl-snl": {
       "coverage": "Only the original study is listed; reuse by other groups has not been searched yet.",
