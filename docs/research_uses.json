@@ -3,7 +3,7 @@
   "updated": "2026-10-11",
   "datasets": {
     "early-cycle-life": {
-      "coverage": "A starting list of 14 papers, mostly picked from the most-cited work that cites Severson et al. (2019), which has over 3,000 citations. Not every paper that used this dataset. Quantum machine learning studies were searched separately (October 2026).",
+      "coverage": "A starting list of 15 papers, mostly picked from the most-cited work that cites Severson et al. (2019), which has over 3,000 citations. Not every paper that used this dataset. Quantum machine learning studies were searched separately (October 2026).",
       "papers": [
         {
           "title": "Coupled Quantum Reservoir Features for Multi-Chemistry Battery State-of-Health Estimation",
@@ -700,6 +700,67 @@
               "test_set": "random 30% of cells",
               "evidence": "Abstract",
               "why": "Same split as above."
+            }
+          ],
+          "reviewed": false
+        },
+        {
+          "title": "Accurate battery lifetime prediction across diverse aging conditions with deep learning",
+          "authors": "Zhang, Li, Zheng, Lu, Gui, Xu, Bian",
+          "year": 2023,
+          "venue": "arXiv preprint 2310.05052",
+          "doi": "",
+          "url": "https://arxiv.org/abs/2310.05052",
+          "relation": "Independent group",
+          "use": "Predicts cycle life by learning from differences between cells as well as from each cell, and compares it with classical and deep models.",
+          "tasks": [
+            "Cycle life"
+          ],
+          "methods": [
+            "BatLiNet",
+            "Support vector regression",
+            "Random forest",
+            "LSTM",
+            "CNN"
+          ],
+          "split": "MATR-1: 41 training / 42 test cells; MATR-2: 41 / 40 (the original primary and secondary tests).",
+          "evidence": "Table 1 (neural networks: mean of 8 seeds); test-cell counts from Table 3",
+          "results": [
+            {
+              "benchmark": "primary-excl",
+              "model": "BatLiNet",
+              "value": 59,
+              "evidence": "Table 1"
+            },
+            {
+              "benchmark": "primary-excl",
+              "model": "CNN",
+              "value": 115,
+              "evidence": "Table 1"
+            },
+            {
+              "benchmark": "primary-excl",
+              "model": "LSTM",
+              "value": 123,
+              "evidence": "Table 1"
+            },
+            {
+              "benchmark": "primary-excl",
+              "model": "SVM regression",
+              "value": 140,
+              "evidence": "Table 1"
+            },
+            {
+              "benchmark": "secondary",
+              "model": "BatLiNet",
+              "value": 163,
+              "evidence": "Table 1"
+            },
+            {
+              "benchmark": "secondary",
+              "model": "SVM regression",
+              "value": 300,
+              "evidence": "Table 1"
             }
           ],
           "reviewed": false
@@ -2103,7 +2164,7 @@
       ]
     },
     "second-life-lithium-ion-battery-aging-dataset-based-on-grid-storage-cycling": {
-      "coverage": "1 study, the one that produced the data. No use by other groups found yet.",
+      "coverage": "The original data paper and one study with reported results; other reuse has not been searched yet.",
       "papers": [
         {
           "title": "Second-life lithium-ion battery aging dataset based on grid storage cycling",
@@ -2122,6 +2183,64 @@
           "split": "",
           "evidence": "Data article abstract",
           "reviewed": false
+        },
+        {
+          "title": "Taking second-life batteries from exhausted to empowered using experiments, data analysis, and health estimation",
+          "authors": "Cui, Khan, Pozzato, Singh, Sharma, Onori",
+          "year": 2024,
+          "venue": "Cell Reports Physical Science",
+          "doi": "",
+          "url": "https://arxiv.org/abs/2402.18859",
+          "relation": "Same research group",
+          "use": "Estimates the state of health of second-life LMO cells under grid peak-shaving cycling and compares four regression models.",
+          "tasks": [
+            "SOH estimation",
+            "Second-life classification"
+          ],
+          "methods": [
+            "Elastic net",
+            "Support vector regression",
+            "Random forest",
+            "Gaussian process regression"
+          ],
+          "split": "Six cells train, two cells (1.4 and 2.4) test.",
+          "evidence": "Table 2 (arXiv version)",
+          "results": [
+            {
+              "benchmark": "cui-sl-test",
+              "model": "Elastic net (selected)",
+              "value": 1.38,
+              "evidence": "Table 2"
+            },
+            {
+              "benchmark": "cui-sl-test",
+              "model": "Gaussian process regression",
+              "value": 3.03,
+              "evidence": "Table 2"
+            },
+            {
+              "benchmark": "cui-sl-test",
+              "model": "Support vector regression",
+              "value": 3.26,
+              "evidence": "Table 2"
+            },
+            {
+              "benchmark": "cui-sl-test",
+              "model": "Random forest",
+              "value": 4.46,
+              "evidence": "Table 2"
+            }
+          ],
+          "reviewed": false
+        }
+      ],
+      "benchmarks": [
+        {
+          "id": "cui-sl-test",
+          "label": "Test cells 1.4 and 2.4 (Cui et al. 2024)",
+          "metric": "MAPE",
+          "unit": "%",
+          "note": "Trained on cells 1.1–1.3 and 2.1–2.3 from two retired Nissan Leaf packs."
         }
       ]
     },
@@ -2253,12 +2372,79 @@
           ],
           "split": "",
           "evidence": "Introduction (data from Lam et al. 2025); Table I",
-          "reviewed": false
+          "reviewed": false,
+          "results": [
+            {
+              "benchmark": "cui-cal-t1",
+              "model": "SR model",
+              "value": 15.14,
+              "evidence": "Table II"
+            },
+            {
+              "benchmark": "cui-cal-t1",
+              "model": "SE model",
+              "value": 19.89,
+              "evidence": "Table II"
+            },
+            {
+              "benchmark": "cui-cal-t1",
+              "model": "DD model",
+              "value": 25.09,
+              "evidence": "Table II"
+            },
+            {
+              "benchmark": "cui-cal-60",
+              "model": "SE model",
+              "value": 15.22,
+              "evidence": "Table III"
+            },
+            {
+              "benchmark": "cui-cal-60",
+              "model": "DD model",
+              "value": 15.58,
+              "evidence": "Table III"
+            },
+            {
+              "benchmark": "cui-cal-45",
+              "model": "SE model",
+              "value": 17.91,
+              "evidence": "Table III"
+            },
+            {
+              "benchmark": "cui-cal-45",
+              "model": "DD model",
+              "value": 38.7,
+              "evidence": "Table III"
+            }
+          ]
+        }
+      ],
+      "benchmarks": [
+        {
+          "id": "cui-cal-t1",
+          "label": "Unseen cell: one trajectory per condition held out (Task 1)",
+          "metric": "RMSE",
+          "unit": "weeks to end of life",
+          "note": "Cui et al. 2025, Table II; 85 °C data excluded."
+        },
+        {
+          "id": "cui-cal-60",
+          "label": "Unseen temperature: 60 °C held out (Task 2)",
+          "metric": "RMSE",
+          "unit": "weeks to end of life",
+          "note": "Table III."
+        },
+        {
+          "id": "cui-cal-45",
+          "label": "Unseen temperature: 45 °C held out (Task 2)",
+          "metric": "RMSE",
+          "unit": "weeks to end of life",
+          "note": "Table III."
         }
       ]
     },
     "real-time-personalized-health-status-prediction-via-deep-transfer-learning": {
-      "coverage": "A starting list of 5 studies. Not every paper that used this dataset. Quantum machine learning studies were searched separately (October 2026).",
+      "coverage": "A starting list of 6 studies. Not every paper that used this dataset. Quantum machine learning studies were searched separately (October 2026).",
       "papers": [
         {
           "title": "Coupled Quantum Reservoir Features for Multi-Chemistry Battery State-of-Health Estimation",
@@ -2487,6 +2673,49 @@
               "evidence": "BatteryML README benchmark table (mean of 10 seeds for random forest and neural networks); test cells from the code's split files"
             }
           ]
+        },
+        {
+          "title": "Accurate battery lifetime prediction across diverse aging conditions with deep learning",
+          "authors": "Zhang, Li, Zheng, Lu, Gui, Xu, Bian",
+          "year": 2023,
+          "venue": "arXiv preprint 2310.05052",
+          "doi": "",
+          "url": "https://arxiv.org/abs/2310.05052",
+          "relation": "Independent group",
+          "use": "Same method on the HUST cells; the 55/22 cell counts match the BatteryML split from the same team.",
+          "tasks": [
+            "Cycle life"
+          ],
+          "methods": [
+            "BatLiNet",
+            "Support vector regression",
+            "Random forest",
+            "LSTM",
+            "CNN"
+          ],
+          "split": "55 training / 22 test cells.",
+          "evidence": "Table 1 (neural networks: mean of 8 seeds); test-cell counts from Table 3",
+          "results": [
+            {
+              "benchmark": "bml-hust",
+              "model": "BatLiNet",
+              "value": 264,
+              "evidence": "Table 1"
+            },
+            {
+              "benchmark": "bml-hust",
+              "model": "SVM regression",
+              "value": 344,
+              "evidence": "Table 1"
+            },
+            {
+              "benchmark": "bml-hust",
+              "model": "Random forest",
+              "value": 348,
+              "evidence": "Table 1"
+            }
+          ],
+          "reviewed": false
         }
       ],
       "benchmarks": [
@@ -2696,7 +2925,29 @@
           ],
           "split": "",
           "evidence": "Zenodo record links this paper; abstract",
-          "reviewed": false
+          "reviewed": false,
+          "results": [
+            {
+              "benchmark": null,
+              "model": "Universal differential equation model, cell capacity",
+              "value": 0.66,
+              "evidence": "Abstract",
+              "metric": "RMSE",
+              "unit": "%",
+              "test_set": "39 storage conditions",
+              "why": "Average error across all 39 storage conditions; the abstract does not describe a held-out split."
+            },
+            {
+              "benchmark": null,
+              "model": "Universal differential equation model, negative-electrode active material loss",
+              "value": 1.11,
+              "evidence": "Abstract",
+              "metric": "RMSE",
+              "unit": "%",
+              "test_set": "39 storage conditions",
+              "why": "Average error across all 39 storage conditions; the abstract does not describe a held-out split."
+            }
+          ]
         }
       ]
     },
@@ -3199,7 +3450,78 @@
           ],
           "split": "",
           "evidence": "Datasets section; Data availability",
-          "reviewed": false
+          "reviewed": false,
+          "results": [
+            {
+              "benchmark": "che-target",
+              "model": "Domain adaptation + continual training (proposed)",
+              "value": 1.312,
+              "evidence": "Table 1"
+            },
+            {
+              "benchmark": "che-target",
+              "model": "Domain adaptation",
+              "value": 2.259,
+              "evidence": "Table 1"
+            },
+            {
+              "benchmark": "che-target",
+              "model": "Fine-tuning",
+              "value": 2.361,
+              "evidence": "Table 1"
+            },
+            {
+              "benchmark": "che-target",
+              "model": "CNN-LSTM",
+              "value": 3.464,
+              "evidence": "Table 1"
+            },
+            {
+              "benchmark": "che-target",
+              "model": "Random forest",
+              "value": 3.93,
+              "evidence": "Table 1"
+            },
+            {
+              "benchmark": "che-target",
+              "model": "Gaussian process regression",
+              "value": 3.952,
+              "evidence": "Table 1"
+            },
+            {
+              "benchmark": "che-target",
+              "model": "Support vector regression",
+              "value": 4.137,
+              "evidence": "Table 1"
+            },
+            {
+              "benchmark": "che-target",
+              "model": "LSTM",
+              "value": 4.4,
+              "evidence": "Table 1"
+            },
+            {
+              "benchmark": "che-target",
+              "model": "Base model (no adaptation)",
+              "value": 4.573,
+              "evidence": "Table 1"
+            },
+            {
+              "benchmark": "che-target",
+              "model": "Linear regression",
+              "value": 14.758,
+              "evidence": "Table 1"
+            }
+          ]
+        }
+      ],
+      "benchmarks": [
+        {
+          "id": "che-target",
+          "label": "Target batteries, few labels (Che et al. 2023)",
+          "metric": "RMSE",
+          "unit": "% SOH",
+          "note": "Mean over target-domain test cases; trained on a source battery plus three labelled early-life samples of each target (Table 1)."
         }
       ]
     },
@@ -3494,7 +3816,7 @@
       ]
     },
     "randomized-battery-usage-data-set-nasa": {
-      "coverage": "Only the original study is listed; reuse by other groups has not been searched yet.",
+      "coverage": "The original study and one later study with reported results; other reuse has not been searched yet.",
       "papers": [
         {
           "title": "Adaptation of an electrochemistry-based Li-ion battery model to account for deterioration observed under randomized use",
@@ -3515,6 +3837,49 @@
           "split": "",
           "evidence": "NASA repository gives this as the publication to cite",
           "reviewed": false
+        },
+        {
+          "title": "To Charge or to Sell? EV Pack Useful Life Estimation via LSTMs, CNNs, and Autoencoders",
+          "authors": "Bosello, Falcomer, Rossi, Pau",
+          "year": 2023,
+          "venue": "Energies 16(6), 2837",
+          "doi": "10.3390/en16062837",
+          "relation": "Independent group",
+          "use": "Predicts remaining ampere-hours with an autoencoder that compresses each cycle, followed by an LSTM or CNN.",
+          "tasks": [
+            "RUL prediction"
+          ],
+          "methods": [
+            "Autoencoder",
+            "LSTM",
+            "CNN"
+          ],
+          "split": "16 batteries train, 6 test (one per group where possible).",
+          "evidence": "Results text and Figs. 3–5",
+          "results": [
+            {
+              "benchmark": "bos-nasa",
+              "model": "Autoencoder + LSTM",
+              "value": 0.074,
+              "evidence": "Results text"
+            },
+            {
+              "benchmark": "bos-nasa",
+              "model": "Autoencoder + CNN",
+              "value": 0.0799,
+              "evidence": "Results text"
+            }
+          ],
+          "reviewed": false
+        }
+      ],
+      "benchmarks": [
+        {
+          "id": "bos-nasa",
+          "label": "16 training / 6 test batteries (Bosello et al. 2023)",
+          "metric": "RMSE",
+          "unit": "normalised remaining Ah",
+          "note": "RW9–RW12, RW3 and RW20 excluded; about one test battery per group."
         }
       ]
     },
@@ -3961,7 +4326,7 @@
       ]
     },
     "closed-loop-fast-charging-optimisation": {
-      "coverage": "Only the original study is listed; reuse by other groups has not been searched yet.",
+      "coverage": "The original study and the BatteryML benchmark; other reuse has not been searched yet.",
       "papers": [
         {
           "title": "Closed-loop optimization of fast-charging protocols for batteries with machine learning",
@@ -3982,11 +4347,120 @@
           "split": "",
           "evidence": "Abstract; Data availability",
           "reviewed": false
+        },
+        {
+          "title": "BatteryML: An open-source platform for machine learning on battery degradation",
+          "authors": "Zhang, Gui, Zheng, Lu, Li, Bian",
+          "year": 2023,
+          "venue": "arXiv preprint 2310.14714",
+          "doi": "",
+          "url": "https://arxiv.org/abs/2310.14714",
+          "relation": "Independent group",
+          "use": "Includes these cells as the CLO benchmark and compares cycle-life models on a fixed cell split.",
+          "tasks": [
+            "Cycle life"
+          ],
+          "methods": [
+            "Linear models",
+            "PLSR",
+            "Gaussian process",
+            "Random forest",
+            "XGBoost",
+            "MLP",
+            "LSTM",
+            "Transformer"
+          ],
+          "split": "Fixed train/test cell lists in BatteryML's code.",
+          "evidence": "BatteryML README benchmark table (mean of 10 seeds for random forest and neural networks)",
+          "results": [
+            {
+              "benchmark": "bml-clo",
+              "model": "Full model",
+              "value": 138,
+              "evidence": "BatteryML README benchmark table"
+            },
+            {
+              "benchmark": "bml-clo",
+              "model": "Discharge model",
+              "value": 143,
+              "evidence": "BatteryML README benchmark table"
+            },
+            {
+              "benchmark": "bml-clo",
+              "model": "MLP",
+              "value": 146,
+              "evidence": "BatteryML README benchmark table"
+            },
+            {
+              "benchmark": "bml-clo",
+              "model": "Ridge regression",
+              "value": 169,
+              "evidence": "BatteryML README benchmark table"
+            },
+            {
+              "benchmark": "bml-clo",
+              "model": "PLSR",
+              "value": 176,
+              "evidence": "BatteryML README benchmark table"
+            },
+            {
+              "benchmark": "bml-clo",
+              "model": "Variance model",
+              "value": 179,
+              "evidence": "BatteryML README benchmark table"
+            },
+            {
+              "benchmark": "bml-clo",
+              "model": "Transformer",
+              "value": 187,
+              "evidence": "BatteryML README benchmark table"
+            },
+            {
+              "benchmark": "bml-clo",
+              "model": "Random forest",
+              "value": 192,
+              "evidence": "BatteryML README benchmark table"
+            },
+            {
+              "benchmark": "bml-clo",
+              "model": "PCR",
+              "value": 197,
+              "evidence": "BatteryML README benchmark table"
+            },
+            {
+              "benchmark": "bml-clo",
+              "model": "Gaussian process",
+              "value": 204,
+              "evidence": "BatteryML README benchmark table"
+            },
+            {
+              "benchmark": "bml-clo",
+              "model": "XGBoost",
+              "value": 215,
+              "evidence": "BatteryML README benchmark table"
+            },
+            {
+              "benchmark": "bml-clo",
+              "model": "LSTM",
+              "value": 222,
+              "evidence": "BatteryML README benchmark table"
+            }
+          ],
+          "reviewed": false
+        }
+      ],
+      "benchmarks": [
+        {
+          "id": "bml-clo",
+          "label": "BatteryML CLO split (fixed cell list)",
+          "metric": "RMSE",
+          "unit": "cycles",
+          "note": "Test cells fixed in BatteryML's MATRCLOTestTrainTestSplitter."
         }
       ]
     },
     "cmu-evtol-battery-dataset": {
-      "coverage": "Only the original study is listed; reuse by other groups has not been searched yet.",
+      "coverage": "The original data paper and one study with reported results; other reuse has not been searched yet.",
       "papers": [
         {
           "title": "A battery dataset for electric vertical takeoff and landing aircraft",
@@ -4005,6 +4479,46 @@
           ],
           "split": "",
           "evidence": "Data descriptor",
+          "reviewed": false
+        },
+        {
+          "title": "Adaptive predictive maintenance for the batteries of electric Vertical Take-off and Landing (eVTOL) aircraft using Remaining Useful Life prognostics",
+          "authors": "Mitici, van Oosterom",
+          "year": 2025,
+          "venue": "ESREL SRA-E 2025 Proceedings",
+          "doi": "10.3850/978-981-94-3281-3_ESREL-SRA-E2025-P9886-cd",
+          "relation": "Independent group",
+          "use": "Predicts remaining life in flight missions with a mixture density network and uses it to plan battery replacement.",
+          "tasks": [
+            "RUL prediction"
+          ],
+          "methods": [
+            "Mixture density network"
+          ],
+          "split": "Six-fold cross-validation over cells (VAH09 excluded).",
+          "evidence": "Table 3 (all-battery rows per fold)",
+          "results": [
+            {
+              "benchmark": null,
+              "model": "Mixture density network",
+              "value": 38.45,
+              "evidence": "Table 3; mean of the 6 folds computed by IonSense",
+              "metric": "RMSE",
+              "unit": "missions",
+              "test_set": "6-fold cross-validation over cells",
+              "why": "The paper's own folds; test cells per fold are not fully listed."
+            },
+            {
+              "benchmark": null,
+              "model": "Mixture density network",
+              "value": 32.92,
+              "evidence": "Table 3; mean of the 6 folds computed by IonSense",
+              "metric": "MAE",
+              "unit": "missions",
+              "test_set": "6-fold cross-validation over cells",
+              "why": "The paper's own folds; test cells per fold are not fully listed."
+            }
+          ],
           "reviewed": false
         }
       ]
@@ -4247,7 +4761,7 @@
       ]
     },
     "unibo-powertools-dataset": {
-      "coverage": "Only the original study is listed; reuse by other groups has not been searched yet.",
+      "coverage": "The original study and one later study with reported results; other reuse has not been searched yet.",
       "papers": [
         {
           "title": "Li-Ion Batteries State-of-Charge Estimation Using Deep LSTM at Various Battery Specifications and Discharge Cycles",
@@ -4265,6 +4779,38 @@
           ],
           "split": "",
           "evidence": "Related paper on the data record",
+          "reviewed": false
+        },
+        {
+          "title": "To Charge or to Sell? EV Pack Useful Life Estimation via LSTMs, CNNs, and Autoencoders",
+          "authors": "Bosello, Falcomer, Rossi, Pau",
+          "year": 2023,
+          "venue": "Energies 16(6), 2837",
+          "doi": "10.3390/en16062837",
+          "relation": "Same research group",
+          "use": "Predicts remaining ampere-hours of the power-tool cells with an LSTM.",
+          "tasks": [
+            "RUL prediction"
+          ],
+          "methods": [
+            "Autoencoder",
+            "LSTM",
+            "CNN"
+          ],
+          "split": "One battery from each of the 7 groups held out for testing.",
+          "evidence": "Results text and Figs. 3–5",
+          "results": [
+            {
+              "benchmark": null,
+              "model": "LSTM",
+              "value": 0.021,
+              "evidence": "Results text",
+              "metric": "RMSE",
+              "unit": "normalised remaining Ah",
+              "test_set": "7 held-out batteries",
+              "why": "The paper's own split; no other study listed here uses it."
+            }
+          ],
           "reviewed": false
         }
       ]
@@ -4720,6 +5266,102 @@
           "split": "",
           "evidence": "Related paper on the data record",
           "reviewed": false
+        }
+      ]
+    },
+    "predicting-battery-end-of-life-from-solar-off-grid-field-data": {
+      "coverage": "Only the original study is listed; reuse by other groups has not been searched yet.",
+      "papers": [
+        {
+          "title": "Predicting battery end of life from solar off-grid system field data using machine learning",
+          "authors": "Aitio, Howey",
+          "year": 2021,
+          "venue": "Joule",
+          "doi": "10.1016/j.joule.2021.11.006",
+          "open_access_url": "https://arxiv.org/abs/2107.13856",
+          "relation": "Original study",
+          "use": "Combines a physics-based model of each lead-acid battery with machine learning to predict end of life from field data of 1,027 solar home systems.",
+          "tasks": [
+            "RUL prediction",
+            "Health monitoring"
+          ],
+          "methods": [
+            "Gaussian process",
+            "Physics-based model"
+          ],
+          "split": "",
+          "evidence": "Abstract",
+          "results": [
+            {
+              "benchmark": null,
+              "model": "End of life predicted 8 weeks ahead",
+              "value": 73,
+              "evidence": "Abstract",
+              "metric": "Accuracy",
+              "unit": "%",
+              "test_set": "1,027 field systems",
+              "why": "Classification accuracy on the paper's own evaluation; split not stated in the abstract."
+            },
+            {
+              "benchmark": null,
+              "model": "End of life predicted at the point of failure",
+              "value": 82,
+              "evidence": "Abstract",
+              "metric": "Accuracy",
+              "unit": "%",
+              "test_set": "1,027 field systems",
+              "why": "Classification accuracy on the paper's own evaluation; split not stated in the abstract."
+            }
+          ],
+          "reviewed": false
+        }
+      ]
+    },
+    "online-fault-zenodo": {
+      "coverage": "Only the original study is listed; reuse by other groups has not been searched yet.",
+      "papers": [
+        {
+          "title": "Model-constrained deep learning for online fault diagnosis in Li-ion batteries over stochastic conditions",
+          "authors": "Cao, Zhang, Shi et al.",
+          "year": 2025,
+          "venue": "Nature Communications 16, 1651",
+          "doi": "10.1038/s41467-025-56832-8",
+          "relation": "Original study",
+          "use": "Detects and classifies faults (thermal runaway, electrolyte leakage, internal short, excessive ageing) in 515 vehicles with a physics-constrained network.",
+          "tasks": [
+            "Fault diagnosis",
+            "Anomaly detection"
+          ],
+          "methods": [
+            "Physics-constrained neural network",
+            "Autoencoder"
+          ],
+          "split": "Fault-type classifier: 851 training and 285 test samples; fault detection tested on all 515 vehicles.",
+          "evidence": "Results; Fig. 4",
+          "results": [
+            {
+              "benchmark": "cao-cell",
+              "model": "Model-constrained network (proposed)",
+              "value": 3.9,
+              "evidence": "Fig. 4c"
+            },
+            {
+              "benchmark": "cao-cell",
+              "model": "Best of CNN, GRU, RNN and LSTM",
+              "value": 4.7,
+              "evidence": "Fig. 4c"
+            }
+          ],
+          "reviewed": false
+        }
+      ],
+      "benchmarks": [
+        {
+          "id": "cao-cell",
+          "label": "Cell-state prediction on 60 vehicles (Cao et al. 2025)",
+          "metric": "RMSE",
+          "unit": "%",
+          "note": "Average over vehicles (Fig. 4c)."
         }
       ]
     }
