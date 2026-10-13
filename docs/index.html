@@ -1297,8 +1297,12 @@ function resultsSection(d) {
   const entry = USES[d.id] || {};
   const papers = sortedUses(d);
   const rows = [];
-  papers.forEach((p, i) => (Array.isArray(p.results) ? p.results : []).forEach(r => { if (r && typeof r.value === 'number') rows.push({ p, i, r }); }));
+  papers.forEach((p, i) => (Array.isArray(p.results) ? p.results : []).forEach(r => { if (r && typeof r.value === 'number') rows.push({ p, i, r, value: r.value, proposed: r.proposed === true }); }));
   if (!rows.length) return null;
+  const benchMetric = new Map((Array.isArray(entry.benchmarks) ? entry.benchmarks : []).map(b => [b.id, b.metric || '']));
+  const kept = onePerStudy(rows, x => [x.i, x.r.benchmark || [x.r.metric, x.r.unit, x.r.test_set].join('/')].join('|'),
+    x => HIGHER_BETTER.test(x.r.benchmark ? benchMetric.get(x.r.benchmark) || '' : x.r.metric || ''));
+  rows.length = 0; rows.push(...kept);
   const benches = (Array.isArray(entry.benchmarks) ? entry.benchmarks : []).filter(b => rows.some(x => x.r.benchmark === b.id));
   const known = new Set(benches.map(b => b.id));
   const studyCell = x => h('td', { class: 'who' },
@@ -1378,6 +1382,20 @@ const HIGHER_BETTER = /(^|[^a-z])(r2|r²|r\^2|accuracy|acc|auc|roc-auc|f1|precis
 /* Shown wherever reported numbers appear: they are summaries, so readers should cite the paper. */
 const CITE_NOTE = () => h('p', { class: 'note cite-src' }, ICON_INFO(), h('span', {},
   'Numbers here are summarised from each paper and may be rounded or averaged by IonSense. Before citing or comparing a result, please check it in the original paper (use the study link).'));
+/* One row per study: a paper's own proposed method (marked "proposed" in the data), or, for papers that
+   only benchmark other models, its best result. Distinct test sets of the same paper each keep a row. */
+function onePerStudy(rows, keyOf, isHigher) {
+  const groups = new Map();
+  rows.forEach(x => { const k = keyOf(x); if (!groups.has(k)) groups.set(k, []); groups.get(k).push(x); });
+  const out = [];
+  for (const g of groups.values()) {
+    const own = g.filter(x => x.proposed);
+    if (own.length) { out.push(...own); continue; }
+    const hi = isHigher(g[0]);
+    out.push(g.reduce((a, b) => (hi ? b.value > a.value : b.value < a.value) ? b : a));
+  }
+  return out;
+}
 function metricRows(d) {
   const entry = USES[d.id] || {};
   const benches = new Map((Array.isArray(entry.benchmarks) ? entry.benchmarks : []).map(b => [b.id, b]));
@@ -1386,14 +1404,14 @@ function metricRows(d) {
     if (!r || typeof r.value !== 'number') return;
     const b = r.benchmark && benches.get(r.benchmark);
     rows.push({
-      p, i, model: r.model || '', value: r.value, evidence: r.evidence || '',
+      p, i, model: r.model || '', value: r.value, evidence: r.evidence || '', proposed: r.proposed === true,
       metric: (b ? b.metric : r.metric) || 'Value',
       unit: (b ? b.unit : r.unit) || '',
       test: b ? b.label : (r.test_set || ''),
       bench: b ? b.label : '', why: b ? (b.note || '') : (r.why || '')
     });
   }));
-  return rows;
+  return onePerStudy(rows, x => [x.i, x.metric, x.unit, x.bench || x.test].join('|'), x => HIGHER_BETTER.test(x.metric));
 }
 const nMetrics = d => metricRows(d).length;
 function metricsView(d) {
@@ -1419,7 +1437,7 @@ function metricsView(d) {
       h('select', { onchange: e => { onlyBench = e.target.value; showAll = false; draw(); } },
         h('option', { value: '' }, 'all results (different test sets mixed)'),
         benchNames.map(n => h('option', { value: n, selected: n === onlyBench || null }, 'only ' + n + ' (fair ranking)')))) : null;
-    wrap.replaceChildren(
+    wrap.replaceChildren(...[
       tabs,
       h('p', { class: 'bench-note' }, `${label(cur)} · ${higher ? 'higher' : 'lower'} is better · `,
         full.length > TOP && !showAll ? `best ${TOP} of ${full.length} results` : plural(full.length, 'result')),
@@ -1436,13 +1454,13 @@ function metricsView(d) {
           h('td', {}, r.test),
           h('td', {}, r.bench ? h('span', { class: 'cmp-ok', title: r.why }, 'Same benchmark') : h('span', { class: 'cmp-own', title: r.why || 'Own split or split not reported' }, 'Own split'),
             !r.bench && r.why ? h('span', { class: 'why' }, r.why) : null)))))),
-      full.length > TOP ? h('button', { type: 'button', class: 'link-btn', style: 'align-self:flex-start', onclick: () => { showAll = !showAll; draw(); } }, showAll ? `Show the best ${TOP} only` : `Show all ${full.length}`) : null);
+      full.length > TOP ? h('button', { type: 'button', class: 'link-btn', style: 'align-self:flex-start', onclick: () => { showAll = !showAll; draw(); } }, showAll ? `Show the best ${TOP} only` : `Show all ${full.length}`) : null].filter(Boolean));
   };
   draw();
   return h('section', { class: 'uses', id: 'detail-metrics', 'aria-labelledby': 'metrics-h' },
     h('div', { class: 'res-head' }, h('h3', { id: 'metrics-h' }, 'Metrics'), h('span', { class: 'cnt' }, plural(rows.length, 'reported result'))),
     CITE_NOTE(),
-    h('p', { class: 'uses-intro' }, 'Numbers as reported in each paper, not re-run by IonSense, sorted best first within each metric. Rows are only directly comparable when they share a benchmark (identical test cells): pick one in “Show” for a fair ranking. “Own split” rows used different cells or did not say.'),
+    h('p', { class: 'uses-intro' }, 'One result per study: its own proposed method, or its best model if it only benchmarks others (baselines are in the papers). Sorted best first within each metric. Rows are only directly comparable when they share a benchmark (identical test cells): pick one in “Show” for a fair ranking. “Own split” rows used different cells or did not say.'),
     wrap);
 }
 function openMetrics(d) {

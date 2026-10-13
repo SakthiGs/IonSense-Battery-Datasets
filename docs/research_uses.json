@@ -34,7 +34,8 @@
               "unit": "%",
               "test_set": "cell-disjoint 20% test split",
               "evidence": "Repository README, published values",
-              "why": "State-of-health estimation, not the cycle-life prediction ranked above, on the paper's own split."
+              "why": "State-of-health estimation, not the cycle-life prediction ranked above, on the paper's own split.",
+              "proposed": true
             },
             {
               "benchmark": null,
@@ -488,7 +489,8 @@
               "benchmark": "primary-all",
               "model": "Two-point feature + XGBoost",
               "value": 129,
-              "evidence": "Table 1"
+              "evidence": "Table 1",
+              "proposed": true
             },
             {
               "benchmark": "primary-all",
@@ -500,7 +502,8 @@
               "benchmark": "secondary",
               "model": "Two-point feature + XGBoost",
               "value": 197,
-              "evidence": "Table 1"
+              "evidence": "Table 1",
+              "proposed": true
             },
             {
               "benchmark": "secondary",
@@ -617,7 +620,8 @@
               "unit": "SOH",
               "test_set": "8 test cells",
               "evidence": "Table 3",
-              "why": "State-of-health prediction on the paper's own split, not the cycle-life task ranked above."
+              "why": "State-of-health prediction on the paper's own split, not the cycle-life task ranked above.",
+              "proposed": true
             },
             {
               "benchmark": null,
@@ -689,7 +693,8 @@
               "unit": "cycles",
               "test_set": "random 30% of cells",
               "evidence": "Abstract",
-              "why": "Random split instead of the original test sets, so not ranked with them."
+              "why": "Random split instead of the original test sets, so not ranked with them.",
+              "proposed": true
             },
             {
               "benchmark": null,
@@ -730,7 +735,8 @@
               "benchmark": "primary-excl",
               "model": "BatLiNet",
               "value": 59,
-              "evidence": "Table 1"
+              "evidence": "Table 1",
+              "proposed": true
             },
             {
               "benchmark": "primary-excl",
@@ -754,7 +760,8 @@
               "benchmark": "secondary",
               "model": "BatLiNet",
               "value": 163,
-              "evidence": "Table 1"
+              "evidence": "Table 1",
+              "proposed": true
             },
             {
               "benchmark": "secondary",
@@ -792,7 +799,8 @@
               "metric": "RMSE",
               "unit": "cycles",
               "test_set": "random 25% of cells",
-              "why": "Random cell split, not the original test sets."
+              "why": "Random cell split, not the original test sets.",
+              "proposed": true
             },
             {
               "benchmark": null,
@@ -802,7 +810,8 @@
               "metric": "RMSE",
               "unit": "cycles",
               "test_set": "random 25% of cells",
-              "why": "Random cell split, not the original test sets."
+              "why": "Random cell split, not the original test sets.",
+              "proposed": true
             }
           ],
           "reviewed": false
@@ -923,7 +932,8 @@
               "benchmark": "nasa-l",
               "model": "SambaMixer (Mamba)",
               "value": 1.333,
-              "evidence": "Table IV; mean of batteries #6, #7, #47 computed by IonSense"
+              "evidence": "Table IV; mean of batteries #6, #7, #47 computed by IonSense",
+              "proposed": true
             },
             {
               "benchmark": "nasa-l",
@@ -1173,7 +1183,8 @@
               "benchmark": "zhu-nca",
               "model": "XGBoost on relaxation features (proposed)",
               "value": 1.1,
-              "evidence": "Results; Fig. 4a"
+              "evidence": "Results; Fig. 4a",
+              "proposed": true
             },
             {
               "benchmark": "zhu-nca",
@@ -1331,7 +1342,8 @@
               "unit": "SOH",
               "test_set": "6 test cells (NCA)",
               "evidence": "Table 3",
-              "why": "Own cell split. Table 3 gives MAE 0.0111 for this row, larger than its RMSE, which cannot both be right."
+              "why": "Own cell split. Table 3 gives MAE 0.0111 for this row, larger than its RMSE, which cannot both be right.",
+              "proposed": true
             },
             {
               "benchmark": null,
@@ -1754,7 +1766,8 @@
               "unit": "%",
               "test_set": "leave-one-cell-out in each batch",
               "evidence": "Repository README, published values",
-              "why": "State-of-health MAPE under the paper's own protocol; no other study listed here uses the same test cells."
+              "why": "State-of-health MAPE under the paper's own protocol; no other study listed here uses the same test cells.",
+              "proposed": true
             },
             {
               "benchmark": null,
@@ -1959,7 +1972,8 @@
               "metric": "MAPE",
               "unit": "%",
               "test_set": "batch 1, held-out cells",
-              "why": "Batch-level split defined by the paper; cells not listed in the summary."
+              "why": "Batch-level split defined by the paper; cells not listed in the summary.",
+              "proposed": true
             },
             {
               "benchmark": null,
@@ -1969,7 +1983,8 @@
               "metric": "MAPE",
               "unit": "%",
               "test_set": "batch 2, held-out cells",
-              "why": "Batch-level split defined by the paper; cells not listed in the summary."
+              "why": "Batch-level split defined by the paper; cells not listed in the summary.",
+              "proposed": true
             },
             {
               "benchmark": null,
@@ -1979,7 +1994,8 @@
               "metric": "MAPE",
               "unit": "%",
               "test_set": "batch 3, held-out cells",
-              "why": "Batch-level split defined by the paper; cells not listed in the summary."
+              "why": "Batch-level split defined by the paper; cells not listed in the summary.",
+              "proposed": true
             }
           ],
           "reviewed": false
@@ -2097,7 +2113,8 @@
               "metric": "RMSE",
               "unit": "% degradation mode",
               "test_set": "synthetic validation paths, clear-sky day",
-              "why": "Average error in loss of lithium and active material on synthetic data."
+              "why": "Average error in loss of lithium and active material on synthetic data.",
+              "proposed": true
             },
             {
               "benchmark": null,
@@ -2107,7 +2124,8 @@
               "metric": "RMSE",
               "unit": "% degradation mode",
               "test_set": "synthetic validation paths, clear-sky day",
-              "why": "Average error in loss of lithium and active material on synthetic data."
+              "why": "Average error in loss of lithium and active material on synthetic data.",
+              "proposed": true
             }
           ]
         }
@@ -2143,7 +2161,8 @@
               "metric": "Classification accuracy",
               "unit": "%",
               "test_set": "44 cells, 2 chemistries, 2 loadings, 5 charge rates",
-              "why": "The paper's own evaluation; split not stated in the abstract."
+              "why": "The paper's own evaluation; split not stated in the abstract.",
+              "proposed": true
             },
             {
               "benchmark": null,
@@ -2153,7 +2172,8 @@
               "metric": "Classification accuracy",
               "unit": "%",
               "test_set": "44 cells, 2 chemistries, 2 loadings, 5 charge rates",
-              "why": "The paper's own evaluation; split not stated in the abstract."
+              "why": "The paper's own evaluation; split not stated in the abstract.",
+              "proposed": true
             },
             {
               "benchmark": null,
@@ -2163,7 +2183,8 @@
               "metric": "Error",
               "unit": "%",
               "test_set": "44 cells",
-              "why": "Approximate error quoted in the abstract."
+              "why": "Approximate error quoted in the abstract.",
+              "proposed": true
             }
           ]
         }
@@ -2284,7 +2305,8 @@
               "benchmark": "cui-sl-test",
               "model": "Elastic net (selected)",
               "value": 1.38,
-              "evidence": "Table 2"
+              "evidence": "Table 2",
+              "proposed": true
             },
             {
               "benchmark": "cui-sl-test",
@@ -2570,7 +2592,8 @@
               "metric": "MAPE",
               "unit": "%",
               "test_set": "22 held-out cells",
-              "why": "Capacity estimation on the paper's own 22 test cells."
+              "why": "Capacity estimation on the paper's own 22 test cells.",
+              "proposed": true
             },
             {
               "benchmark": null,
@@ -2580,7 +2603,8 @@
               "metric": "RMSE",
               "unit": "cycles",
               "test_set": "22 held-out cells",
-              "why": "Remaining-useful-life prediction along each cell's life, not cycle life from early cycles, so not ranked with BatteryML."
+              "why": "Remaining-useful-life prediction along each cell's life, not cycle life from early cycles, so not ranked with BatteryML.",
+              "proposed": true
             }
           ]
         },
@@ -2638,7 +2662,8 @@
               "unit": "%",
               "test_set": "split not reported",
               "evidence": "Table I",
-              "why": "The paper does not report its train/test split, so it is not compared with other results."
+              "why": "The paper does not report its train/test split, so it is not compared with other results.",
+              "proposed": true
             },
             {
               "benchmark": null,
@@ -2774,7 +2799,8 @@
               "benchmark": "bml-hust",
               "model": "BatLiNet",
               "value": 264,
-              "evidence": "Table 1"
+              "evidence": "Table 1",
+              "proposed": true
             },
             {
               "benchmark": "bml-hust",
@@ -3009,7 +3035,8 @@
               "metric": "RMSE",
               "unit": "%",
               "test_set": "39 storage conditions",
-              "why": "Average error across all 39 storage conditions; the abstract does not describe a held-out split."
+              "why": "Average error across all 39 storage conditions; the abstract does not describe a held-out split.",
+              "proposed": true
             },
             {
               "benchmark": null,
@@ -3019,7 +3046,8 @@
               "metric": "RMSE",
               "unit": "%",
               "test_set": "39 storage conditions",
-              "why": "Average error across all 39 storage conditions; the abstract does not describe a held-out split."
+              "why": "Average error across all 39 storage conditions; the abstract does not describe a held-out split.",
+              "proposed": true
             }
           ]
         }
@@ -3151,7 +3179,8 @@
               "metric": "MAE",
               "unit": "% SOH",
               "test_set": "8 Ah NCA pouch cells, random splits",
-              "why": "Random splits of samples, so the same cell can appear in training and test."
+              "why": "Random splits of samples, so the same cell can appear in training and test.",
+              "proposed": true
             },
             {
               "benchmark": null,
@@ -3161,7 +3190,8 @@
               "metric": "MAE",
               "unit": "% SOH",
               "test_set": "8 Ah NCA pouch cells, random splits",
-              "why": "Random splits of samples, so the same cell can appear in training and test."
+              "why": "Random splits of samples, so the same cell can appear in training and test.",
+              "proposed": true
             }
           ]
         }
@@ -3198,7 +3228,8 @@
               "benchmark": "pdecm-ocv",
               "model": "Probability-distributed ECM (proposed)",
               "value": 0.9323,
-              "evidence": "Results text"
+              "evidence": "Results text",
+              "proposed": true
             },
             {
               "benchmark": null,
@@ -3208,7 +3239,8 @@
               "metric": "Relative RMSE",
               "unit": "% of voltage",
               "test_set": "rate test, 50% SOC start",
-              "why": "Rate-capability test; the paper gives no numeric error for the comparison model here."
+              "why": "Rate-capability test; the paper gives no numeric error for the comparison model here.",
+              "proposed": true
             },
             {
               "benchmark": null,
@@ -3218,7 +3250,8 @@
               "metric": "Relative RMSE",
               "unit": "% of voltage",
               "test_set": "rate test, 50% SOC start",
-              "why": "Rate-capability test; the paper gives no numeric error for the comparison model here."
+              "why": "Rate-capability test; the paper gives no numeric error for the comparison model here.",
+              "proposed": true
             }
           ]
         }
@@ -3306,7 +3339,8 @@
               "benchmark": "naguib-test",
               "model": "Lumped thermal model + neural network (proposed)",
               "value": 0.45,
-              "evidence": "Fig. 2c"
+              "evidence": "Fig. 2c",
+              "proposed": true
             },
             {
               "benchmark": "naguib-test",
@@ -3408,7 +3442,8 @@
               "metric": "MAPE",
               "unit": "%",
               "test_set": "in-distribution test cells",
-              "why": "The paper's own in-distribution test cells."
+              "why": "The paper's own in-distribution test cells.",
+              "proposed": true
             },
             {
               "benchmark": null,
@@ -3418,7 +3453,8 @@
               "metric": "MAPE",
               "unit": "%",
               "test_set": "out-of-distribution test cells",
-              "why": "Harder test on usage conditions not seen in training."
+              "why": "Harder test on usage conditions not seen in training.",
+              "proposed": true
             }
           ]
         }
@@ -3471,7 +3507,8 @@
               "benchmark": "jones-l2o",
               "model": "EIS + usage protocol (proposed)",
               "value": 8.2,
-              "evidence": "Results text"
+              "evidence": "Results text",
+              "proposed": true
             },
             {
               "benchmark": "jones-l2o",
@@ -3573,7 +3610,8 @@
               "benchmark": "che-target",
               "model": "Domain adaptation + continual training (proposed)",
               "value": 1.312,
-              "evidence": "Table 1"
+              "evidence": "Table 1",
+              "proposed": true
             },
             {
               "benchmark": "che-target",
@@ -3714,7 +3752,8 @@
               "metric": "RMSE",
               "unit": "",
               "test_set": "random 20% of samples",
-              "why": "Random sample split, so the same cell appears in training and test."
+              "why": "Random sample split, so the same cell appears in training and test.",
+              "proposed": true
             },
             {
               "benchmark": null,
@@ -3724,7 +3763,8 @@
               "metric": "RMSE",
               "unit": "",
               "test_set": "random 20% of samples",
-              "why": "Random sample split, so the same cell appears in training and test."
+              "why": "Random sample split, so the same cell appears in training and test.",
+              "proposed": true
             }
           ],
           "reviewed": false
@@ -3847,7 +3887,8 @@
               "benchmark": "tao-case7",
               "model": "Random forest trained on generated data",
               "value": 6.0,
-              "evidence": "Fig. 4d"
+              "evidence": "Fig. 4d",
+              "proposed": true
             },
             {
               "benchmark": "tao-case7",
@@ -3859,7 +3900,8 @@
               "benchmark": "tao-case3",
               "model": "Random forest trained on generated data",
               "value": 5.4,
-              "evidence": "Fig. 4c"
+              "evidence": "Fig. 4c",
+              "proposed": true
             },
             {
               "benchmark": "tao-case3",
@@ -3934,7 +3976,8 @@
               "metric": "MAPE",
               "unit": "",
               "test_set": "unseen prismatic LCO cells",
-              "why": "Each target (voltage drop, Coulombic efficiency) on a different unseen cell set; units not stated in the text."
+              "why": "Each target (voltage drop, Coulombic efficiency) on a different unseen cell set; units not stated in the text.",
+              "proposed": true
             },
             {
               "benchmark": null,
@@ -3944,7 +3987,8 @@
               "metric": "MAPE",
               "unit": "",
               "test_set": "unseen cylindrical NMC+NCA cells",
-              "why": "Each target (voltage drop, Coulombic efficiency) on a different unseen cell set; units not stated in the text."
+              "why": "Each target (voltage drop, Coulombic efficiency) on a different unseen cell set; units not stated in the text.",
+              "proposed": true
             }
           ]
         }
@@ -4159,7 +4203,8 @@
               "unit": "SOH",
               "test_set": "leave-one-cell-out, 4 CS2 cells",
               "evidence": "Table 3",
-              "why": "No other study listed here uses the same cells and split."
+              "why": "No other study listed here uses the same cells and split.",
+              "proposed": true
             },
             {
               "benchmark": null,
@@ -4688,7 +4733,8 @@
               "metric": "RMSE",
               "unit": "missions",
               "test_set": "6-fold cross-validation over cells",
-              "why": "The paper's own folds; test cells per fold are not fully listed."
+              "why": "The paper's own folds; test cells per fold are not fully listed.",
+              "proposed": true
             },
             {
               "benchmark": null,
@@ -4698,7 +4744,8 @@
               "metric": "MAE",
               "unit": "missions",
               "test_set": "6-fold cross-validation over cells",
-              "why": "The paper's own folds; test cells per fold are not fully listed."
+              "why": "The paper's own folds; test cells per fold are not fully listed.",
+              "proposed": true
             }
           ],
           "reviewed": false
@@ -5046,7 +5093,8 @@
               "benchmark": "weng-rt",
               "model": "Low-SOC resistance after formation",
               "value": 8.0,
-              "evidence": "Table 2 (arXiv version)"
+              "evidence": "Table 2 (arXiv version)",
+              "proposed": true
             },
             {
               "benchmark": "weng-rt",
@@ -5094,7 +5142,8 @@
               "benchmark": "weng-45",
               "model": "Low-SOC resistance after formation",
               "value": 7.4,
-              "evidence": "Table 2 (arXiv version)"
+              "evidence": "Table 2 (arXiv version)",
+              "proposed": true
             },
             {
               "benchmark": "weng-45",
@@ -5500,7 +5549,8 @@
               "metric": "Precision",
               "unit": "%",
               "test_set": "500 randomly sampled records",
-              "why": "Quality of text-mined records, not a battery prediction."
+              "why": "Quality of text-mined records, not a battery prediction.",
+              "proposed": true
             },
             {
               "benchmark": null,
@@ -5510,7 +5560,8 @@
               "metric": "Recall",
               "unit": "%",
               "test_set": "51 source papers",
-              "why": "Share of relations in the source papers that reached the database."
+              "why": "Share of relations in the source papers that reached the database.",
+              "proposed": true
             }
           ]
         }
@@ -5619,7 +5670,8 @@
               "metric": "Accuracy",
               "unit": "%",
               "test_set": "1,027 field systems",
-              "why": "Classification accuracy on the paper's own evaluation; split not stated in the abstract."
+              "why": "Classification accuracy on the paper's own evaluation; split not stated in the abstract.",
+              "proposed": true
             },
             {
               "benchmark": null,
@@ -5629,7 +5681,8 @@
               "metric": "Accuracy",
               "unit": "%",
               "test_set": "1,027 field systems",
-              "why": "Classification accuracy on the paper's own evaluation; split not stated in the abstract."
+              "why": "Classification accuracy on the paper's own evaluation; split not stated in the abstract.",
+              "proposed": true
             }
           ],
           "reviewed": false
@@ -5662,7 +5715,8 @@
               "benchmark": "cao-cell",
               "model": "Model-constrained network (proposed)",
               "value": 3.9,
-              "evidence": "Fig. 4c"
+              "evidence": "Fig. 4c",
+              "proposed": true
             },
             {
               "benchmark": "cao-cell",
