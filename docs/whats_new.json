@@ -185,20 +185,20 @@
         {
           "datasets": [
             {
-              "id": "physics-informed-neural-network-for-lithium-ion-battery-degradation-modelling",
-              "name": "XJTU Battery Degradation Dataset"
+              "id": "data-driven-capacity-estimation-from-voltage-relaxation",
+              "name": "Tongji (TJU) Battery Dataset: Voltage Relaxation"
             },
             {
               "id": "early-cycle-life",
               "name": "MIT–Stanford–TRI Battery Cycle Life Dataset (MATR)"
             },
             {
-              "id": "real-time-personalized-health-status-prediction-via-deep-transfer-learning",
-              "name": "HUST Battery Dataset (77 LFP cells)"
+              "id": "physics-informed-neural-network-for-lithium-ion-battery-degradation-modelling",
+              "name": "XJTU Battery Degradation Dataset"
             },
             {
-              "id": "data-driven-capacity-estimation-from-voltage-relaxation",
-              "name": "Tongji (TJU) Battery Dataset: Voltage Relaxation"
+              "id": "real-time-personalized-health-status-prediction-via-deep-transfer-learning",
+              "name": "HUST Battery Dataset (77 LFP cells)"
             }
           ],
           "title": "Battery health prognosis using Physics-informed neural network with Quantum Feature mapping",
@@ -209,6 +209,10 @@
         {
           "datasets": [
             {
+              "id": "physics-informed-neural-network-for-lithium-ion-battery-degradation-modelling",
+              "name": "XJTU Battery Degradation Dataset"
+            },
+            {
               "id": "early-cycle-life",
               "name": "MIT–Stanford–TRI Battery Cycle Life Dataset (MATR)"
             },
@@ -219,10 +223,6 @@
             {
               "id": "real-time-personalized-health-status-prediction-via-deep-transfer-learning",
               "name": "HUST Battery Dataset (77 LFP cells)"
-            },
-            {
-              "id": "physics-informed-neural-network-for-lithium-ion-battery-degradation-modelling",
-              "name": "XJTU Battery Degradation Dataset"
             }
           ],
           "title": "Coupled Quantum Reservoir Features for Multi-Chemistry Battery State-of-Health Estimation",
@@ -237,12 +237,12 @@
               "name": "Tongji (TJU) Battery Dataset: Voltage Relaxation"
             },
             {
-              "id": "physics-informed-neural-network-for-lithium-ion-battery-degradation-modelling",
-              "name": "XJTU Battery Degradation Dataset"
-            },
-            {
               "id": "early-cycle-life",
               "name": "MIT–Stanford–TRI Battery Cycle Life Dataset (MATR)"
+            },
+            {
+              "id": "physics-informed-neural-network-for-lithium-ion-battery-degradation-modelling",
+              "name": "XJTU Battery Degradation Dataset"
             },
             {
               "id": "real-time-personalized-health-status-prediction-via-deep-transfer-learning",
@@ -257,16 +257,16 @@
         {
           "datasets": [
             {
+              "id": "early-cycle-life",
+              "name": "MIT–Stanford–TRI Battery Cycle Life Dataset (MATR)"
+            },
+            {
               "id": "calce-battery-data",
               "name": "CALCE Battery Data (University of Maryland)"
             },
             {
               "id": "nasa-battery-data-set",
               "name": "NASA Battery Data Set"
-            },
-            {
-              "id": "early-cycle-life",
-              "name": "MIT–Stanford–TRI Battery Cycle Life Dataset (MATR)"
             }
           ],
           "title": "Multi-dataset battery health prediction model for sustainable electric vehicle systems using quantum machine learning",
@@ -277,16 +277,16 @@
         {
           "datasets": [
             {
-              "id": "early-cycle-life",
-              "name": "MIT–Stanford–TRI Battery Cycle Life Dataset (MATR)"
-            },
-            {
               "id": "data-driven-capacity-estimation-from-voltage-relaxation",
               "name": "Tongji (TJU) Battery Dataset: Voltage Relaxation"
             },
             {
               "id": "calce-battery-data",
               "name": "CALCE Battery Data (University of Maryland)"
+            },
+            {
+              "id": "early-cycle-life",
+              "name": "MIT–Stanford–TRI Battery Cycle Life Dataset (MATR)"
             }
           ],
           "title": "Quantum-Enhanced Recurrent Neural Networks via Variational Quantum Gating for Battery State of Health Prediction",
@@ -329,12 +329,12 @@
         {
           "datasets": [
             {
-              "id": "physics-informed-neural-network-for-lithium-ion-battery-degradation-modelling",
-              "name": "XJTU Battery Degradation Dataset"
-            },
-            {
               "id": "early-cycle-life",
               "name": "MIT–Stanford–TRI Battery Cycle Life Dataset (MATR)"
+            },
+            {
+              "id": "physics-informed-neural-network-for-lithium-ion-battery-degradation-modelling",
+              "name": "XJTU Battery Degradation Dataset"
             }
           ],
           "title": "Physical information-guided Kolmogorov–Arnold networks for battery state of health estimation",
