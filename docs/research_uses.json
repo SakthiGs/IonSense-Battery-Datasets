@@ -3,7 +3,7 @@
   "updated": "2026-10-11",
   "datasets": {
     "early-cycle-life": {
-      "coverage": "A starting list of 15 papers, mostly picked from the most-cited work that cites Severson et al. (2019), which has over 3,000 citations. Not every paper that used this dataset. Quantum machine learning studies were searched separately (October 2026).",
+      "coverage": "A starting list of 16 papers, mostly picked from the most-cited work that cites Severson et al. (2019), which has over 3,000 citations. Not every paper that used this dataset. Quantum machine learning studies were searched separately (October 2026).",
       "papers": [
         {
           "title": "Coupled Quantum Reservoir Features for Multi-Chemistry Battery State-of-Health Estimation",
@@ -761,6 +761,48 @@
               "model": "SVM regression",
               "value": 300,
               "evidence": "Table 1"
+            }
+          ],
+          "reviewed": false
+        },
+        {
+          "title": "Uncertainty-aware and explainable machine learning for early prediction of battery degradation trajectory",
+          "authors": "Rieger, Flores, Nielsen, Norby, Ayerbe, Winther, Vegge, Bhowmik",
+          "year": 2023,
+          "venue": "Digital Discovery 2, 112–122",
+          "doi": "10.1039/D2DD00067A",
+          "relation": "Independent group",
+          "use": "Predicts the whole capacity trajectory and end of life with an ensemble of LSTMs that also reports its own uncertainty.",
+          "tasks": [
+            "Cycle life",
+            "Degradation analysis"
+          ],
+          "methods": [
+            "LSTM",
+            "Ensemble"
+          ],
+          "split": "Random 50/25/25 cell split of the first two batches; the third (calendar-aged) batch tests generalisation.",
+          "evidence": "Results text",
+          "results": [
+            {
+              "benchmark": null,
+              "model": "Ensemble LSTM, end of life",
+              "value": 106,
+              "evidence": "Results text",
+              "metric": "RMSE",
+              "unit": "cycles",
+              "test_set": "random 25% of cells",
+              "why": "Random cell split, not the original test sets."
+            },
+            {
+              "benchmark": null,
+              "model": "Ensemble LSTM, end of life from 40 cycles",
+              "value": 173,
+              "evidence": "Results text",
+              "metric": "RMSE",
+              "unit": "cycles",
+              "test_set": "random 25% of cells",
+              "why": "Random cell split, not the original test sets."
             }
           ],
           "reviewed": false
@@ -2091,7 +2133,39 @@
           ],
           "split": "",
           "evidence": "Abstract; dataset README and code",
-          "reviewed": false
+          "reviewed": false,
+          "results": [
+            {
+              "benchmark": null,
+              "model": "Aging-mode classifier, features from first 50 cycles",
+              "value": 86,
+              "evidence": "Abstract",
+              "metric": "Classification accuracy",
+              "unit": "%",
+              "test_set": "44 cells, 2 chemistries, 2 loadings, 5 charge rates",
+              "why": "The paper's own evaluation; split not stated in the abstract."
+            },
+            {
+              "benchmark": null,
+              "model": "Aging-mode classifier, beyond 225 cycles",
+              "value": 88,
+              "evidence": "Abstract",
+              "metric": "Classification accuracy",
+              "unit": "%",
+              "test_set": "44 cells, 2 chemistries, 2 loadings, 5 charge rates",
+              "why": "The paper's own evaluation; split not stated in the abstract."
+            },
+            {
+              "benchmark": null,
+              "model": "Estimate of end-of-life cathode active-material loss",
+              "value": 4.3,
+              "evidence": "Abstract",
+              "metric": "Error",
+              "unit": "%",
+              "test_set": "44 cells",
+              "why": "Approximate error quoted in the abstract."
+            }
+          ]
         }
       ]
     },
@@ -3112,7 +3186,50 @@
           ],
           "split": "",
           "evidence": "Data availability (Zenodo 10852930)",
-          "reviewed": false
+          "reviewed": false,
+          "results": [
+            {
+              "benchmark": "pdecm-ocv",
+              "model": "Plett single-state hysteresis model (fed measured OCV curves)",
+              "value": 0.432,
+              "evidence": "Results text"
+            },
+            {
+              "benchmark": "pdecm-ocv",
+              "model": "Probability-distributed ECM (proposed)",
+              "value": 0.9323,
+              "evidence": "Results text"
+            },
+            {
+              "benchmark": null,
+              "model": "Probability-distributed ECM, 3C discharge from charge curve",
+              "value": 2.856,
+              "evidence": "Results text",
+              "metric": "Relative RMSE",
+              "unit": "% of voltage",
+              "test_set": "rate test, 50% SOC start",
+              "why": "Rate-capability test; the paper gives no numeric error for the comparison model here."
+            },
+            {
+              "benchmark": null,
+              "model": "Probability-distributed ECM, 3C discharge from discharge curve",
+              "value": 1.97,
+              "evidence": "Results text",
+              "metric": "Relative RMSE",
+              "unit": "% of voltage",
+              "test_set": "rate test, 50% SOC start",
+              "why": "Rate-capability test; the paper gives no numeric error for the comparison model here."
+            }
+          ]
+        }
+      ],
+      "benchmarks": [
+        {
+          "id": "pdecm-ocv",
+          "label": "Low-rate full cycle, A123 cell at 25 °C (model fit)",
+          "metric": "Relative RMSE",
+          "unit": "% of voltage",
+          "note": "Voltage-model fit error, not a machine-learning prediction."
         }
       ]
     },
@@ -3549,7 +3666,7 @@
       ]
     },
     "battery-degradation-dataset-based-on-a-forklift-mission-profile": {
-      "coverage": "Only the original study is listed; reuse by other groups has not been searched yet.",
+      "coverage": "The original data paper and one later study with reported results; other reuse has not been searched yet.",
       "papers": [
         {
           "title": "Dataset of lithium-ion battery degradation based on a forklift mission profile for state-of-health estimation and lifetime prediction",
@@ -3567,6 +3684,49 @@
           "methods": [],
           "split": "",
           "evidence": "Data article",
+          "reviewed": false
+        },
+        {
+          "title": "Prediction of Lithium-Ion Battery Health Using GRU-BPP",
+          "authors": "Qaadan, Alshare, Popp, Schmuelling",
+          "year": 2024,
+          "venue": "Batteries 10(11), 399",
+          "doi": "10.3390/batteries10110399",
+          "relation": "Independent group",
+          "use": "Predicts state of health with a GRU tuned by Bayesian optimisation, on reference-test data and on the ageing data of three forklift-profile cells.",
+          "tasks": [
+            "SOH estimation"
+          ],
+          "methods": [
+            "GRU",
+            "Bayesian optimisation",
+            "XGBoost",
+            "LSTM"
+          ],
+          "split": "Random 80/20 split of the data.",
+          "evidence": "Sections 4–5 and Tables 4–5. The paper describes three prismatic cells aged with a forklift profile at 45, 40 and 35 °C, matching this dataset; its data citation was not visible",
+          "results": [
+            {
+              "benchmark": null,
+              "model": "GRU-BPP, reference-test data",
+              "value": 0.167,
+              "evidence": "Table 4",
+              "metric": "RMSE",
+              "unit": "",
+              "test_set": "random 20% of samples",
+              "why": "Random sample split, so the same cell appears in training and test."
+            },
+            {
+              "benchmark": null,
+              "model": "GRU-BPP, ageing data",
+              "value": 0.032,
+              "evidence": "Table 5",
+              "metric": "RMSE",
+              "unit": "",
+              "test_set": "random 20% of samples",
+              "why": "Random sample split, so the same cell appears in training and test."
+            }
+          ],
           "reviewed": false
         }
       ]
@@ -3764,7 +3924,29 @@
           ],
           "split": "",
           "evidence": "Methods (training data)",
-          "reviewed": false
+          "reviewed": false,
+          "results": [
+            {
+              "benchmark": null,
+              "model": "ARCANA trained on public data, voltage drop on unseen prismatic LCO cells",
+              "value": 6.6052,
+              "evidence": "Results text",
+              "metric": "MAPE",
+              "unit": "",
+              "test_set": "unseen prismatic LCO cells",
+              "why": "Each target (voltage drop, Coulombic efficiency) on a different unseen cell set; units not stated in the text."
+            },
+            {
+              "benchmark": null,
+              "model": "ARCANA trained on public data, Coulombic efficiency on unseen cylindrical NMC+NCA cells",
+              "value": 0.2489,
+              "evidence": "Results text",
+              "metric": "MAPE",
+              "unit": "",
+              "test_set": "unseen cylindrical NMC+NCA cells",
+              "why": "Each target (voltage drop, Coulombic efficiency) on a different unseen cell set; units not stated in the text."
+            }
+          ]
         }
       ]
     },
@@ -4855,9 +5037,124 @@
           "methods": [
             "Early prediction"
           ],
-          "split": "",
+          "split": "Ridge regression with nested cross-validation, separately for the room-temperature and 45 °C groups.",
           "evidence": "Battery Archive study summary cites this paper",
-          "reviewed": false
+          "reviewed": false,
+          "open_access_url": "https://arxiv.org/abs/2203.14158",
+          "results": [
+            {
+              "benchmark": "weng-rt",
+              "model": "Low-SOC resistance after formation",
+              "value": 8.0,
+              "evidence": "Table 2 (arXiv version)"
+            },
+            {
+              "benchmark": "weng-rt",
+              "model": "Formation features + low-SOC resistance",
+              "value": 9.4,
+              "evidence": "Table 2 (arXiv version)"
+            },
+            {
+              "benchmark": "weng-rt",
+              "model": "Discharge capacity during formation",
+              "value": 13.6,
+              "evidence": "Table 2 (arXiv version)"
+            },
+            {
+              "benchmark": "weng-rt",
+              "model": "Coulombic efficiency during formation",
+              "value": 13.8,
+              "evidence": "Table 2 (arXiv version)"
+            },
+            {
+              "benchmark": "weng-rt",
+              "model": "Lithium lost during formation",
+              "value": 14.0,
+              "evidence": "Table 2 (arXiv version)"
+            },
+            {
+              "benchmark": "weng-rt",
+              "model": "Var(ΔQ100−10(V)), 100 cycles",
+              "value": 14.4,
+              "evidence": "Table 2 (arXiv version)"
+            },
+            {
+              "benchmark": "weng-rt",
+              "model": "Mean of training lives (no data)",
+              "value": 14.4,
+              "evidence": "Table 2 (arXiv version)"
+            },
+            {
+              "benchmark": "weng-rt",
+              "model": "Formation features combined",
+              "value": 14.5,
+              "evidence": "Table 2 (arXiv version)"
+            },
+            {
+              "benchmark": "weng-45",
+              "model": "Low-SOC resistance after formation",
+              "value": 7.4,
+              "evidence": "Table 2 (arXiv version)"
+            },
+            {
+              "benchmark": "weng-45",
+              "model": "Formation features + low-SOC resistance",
+              "value": 7.4,
+              "evidence": "Table 2 (arXiv version)"
+            },
+            {
+              "benchmark": "weng-45",
+              "model": "Discharge capacity during formation",
+              "value": 15.0,
+              "evidence": "Table 2 (arXiv version)"
+            },
+            {
+              "benchmark": "weng-45",
+              "model": "Coulombic efficiency during formation",
+              "value": 15.1,
+              "evidence": "Table 2 (arXiv version)"
+            },
+            {
+              "benchmark": "weng-45",
+              "model": "Lithium lost during formation",
+              "value": 15.2,
+              "evidence": "Table 2 (arXiv version)"
+            },
+            {
+              "benchmark": "weng-45",
+              "model": "Var(ΔQ100−10(V)), 100 cycles",
+              "value": 11.5,
+              "evidence": "Table 2 (arXiv version)"
+            },
+            {
+              "benchmark": "weng-45",
+              "model": "Mean of training lives (no data)",
+              "value": 15.1,
+              "evidence": "Table 2 (arXiv version)"
+            },
+            {
+              "benchmark": "weng-45",
+              "model": "Formation features combined",
+              "value": 14.1,
+              "evidence": "Table 2 (arXiv version)"
+            }
+          ]
+        }
+      ],
+      "benchmarks": [
+        {
+          "id": "weng-rt",
+          "label": "Room-temperature cells, nested cross-validation (Weng et al.)",
+          "metric": "Test error",
+          "unit": "%",
+          "note": "Cycle-life prediction with ridge regression; mean over cross-validation folds (Table 2)."
+        },
+        {
+          "id": "weng-45",
+          "label": "45 °C cells, nested cross-validation (Weng et al.)",
+          "metric": "Test error",
+          "unit": "%",
+          "note": "Table 2."
         }
       ]
     },
@@ -5193,7 +5490,29 @@
           ],
           "split": "",
           "evidence": "Data descriptor",
-          "reviewed": false
+          "reviewed": false,
+          "results": [
+            {
+              "benchmark": null,
+              "model": "ChemDataExtractor pipeline, overall",
+              "value": 80.0,
+              "evidence": "Technical Validation",
+              "metric": "Precision",
+              "unit": "%",
+              "test_set": "500 randomly sampled records",
+              "why": "Quality of text-mined records, not a battery prediction."
+            },
+            {
+              "benchmark": null,
+              "model": "ChemDataExtractor pipeline, overall",
+              "value": 59.1,
+              "evidence": "Technical Validation",
+              "metric": "Recall",
+              "unit": "%",
+              "test_set": "51 source papers",
+              "why": "Share of relations in the source papers that reached the database."
+            }
+          ]
         }
       ]
     },

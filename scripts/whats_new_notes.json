@@ -3,6 +3,10 @@
   "notes": [
     {
       "date": "2026-10-13",
+      "text": "Reported results for 6 more datasets (now 37): Michigan formation, INL ageing modes, forklift, ARCANA, the hysteresis-model data and the materials database"
+    },
+    {
+      "date": "2026-10-13",
       "text": "Reported results for 10 more datasets (now 31), incl. the Attia fast-charging cells, eVTOL, UNIBO, NASA randomized usage and Stanford second-life and calendar data; BatLiNet added to MIT and HUST"
     },
     {
