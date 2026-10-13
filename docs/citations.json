@@ -18,6 +18,11 @@
       "openalex": "https://openalex.org/W4214691593",
       "title": "Lithium-ion battery aging dataset based on electric vehicle real-driving profiles"
     },
+    "predicting-battery-end-of-life-from-solar-off-grid-field-data": {
+      "count": 116,
+      "openalex": "https://openalex.org/W3184270535",
+      "title": "Predicting battery end of life from solar off-grid system field data using machine learning"
+    },
     "challenges-and-opportunities-in-truck-electrification-big-operational-data": {
       "count": 82,
       "openalex": "https://openalex.org/W4401517764",
@@ -27,6 +32,11 @@
       "count": 268,
       "openalex": "https://openalex.org/W4327954986",
       "title": "Prognostics of battery capacity based on charging data and data-driven methods for on-road vehicles"
+    },
+    "online-fault-zenodo": {
+      "count": 93,
+      "openalex": "https://openalex.org/W4407572542",
+      "title": "Model-constrained deep learning for online fault diagnosis in Li-ion batteries over stochastic conditions"
     },
     "electric-vehicle-usage-data-set-for-battery-aging-studies": {
       "count": 6,
