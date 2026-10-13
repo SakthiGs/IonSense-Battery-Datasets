@@ -1924,6 +1924,40 @@ fetch('./datasets.json', { cache: 'no-cache' })
   });
 })();
 </script>
-<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "053f19aa6cb34457b77e7ed6845d5584"}'></script><!-- End Cloudflare Web Analytics -->
+<!-- Cloudflare Web Analytics: owner-specific opt-out without IP collection. -->
+<script>
+(() => {
+  // Each browser/profile stores its own opt-out. This only affects future page loads.
+  const storageKey = 'ionsense_analytics_optout_v1';
+  const setting = new URLSearchParams(window.location.search).get('ionsense_analytics');
+  let disabled = setting === 'off';
+  try {
+    if (setting === 'off') window.localStorage.setItem(storageKey, '1');
+    if (setting === 'on') window.localStorage.removeItem(storageKey);
+    disabled = disabled || window.localStorage.getItem(storageKey) === '1';
+    if (setting === 'on') disabled = false;
+  } catch (_) {
+    // Storage can be blocked; the opt-out link still skips this visit.
+  }
+
+  if (setting === 'off' || setting === 'on') {
+    // Remove the one-time setting from the address bar without reloading the page.
+    const cleanUrl = new URL(window.location.href);
+    cleanUrl.searchParams.delete('ionsense_analytics');
+    try {
+      window.history.replaceState(window.history.state, '', cleanUrl.pathname + cleanUrl.search + cleanUrl.hash);
+    } catch (_) {}
+  }
+  if (disabled) return;
+
+  // Load Cloudflare's official beacon only when this browser has not opted out.
+  const beacon = document.createElement('script');
+  beacon.type = 'module';
+  beacon.src = 'https://static.cloudflareinsights.com/beacon.min.js';
+  beacon.setAttribute('data-cf-beacon', '{"token": "053f19aa6cb34457b77e7ed6845d5584"}');
+  document.body.appendChild(beacon);
+})();
+</script>
+<!-- End Cloudflare Web Analytics -->
 </body>
 </html>
