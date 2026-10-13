@@ -3,6 +3,10 @@
   "notes": [
     {
       "date": "2026-10-13",
+      "text": "Reported results for 10 more datasets, including the LG HG2 and Panasonic 18650PF SOC benchmarks, PulseBat, MagBridge and the PHEV pack"
+    },
+    {
+      "date": "2026-10-13",
       "text": "Reported results added for the most-used datasets (MIT, XJTU, HUST, Tongji, NASA, Oxford, Sandia, ISU-ILCC, RWTH) and BatteryLife; the Metrics table shows the best 8"
     },
     {

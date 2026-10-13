@@ -1921,7 +1921,19 @@
           ],
           "split": "",
           "evidence": "Abstract; Data availability",
-          "reviewed": false
+          "reviewed": false,
+          "results": [
+            {
+              "benchmark": null,
+              "model": "Discovery Learning, first 50 cycles",
+              "value": 7.2,
+              "evidence": "Abstract",
+              "metric": "Test error",
+              "unit": "%",
+              "test_set": "industrial pouch cells (123 in the dataset)",
+              "why": "Trained on public datasets of other cell designs and tested on the new industrial cells."
+            }
+          ]
         }
       ]
     },
@@ -1972,7 +1984,29 @@
           ],
           "split": "",
           "evidence": "Results; Methods; Data availability (Mendeley 10.17632/rg8b2k2k28.1)",
-          "reviewed": false
+          "reviewed": false,
+          "results": [
+            {
+              "benchmark": null,
+              "model": "Capacity-based neural networks, up to 25% degradation",
+              "value": 0.7,
+              "evidence": "Results text",
+              "metric": "RMSE",
+              "unit": "% degradation mode",
+              "test_set": "synthetic validation paths, clear-sky day",
+              "why": "Average error in loss of lithium and active material on synthetic data."
+            },
+            {
+              "benchmark": null,
+              "model": "Capacity-based neural networks, up to 50% degradation",
+              "value": 1.5,
+              "evidence": "Results text",
+              "metric": "RMSE",
+              "unit": "% degradation mode",
+              "test_set": "synthetic validation paths, clear-sky day",
+              "why": "Average error in loss of lithium and active material on synthetic data."
+            }
+          ]
         }
       ]
     },
@@ -2162,7 +2196,19 @@
           ],
           "split": "",
           "evidence": "Abstract",
-          "reviewed": false
+          "reviewed": false,
+          "results": [
+            {
+              "benchmark": null,
+              "model": "Transformer, end-of-life prediction",
+              "value": 19,
+              "evidence": "Abstract",
+              "metric": "MAE",
+              "unit": "cycles",
+              "test_set": "LFP fast-charging dataset",
+              "why": "Test split not stated in the abstract."
+            }
+          ]
         }
       ]
     },
@@ -2529,7 +2575,104 @@
           "methods": [],
           "split": "Cell-disjoint primary split with no parent–child leakage.",
           "evidence": "Abstract; Zenodo record",
-          "reviewed": false
+          "reviewed": false,
+          "results": [
+            {
+              "benchmark": "mb-t1",
+              "model": "Ridge",
+              "value": 0.675,
+              "evidence": "Table III (best classical model)"
+            },
+            {
+              "benchmark": "mb-t1",
+              "model": "1D-CNN",
+              "value": 0.17,
+              "evidence": "Table IV (untuned deep baselines)"
+            },
+            {
+              "benchmark": "mb-t1",
+              "model": "LSTM",
+              "value": -0.09,
+              "evidence": "Table IV (untuned deep baselines)"
+            },
+            {
+              "benchmark": "mb-t1",
+              "model": "MLP",
+              "value": -2.51,
+              "evidence": "Table IV (untuned deep baselines)"
+            },
+            {
+              "benchmark": "mb-t2",
+              "model": "Ridge classifier",
+              "value": 0.907,
+              "evidence": "Table III (best classical model)"
+            },
+            {
+              "benchmark": "mb-t2",
+              "model": "1D-CNN",
+              "value": 0.858,
+              "evidence": "Table IV (untuned deep baselines)"
+            },
+            {
+              "benchmark": "mb-t2",
+              "model": "LSTM",
+              "value": 0.833,
+              "evidence": "Table IV (untuned deep baselines)"
+            },
+            {
+              "benchmark": "mb-t2",
+              "model": "MLP",
+              "value": 0.599,
+              "evidence": "Table IV (untuned deep baselines)"
+            },
+            {
+              "benchmark": "mb-t3",
+              "model": "Random forest",
+              "value": 0.789,
+              "evidence": "Table III (best classical model)"
+            },
+            {
+              "benchmark": "mb-t3",
+              "model": "MLP",
+              "value": 0.755,
+              "evidence": "Table IV (untuned deep baselines)"
+            },
+            {
+              "benchmark": "mb-t3",
+              "model": "LSTM",
+              "value": 0.672,
+              "evidence": "Table IV (untuned deep baselines)"
+            },
+            {
+              "benchmark": "mb-t3",
+              "model": "1D-CNN",
+              "value": 0.365,
+              "evidence": "Table IV (untuned deep baselines)"
+            }
+          ]
+        }
+      ],
+      "benchmarks": [
+        {
+          "id": "mb-t1",
+          "label": "Cell-disjoint by_cell_primary split: SOH regression",
+          "metric": "R²",
+          "unit": "",
+          "note": "Task T1; classical models over 5 seeds, deep models over 3 seeds (Tables III–IV)."
+        },
+        {
+          "id": "mb-t2",
+          "label": "Cell-disjoint by_cell_primary split: second-life classification",
+          "metric": "Balanced accuracy (second life)",
+          "unit": "",
+          "note": "Task T2, SOH cutoff 0.85."
+        },
+        {
+          "id": "mb-t3",
+          "label": "Cell-disjoint by_cell_primary split: anomaly detection, 3 classes",
+          "metric": "Balanced accuracy (anomaly)",
+          "unit": "",
+          "note": "Task T3."
         }
       ]
     },
@@ -2671,9 +2814,31 @@
             "Adaptive filter",
             "Residual learning"
           ],
-          "split": "",
+          "split": "Random train/test splits repeated 10 times (8 Ah NCA pouch cells).",
           "evidence": "Results; Data availability",
-          "reviewed": false
+          "reviewed": false,
+          "results": [
+            {
+              "benchmark": null,
+              "model": "Residual learner, correction model",
+              "value": 0.779,
+              "evidence": "Table S3",
+              "metric": "MAE",
+              "unit": "% SOH",
+              "test_set": "8 Ah NCA pouch cells, random splits",
+              "why": "Random splits of samples, so the same cell can appear in training and test."
+            },
+            {
+              "benchmark": null,
+              "model": "Residual learner, compensation model",
+              "value": 0.783,
+              "evidence": "Table S3",
+              "metric": "MAE",
+              "unit": "% SOH",
+              "test_set": "8 Ah NCA pouch cells, random splits",
+              "why": "Random splits of samples, so the same cell can appear in training and test."
+            }
+          ]
         }
       ]
     },
@@ -2765,9 +2930,38 @@
             "Lumped thermal model",
             "Feed-forward neural network"
           ],
-          "split": "",
+          "split": "Drive cycles and fast charges at 15 °C and 25 °C held out from training.",
           "evidence": "Data availability (Borealis 10.5683/SP3/THZTJC)",
-          "reviewed": false
+          "reviewed": false,
+          "results": [
+            {
+              "benchmark": "naguib-test",
+              "model": "Lumped thermal model + neural network (proposed)",
+              "value": 0.45,
+              "evidence": "Fig. 2c"
+            },
+            {
+              "benchmark": "naguib-test",
+              "model": "Lumped thermal model only",
+              "value": 1.3,
+              "evidence": "Fig. 2c"
+            },
+            {
+              "benchmark": "naguib-test",
+              "model": "Neural network only",
+              "value": 1.84,
+              "evidence": "Fig. 2c"
+            }
+          ]
+        }
+      ],
+      "benchmarks": [
+        {
+          "id": "naguib-test",
+          "label": "8 test profiles × 8 cells, not used in training",
+          "metric": "RMSE",
+          "unit": "°C",
+          "note": "Cell temperature estimation, average over test profiles (Fig. 2c)."
         }
       ]
     },
@@ -2903,7 +3097,33 @@
           ],
           "split": "Leave two cells out, repeated.",
           "evidence": "Results; Methods",
-          "reviewed": false
+          "reviewed": false,
+          "results": [
+            {
+              "benchmark": "jones-l2o",
+              "model": "EIS + usage protocol (proposed)",
+              "value": 8.2,
+              "evidence": "Results text"
+            },
+            {
+              "benchmark": "jones-l2o",
+              "model": "Capacity–voltage features with history (state of the art)",
+              "value": 8.8,
+              "evidence": "Results text"
+            },
+            {
+              "benchmark": "jones-l2o",
+              "model": "Usage protocol only",
+              "value": 15.4,
+              "evidence": "Results text"
+            },
+            {
+              "benchmark": "jones-l2o",
+              "model": "EIS only",
+              "value": 20.7,
+              "evidence": "Results text"
+            }
+          ]
         },
         {
           "title": "Two points are enough",
@@ -2923,6 +3143,15 @@
           "split": "",
           "evidence": "Section 4.2.1; Table 3",
           "reviewed": false
+        }
+      ],
+      "benchmarks": [
+        {
+          "id": "jones-l2o",
+          "label": "Powerstream cells, leave two cells out (Jones et al.)",
+          "metric": "Median error",
+          "unit": "%",
+          "note": "Next-cycle discharge capacity; median percentage test error over repeated leave-two-cells-out splits."
         }
       ]
     },
@@ -3130,7 +3359,33 @@
           ],
           "split": "",
           "evidence": "Results; Source Data",
-          "reviewed": false
+          "reviewed": false,
+          "results": [
+            {
+              "benchmark": "tao-case7",
+              "model": "Random forest trained on generated data",
+              "value": 6.0,
+              "evidence": "Fig. 4d"
+            },
+            {
+              "benchmark": "tao-case7",
+              "model": "Random forest trained on measured data only",
+              "value": 23.8,
+              "evidence": "Fig. 4d"
+            },
+            {
+              "benchmark": "tao-case3",
+              "model": "Random forest trained on generated data",
+              "value": 5.4,
+              "evidence": "Fig. 4c"
+            },
+            {
+              "benchmark": "tao-case3",
+              "model": "Random forest trained on measured data only",
+              "value": 17.3,
+              "evidence": "Fig. 4c"
+            }
+          ]
         },
         {
           "title": "PulseBat: A field-accessible dataset for second-life battery diagnostics from realistic histories using multidimensional rapid pulse test",
@@ -3149,6 +3404,22 @@
           "split": "",
           "evidence": "Abstract",
           "reviewed": false
+        }
+      ],
+      "benchmarks": [
+        {
+          "id": "tao-case7",
+          "label": "NMC 2.1 Ah, unseen low SOC (extrapolation, Case 7)",
+          "metric": "MAPE",
+          "unit": "%",
+          "note": "Measured data only at 5% and 10% SOC; tested on other states of charge (Fig. 4d)."
+        },
+        {
+          "id": "tao-case3",
+          "label": "NMC 2.1 Ah, unseen SOC 10–45% (interpolation, Case 3)",
+          "metric": "MAPE",
+          "unit": "%",
+          "note": "Fig. 4c."
         }
       ]
     },
@@ -3804,7 +4075,7 @@
       ]
     },
     "lg-18650hg2-mcmaster": {
-      "coverage": "Only the original study is listed; reuse by other groups has not been searched yet.",
+      "coverage": "The original study and one later study with reported results; other reuse has not been searched yet.",
       "papers": [
         {
           "title": "Robust xEV Battery State-of-Charge Estimator Design using Deep Neural Networks",
@@ -3824,11 +4095,73 @@
           "split": "",
           "evidence": "Listed on the data record",
           "reviewed": false
+        },
+        {
+          "title": "Estimating State of Charge for xEV batteries using 1D Convolutional Neural Networks and Transfer Learning",
+          "authors": "Bhattacharjee, Verma, Mishra, Saha",
+          "year": 2021,
+          "venue": "arXiv preprint 2011.00841",
+          "doi": "",
+          "url": "https://arxiv.org/abs/2011.00841",
+          "relation": "Independent group",
+          "use": "Estimates state of charge with a 1D convolutional network over a window of past measurements, and transfers it between the two McMaster cell datasets.",
+          "tasks": [
+            "SOC estimation"
+          ],
+          "methods": [
+            "1D CNN",
+            "Transfer learning"
+          ],
+          "split": "Train on Mixed cycles 1–8 and UDDS; validate on LA92; test on US06 and HWFET at −20 to 25 °C.",
+          "evidence": "Tables III and IV (10 Hz sampling)",
+          "results": [
+            {
+              "benchmark": "bh-us06",
+              "model": "1D CNN, 500-sample window",
+              "value": 0.53,
+              "evidence": "Table IV"
+            },
+            {
+              "benchmark": "bh-us06",
+              "model": "1D CNN, 1000-sample window",
+              "value": 0.44,
+              "evidence": "Table IV"
+            },
+            {
+              "benchmark": "bh-hwfet",
+              "model": "1D CNN, 500-sample window",
+              "value": 0.61,
+              "evidence": "Table IV"
+            },
+            {
+              "benchmark": "bh-hwfet",
+              "model": "1D CNN, 1000-sample window",
+              "value": 0.48,
+              "evidence": "Table IV"
+            }
+          ],
+          "reviewed": false
+        }
+      ],
+      "benchmarks": [
+        {
+          "id": "bh-us06",
+          "label": "US06 test, −20 to 25 °C (train on Mixed cycles 1–8 and UDDS)",
+          "metric": "MAE",
+          "unit": "% SOC",
+          "note": "Protocol of Bhattacharjee et al.: LA92 for validation; errors averaged over the test temperatures."
+        },
+        {
+          "id": "bh-hwfet",
+          "label": "HWFET test, −20 to 25 °C (train on Mixed cycles 1–8 and UDDS)",
+          "metric": "MAE",
+          "unit": "% SOC",
+          "note": "Protocol of Bhattacharjee et al.: LA92 for validation; errors averaged over the test temperatures."
         }
       ]
     },
     "panasonic-18650pf-data": {
-      "coverage": "Only the original study is listed; reuse by other groups has not been searched yet.",
+      "coverage": "The original study and one later study with reported results; other reuse has not been searched yet.",
       "papers": [
         {
           "title": "Long Short-Term Memory Networks for Accurate State-of-Charge Estimation of Li-ion Batteries",
@@ -3848,6 +4181,68 @@
           "split": "",
           "evidence": "Listed on the data record",
           "reviewed": false
+        },
+        {
+          "title": "Estimating State of Charge for xEV batteries using 1D Convolutional Neural Networks and Transfer Learning",
+          "authors": "Bhattacharjee, Verma, Mishra, Saha",
+          "year": 2021,
+          "venue": "arXiv preprint 2011.00841",
+          "doi": "",
+          "url": "https://arxiv.org/abs/2011.00841",
+          "relation": "Independent group",
+          "use": "Estimates state of charge with a 1D convolutional network over a window of past measurements, and transfers it between the two McMaster cell datasets.",
+          "tasks": [
+            "SOC estimation"
+          ],
+          "methods": [
+            "1D CNN",
+            "Transfer learning"
+          ],
+          "split": "Train on Cycles 1–4 and UDDS; validate on LA92; test on US06 and HWFET at −20 to 25 °C.",
+          "evidence": "Tables III and IV (10 Hz sampling)",
+          "results": [
+            {
+              "benchmark": "bh-us06",
+              "model": "1D CNN, 500-sample window",
+              "value": 0.83,
+              "evidence": "Table III"
+            },
+            {
+              "benchmark": "bh-us06",
+              "model": "1D CNN, 1000-sample window",
+              "value": 0.71,
+              "evidence": "Table III"
+            },
+            {
+              "benchmark": "bh-hwfet",
+              "model": "1D CNN, 500-sample window",
+              "value": 0.71,
+              "evidence": "Table III"
+            },
+            {
+              "benchmark": "bh-hwfet",
+              "model": "1D CNN, 1000-sample window",
+              "value": 0.86,
+              "evidence": "Table III"
+            }
+          ],
+          "reviewed": false
+        }
+      ],
+      "benchmarks": [
+        {
+          "id": "bh-us06",
+          "label": "US06 test, −20 to 25 °C (train on Cycles 1–4 and UDDS)",
+          "metric": "MAE",
+          "unit": "% SOC",
+          "note": "Protocol of Bhattacharjee et al.: LA92 for validation; errors averaged over the test temperatures."
+        },
+        {
+          "id": "bh-hwfet",
+          "label": "HWFET test, −20 to 25 °C (train on Cycles 1–4 and UDDS)",
+          "metric": "MAE",
+          "unit": "% SOC",
+          "note": "Protocol of Bhattacharjee et al.: LA92 for validation; errors averaged over the test temperatures."
         }
       ]
     },

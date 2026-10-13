@@ -1373,7 +1373,7 @@ function usesSection(d) {
 }
 
 /* ---------- Metrics view: every reported number for one dataset, best first within each metric ---------- */
-const HIGHER_BETTER = /(^|[^a-z])(r2|r²|r\^2|accuracy|acc|auc|roc-auc|f1|precision|recall|score)\b/i;
+const HIGHER_BETTER = /(^|[^a-z])(r2|r²|r\^2|accuracy|acc|auc|roc-auc|f1|precision|recall|score)(?![a-z])/i;
 function metricRows(d) {
   const entry = USES[d.id] || {};
   const benches = new Map((Array.isArray(entry.benchmarks) ? entry.benchmarks : []).map(b => [b.id, b]));
@@ -1399,7 +1399,7 @@ function metricsView(d) {
   const keys = [...groups.keys()].sort((a, b) => groups.get(b).length - groups.get(a).length);
   let cur = keys[0], onlyBench = '', showAll = false;
   const TOP = 8;  /* show only the best few by default */
-  const label = k => { const [m, u] = k.split('|'); return u ? `${m} (${u})` : `${m} (unit not stated)`; };
+  const label = k => { const [m, u] = k.split('|'); return u ? `${m} (${u})` : HIGHER_BETTER.test(m) ? m : `${m} (unit not stated)`; };
   const wrap = h('div', { class: 'metrics' });
   const draw = () => {
     const [metric] = cur.split('|');
