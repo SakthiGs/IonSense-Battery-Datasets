@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-13",
+  "updated": "2026-10-18",
   "note": "Datasets and studies added to IonSense, by the day they first appeared in the catalogue.",
   "new_datasets": {
     "argonne-camp-2023": "2026-10-11",
@@ -407,16 +407,16 @@
               "name": "HUST Battery Dataset (77 LFP cells)"
             },
             {
+              "id": "data-driven-capacity-estimation-from-voltage-relaxation",
+              "name": "Tongji (TJU) Battery Dataset: Voltage Relaxation"
+            },
+            {
               "id": "early-cycle-life",
               "name": "MIT–Stanford–TRI Battery Cycle Life Dataset (MATR)"
             },
             {
               "id": "physics-informed-neural-network-for-lithium-ion-battery-degradation-modelling",
               "name": "XJTU Battery Degradation Dataset"
-            },
-            {
-              "id": "data-driven-capacity-estimation-from-voltage-relaxation",
-              "name": "Tongji (TJU) Battery Dataset: Voltage Relaxation"
             }
           ],
           "title": "Battery health prognosis using Physics-informed neural network with Quantum Feature mapping",
@@ -427,16 +427,16 @@
         {
           "datasets": [
             {
-              "id": "real-time-personalized-health-status-prediction-via-deep-transfer-learning",
-              "name": "HUST Battery Dataset (77 LFP cells)"
-            },
-            {
               "id": "physics-informed-neural-network-for-lithium-ion-battery-degradation-modelling",
               "name": "XJTU Battery Degradation Dataset"
             },
             {
               "id": "early-cycle-life",
               "name": "MIT–Stanford–TRI Battery Cycle Life Dataset (MATR)"
+            },
+            {
+              "id": "real-time-personalized-health-status-prediction-via-deep-transfer-learning",
+              "name": "HUST Battery Dataset (77 LFP cells)"
             },
             {
               "id": "data-driven-capacity-estimation-from-voltage-relaxation",
@@ -475,16 +475,16 @@
         {
           "datasets": [
             {
+              "id": "early-cycle-life",
+              "name": "MIT–Stanford–TRI Battery Cycle Life Dataset (MATR)"
+            },
+            {
               "id": "calce-battery-data",
               "name": "CALCE Battery Data (University of Maryland)"
             },
             {
               "id": "nasa-battery-data-set",
               "name": "NASA Battery Data Set"
-            },
-            {
-              "id": "early-cycle-life",
-              "name": "MIT–Stanford–TRI Battery Cycle Life Dataset (MATR)"
             }
           ],
           "title": "Multi-dataset battery health prediction model for sustainable electric vehicle systems using quantum machine learning",
@@ -495,16 +495,16 @@
         {
           "datasets": [
             {
-              "id": "calce-battery-data",
-              "name": "CALCE Battery Data (University of Maryland)"
-            },
-            {
               "id": "data-driven-capacity-estimation-from-voltage-relaxation",
               "name": "Tongji (TJU) Battery Dataset: Voltage Relaxation"
             },
             {
               "id": "early-cycle-life",
               "name": "MIT–Stanford–TRI Battery Cycle Life Dataset (MATR)"
+            },
+            {
+              "id": "calce-battery-data",
+              "name": "CALCE Battery Data (University of Maryland)"
             }
           ],
           "title": "Quantum-Enhanced Recurrent Neural Networks via Variational Quantum Gating for Battery State of Health Prediction",
@@ -515,12 +515,12 @@
         {
           "datasets": [
             {
-              "id": "tum-commercial-aging",
-              "name": "Experimental Degradation Study of Commercial Li-Ion Cells"
-            },
-            {
               "id": "discovery-learning-predicts-battery-cycle-life-from-minimal-experiments",
               "name": "Discovery Learning Predicts Battery Cycle Life from Minimal Experiments"
+            },
+            {
+              "id": "tum-commercial-aging",
+              "name": "Experimental Degradation Study of Commercial Li-Ion Cells"
             }
           ],
           "title": "Discovery Learning predicts battery cycle life from minimal experiments",
@@ -563,12 +563,12 @@
         {
           "datasets": [
             {
-              "id": "second-life-lithium-ion-battery-aging-dataset-based-on-grid-storage-cycling",
-              "name": "Second-Life Lithium-Ion Battery Aging Dataset Based on Grid Storage Cycling"
-            },
-            {
               "id": "lithium-ion-battery-aging-dataset-based-on-ev-real-driving-profiles",
               "name": "Lithium-Ion Battery Aging Dataset Based on EV Real-Driving Profiles"
+            },
+            {
+              "id": "second-life-lithium-ion-battery-aging-dataset-based-on-grid-storage-cycling",
+              "name": "Second-Life Lithium-Ion Battery Aging Dataset Based on Grid Storage Cycling"
             }
           ],
           "title": "Second-life lithium-ion battery aging dataset based on grid storage cycling",
