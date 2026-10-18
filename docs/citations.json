@@ -1,6 +1,6 @@
 {
   "source": "OpenAlex",
-  "updated": "2026-10-13",
+  "updated": "2026-10-18",
   "note": "Times the dataset's original paper has been cited, according to OpenAlex.",
   "datasets": {
     "home-storage-rwth": {
@@ -9,7 +9,7 @@
       "title": "Multi-year field measurements of home storage systems and their use in capacity estimation"
     },
     "field-28-lfp": {
-      "count": 25,
+      "count": 26,
       "openalex": "https://openalex.org/W4403896537",
       "title": "Gaussian process-based online health monitoring and fault analysis of lithium-ion battery systems from field data"
     },
@@ -24,17 +24,17 @@
       "title": "Predicting battery end of life from solar off-grid system field data using machine learning"
     },
     "challenges-and-opportunities-in-truck-electrification-big-operational-data": {
-      "count": 82,
+      "count": 86,
       "openalex": "https://openalex.org/W4401517764",
       "title": "Challenges and opportunities in truck electrification revealed by big operational data"
     },
     "onroad-capacity": {
-      "count": 268,
+      "count": 269,
       "openalex": "https://openalex.org/W4327954986",
       "title": "Prognostics of battery capacity based on charging data and data-driven methods for on-road vehicles"
     },
     "online-fault-zenodo": {
-      "count": 93,
+      "count": 94,
       "openalex": "https://openalex.org/W4407572542",
       "title": "Model-constrained deep learning for online fault diagnosis in Li-ion batteries over stochastic conditions"
     },
@@ -59,7 +59,7 @@
       "title": "Unveiling the performance impact of module level features on parallel-connected lithium-ion cells via explainable machine learning techniques on a full factorial design of experiments"
     },
     "experimental-data-galvanostatic-discharge-at-different-c-rates-and-temperatures": {
-      "count": 67,
+      "count": 68,
       "openalex": "https://openalex.org/W3129661589",
       "title": "Experimental data of lithium-ion batteries under galvanostatic discharge tests at different rates and temperatures of operation"
     },
@@ -69,22 +69,22 @@
       "title": "Increasing generalization capability of battery health estimation using continual learning"
     },
     "tum-commercial-aging": {
-      "count": 114,
+      "count": 115,
       "openalex": "https://openalex.org/W4320351978",
       "title": "Experimental degradation study of a commercial lithium-ion battery"
     },
     "underlying-dataset-for-battery-pack-degradation-under-thermal-gradients": {
-      "count": 79,
+      "count": 81,
       "openalex": "https://openalex.org/W4390587027",
       "title": "Degradation in parallel-connected lithium-ion battery packs under thermal gradients"
     },
     "early-cycle-life": {
-      "count": 3164,
+      "count": 3183,
       "openalex": "https://openalex.org/W2924382816",
       "title": "Data-driven prediction of battery cycle life before capacity degradation"
     },
     "physics-informed-neural-network-for-lithium-ion-battery-degradation-modelling": {
-      "count": 849,
+      "count": 864,
       "openalex": "https://openalex.org/W4398164319",
       "title": "Physics-informed neural network for lithium-ion battery degradation stable modeling and prognosis"
     },
@@ -109,7 +109,7 @@
       "title": "Comprehensive battery aging dataset: capacity and impedance fade measurements of a lithium-ion NMC/C-SiO cell"
     },
     "dynamic-cycling-enhances-battery-lifetime": {
-      "count": 91,
+      "count": 92,
       "openalex": "https://openalex.org/W4405194697",
       "title": "Dynamic cycling enhances battery lifetime"
     },
@@ -124,12 +124,12 @@
       "title": "Lithium-ion battery degradation modelling using universal differential equations: Development of a cost-effective parameterisation methodology"
     },
     "cycle-aging-data-of-automotive-grade-li-ion-cells-under-realistic-conditions-vw-id-3": {
-      "count": 38,
+      "count": 39,
       "openalex": "https://openalex.org/W4406959139",
       "title": "Understanding lithium-ion battery degradation in vehicle applications: Insights from realistic and accelerated aging tests using Volkswagen ID.3 pouch cells"
     },
     "comprehensive-cycle-aging-data-and-analysis-for-commercial-21700-cells": {
-      "count": 74,
+      "count": 75,
       "openalex": "https://openalex.org/W4394006735",
       "title": "Lithium-ion battery degradation: comprehensive cycle ageing data and analysis for commercial 21700 cells"
     },
@@ -169,7 +169,7 @@
       "title": "Thermal fault detection of lithium-ion battery packs through an integrated physics and deep neural network based model"
     },
     "battery-failure-detection-and-fpi-estimation-during-cycling-to-failure": {
-      "count": 11,
+      "count": 13,
       "openalex": "https://openalex.org/W7118018124",
       "title": "Seeing the unseen: real-time tracking of battery cycling-to-failure via surface strain"
     },
@@ -189,32 +189,32 @@
       "title": "Data-driven direct diagnosis of Li-ion batteries connected to photovoltaics"
     },
     "data-driven-capacity-estimation-from-voltage-relaxation": {
-      "count": 814,
+      "count": 816,
       "openalex": "https://openalex.org/W4224947065",
       "title": "Data-driven capacity estimation of commercial lithium-ion batteries from voltage relaxation"
     },
     "impedance-based-forecasting-of-battery-performance-amid-uneven-usage": {
-      "count": 225,
+      "count": 227,
       "openalex": "https://openalex.org/W4292060475",
       "title": "Impedance-based forecasting of lithium-ion battery performance amid uneven usage"
     },
     "identifying-degradation-patterns-via-impedance-spectroscopy-and-machine-learning": {
-      "count": 873,
+      "count": 881,
       "openalex": "https://openalex.org/W3010408268",
       "title": "Identifying degradation patterns of lithium ion batteries from impedance spectroscopy using machine learning"
     },
     "real-time-personalized-health-status-prediction-via-deep-transfer-learning": {
-      "count": 306,
+      "count": 311,
       "openalex": "https://openalex.org/W4288770702",
       "title": "Real-time personalized health status prediction of lithium-ion batteries using deep transfer learning"
     },
     "generative-learning-assisted-state-of-health-estimation-for-battery-recycling": {
-      "count": 150,
+      "count": 153,
       "openalex": "https://openalex.org/W4404632311",
       "title": "Generative learning assisted state-of-health estimation for sustainable battery recycling with random retirement conditions"
     },
     "wmg-dib-dataset-rapid-soh-estimation-via-eis-and-ml": {
-      "count": 39,
+      "count": 40,
       "openalex": "https://openalex.org/W4366401096",
       "title": "Dataset for rapid state of health estimation of lithium batteries using EIS and machine learning: Training and validation"
     },
@@ -239,7 +239,7 @@
       "title": "Revealing how internal sensors in a smart battery impact the local graphite lithiation mechanism"
     },
     "rate-capability-ocv-impedance-and-half-cell-data-sodium-ion-and-lfp-batteries": {
-      "count": 65,
+      "count": 66,
       "openalex": "https://openalex.org/W4407275632",
       "title": "Comparing the electrical performance of commercial sodium-ion and lithium-iron-phosphate batteries"
     },
@@ -254,7 +254,7 @@
       "title": "A dataset of over one thousand computed tomography scans of battery cells"
     },
     "source-data-reuse-and-recycling-pathway-of-retired-batteries": {
-      "count": 242,
+      "count": 245,
       "openalex": "https://openalex.org/W4402125701",
       "title": "Pathway decisions for reuse and recycling of retired lithium-ion batteries considering economic and environmental functions"
     },
@@ -264,7 +264,7 @@
       "title": "Long-term sweat testing dataset for second-life batteries"
     },
     "randomized-battery-usage-data-set-nasa": {
-      "count": 219,
+      "count": 251,
       "openalex": "https://openalex.org/W2623184231",
       "title": "Adaptation of an electrochemistry-based Li-ion battery model to account for deterioration observed under randomized use"
     },
@@ -274,12 +274,12 @@
       "title": "Verification of a remaining flying time prediction system for small electric aircraft"
     },
     "small-satellite-power-simulation-nasa": {
-      "count": 14,
+      "count": 15,
       "openalex": "https://openalex.org/W2133032139",
       "title": "A battery certification testbed for small satellite missions"
     },
     "accelerated-battery-life-testing-nasa": {
-      "count": 15,
+      "count": 16,
       "openalex": "https://openalex.org/W4388522651",
       "title": "Prognosis of Li-ion batteries under large load variations using hybrid physics-informed neural networks"
     },
@@ -289,12 +289,12 @@
       "title": "MagBridge-Battery: A synthetic bridge dataset for Li-ion magnetometry and state-of-health diagnostics"
     },
     "calce-battery-data": {
-      "count": 1091,
+      "count": 1095,
       "openalex": "https://openalex.org/W2078279667",
       "title": "Prognostics of lithium-ion batteries based on Dempster–Shafer theory and the Bayesian Monte Carlo method"
     },
     "oxford-battery-degradation-dataset-1": {
-      "count": 126,
+      "count": 134,
       "openalex": "https://openalex.org/W2889862006",
       "title": "Diagnosis and prognosis of degradation in lithium-ion batteries"
     },
@@ -304,17 +304,17 @@
       "title": "Investigation of Path-Dependent Degradation in Lithium-Ion Batteries"
     },
     "sandia-commercial-cell-degradation": {
-      "count": 601,
+      "count": 607,
       "openalex": "https://openalex.org/W3048596141",
       "title": "Degradation of Commercial Lithium-Ion Cells as a Function of Chemistry and Cycling Conditions"
     },
     "hnei-lg-icr18650c2-variability": {
-      "count": 134,
+      "count": 135,
       "openalex": "https://openalex.org/W2799437548",
       "title": "Intrinsic Variability in the Degradation of a Batch of Commercial 18650 Lithium-Ion Cells"
     },
     "closed-loop-fast-charging-optimisation": {
-      "count": 1151,
+      "count": 1158,
       "openalex": "https://openalex.org/W3007217854",
       "title": "Closed-loop optimization of fast-charging protocols for batteries with machine learning"
     },
@@ -324,22 +324,22 @@
       "title": "A battery dataset for electric vertical takeoff and landing aircraft"
     },
     "evbattery-large-scale-ev-dataset": {
-      "count": 1,
+      "count": 4,
       "openalex": "https://openalex.org/W4221145764",
       "title": "EVBattery: A Large-Scale Electric Vehicle Dataset for Battery Health and Capacity Estimation"
     },
     "osf-battery-magnetometry-archive": {
-      "count": 86,
+      "count": 87,
       "openalex": "https://openalex.org/W3022639876",
       "title": "Sensitive magnetometry reveals inhomogeneities in charge storage and weak transient internal currents in Li-ion cells"
     },
     "panasonic-18650pf-data": {
-      "count": 893,
+      "count": 899,
       "openalex": "https://openalex.org/W2776458183",
       "title": "Long Short-Term Memory Networks for Accurate State-of-Charge Estimation of Li-ion Batteries"
     },
     "unibo-powertools-dataset": {
-      "count": 38,
+      "count": 39,
       "openalex": "https://openalex.org/W3194992794",
       "title": "Li-Ion Batteries State-of-Charge Estimation Using Deep LSTM at Various Battery Specifications and Discharge Cycles"
     },
@@ -349,12 +349,12 @@
       "title": "Reversible and Irreversible Expansion of Lithium-Ion Batteries Under a Wide Range of Stress Factors"
     },
     "umich-formation-protocols": {
-      "count": 172,
+      "count": 175,
       "openalex": "https://openalex.org/W3207967096",
       "title": "Predicting the impact of formation protocols on battery lifetime immediately after manufacturing"
     },
     "rwth-48-cell-cycle-ageing": {
-      "count": 228,
+      "count": 229,
       "openalex": "https://openalex.org/W3171353223",
       "title": "One-shot battery degradation trajectory prediction with deep learning"
     },
@@ -364,7 +364,7 @@
       "title": "Range Extension via Electrothermal Recuperation"
     },
     "argonne-camp-2023": {
-      "count": 177,
+      "count": 179,
       "openalex": "https://openalex.org/W4214667576",
       "title": "Feature engineering for machine learning enabled early prediction of battery lifetime"
     },
@@ -399,7 +399,7 @@
       "title": "Big data training data for artificial intelligence-based Li-ion diagnosis and prognosis"
     },
     "lg-m50-parameterisation-data": {
-      "count": 608,
+      "count": 614,
       "openalex": "https://openalex.org/W3023537476",
       "title": "Development of Experimental Techniques for Parameterization of Multi-scale Lithium-ion Battery Models"
     },
