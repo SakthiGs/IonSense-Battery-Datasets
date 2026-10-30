@@ -62,6 +62,34 @@ The catalogue links to **original sources** and documents which resources may be
 
 For defensible BMS research, inspect full per-cell capacity trajectories, specify the knee-onset definition, quantify uncertainty when knees are weak or unobserved, and split by battery cell and preferably by cycling protocol to prevent leakage.
 
+### Knee-onset evidence quality (source-audited)
+
+IonSense maintains a **separate, machine-readable desk audit** at [`docs/knee_quality.json`](docs/knee_quality.json), reviewed 30 October 2026. It includes **nine** knee-relevant records, each linked to primary evidence, while preserving the distinction between source-confirmed knees, source-confirmed knee-onset studies, and ordinary unlabelled ageing datasets. The public dashboard has a **Knee evidence** filter and shows each audited record's label availability, capacity sampling resolution, study caveats, and next validation step.
+
+| Evidence tier | Audited records | Correct interpretation |
+|---|---:|---|
+| Published knee-onset study | 2 | Published knee-onset analysis exists; **does not imply pre-labelled per-cell onset targets are downloadable** |
+| Published knee-point study | 1 | Knee-point-specific measurements or analysis; knee onset is not interchangeable with the later knee point |
+| Real-cell knee demonstration | 1 | Small experimental case study; insufficient for generalization claims |
+| Unlabelled ageing candidate | 4 | Cycling/retention information exists; knee presence, prevalence and onset labels have **not** been established |
+| Aggregate benchmark, not audited | 1 | Source overlap must be resolved before treating samples as independent |
+
+**Not assessed** means we have not reviewed a dataset for knee-onset research; it does not mean the dataset has no knees. A desk audit is not a reproducibility or download test.
+
+**Protocol for promoting any record to a validated knee-onset benchmark**
+
+1. **Provenance:** download the original per-cell capacity data; record DOI/version, licence, raw-file hashes, unit and protocol details; never redistribute files without permission.
+2. **Eligibility:** graph each cell's entire capacity-vs-cycle history, identify missing or repeated cycles, temperature/charge-protocol shifts and whether degradation is observable long enough to show a knee.
+3. **Definitions:** report the mathematical knee-**onset** and knee-**point** definitions and parameters separately; compare at least two fitting methods (for example Bacon–Watts and degradation curvature) and report disagreement.
+4. **Event uncertainty:** represent uncertain onset time with cycle intervals, and cells without an observed event as **right-censored/no confirmed knee**, not made-up knee dates; do not impose a knee at 80% SOH.
+5. **Leakage control:** split by **cell**, preferably by batch, laboratory and cycling protocol; any labels estimated from the full curve are permitted only as *offline supervision*, never as online features.
+6. **BMS usefulness:** withhold future data at inference time; evaluate error in cycles, lead time, false alarms, uncertainty calibration and whether a warning arrives early enough to alter operation.
+7. **Promotion gate:** only mark labels **verified** when the derived target file, script, per-cell provenance, method parameters, inclusion and censoring rules, and independent verification are stored or publicly linked.
+
+The automated validator [`scripts/validate_knee_quality.py`](scripts/validate_knee_quality.py) checks evidence category consistency and source-link integrity. **It cannot verify raw file correctness or physical knee-event truth.**
+
+
+
 Category counts are for indexed **records**, not confirmed independent datasets or verified downloads. The index can include publications, repositories, code or model resources; potential overlaps and duplicates need source-level review.
 
 ## Data and website files
