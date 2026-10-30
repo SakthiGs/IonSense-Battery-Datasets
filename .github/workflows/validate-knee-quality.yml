@@ -1,0 +1,26 @@
+name: Validate knee evidence quality
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - docs/datasets.json
+      - docs/knee_quality.json
+      - docs/index.html
+      - scripts/validate_knee_quality.py
+      - .github/workflows/validate-knee-quality.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate knee metadata and source references
+        run: python scripts/validate_knee_quality.py
