@@ -17,6 +17,8 @@ The current index contains **96 entries in 9 research categories**. It covers re
 - **Discover** resources with text search and faceted filters for **application domain, research category, chemistry, research task, measurements and resource type**.
 - **Compare up to three entries** side-by-side using the metadata available, including access status and documentation.
 - **Explore coverage** by research task and catalogue category; switch among cards, table, and coverage views.
+- **Inspect metadata coverage** for each search or filter result: chemistry labels reviewed against sources, records with licence metadata, and resources with an identified application domain. These counts describe catalogue documentation, not independently verified data access.
+- **Review pending candidates** using the open GitHub Issues queue; discovered suggestions are not included in the catalogue until curated.
 - **Visit original sources** and linked publications. Source owners retain control of their data and licensing terms.
 - **Suggest corrections or new records** through GitHub Issues.
 
