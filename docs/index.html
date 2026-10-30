@@ -264,6 +264,14 @@ mark{background:color-mix(in srgb,var(--warn) 22%,transparent);color:inherit;bor
 .btn.ghost{border-color:transparent;color:var(--ink-2);margin-left:auto}
 .btn.ghost:hover{background:var(--sunken);color:var(--ink)}
 
+/* Knee research audit is intentionally separate from dataset labels and permits a no-knee outcome. */
+.knee-audit{padding:14px 16px;border:1px solid var(--line);border-radius:var(--r-m);background:var(--sunken)}
+.knee-audit h3{font-size:15px;margin:0 0 9px}
+.knee-audit p{font-size:13.5px;line-height:1.5;margin:5px 0;color:var(--ink-2)}
+.knee-audit p strong{color:var(--ink);font-weight:600}
+.knee-audit .knee-desk{font-size:12.5px;margin-top:10px}
+.knee-audit a{color:var(--accent-ink)}
+
 /* Table + coverage */
 .table-wrap{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:var(--r-m)}
 table{border-collapse:collapse;width:100%;font-size:13.5px}
@@ -703,7 +711,7 @@ const CHEM_STATUS = {
   confirmed_by_users: ['Confirmed by papers that use it', false],
   inferred_related_source: ['From a related source, not the data page', false]
 };
-const PIN_LAST = new Set(['Not stated', 'No studies listed yet', 'Other or not recorded', 'Not specified', 'Not stated by source', 'Not applicable', 'Not listed', 'Other research', 'Other source', 'Uncategorised']);
+const PIN_LAST = new Set(['Not assessed for knee onset', 'Not stated', 'No studies listed yet', 'Other or not recorded', 'Not specified', 'Not stated by source', 'Not applicable', 'Not listed', 'Other research', 'Other source', 'Uncategorised']);
 /* Chemistry values that mean "no chemistry to report": not checked, checked but not stated, or not about cells. */
 const NO_CHEM = new Set(['Not specified', 'Not stated by source', 'Not applicable']);
 const UNKNOWN = new Set(['', 'see original source', 'unknown', 'n/a']);
@@ -780,11 +788,27 @@ function methodFamiliesOf(d) {
   return out.size ? [...out] : [OTHER_METHODS];
 }
 
+/* Desk-audited knee evidence; an unreviewed dataset is not a negative knee result. */
+let KNEE = {};
+const kneeOf = d => KNEE[d.id] || null;
+const kneeEvidenceOf = d => (kneeOf(d) || {}).evidence || 'Not assessed for knee onset';
+const KNEE_ORDER = [
+  'Published knee-onset study',
+  'Published knee-point study',
+  'Real-cell knee demonstration',
+  'Unlabelled ageing candidate',
+  'Aggregated benchmark; knee evidence not audited',
+  'Not assessed for knee onset'
+];
+
 const FACETS = [
   { key: 'category', title: 'Category', short: 'Category', get: d => [d.category || 'Uncategorised'] },
   { key: 'domain', title: 'Application domain', short: 'Application', get: domainOf },
   { key: 'chemistry', title: 'Cell chemistry', short: 'Chemistry', get: chemOf },
   { key: 'task', title: 'Research task', short: 'Task', get: d => d.tasks || [], switchable: true },
+  { key: 'knee', title: 'Knee research evidence', short: 'Knee evidence', get: d => [kneeEvidenceOf(d)],
+    order: () => KNEE_ORDER,
+    note: 'Source-level desk audit only; published knee-onset evidence is not proof of downloadable ground-truth labels. Unassessed does not mean no knee.' },
   { key: 'method', title: 'Methods used in studies', short: 'Methods', get: methodFamiliesOf, switchable: true, order: () => METHOD_FAMILIES.map(x => x[0]),
     note: 'From the published studies listed for each dataset. Most datasets list only their original study so far.' },
   { key: 'signal', title: 'Measurements', short: 'Measurements', get: d => (d.signals && d.signals.length) ? d.signals : ['Not listed'], switchable: true },
@@ -1211,6 +1235,8 @@ function card(d) {
   addFact('Chemistry', chemOf(d).join(', '));
   addFact('Scale', known(d.scale));
   addFact('Source', known(d.source));
+  const knee = kneeOf(d);
+  if (knee) addFact('Knee evidence', knee.evidence);
   const rel = relOf(d);
   if (rel) addFact(isRelease(rel) ? 'Released' : 'First online', h('span', { title: `${rel.kind} · ${rel.source}` }, rel.date.slice(0, 4)));
   const nCite = citeOf(d);
@@ -1552,6 +1578,11 @@ function openDetail(d, jump) {
   add('Licence', d.license || '');
   add('Samples', typeof d.samples === 'number' ? d.samples.toLocaleString() : '');
   add('Data kind', d.dataset_kind || '');
+  const kneeAudit = kneeOf(d);
+  if (kneeAudit) {
+    add('Knee evidence', kneeAudit.evidence);
+    add('Onset target status', kneeAudit.label_status);
+  }
 
   const notes = notesOf(d);
   const ev = d.chemistry_evidence && typeof d.chemistry_evidence === 'object' ? d.chemistry_evidence : null;
@@ -1576,6 +1607,17 @@ function openDetail(d, jump) {
     links,
     facts,
     notes.length ? h('div', {}, h('h3', {}, 'Notes'), h('p', { class: 'note' }, ICON_INFO(), h('span', {}, notes.join(' ')))) : null,
+    kneeAudit ? h('section', { class: 'knee-audit', 'aria-label': 'Knee research quality audit' },
+      h('h3', {}, 'Knee-onset research quality'),
+      h('p', {}, h('strong', {}, 'Evidence: '), kneeAudit.evidence, ' · ', kneeAudit.origin),
+      h('p', {}, h('strong', {}, 'Observed knee: '), kneeAudit.knee_observed),
+      h('p', {}, h('strong', {}, 'Capacity sampling: '), kneeAudit.capacity_resolution),
+      h('p', {}, h('strong', {}, 'Limitations: '), kneeAudit.warning),
+      h('p', {}, h('strong', {}, 'Research use: '), kneeAudit.research_use),
+      h('p', {}, h('strong', {}, 'Next verification: '), kneeAudit.next_check),
+      h('p', { class: 'knee-desk' }, 'Source description reviewed; raw files and individual knee labels have not been audited. ',
+        extLink(http(kneeAudit.evidence_url), 'Source evidence', 'link-btn'),
+        kneeAudit.method_url && kneeAudit.method_url !== kneeAudit.evidence_url ? [' · ', extLink(http(kneeAudit.method_url), 'Study / method', 'link-btn')] : null)) : null,
     ev && ev.note ? h('div', {}, h('h3', {}, 'Chemistry evidence'), h('p', { style: 'margin:0;font-size:14px;color:var(--ink-2)' }, ev.note, ' ', extLink(http(ev.url), 'Source', 'link-btn'))) : null,
     resultsSection(d),
     usesSection(d),
@@ -1621,6 +1663,8 @@ const COMPARE_ROWS = [
   { label: 'Application domain', list: d => d.application_domains || [] },
   { label: 'Chemistry', list: d => { const c = chemOf(d); return c[0] === 'Not specified' ? [] : c; } },
   { label: 'Research tasks', list: d => d.tasks || [] },
+  { label: 'Knee evidence', get: kneeEvidenceOf },
+  { label: 'Knee-onset labels', get: d => (kneeOf(d) || {}).label_status || 'Not assessed' },
   { label: 'Measurements', list: d => d.signals || [] },
   { label: 'Scale', get: d => known(d.scale) || NS },
   { label: 'Source', get: d => known(d.source) || NS },
@@ -1909,13 +1953,17 @@ const fmtDay = iso => { try { return new Date(iso + 'T00:00:00').toLocaleDateStr
 const linkOf = d => LINKS[d.id] || null;
 const citeOf = d => (CITES[d.id] && typeof CITES[d.id].count === 'number') ? CITES[d.id].count : null;
 const citeAsOf = () => { try { return new Date(CITES_META.updated + 'T00:00:00').toLocaleDateString('en-GB', { month: 'short', year: 'numeric' }); } catch (e) { return ''; } };
+const kneeReady = fetch('./knee_quality.json', { cache: 'no-cache' })
+  .then(r => r.ok ? r.json() : null)
+  .then(j => { if (j && j.records && typeof j.records === 'object') KNEE = j.records; })
+  .catch(() => {});
 const usesReady = fetch('./research_uses.json', { cache: 'no-cache' })
   .then(r => r.ok ? r.json() : null)
   .then(j => { if (j && j.datasets && typeof j.datasets === 'object') USES = j.datasets; })
   .catch(() => {});
 fetch('./datasets.json', { cache: 'no-cache' })
   .then(r => { if (!r.ok) throw new Error('The catalogue file returned HTTP ' + r.status + '.'); return r.json(); })
-  .then(json => Promise.all([usesReady, citesReady, linksReady, relReady, wnReady]).then(() => json))
+  .then(json => Promise.all([usesReady, citesReady, linksReady, relReady, wnReady, kneeReady]).then(() => json))
   .then(json => {
     if (!Array.isArray(json)) throw new Error('datasets.json should contain a list of datasets.');
     data = json.filter(d => d && d.name).map((d, i) => {
@@ -1923,6 +1971,7 @@ fetch('./datasets.json', { cache: 'no-cache' })
       d._v = {};
       for (const f of FACETS) d._v[f.key] = [...new Set(f.get(d).filter(Boolean))];
       d._hay = [d.name, ...(Array.isArray(d.aka) ? d.aka : []), d.source, d.description, d.category, d.chemistry, d.scale, d.notes, d.resource_note, resourceOf(d),
+        ...((kneeOf(d) ? [kneeOf(d).evidence, kneeOf(d).label_status, kneeOf(d).research_use, kneeOf(d).warning] : [])),
         ...(d.application_domains || []),
         ...(d.chemistries || []), ...(d.chemistry_families || []), ...(d.tasks || []), ...(d.signals || []),
         ...usesOf(d).flatMap(p => p.methods || [])].filter(Boolean).join(' ').toLowerCase();
