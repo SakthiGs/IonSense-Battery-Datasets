@@ -629,7 +629,9 @@
     "chemistry": "LFP",
     "tasks": [
       "Cycle life",
-      "RUL prediction"
+      "RUL prediction",
+      "Knee-onset identification",
+      "Knee-point detection"
     ],
     "source": "MIT / Stanford",
     "scale": "Early-prediction cycling dataset",
@@ -641,7 +643,7 @@
       "Cycling data",
       "Capacity"
     ],
-    "notes": "Verify the experimental setup and train/test groups at source.",
+    "notes": "Original fast-charge LFP capacity trajectories were used in the published 2020 knee-point and knee-onset identification study (DOI: 10.1016/j.egyai.2020.100006). An independent public notebook implements knee-point/onset extraction. These are derived targets, not directly measured labels; verify experimental batch and train/test separation.",
     "source_type": "data_repository",
     "access_status": "not_checked",
     "chemistries": [
@@ -663,7 +665,8 @@
       "Severson",
       "Stanford",
       "TRI"
-    ]
+    ],
+    "code_url": "https://github.com/pfermined/knee_identification"
   },
   {
     "id": "physics-informed-neural-network-for-lithium-ion-battery-degradation-modelling",
@@ -3535,5 +3538,169 @@
       "note": "Mendeley Data v4 and the associated PNAS publication specify Samsung INR18650-30Q NCA/graphite–silicon cells."
     },
     "dataset_kind": "Experimental"
+  },
+  {
+    "id": "chalmers-pybamm-nmc811-cracking-knees",
+    "name": "Chalmers Synthetic NMC811 Cracking-Induced Knee Trajectories",
+    "category": "Synthetic & Derived Battery Datasets",
+    "chemistry": "NMC",
+    "tasks": [
+      "Knee-onset identification",
+      "Knee-point detection",
+      "Degradation analysis"
+    ],
+    "source": "Chalmers University of Technology — Zhang, Altaf & Wik",
+    "scale": "5 simulated NMC811 battery trajectories · 5 particle-cracking rates",
+    "description": "Synthetic knee-forming degradation data generated using a PyBaMM Doyle–Fuller–Newman electrochemical model coupled with SEI growth and negative-electrode particle cracking. Five cracking multipliers (10–50 times standard) yield simulated capacity-fade paths; reference model is an LG Chem INR21700 M50 NMC811/graphite-SiOx cell.",
+    "url": "https://data.mendeley.com/datasets/ry6g9cc5bw/1",
+    "paper": "https://doi.org/10.1016/j.jpowsour.2024.234619",
+    "access": "Open landing page",
+    "signals": [
+      "Capacity",
+      "Cycling data"
+    ],
+    "notes": "Directly relevant to studying knee formation, curvature-based knee-onset identification and simulated degradation mechanisms. Synthetic simulation, not experimental or in-vehicle measurements. The dataset page does not explicitly advertise ready-to-use per-cell knee-onset cycle labels; derive them consistently for benchmarking.",
+    "source_type": "data_repository",
+    "access_status": "not_checked",
+    "chemistries": [
+      "NMC"
+    ],
+    "chemistry_review_status": "source_verified",
+    "application_domains": [],
+    "license": "CC BY 4.0",
+    "doi": "10.17632/ry6g9cc5bw.1",
+    "chemistry_evidence_url": "https://data.mendeley.com/datasets/ry6g9cc5bw/1",
+    "chemistry_verification": "source_verified",
+    "chemistry_evidence": {
+      "status": "source_verified",
+      "url": "https://data.mendeley.com/datasets/ry6g9cc5bw/1",
+      "note": "Source states 5 synthetic NMC811/graphite-SiOx battery trajectories, modeled with DFN/PyBaMM and cracking-induced knees."
+    },
+    "dataset_kind": "Synthetic"
+  },
+  {
+    "id": "snu-dynamic-charging-rul-130cells",
+    "name": "SNU Dynamic-Usage Battery RUL Dataset (130 Cells)",
+    "category": "Lab Aging & Degradation",
+    "chemistry": "Multiple / mixed",
+    "tasks": [
+      "Cycle life",
+      "RUL prediction",
+      "Degradation analysis",
+      "Knee-onset research"
+    ],
+    "source": "Seoul National University — Yong Jin Jeong",
+    "scale": "130 experimental cells in 3 cohorts (90 + 12 + 28) · charging protocols up to 1,000 cycles",
+    "description": "Experimental cell cycling under Markov-sequence fast and slow charging profiles (3C and 0.5C), with controlled 1C discharge and 0.2C capacity checks approximately every 30 cycles. Two Sony VTC6 NCA/graphite–Si cohorts and one Samsung INR18650-25R blended NCA/NCM/graphite–Si cohort. The source provides cell-level cycling traces and protocol metadata.",
+    "url": "https://data.mendeley.com/datasets/npjy7vdgky/1",
+    "paper": "",
+    "access": "Open landing page",
+    "signals": [
+      "Voltage",
+      "Current",
+      "Capacity",
+      "Cycling data",
+      "Charging data"
+    ],
+    "notes": "Candidate for retrospective knee-onset labeling and leakage-free BMS early-warning evaluation under randomized charging profiles. Source dataset targets RUL, not pre-labelled knee onset; confirm whether each cell exhibits a knee and handle no-knee/censored trajectories.",
+    "source_type": "data_repository",
+    "access_status": "not_checked",
+    "chemistries": [
+      "NCA",
+      "NMC"
+    ],
+    "chemistry_review_status": "source_verified",
+    "application_domains": [],
+    "license": "CC BY 4.0",
+    "doi": "10.17632/npjy7vdgky.1",
+    "chemistry_evidence_url": "https://data.mendeley.com/datasets/npjy7vdgky/1",
+    "chemistry_verification": "source_verified",
+    "chemistry_evidence": {
+      "status": "source_verified",
+      "url": "https://data.mendeley.com/datasets/npjy7vdgky/1",
+      "note": "Repository describes 90+12 NCA/Gr-Si Sony VTC6 and 28 mixed NCA+NCM/Gr-Si Samsung INR18650-25R cells."
+    },
+    "dataset_kind": "Experimental"
+  },
+  {
+    "id": "snu-lg-mj1-spatial-degradation-81cells",
+    "name": "SNU LG MJ1 Dynamic-Usage and Capacity-Retention Dataset",
+    "category": "Lab Aging & Degradation",
+    "chemistry": "NMC",
+    "tasks": [
+      "Degradation analysis",
+      "SOH estimation",
+      "Health monitoring",
+      "Knee-onset research"
+    ],
+    "source": "Seoul National University — Kim, An & Choi",
+    "scale": "81 LG Chem INR18650-MJ1 cells · NMC811/graphite–SiOx · periodic diagnostics",
+    "description": "High-throughput experimental dynamic-usage cycling of 81 commercial NMC811/graphite–SiOx 3.5 Ah cells at 25 °C. The repository includes capacity-retention trajectories and SOC-dependent relaxation/voltage response diagnostics, with reference performance tests every 100 cycles.",
+    "url": "https://data.mendeley.com/datasets/p5vbbytz3x/1",
+    "paper": "",
+    "access": "Open landing page",
+    "signals": [
+      "Capacity",
+      "Voltage",
+      "Charging data",
+      "Cycling data"
+    ],
+    "notes": "Capacity-retention trajectories may support knee-onset identification, but the source does not claim explicit knee-onset labels. Periodic 100-cycle diagnostics limit the temporal resolution of any label and must be accounted for in prediction error intervals.",
+    "source_type": "data_repository",
+    "access_status": "not_checked",
+    "chemistries": [
+      "NMC"
+    ],
+    "chemistry_review_status": "source_verified",
+    "application_domains": [],
+    "license": "CC BY 4.0",
+    "doi": "10.17632/p5vbbytz3x.1",
+    "chemistry_evidence_url": "https://data.mendeley.com/datasets/p5vbbytz3x/1",
+    "chemistry_verification": "source_verified",
+    "chemistry_evidence": {
+      "status": "source_verified",
+      "url": "https://data.mendeley.com/datasets/p5vbbytz3x/1",
+      "note": "Source explicitly identifies 81 LG Chem INR18650-MJ1 NMC811/graphite–SiOx cells."
+    },
+    "dataset_kind": "Experimental"
+  },
+  {
+    "id": "icformer-two-real-lfp-knee-cells",
+    "name": "ICFormer Knee Detection: Two Real A123 LFP Cells",
+    "category": "Lab Aging & Degradation",
+    "chemistry": "LFP",
+    "tasks": [
+      "Knee-onset identification",
+      "Knee-point detection",
+      "Degradation analysis"
+    ],
+    "source": "ICFormer authors — Nahuel Costa et al.",
+    "scale": "2 experimental A123 LFP cells plus related synthetic diagnosis/prognosis resources",
+    "description": "The public ICFormer research repository documents two experimentally cycled A123 graphite/LFP cells (ANR26650M1a, 2.3 Ah; ANR26650M1b, 2.5 Ah) with accelerated-fade knees. It contains a data folder and accompanying reproducible notebooks and model code for incremental-capacity-based early knee detection.",
+    "url": "https://github.com/nahuelcostac/ICFormer",
+    "paper": "https://doi.org/10.1016/j.jpowsour.2023.233910",
+    "access": "Source repository",
+    "signals": [
+      "Capacity",
+      "Voltage",
+      "Cycling data"
+    ],
+    "notes": "Small-scale real-cell knee demonstration rather than a population-scale generalization benchmark. The repository also refers to separate HNEI synthetic diagnosis and prognosis datasets already partly indexed in IonSense. No explicit independent dataset licence was found in the repository README; check individual files before redistribution. Inspect notebooks for reference knee-event labels.",
+    "source_type": "code_repository",
+    "access_status": "not_checked",
+    "chemistries": [
+      "LFP"
+    ],
+    "chemistry_review_status": "source_verified",
+    "application_domains": [],
+    "license": null,
+    "chemistry_evidence_url": "https://github.com/nahuelcostac/ICFormer",
+    "chemistry_verification": "source_verified",
+    "chemistry_evidence": {
+      "status": "source_verified",
+      "url": "https://github.com/nahuelcostac/ICFormer",
+      "note": "Authors' README explicitly identifies real A123 graphite/LFP cells ANR26650M1a and ANR26650M1b and experimental knee cases."
+    },
+    "dataset_kind": "Experimental + synthetic"
   }
 ]
