@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-25",
+  "updated": "2026-10-30",
   "note": "When each dataset was first made public, from the hosting repository. 'Project created' and 'Repository created' are used where the host records no release date.",
   "datasets": {
     "a-cross-scale-framework-for-evaluating-flexibility-values-of-battery-and-fuel-cell-evs": {
@@ -459,6 +459,13 @@
       "source": "DataCite record for doi:10.17632/mn9fb7xdx6",
       "kind": "Released",
       "url": "https://doi.org/10.17632/mn9fb7xdx6"
+    },
+    "samsung-inr18650-30q-knee-point-aging": {
+      "date": "2025-01-28",
+      "source": "Mendeley Data v4, DOI 10.17632/zn82y35zr8.4",
+      "kind": "Released",
+      "checked_by_person": true,
+      "url": "https://data.mendeley.com/datasets/zn82y35zr8/4"
     }
   },
   "not_found": [
