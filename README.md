@@ -1,6 +1,8 @@
 # IonSense — Battery Research Dataset Finder
 
-![IonSense — Battery Research Dataset Finder, 97 indexed resources](battery_banner_96.webp)
+![IonSense — Battery Research Dataset Finder (legacy banner)](battery_banner_96.webp)
+
+*The banner depicts an earlier 96-resource milestone; the catalogue and counts below reflect the current 101-entry index.*
 
 **Discover battery research resources across electric mobility, stationary energy storage, laboratory testing, diagnostics, safety, recycling, and specialised applications.**
 
@@ -10,7 +12,7 @@
 
 IonSense is a **curated discovery catalogue**, not an EV-only dataset collection and not a host of third-party data. It helps researchers locate and compare links to battery datasets and associated research resources, then navigate to the original publishers and authors.
 
-The current index contains **97 entries in 9 research categories**. It covers real-world battery telemetry, experimental cell testing, electrochemical characterisation, imaging, second-life studies, synthetic data and certain related code or model resources. **An indexed record does not automatically mean a downloadable or independently verified dataset.**
+The current index contains **101 entries in 9 research categories**. It covers real-world battery telemetry, experimental cell testing, electrochemical characterisation, imaging, second-life studies, synthetic data and certain related code or model resources. **An indexed record does not automatically mean a downloadable or independently verified dataset.**
 
 ## What you can do
 
@@ -34,16 +36,31 @@ The current index contains **97 entries in 9 research categories**. It covers re
 |---|---:|
 | Field & Real-World | 12 |
 | Safety & Failure | 7 |
-| Lab Aging & Degradation | 37 |
+| Lab Aging & Degradation | 40 |
 | State Estimation & Health Monitoring | 16 |
 | Electrochemical Characterisation | 8 |
 | Battery Imaging | 2 |
 | Second-Life & Recycling | 3 |
 | Aerospace & Specialised | 7 |
-| Synthetic & Derived Battery Datasets | 5 |
-| **Total** | **97** |
+| Synthetic & Derived Battery Datasets | 6 |
+| **Total** | **101** |
 
 **New knee-point resource:** [Samsung INR18650-30Q Knee-Point Aging Dataset](https://data.mendeley.com/datasets/zn82y35zr8/4) (60 experimental cells, 9 ageing conditions, CC BY 4.0). The associated study examines knee points and second-life grading; the record does **not** provide validated knee-onset cycle labels for supervised prediction. The catalogue source contains the original dataset DOI and linked PNAS publication.
+
+## Knee-onset and knee-point research
+
+The catalogue links to **original sources** and documents which resources may be suitable for deriving knee-onset labels. A capacity-fade trajectory alone is **not** proof that a well-defined knee onset occurs, and a knee point is not identical to its onset. **None of the four newly added records is advertised as a fully validated, ready-labelled knee-onset benchmark.**
+
+| Resource | Experimental or simulated | Knee-onset suitability |
+|---|---|---|
+| [Samsung INR18650-30Q, 60 cells](https://data.mendeley.com/datasets/zn82y35zr8/4) | Experimental | Direct knee-point study; derive onset labels separately and account for the post-80% SOH protocol change |
+| [Chalmers NMC811, 5 simulated trajectories](https://data.mendeley.com/datasets/ry6g9cc5bw/1) | Synthetic | Explicitly cracking-induced knees; controlled test for onset-identification algorithms |
+| [ICFormer, 2 real A123 LFP cells](https://github.com/nahuelcostac/ICFormer) | Experimental cases and accompanying simulations | Public real-cell knee examples; check data and software licences and sample-label conventions |
+| [SNU dynamic-usage dataset, 130 cells](https://data.mendeley.com/datasets/npjy7vdgky/1) | Experimental | RUL and cycling data under variable charging; candidate for retrospective onset labels |
+| [SNU LG MJ1 dataset, 81 cells](https://data.mendeley.com/datasets/p5vbbytz3x/1) | Experimental | Capacity retention and relaxation diagnostics; candidate for detecting transition to accelerated fade |
+| [MIT–Stanford–TRI (MATR)](https://data.matr.io/1/) | Experimental | Previously indexed: original data for the [published knee-point/onset identification code](https://github.com/pfermined/knee_identification) |
+
+For defensible BMS research, inspect full per-cell capacity trajectories, specify the knee-onset definition, quantify uncertainty when knees are weak or unobserved, and split by battery cell and preferably by cycling protocol to prevent leakage.
 
 Category counts are for indexed **records**, not confirmed independent datasets or verified downloads. The index can include publications, repositories, code or model resources; potential overlaps and duplicates need source-level review.
 
@@ -60,7 +77,7 @@ Category counts are for indexed **records**, not confirmed independent datasets 
 ## Metadata quality and research cautions
 
 1. **Original sources first.** Read the dataset owner's description, licence, documentation, and associated papers before using or redistributing data. Cite **the original dataset creators**.
-2. **Application labels are provisional.** The new application filter is based on information already present in the catalogue; it has **not** been independently verified for all 97 records. Uncertain end-uses are marked **Not specified**.
+2. **Application labels are provisional.** The new application filter is based on information already present in the catalogue; it has **not** been independently verified for all 101 records. Uncertain end-uses are marked **Not specified**.
 3. **Chemistry is not guessed.** An unknown cathode chemistry is not inferred merely from lithium-ion or from a battery product name.
 4. **Access is not guaranteed.** Links may lead to a paper, software repository or landing page rather than raw measurements. An accessible URL is not proof that a dataset can be downloaded or reused.
 5. **Synthetic data is identified as such.** For example, MagBridge-Battery is a synthetic research resource, not an experimental magnetometry recording.
