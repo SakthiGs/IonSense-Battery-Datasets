@@ -373,10 +373,11 @@
       "url": "https://doi.org/10.5281/zenodo.10891870"
     },
     "samsung-inr18650-30q-knee-point-aging": {
-      "date": "2024-05-08",
-      "source": "DataCite record for doi:10.17632/zn82y35zr8",
+      "date": "2025-01-28",
+      "source": "Mendeley Data v4, DOI 10.17632/zn82y35zr8.4",
       "kind": "Released",
-      "url": "https://doi.org/10.17632/zn82y35zr8"
+      "checked_by_person": true,
+      "url": "https://data.mendeley.com/datasets/zn82y35zr8/4"
     },
     "second-life-lithium-ion-battery-aging-dataset-based-on-grid-storage-cycling": {
       "date": "2024-07-11",
@@ -466,12 +467,26 @@
       "kind": "Released",
       "url": "https://doi.org/10.17632/mn9fb7xdx6"
     },
-    "samsung-inr18650-30q-knee-point-aging": {
-      "date": "2025-01-28",
-      "source": "Mendeley Data v4, DOI 10.17632/zn82y35zr8.4",
+    "chalmers-pybamm-nmc811-cracking-knees": {
+      "date": "2024-04-25",
+      "source": "Mendeley Data v1 (DOI 10.17632/ry6g9cc5bw.1)",
       "kind": "Released",
-      "checked_by_person": true,
-      "url": "https://data.mendeley.com/datasets/zn82y35zr8/4"
+      "url": "https://data.mendeley.com/datasets/ry6g9cc5bw/1",
+      "checked_by_person": true
+    },
+    "snu-dynamic-charging-rul-130cells": {
+      "date": "2025-07-21",
+      "source": "Mendeley Data v1 (DOI 10.17632/npjy7vdgky.1)",
+      "kind": "Released",
+      "url": "https://data.mendeley.com/datasets/npjy7vdgky/1",
+      "checked_by_person": true
+    },
+    "snu-lg-mj1-spatial-degradation-81cells": {
+      "date": "2025-09-12",
+      "source": "Mendeley Data v1 (DOI 10.17632/p5vbbytz3x.1)",
+      "kind": "Released",
+      "url": "https://data.mendeley.com/datasets/p5vbbytz3x/1",
+      "checked_by_person": true
     }
   },
   "not_found": [
