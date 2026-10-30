@@ -8,12 +8,14 @@
     "batterylife-benchmark": "2026-10-11",
     "bmw-i3-real-driving-battery-heating": "2026-10-11",
     "calce-battery-data": "2026-10-11",
+    "chalmers-pybamm-nmc811-cracking-knees": "2026-10-30",
     "closed-loop-fast-charging-optimisation": "2026-10-11",
     "cmu-evtol-battery-dataset": "2026-10-11",
     "evbattery-large-scale-ev-dataset": "2026-10-11",
     "hnei-blended-electrode-synthetic": "2026-10-11",
     "hnei-lfp-synthetic-diagnosis-prognosis": "2026-10-11",
     "hnei-lg-icr18650c2-variability": "2026-10-11",
+    "icformer-two-real-lfp-knee-cells": "2026-10-30",
     "lg-18650hg2-mcmaster": "2026-10-11",
     "lg-m50-parameterisation-data": "2026-10-11",
     "liiondb-parameter-database": "2026-10-11",
@@ -24,21 +26,39 @@
     "panasonic-18650pf-data": "2026-10-11",
     "rwth-48-cell-cycle-ageing": "2026-10-11",
     "samsung-50e-second-life-hppc": "2026-10-11",
+    "samsung-inr18650-30q-knee-point-aging": "2026-10-30",
     "sandia-commercial-cell-degradation": "2026-10-11",
+    "snu-dynamic-charging-rul-130cells": "2026-10-30",
+    "snu-lg-mj1-spatial-degradation-81cells": "2026-10-30",
     "turnigy-graphene-5ah-data": "2026-10-11",
     "ul-purdue-degradation-safety": "2026-10-11",
     "umich-battery-expansion": "2026-10-11",
     "umich-formation-protocols": "2026-10-11",
     "unibo-powertools-dataset": "2026-10-11",
     "vito-module-driving-profile-ageing": "2026-10-11",
-    "vito-ni-rich-18650-lifecycle-ageing": "2026-10-11",
-    "samsung-inr18650-30q-knee-point-aging": "2026-10-30"
+    "vito-ni-rich-18650-lifecycle-ageing": "2026-10-11"
   },
   "events": [
     {
       "date": "2026-10-30",
       "type": "datasets",
       "items": [
+        {
+          "id": "chalmers-pybamm-nmc811-cracking-knees",
+          "name": "Chalmers Synthetic NMC811 Cracking-Induced Knee Trajectories"
+        },
+        {
+          "id": "icformer-two-real-lfp-knee-cells",
+          "name": "ICFormer Knee Detection: Two Real A123 LFP Cells"
+        },
+        {
+          "id": "snu-dynamic-charging-rul-130cells",
+          "name": "SNU Dynamic-Usage Battery RUL Dataset (130 Cells)"
+        },
+        {
+          "id": "snu-lg-mj1-spatial-degradation-81cells",
+          "name": "SNU LG MJ1 Dynamic-Usage and Capacity-Retention Dataset"
+        },
         {
           "id": "samsung-inr18650-30q-knee-point-aging",
           "name": "Samsung INR18650-30Q Knee-Point Aging Dataset"
@@ -72,12 +92,12 @@
         {
           "datasets": [
             {
-              "id": "early-cycle-life",
-              "name": "MIT–Stanford–TRI Battery Cycle Life Dataset (MATR)"
-            },
-            {
               "id": "real-time-personalized-health-status-prediction-via-deep-transfer-learning",
               "name": "HUST Battery Dataset (77 LFP cells)"
+            },
+            {
+              "id": "early-cycle-life",
+              "name": "MIT–Stanford–TRI Battery Cycle Life Dataset (MATR)"
             }
           ],
           "title": "Accurate battery lifetime prediction across diverse aging conditions with deep learning",
@@ -88,12 +108,12 @@
         {
           "datasets": [
             {
-              "id": "panasonic-18650pf-data",
-              "name": "Panasonic 18650PF Li-ion Battery Data"
-            },
-            {
               "id": "lg-18650hg2-mcmaster",
               "name": "LG 18650HG2 Li-ion Battery Data (McMaster)"
+            },
+            {
+              "id": "panasonic-18650pf-data",
+              "name": "Panasonic 18650PF Li-ion Battery Data"
             }
           ],
           "title": "Estimating State of Charge for xEV batteries using 1D Convolutional Neural Networks and Transfer Learning",
@@ -104,12 +124,12 @@
         {
           "datasets": [
             {
-              "id": "randomized-battery-usage-data-set-nasa",
-              "name": "Randomized Battery Usage Data Set (NASA)"
-            },
-            {
               "id": "unibo-powertools-dataset",
               "name": "UNIBO Powertools Dataset"
+            },
+            {
+              "id": "randomized-battery-usage-data-set-nasa",
+              "name": "Randomized Battery Usage Data Set (NASA)"
             }
           ],
           "title": "To Charge or to Sell? EV Pack Useful Life Estimation via LSTMs, CNNs, and Autoencoders",
@@ -422,12 +442,12 @@
               "name": "HUST Battery Dataset (77 LFP cells)"
             },
             {
-              "id": "data-driven-capacity-estimation-from-voltage-relaxation",
-              "name": "Tongji (TJU) Battery Dataset: Voltage Relaxation"
-            },
-            {
               "id": "early-cycle-life",
               "name": "MIT–Stanford–TRI Battery Cycle Life Dataset (MATR)"
+            },
+            {
+              "id": "data-driven-capacity-estimation-from-voltage-relaxation",
+              "name": "Tongji (TJU) Battery Dataset: Voltage Relaxation"
             }
           ],
           "title": "Battery health prognosis using Physics-informed neural network with Quantum Feature mapping",
@@ -442,16 +462,16 @@
               "name": "MIT–Stanford–TRI Battery Cycle Life Dataset (MATR)"
             },
             {
+              "id": "data-driven-capacity-estimation-from-voltage-relaxation",
+              "name": "Tongji (TJU) Battery Dataset: Voltage Relaxation"
+            },
+            {
               "id": "real-time-personalized-health-status-prediction-via-deep-transfer-learning",
               "name": "HUST Battery Dataset (77 LFP cells)"
             },
             {
               "id": "physics-informed-neural-network-for-lithium-ion-battery-degradation-modelling",
               "name": "XJTU Battery Degradation Dataset"
-            },
-            {
-              "id": "data-driven-capacity-estimation-from-voltage-relaxation",
-              "name": "Tongji (TJU) Battery Dataset: Voltage Relaxation"
             }
           ],
           "title": "Coupled Quantum Reservoir Features for Multi-Chemistry Battery State-of-Health Estimation",
@@ -462,16 +482,16 @@
         {
           "datasets": [
             {
-              "id": "early-cycle-life",
-              "name": "MIT–Stanford–TRI Battery Cycle Life Dataset (MATR)"
+              "id": "physics-informed-neural-network-for-lithium-ion-battery-degradation-modelling",
+              "name": "XJTU Battery Degradation Dataset"
             },
             {
               "id": "data-driven-capacity-estimation-from-voltage-relaxation",
               "name": "Tongji (TJU) Battery Dataset: Voltage Relaxation"
             },
             {
-              "id": "physics-informed-neural-network-for-lithium-ion-battery-degradation-modelling",
-              "name": "XJTU Battery Degradation Dataset"
+              "id": "early-cycle-life",
+              "name": "MIT–Stanford–TRI Battery Cycle Life Dataset (MATR)"
             },
             {
               "id": "real-time-personalized-health-status-prediction-via-deep-transfer-learning",
@@ -486,12 +506,12 @@
         {
           "datasets": [
             {
-              "id": "calce-battery-data",
-              "name": "CALCE Battery Data (University of Maryland)"
-            },
-            {
               "id": "nasa-battery-data-set",
               "name": "NASA Battery Data Set"
+            },
+            {
+              "id": "calce-battery-data",
+              "name": "CALCE Battery Data (University of Maryland)"
             },
             {
               "id": "early-cycle-life",
@@ -506,12 +526,12 @@
         {
           "datasets": [
             {
-              "id": "calce-battery-data",
-              "name": "CALCE Battery Data (University of Maryland)"
-            },
-            {
               "id": "early-cycle-life",
               "name": "MIT–Stanford–TRI Battery Cycle Life Dataset (MATR)"
+            },
+            {
+              "id": "calce-battery-data",
+              "name": "CALCE Battery Data (University of Maryland)"
             },
             {
               "id": "data-driven-capacity-estimation-from-voltage-relaxation",
@@ -558,12 +578,12 @@
         {
           "datasets": [
             {
-              "id": "early-cycle-life",
-              "name": "MIT–Stanford–TRI Battery Cycle Life Dataset (MATR)"
-            },
-            {
               "id": "physics-informed-neural-network-for-lithium-ion-battery-degradation-modelling",
               "name": "XJTU Battery Degradation Dataset"
+            },
+            {
+              "id": "early-cycle-life",
+              "name": "MIT–Stanford–TRI Battery Cycle Life Dataset (MATR)"
             }
           ],
           "title": "Physical information-guided Kolmogorov–Arnold networks for battery state of health estimation",
@@ -590,12 +610,12 @@
         {
           "datasets": [
             {
-              "id": "physics-informed-neural-network-for-lithium-ion-battery-degradation-modelling",
-              "name": "XJTU Battery Degradation Dataset"
-            },
-            {
               "id": "nasa-battery-data-set",
               "name": "NASA Battery Data Set"
+            },
+            {
+              "id": "physics-informed-neural-network-for-lithium-ion-battery-degradation-modelling",
+              "name": "XJTU Battery Degradation Dataset"
             }
           ],
           "title": "State of health estimation for lithium-ion batteries based on transferable long short-term memory optimized using Harris hawk algorithm",
