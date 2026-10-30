@@ -3488,5 +3488,52 @@
       "note": "Data record: LFP/LMO, NMC/LMO and NCM/NCA blended electrodes against graphite."
     },
     "dataset_kind": "Synthetic"
+  },
+  {
+    "id": "samsung-inr18650-30q-knee-point-aging",
+    "name": "Samsung INR18650-30Q Knee-Point Aging Dataset",
+    "category": "Lab Aging & Degradation",
+    "chemistry": "NCA",
+    "tasks": [
+      "Degradation analysis",
+      "Knee-point detection",
+      "SOH estimation",
+      "Second-life classification"
+    ],
+    "source": "Seoul National University (Kim et al.)",
+    "scale": "60 Samsung INR18650-30Q cells · 9 ageing conditions · SOH 100% to ~60%",
+    "description": "Experimental cycling of 60 high-power 3 Ah NCA/graphite–silicon cells under nine temperature, voltage and charge-rate conditions. Periodic reference performance tests track capacity/SOH and DC resistance through 80% SOH; further common-protocol cycling at 25 °C follows cells toward 60% SOH. Developed for studying accelerated degradation knee points and second-life assessment.",
+    "url": "https://data.mendeley.com/datasets/zn82y35zr8/4",
+    "paper": "https://doi.org/10.1073/pnas.2424838122",
+    "code_url": "https://github.com/psalmschoi/Detection-of-the-knee-point-in-lithium-ion-battery-degradation-using-a-state-of-charge-dependent-par",
+    "access": "Open landing page",
+    "signals": [
+      "Cycling data",
+      "Capacity",
+      "Voltage",
+      "Current",
+      "Temperature",
+      "Resistance (DCIR)"
+    ],
+    "notes": "Useful for knee-point diagnostics and candidate knee-onset research. Knee-onset cycle labels are not explicitly supplied; derive and validate them before prediction experiments. The ageing protocol changes after 80% SOH, and reference capacity is sampled periodically, so account for this before fitting knee trajectories.",
+    "source_type": "data_repository",
+    "access_status": "not_checked",
+    "chemistries": [
+      "NCA"
+    ],
+    "chemistry_review_status": "source_verified",
+    "application_domains": [
+      "Second-life & recycling"
+    ],
+    "license": "CC BY 4.0",
+    "doi": "10.17632/zn82y35zr8.4",
+    "chemistry_evidence_url": "https://data.mendeley.com/datasets/zn82y35zr8/4",
+    "chemistry_verification": "source_verified",
+    "chemistry_evidence": {
+      "status": "source_verified",
+      "url": "https://data.mendeley.com/datasets/zn82y35zr8/4",
+      "note": "Mendeley Data v4 and the associated PNAS publication specify Samsung INR18650-30Q NCA/graphite–silicon cells."
+    },
+    "dataset_kind": "Experimental"
   }
 ]
