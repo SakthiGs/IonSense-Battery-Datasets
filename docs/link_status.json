@@ -2,7 +2,7 @@
   "updated": "2026-10-30",
   "note": "Weekly automated check of each dataset's data link. 'unverified' means the site blocks automated checks; 'broken' means it failed two checks in a row.",
   "summary": {
-    "ok": 89,
+    "ok": 93,
     "unverified": 5,
     "broken": 3
   },
@@ -283,7 +283,7 @@
       "url": "https://www.nrel.gov/transportation/battery-failure.html",
       "status": "broken",
       "http": null,
-      "consecutive_failures": 6,
+      "consecutive_failures": 7,
       "checked": "2026-10-30",
       "last_ok": null
     },
@@ -710,7 +710,7 @@
       "url": "https://data.4tu.nl/datasets/e19fe272-4f46-450c-9125-6545c4c1a98b",
       "status": "broken",
       "http": null,
-      "consecutive_failures": 2,
+      "consecutive_failures": 3,
       "checked": "2026-10-30",
       "last_ok": "2026-10-18"
     },
@@ -718,7 +718,7 @@
       "url": "https://data.4tu.nl/datasets/3b2f7917-0448-4860-8ab9-579e8874429d",
       "status": "broken",
       "http": null,
-      "consecutive_failures": 2,
+      "consecutive_failures": 3,
       "checked": "2026-10-30",
       "last_ok": "2026-10-18"
     },
@@ -783,6 +783,38 @@
     },
     "samsung-inr18650-30q-knee-point-aging": {
       "url": "https://data.mendeley.com/datasets/zn82y35zr8/4",
+      "status": "ok",
+      "http": 200,
+      "consecutive_failures": 0,
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
+    },
+    "chalmers-pybamm-nmc811-cracking-knees": {
+      "url": "https://data.mendeley.com/datasets/ry6g9cc5bw/1",
+      "status": "ok",
+      "http": 200,
+      "consecutive_failures": 0,
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
+    },
+    "snu-dynamic-charging-rul-130cells": {
+      "url": "https://data.mendeley.com/datasets/npjy7vdgky/1",
+      "status": "ok",
+      "http": 200,
+      "consecutive_failures": 0,
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
+    },
+    "snu-lg-mj1-spatial-degradation-81cells": {
+      "url": "https://data.mendeley.com/datasets/p5vbbytz3x/1",
+      "status": "ok",
+      "http": 200,
+      "consecutive_failures": 0,
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
+    },
+    "icformer-two-real-lfp-knee-cells": {
+      "url": "https://github.com/nahuelcostac/ICFormer",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
