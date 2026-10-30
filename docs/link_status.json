@@ -1,10 +1,10 @@
 {
-  "updated": "2026-10-25",
+  "updated": "2026-10-30",
   "note": "Weekly automated check of each dataset's data link. 'unverified' means the site blocks automated checks; 'broken' means it failed two checks in a row.",
   "summary": {
-    "ok": 85,
-    "unverified": 10,
-    "broken": 1
+    "ok": 89,
+    "unverified": 5,
+    "broken": 3
   },
   "datasets": {
     "home-storage-rwth": {
@@ -12,39 +12,39 @@
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "field-28-lfp": {
       "url": "https://zenodo.org/records/13715694",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "lithium-ion-battery-aging-dataset-based-on-ev-real-driving-profiles": {
       "url": "https://osf.io/qsabn/?view_only=2a03b6c78ef14922a3e244f3d549de78",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "tsinghua-ev": {
       "url": "https://data.mendeley.com/datasets/mcsh4hnb8b/1",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "predicting-battery-end-of-life-from-solar-off-grid-field-data": {
       "url": "https://ora.ox.ac.uk/objects/uuid:e41d3d4c-f74e-4d76-81fd-0caa77ec6cec",
       "status": "unverified",
       "http": 403,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
+      "checked": "2026-10-30",
       "last_ok": null
     },
     "challenges-and-opportunities-in-truck-electrification-big-operational-data": {
@@ -52,207 +52,207 @@
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "onroad-capacity": {
       "url": "https://github.com/shiyunliu-battery/battery-charging-data-of-on-road-electric-vehicles",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "synthetic-duty-cycles-from-real-world-autonomous-ev-driving": {
       "url": "https://purl.stanford.edu/ky011nj6376",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "online-fault-zenodo": {
       "url": "https://zenodo.org/records/10656500",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "bev-energy-kuleuven": {
       "url": "https://rdr.kuleuven.be/dataset.xhtml?persistentId=doi:10.48804/8KPDTW",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "electric-vehicle-usage-data-set-for-battery-aging-studies": {
       "url": "https://github.com/TUMFTM/electric-vehicle-uds-dataset/tree/main",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "second-life-lithium-ion-battery-aging-dataset-based-on-grid-storage-cycling": {
       "url": "https://osf.io/8jnr5/",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "formation-tri": {
       "url": "https://data.matr.io/8/",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "full-factorial-doe-dataset-for-parallel-connected-lithium-ion-cells": {
       "url": "https://data.mendeley.com/datasets/zh58byr53c/1",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "experimental-data-galvanostatic-discharge-at-different-c-rates-and-temperatures": {
       "url": "https://data.mendeley.com/datasets/kxsbr4x3j2/2",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "increasing-generalization-capability-of-battery-health-estimation-continual-learning": {
       "url": "https://data.mendeley.com/datasets/n3b54nsw8m/9",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "tum-commercial-aging": {
       "url": "https://mediatum.ub.tum.de/1713382",
-      "status": "unverified",
-      "http": 429,
+      "status": "ok",
+      "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-12"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "underlying-dataset-for-battery-pack-degradation-under-thermal-gradients": {
       "url": "https://zenodo.org/records/10207731",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "early-cycle-life": {
       "url": "https://data.matr.io/1/",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "physics-informed-neural-network-for-lithium-ion-battery-degradation-modelling": {
       "url": "https://zenodo.org/records/10963339",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "prognosis-of-multivariate-battery-state-via-transformers": {
       "url": "https://www.materialsdatafacility.org/detail/spacetimeformer_battery_v1.2",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "battery-aging-modes-across-nmc-compositions": {
       "url": "https://zenodo.org/records/7250553",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "isu-ilcc-battery-aging-dataset": {
       "url": "https://iastate.figshare.com/articles/dataset/_b_ISU-ILCC_Battery_Aging_Dataset_b_/22582234",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "comprehensive-battery-aging-dataset-nmc-c-sio-capacity-impedance-fade": {
       "url": "https://radar.kit.edu/radar/en/dataset/kww7jv8ajuvchcah",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "dynamic-cycling-enhances-battery-lifetime": {
       "url": "https://purl.stanford.edu/td676xr4322",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "stanford-long-term-calendar-aging-dataset": {
       "url": "https://osf.io/ju325/",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "wmg-calendar-aging-dataset-lgm50-commercial-cells-39-storage-conditions": {
       "url": "https://zenodo.org/records/14577286",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "cycle-aging-data-of-automotive-grade-li-ion-cells-under-realistic-conditions-vw-id-3": {
       "url": "https://mediatum.ub.tum.de/1748915",
-      "status": "unverified",
-      "http": 429,
+      "status": "ok",
+      "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-12"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "comprehensive-cycle-aging-data-and-analysis-for-commercial-21700-cells": {
       "url": "https://zenodo.org/records/10637534",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "aging-dataset-lco-battery-with-mechanical-measurements": {
       "url": "https://zenodo.org/records/14914172",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "battery-degradation-dataset-based-on-a-forklift-mission-profile": {
       "url": "https://www.sciencedirect.com/science/article/pii/S2352340923009228",
       "status": "unverified",
       "http": 403,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
+      "checked": "2026-10-30",
       "last_ok": null
     },
     "multi-stage-lithium-ion-battery-aging-study": {
@@ -260,31 +260,31 @@
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "uconn-lco-gr-battery-fast-charging-dataset": {
       "url": "https://digitalcommons.lib.uconn.edu/reil_datasets/4/",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "discovery-learning-predicts-battery-cycle-life-from-minimal-experiments": {
       "url": "https://zenodo.org/records/17654407",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "battery-failure-databank-nrel": {
       "url": "https://www.nrel.gov/transportation/battery-failure.html",
       "status": "broken",
       "http": null,
-      "consecutive_failures": 5,
-      "checked": "2026-10-25",
+      "consecutive_failures": 6,
+      "checked": "2026-10-30",
       "last_ok": null
     },
     "air-cooled-li-ion-battery-pack-from-a-plug-in-hybrid-vehicle-phev": {
@@ -292,151 +292,152 @@
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "battery-failure-detection-and-fpi-estimation-during-cycling-to-failure": {
       "url": "https://zenodo.org/records/17651045",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "li-ion-battery-pack-cycling-dataset-with-cc-cv-charging-and-wltp-constant-discharge-profiles": {
       "url": "https://dataverse.csuc.cat/dataset.xhtml?persistentId=doi:10.34810/data2395",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "attention-towards-chemistry-agnostic-and-explainable-battery-lifetime-prediction-arcana": {
       "url": "https://zenodo.org/records/10293072",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "lithium-inventory-tracking-as-a-nondestructive-battery-evaluation-method": {
       "url": "https://osf.io/2w4k3/",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "gic-nmc-solar-battery-synthetic-data": {
       "url": "https://data.mendeley.com/datasets/rg8b2k2k28/1",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "data-driven-capacity-estimation-from-voltage-relaxation": {
       "url": "https://zenodo.org/records/6405084",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "impedance-based-forecasting-of-battery-performance-amid-uneven-usage": {
       "url": "https://zenodo.org/records/6645536",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "identifying-degradation-patterns-via-impedance-spectroscopy-and-machine-learning": {
       "url": "https://zenodo.org/records/3633835",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "real-time-personalized-health-status-prediction-via-deep-transfer-learning": {
       "url": "https://data.mendeley.com/datasets/nsc7hnsg4s/2",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "generative-learning-assisted-state-of-health-estimation-for-battery-recycling": {
       "url": "https://www.nature.com/articles/s41467-024-54454-0#Sec19",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "wmg-dib-dataset-rapid-soh-estimation-via-eis-and-ml": {
       "url": "https://data.mendeley.com/datasets/mn9fb7xdx6/3",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "retired-lithium-ion-batteries-dataset": {
       "url": "https://zenodo.org/records/14562266",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "ultrasonic-and-deep-learning-dataset-for-real-time-soc-estimation-in-large-format-cells": {
       "url": "https://github.com/hfarhaditolie/Ultrasonic-SoC",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "mechanistically-guided-residual-learning-dataset-for-battery-state-monitoring": {
       "url": "https://zenodo.org/records/17591942",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "probability-distributed-equivalent-circuit-model-dataset": {
       "url": "https://zenodo.org/records/10852930",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "source-data-internal-sensors-in-a-smart-battery-impact-on-local-graphite-lithiation": {
       "url": "https://www.nature.com/articles/s41467-024-54656-6#Sec14",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "rate-capability-ocv-impedance-and-half-cell-data-sodium-ion-and-lfp-batteries": {
       "url": "https://doi.org/10.14459/2024mp1762675",
-      "status": "unverified",
-      "http": 429,
+      "status": "ok",
+      "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-12"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30",
+      "redirects_to": "https://mediatum.ub.tum.de/1762675"
     },
     "data-repository-for-electrochemical-thermal-modelling-of-high-power-li-ion-pouch-cells": {
       "url": "https://ora.ox.ac.uk/objects/uuid:fe9bad3e-8a72-4e3b-8f01-fec3324b6758",
       "status": "unverified",
       "http": 403,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
+      "checked": "2026-10-30",
       "last_ok": null
     },
     "a-cross-scale-framework-for-evaluating-flexibility-values-of-battery-and-fuel-cell-evs": {
@@ -444,111 +445,111 @@
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "improving-real-world-execution-of-optimised-trading-schedules-for-large-scale-battery-storage": {
       "url": "https://publications.rwth-aachen.de/record/1015732",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "a-dataset-of-over-1-000-computed-tomography-scans-of-battery-cells": {
       "url": "https://plus.figshare.com/articles/dataset/A_dataset_of_over_one_thousand_computed_tomography_scans_of_battery_cells/25330501",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "battery-imaging-library-bil": {
       "url": "https://batteryimaginglibrary.com/",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "source-data-reuse-and-recycling-pathway-of-retired-batteries": {
       "url": "https://github.com/RuifeiMa/Reuse-and-recycling-pathway-of-retired-batteries",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "long-term-sweat-testing-data-for-second-life-batteries": {
       "url": "https://repository.lboro.ac.uk/articles/online_resource/Long-Term_Sweat_Testing_Data_for_Second-Life_Batteries/28732490/2",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "nasa-battery-data-set": {
       "url": "https://phm-datasets.s3.amazonaws.com/NASA/5.+Battery+Data+Set.zip",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "randomized-battery-usage-data-set-nasa": {
       "url": "https://phm-datasets.s3.amazonaws.com/NASA/11.+Randomized+Battery+Usage+Data+Set.zip",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "hirf-battery-data-set-nasa": {
       "url": "https://phm-datasets.s3.amazonaws.com/NASA/15.+HIRF+Battery+Data+Set.zip",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "small-satellite-power-simulation-nasa": {
       "url": "https://data.nasa.gov/dataset/small-satellite-power-simulation",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "accelerated-battery-life-testing-nasa": {
       "url": "https://data.nasa.gov/dataset/randomized-and-recommissioned-battery-dataset",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "magbridge-battery-v1": {
       "url": "https://zenodo.org/records/20260147",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "calce-battery-data": {
       "url": "https://calce.umd.edu/battery-data",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "oxford-battery-degradation-dataset-1": {
       "url": "https://ora.ox.ac.uk/objects/uuid:03ba4b01-cfed-46d3-9b1a-7d4a7bdf6fac",
       "status": "unverified",
       "http": 403,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
+      "checked": "2026-10-30",
       "last_ok": null
     },
     "oxford-path-dependent-degradation": {
@@ -556,7 +557,7 @@
       "status": "unverified",
       "http": 403,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
+      "checked": "2026-10-30",
       "last_ok": null
     },
     "sandia-commercial-cell-degradation": {
@@ -564,32 +565,32 @@
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "hnei-lg-icr18650c2-variability": {
       "url": "https://www.batteryarchive.org/study_summaries.html",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "closed-loop-fast-charging-optimisation": {
       "url": "https://data.matr.io/1/",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "cmu-evtol-battery-dataset": {
       "url": "https://doi.org/10.1184/R1/14226830.v2",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25",
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30",
       "redirects_to": "https://kilthub.cmu.edu/articles/dataset/eVTOL_Battery_Dataset/14226830/2"
     },
     "evbattery-large-scale-ev-dataset": {
@@ -597,80 +598,80 @@
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "osf-battery-magnetometry-archive": {
       "url": "https://osf.io/cw8zv/",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "lg-18650hg2-mcmaster": {
       "url": "https://data.mendeley.com/datasets/cp3473x7xv/3",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "panasonic-18650pf-data": {
       "url": "https://data.mendeley.com/datasets/wykht8y7tg/1",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "unibo-powertools-dataset": {
       "url": "https://data.mendeley.com/datasets/n6xg5fzsbv/1",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "umich-battery-expansion": {
       "url": "https://www.batteryarchive.org/study_summaries.html",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "umich-formation-protocols": {
       "url": "https://www.batteryarchive.org/study_summaries.html",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "rwth-48-cell-cycle-ageing": {
       "url": "https://publications.rwth-aachen.de/record/818642",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "bmw-i3-real-driving-battery-heating": {
       "url": "https://ieee-dataport.org/open-access/battery-and-heating-data-real-driving-cycles",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "argonne-camp-2023": {
       "url": "https://doi.org/10.18126/fdxq-7yul",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25",
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30",
       "redirects_to": "https://www.materialsdatafacility.org/detail/camp_2023-1.1"
     },
     "ul-purdue-degradation-safety": {
@@ -678,47 +679,47 @@
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "batterylife-benchmark": {
       "url": "https://github.com/Ruifeng-Tan/BatteryLife",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "battery-archive": {
       "url": "https://www.batteryarchive.org/",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "mechanical-thermal-runaway-ornl-snl": {
       "url": "https://data.mendeley.com/datasets/sn2kv34r4h/1",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "vito-ni-rich-18650-lifecycle-ageing": {
       "url": "https://data.4tu.nl/datasets/e19fe272-4f46-450c-9125-6545c4c1a98b",
-      "status": "unverified",
+      "status": "broken",
       "http": null,
-      "consecutive_failures": 1,
-      "checked": "2026-10-25",
+      "consecutive_failures": 2,
+      "checked": "2026-10-30",
       "last_ok": "2026-10-18"
     },
     "vito-module-driving-profile-ageing": {
       "url": "https://data.4tu.nl/datasets/3b2f7917-0448-4860-8ab9-579e8874429d",
-      "status": "unverified",
+      "status": "broken",
       "http": null,
-      "consecutive_failures": 1,
-      "checked": "2026-10-25",
+      "consecutive_failures": 2,
+      "checked": "2026-10-30",
       "last_ok": "2026-10-18"
     },
     "liiondb-parameter-database": {
@@ -726,8 +727,8 @@
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25",
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30",
       "redirects_to": "https://liiondb.com/"
     },
     "battery-materials-database-chemdataextractor": {
@@ -735,8 +736,8 @@
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25",
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30",
       "redirects_to": "https://figshare.com/articles/dataset/A_database_of_battery_materials_auto-generated_using_ChemDataExtractor/11888115/2"
     },
     "turnigy-graphene-5ah-data": {
@@ -744,24 +745,24 @@
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "hnei-lfp-synthetic-diagnosis-prognosis": {
       "url": "https://data.mendeley.com/datasets/bs2j56pn7y/3",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "lg-m50-parameterisation-data": {
       "url": "https://wrap.warwick.ac.uk/id/eprint/149527",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25",
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30",
       "redirects_to": "https://wrap.warwick.ac.uk/id/eprint/149527/"
     },
     "samsung-50e-second-life-hppc": {
@@ -769,16 +770,24 @@
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     },
     "hnei-blended-electrode-synthetic": {
       "url": "https://data.mendeley.com/datasets/w48j7rn4x3/1",
       "status": "ok",
       "http": 200,
       "consecutive_failures": 0,
-      "checked": "2026-10-25",
-      "last_ok": "2026-10-25"
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
+    },
+    "samsung-inr18650-30q-knee-point-aging": {
+      "url": "https://data.mendeley.com/datasets/zn82y35zr8/4",
+      "status": "ok",
+      "http": 200,
+      "consecutive_failures": 0,
+      "checked": "2026-10-30",
+      "last_ok": "2026-10-30"
     }
   }
 }
