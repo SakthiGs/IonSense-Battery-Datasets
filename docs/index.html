@@ -188,6 +188,20 @@ a svg{width:.9em;height:.9em;flex:none}
 .tip{position:fixed;z-index:60;max-width:280px;padding:8px 10px;border-radius:8px;background:var(--ink);color:var(--bg);font-size:13px;line-height:1.35;pointer-events:none;box-shadow:var(--shadow)}
 .tip small{display:block;opacity:.75;font-size:12px;margin-top:2px}
 
+/* Metadata completeness: counts reflect the active filters, not verified download rights. */
+.meta-health{display:flex;align-items:center;flex-wrap:wrap;gap:14px 28px;padding:16px 20px;background:var(--panel);border:1px solid var(--line);border-radius:var(--r-m)}
+.meta-health-copy{flex:1 1 220px;max-width:47ch}
+.meta-health h2{font-size:15px;font-weight:650;margin:0 0 4px}
+.meta-health p{font-size:12.5px;color:var(--ink-2);line-height:1.5;margin:0}
+.meta-health a{color:var(--accent-ink);font-weight:600;text-decoration:none}
+.meta-health a:hover{text-decoration:underline}
+.meta-health dl{flex:1 1 380px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px 18px;margin:0}
+.meta-health dl div{display:flex;flex-direction:column-reverse;gap:4px}
+.meta-health dt{font-size:12px;line-height:1.35;color:var(--muted)}
+.meta-health dd{font-size:20px;font-weight:680;font-variant-numeric:tabular-nums;margin:0}
+.meta-health dd small{font-size:12px;font-weight:500;color:var(--muted)}
+@media (max-width:640px){.meta-health{padding:14px 16px;gap:14px}.meta-health dl{gap:10px}.meta-health dd{font-size:17px}.meta-health dd small{font-size:11px}}
+
 /* Results */
 .news{background:var(--panel);border:1px solid var(--line);border-radius:var(--r-l);padding:14px 20px 12px;font-size:13.5px;color:var(--ink-2)}
 .news-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:8px}
@@ -562,6 +576,14 @@ button.cmp-name:hover{color:var(--accent-ink);text-decoration:underline;text-und
         </div>
         <div class="pack" id="pack"></div>
       </div>
+    </section>
+
+    <section class="meta-health" aria-labelledby="meta-health-heading">
+      <div class="meta-health-copy">
+        <h2 id="meta-health-heading">Metadata coverage</h2>
+        <p><span id="meta-health-scope">Current catalogue</span>. Counts describe documentation, not independently validated access, reuse rights or scientific quality. <a href="https://github.com/SakthiGs/IonSense-Battery-Datasets/issues" target="_blank" rel="noopener noreferrer">Review pending dataset candidates</a>.</p>
+      </div>
+      <dl id="meta-health-stats" aria-label="Metadata coverage for matching resources"></dl>
     </section>
 
     <section class="news" id="news" aria-labelledby="news-h" hidden></section>
@@ -1099,6 +1121,19 @@ function renderFacets(tokens) {
   $('#apply-rail').textContent = results.length ? `Show ${plural(results.length, 'dataset')}` : 'No matches, adjust filters';
 }
 
+/* Metadata completeness for the active filter set. */
+function renderMetaHealth() {
+  const n = results.length;
+  $('#meta-health-scope').textContent = isFiltered() ? `${n} matching resources` : `All ${n} indexed resources`;
+  const items = [
+    ['Chemistry source-reviewed', results.filter(d => d.chemistry_review_status === 'source_verified').length],
+    ['Licence recorded', results.filter(d => typeof d.license === 'string' && d.license.trim()).length],
+    ['Application tagged', results.filter(d => Array.isArray(d.application_domains) && d.application_domains.length).length]
+  ];
+  $('#meta-health-stats').replaceChildren(...items.map(([label, value]) =>
+    h('div', {}, h('dt', {}, label), h('dd', {}, String(value), h('small', {}, ' / ' + n)))));
+}
+
 function renderOverview() {
   const n = results.length, filtered = isFiltered();
   $('#hero-n').textContent = n;
@@ -1109,6 +1144,7 @@ function renderOverview() {
     [results.filter(hasChem).length, 'chemistry named']
   ];
   $('#stats').replaceChildren(...stats.map(([v, l]) => h('div', {}, h('dt', {}, l), h('dd', {}, v))));
+  renderMetaHealth();
   const ids = new Set(results.map(d => d.id));
   for (const mod of document.querySelectorAll('.module')) {
     const { cat, head, cnt, items } = mod._parts;
