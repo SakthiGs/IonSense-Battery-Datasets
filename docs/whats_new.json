@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-25",
+  "updated": "2026-10-30",
   "note": "Datasets and studies added to IonSense, by the day they first appeared in the catalogue.",
   "new_datasets": {
     "argonne-camp-2023": "2026-10-11",
@@ -31,9 +31,20 @@
     "umich-formation-protocols": "2026-10-11",
     "unibo-powertools-dataset": "2026-10-11",
     "vito-module-driving-profile-ageing": "2026-10-11",
-    "vito-ni-rich-18650-lifecycle-ageing": "2026-10-11"
+    "vito-ni-rich-18650-lifecycle-ageing": "2026-10-11",
+    "samsung-inr18650-30q-knee-point-aging": "2026-10-30"
   },
   "events": [
+    {
+      "date": "2026-10-30",
+      "type": "datasets",
+      "items": [
+        {
+          "id": "samsung-inr18650-30q-knee-point-aging",
+          "name": "Samsung INR18650-30Q Knee-Point Aging Dataset"
+        }
+      ]
+    },
     {
       "date": "2026-10-13",
       "type": "studies",
