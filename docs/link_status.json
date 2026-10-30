@@ -2,8 +2,8 @@
   "updated": "2026-10-30",
   "note": "Weekly automated check of each dataset's data link. 'unverified' means the site blocks automated checks; 'broken' means it failed two checks in a row.",
   "summary": {
-    "ok": 93,
-    "unverified": 5,
+    "ok": 90,
+    "unverified": 8,
     "broken": 3
   },
   "datasets": {
@@ -137,8 +137,8 @@
     },
     "tum-commercial-aging": {
       "url": "https://mediatum.ub.tum.de/1713382",
-      "status": "ok",
-      "http": 200,
+      "status": "unverified",
+      "http": 429,
       "consecutive_failures": 0,
       "checked": "2026-10-30",
       "last_ok": "2026-10-30"
@@ -225,8 +225,8 @@
     },
     "cycle-aging-data-of-automotive-grade-li-ion-cells-under-realistic-conditions-vw-id-3": {
       "url": "https://mediatum.ub.tum.de/1748915",
-      "status": "ok",
-      "http": 200,
+      "status": "unverified",
+      "http": 429,
       "consecutive_failures": 0,
       "checked": "2026-10-30",
       "last_ok": "2026-10-30"
@@ -283,7 +283,7 @@
       "url": "https://www.nrel.gov/transportation/battery-failure.html",
       "status": "broken",
       "http": null,
-      "consecutive_failures": 7,
+      "consecutive_failures": 8,
       "checked": "2026-10-30",
       "last_ok": null
     },
@@ -425,12 +425,11 @@
     },
     "rate-capability-ocv-impedance-and-half-cell-data-sodium-ion-and-lfp-batteries": {
       "url": "https://doi.org/10.14459/2024mp1762675",
-      "status": "ok",
-      "http": 200,
+      "status": "unverified",
+      "http": 429,
       "consecutive_failures": 0,
       "checked": "2026-10-30",
-      "last_ok": "2026-10-30",
-      "redirects_to": "https://mediatum.ub.tum.de/1762675"
+      "last_ok": "2026-10-30"
     },
     "data-repository-for-electrochemical-thermal-modelling-of-high-power-li-ion-pouch-cells": {
       "url": "https://ora.ox.ac.uk/objects/uuid:fe9bad3e-8a72-4e3b-8f01-fec3324b6758",
@@ -710,7 +709,7 @@
       "url": "https://data.4tu.nl/datasets/e19fe272-4f46-450c-9125-6545c4c1a98b",
       "status": "broken",
       "http": null,
-      "consecutive_failures": 3,
+      "consecutive_failures": 4,
       "checked": "2026-10-30",
       "last_ok": "2026-10-18"
     },
@@ -718,7 +717,7 @@
       "url": "https://data.4tu.nl/datasets/3b2f7917-0448-4860-8ab9-579e8874429d",
       "status": "broken",
       "http": null,
-      "consecutive_failures": 3,
+      "consecutive_failures": 4,
       "checked": "2026-10-30",
       "last_ok": "2026-10-18"
     },
