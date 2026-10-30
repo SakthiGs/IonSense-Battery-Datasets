@@ -15,9 +15,10 @@ on:
 permissions:
   contents: write
 
+# Both metadata workflows publish to main; serialize their writes.
 concurrency:
-  group: update-release-dates
-  cancel-in-progress: true
+  group: ionsense-generated-metadata
+  cancel-in-progress: false
 
 jobs:
   update:
@@ -31,12 +32,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: python scripts/update_release_dates.py | tee -a "$GITHUB_STEP_SUMMARY"
-      - name: Commit if changed
+      - name: Publish metadata (safe retry after concurrent commits)
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/release_dates.json
-          if git diff --cached --quiet; then echo "No change"; exit 0; fi
-          git commit -m "Update dataset release dates"
-          git pull --rebase origin main
-          git push
+          python scripts/publish_generated_metadata.py \
+            docs/release_dates.json \
+            "Update dataset release dates" \
+            scripts/update_release_dates.py
