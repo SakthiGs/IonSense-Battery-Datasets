@@ -633,11 +633,11 @@
       "Knee-onset identification",
       "Knee-point detection"
     ],
-    "source": "MIT / Stanford",
+    "source": "MIT / Stanford / Toyota Research Institute",
     "scale": "Early-prediction cycling dataset",
-    "description": "Battery cycling measurements used for early cycle-life prediction.",
+    "description": "LFP/graphite fast-charge cycling and capacity trajectories originally released for early-cycle lifetime prediction; later published research derives degradation knee points and knee onsets from these trajectories.",
     "url": "https://data.matr.io/1/",
-    "paper": "",
+    "paper": "https://doi.org/10.1038/s41560-019-0356-8",
     "access": "Repository",
     "signals": [
       "Cycling data",
@@ -652,11 +652,11 @@
     "chemistry_evidence_url": "https://www.nature.com/articles/s41560-019-0356-8",
     "chemistry_verification": "source_verified",
     "chemistry_evidence": {
-      "status": "catalogue_or_source_review",
-      "url": "https://data.matr.io/1/",
-      "note": "Source study uses LFP/graphite fast-charging cells"
+      "status": "source_verified",
+      "url": "https://www.nature.com/articles/s41560-019-0356-8",
+      "note": "Original Severson et al. fast-charge cell study used LFP/graphite batteries; knee-onset event cycles are derived by later analysis, not directly measured."
     },
-    "chemistry_review_status": "catalogue_label_not_independently_verified",
+    "chemistry_review_status": "source_verified",
     "application_domains": [],
     "aka": [
       "Data-Driven Prediction of Battery Cycle Life",
@@ -682,14 +682,14 @@
     "description": "The XJTU battery dataset: 55 NCM523/graphite 18650 cells cycled to failure at room temperature under six charge/discharge protocols, including random discharge currents, random walks and a satellite orbit profile, sampled at 1 Hz.",
     "url": "https://zenodo.org/records/10963339",
     "paper": "https://www.nature.com/articles/s41467-024-48779-z",
-    "access": "Unverified",
+    "access": "Open landing page",
     "signals": [
       "Cycling data",
       "Voltage",
       "Current",
       "Capacity"
     ],
-    "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
+    "notes": "Original Zenodo source confirms 55 NMC523 cells, six cycling protocols and 1 Hz telemetry. Knee-onset targets are not supplied on the source page; reconstruct capacity curves and verify which cells develop detectable knees. Raw files have not been audited in IonSense.",
     "source_type": "data_repository",
     "access_status": "not_checked",
     "chemistries": [
@@ -1579,13 +1579,13 @@
     "description": "77 commercial LFP/graphite cells, each discharged with its own multi-stage protocol after fast charging at 30 °C, with cycle lives of 1,100 to 2,700 cycles. Often called the HUST dataset.",
     "url": "https://data.mendeley.com/datasets/nsc7hnsg4s/2",
     "paper": "https://pubs.rsc.org/en/content/articlehtml/2022/ee/d2ee01676a",
-    "access": "Unverified",
+    "access": "Open landing page",
     "signals": [
       "Cycling data",
       "Capacity",
       "Voltage"
     ],
-    "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
+    "notes": "Mendeley source confirms 77 LFP/graphite cells under varying multistage discharges at 30°C. Raw trajectories and knee-onset labels have not been inspected; use only after cell-level knee qualification and censorship rules.",
     "source_type": "data_repository",
     "access_status": "not_checked",
     "chemistries": [
@@ -1604,7 +1604,8 @@
       "Real-Time Personalized Health Status Prediction via Deep Transfer Learning",
       "HUST",
       "Huazhong"
-    ]
+    ],
+    "license": "CC BY 4.0"
   },
   {
     "id": "generative-learning-assisted-state-of-health-estimation-for-battery-recycling",
@@ -3586,8 +3587,7 @@
     "tasks": [
       "Cycle life",
       "RUL prediction",
-      "Degradation analysis",
-      "Knee-onset research"
+      "Degradation analysis"
     ],
     "source": "Seoul National University — Yong Jin Jeong",
     "scale": "130 experimental cells in 3 cohorts (90 + 12 + 28) · charging protocols up to 1,000 cycles",
@@ -3630,8 +3630,7 @@
     "tasks": [
       "Degradation analysis",
       "SOH estimation",
-      "Health monitoring",
-      "Knee-onset research"
+      "Health monitoring"
     ],
     "source": "Seoul National University — Kim, An & Choi",
     "scale": "81 LG Chem INR18650-MJ1 cells · NMC811/graphite–SiOx · periodic diagnostics",
