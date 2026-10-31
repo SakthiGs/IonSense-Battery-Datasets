@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-30",
+  "updated": "2026-10-31",
   "note": "Datasets and studies added to IonSense, by the day they first appeared in the catalogue.",
   "new_datasets": {
     "argonne-camp-2023": "2026-10-11",
@@ -36,9 +36,30 @@
     "umich-formation-protocols": "2026-10-11",
     "unibo-powertools-dataset": "2026-10-11",
     "vito-module-driving-profile-ageing": "2026-10-11",
-    "vito-ni-rich-18650-lifecycle-ageing": "2026-10-11"
+    "vito-ni-rich-18650-lifecycle-ageing": "2026-10-11",
+    "stanford-aging-matrix-nca-363": "2026-10-31",
+    "birmingham-lfp-crate-cycle-ageing-2026": "2026-10-31",
+    "bath-tempest-lfp-280ah-700cycle": "2026-10-31"
   },
   "events": [
+    {
+      "date": "2026-10-31",
+      "type": "datasets",
+      "items": [
+        {
+          "id": "stanford-aging-matrix-nca-363",
+          "name": "Stanford Battery Aging Matrix — 363 NCA Cells"
+        },
+        {
+          "id": "birmingham-lfp-crate-cycle-ageing-2026",
+          "name": "Birmingham LFP 18650 Cycling Under Different C-Rates (2026)"
+        },
+        {
+          "id": "bath-tempest-lfp-280ah-700cycle",
+          "name": "Bath TEMPEST 280 Ah LFP Prismatic Cell Aging (700 Cycles)"
+        }
+      ]
+    },
     {
       "date": "2026-10-30",
       "type": "datasets",
