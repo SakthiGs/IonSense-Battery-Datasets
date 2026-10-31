@@ -3701,5 +3701,129 @@
       "note": "Authors' README explicitly identifies real A123 graphite/LFP cells ANR26650M1a and ANR26650M1b and experimental knee cases."
     },
     "dataset_kind": "Experimental + synthetic"
+  },
+  {
+    "id": "stanford-aging-matrix-nca-363",
+    "name": "Stanford Battery Aging Matrix — 363 NCA Cells",
+    "category": "Lab Aging & Degradation",
+    "chemistry": "NCA",
+    "tasks": [
+      "Knee-onset identification",
+      "Degradation analysis",
+      "SOH estimation",
+      "Cycle life"
+    ],
+    "source": "Stanford University / SLAC / MIT / Toyota Research Institute — van Vlijmen et al.",
+    "scale": "363 experimental Panasonic 21700 cells · hundreds of cycling protocols",
+    "description": "A large experimental cycling matrix using Panasonic NCA/graphite–SiOx 21700 cells recovered from a 2019 Tesla Model 3. Includes raw charge/discharge trajectories, diagnostics, 16 mechanistic ageing indicators and processed outputs. Published supplementary methods fit Bacon–Watts piecewise models to capacity trajectories to estimate knee onset and knee severity.",
+    "url": "https://data.matr.io/11/",
+    "paper": "https://doi.org/10.1039/D4EE05609D",
+    "access": "Open landing page; processed data, metadata and raw files linked",
+    "signals": [
+      "Cycling data",
+      "Capacity",
+      "Voltage",
+      "Current",
+      "Temperature",
+      "Resistance"
+    ],
+    "notes": "The supplement discusses knee-onset fitting, but per-cell onset labels have not been independently downloaded or validated here. Large raw download (~178 GiB); start with processed data and metadata. Original data source is CC BY-NC 4.0, so redistribution/commercial use require licence review. Use cell- and protocol-level splits and handle cells without a detectable knee.",
+    "source_type": "data_repository",
+    "access_status": "not_checked",
+    "chemistries": [
+      "NCA"
+    ],
+    "chemistry_review_status": "source_verified",
+    "chemistry_evidence_url": "https://www.rsc.org/suppdata/d4/ee/d4ee05609d/d4ee05609d1.pdf",
+    "chemistry_verification": "source_verified",
+    "chemistry_evidence": {
+      "status": "source_verified",
+      "url": "https://data.matr.io/11/",
+      "note": "Stanford authors' supplementary information identifies Panasonic NCA positive electrode and graphite–SiOx negative electrode."
+    },
+    "application_domains": [],
+    "license": "CC BY-NC 4.0",
+    "dataset_kind": "Experimental"
+  },
+  {
+    "id": "birmingham-lfp-crate-cycle-ageing-2026",
+    "name": "Birmingham LFP 18650 Cycling Under Different C-Rates (2026)",
+    "category": "Lab Aging & Degradation",
+    "chemistry": "LFP",
+    "tasks": [
+      "Degradation analysis",
+      "Knee-onset research"
+    ],
+    "source": "University of Birmingham — Japar, Al-Sagheer & Steinberger-Wilckens",
+    "scale": "LFP 18650 cells (1.25 Ah) · 6 ageing-rate conditions B1–B6 · exact independent cell count requires checking",
+    "description": "Long-term experimental ageing at 25 °C with varying charge and discharge C-rates from 0.5C to 3C. Raw MSTAT Excel test workbooks retain voltage, current, time and protocol details at cycle checkpoints; 50-cycle spacing initially and 100-cycle intervals later.",
+    "url": "https://doi.org/10.5281/zenodo.22286449",
+    "paper": "",
+    "access": "Open dataset landing page",
+    "signals": [
+      "Voltage",
+      "Current",
+      "Cycling data"
+    ],
+    "notes": "Source is a C-rate ageing dataset, not a labelled knee-onset benchmark. Capacity may be reconstructed from current and time; diagnostic spacing of 50–100 cycles imposes substantial uncertainty on any onset date. Confirm number of independent cells, trajectory lengths and whether knee events were observed before use.",
+    "source_type": "data_repository",
+    "access_status": "not_checked",
+    "chemistries": [
+      "LFP"
+    ],
+    "chemistry_review_status": "source_verified",
+    "chemistry_evidence_url": "https://research.birmingham.ac.uk/en/datasets/experimental-dataset-for-cycle-ageing-of-lfp-18650-lithium-ion-ba/",
+    "chemistry_verification": "source_verified",
+    "chemistry_evidence": {
+      "status": "source_verified",
+      "url": "https://research.birmingham.ac.uk/en/datasets/experimental-dataset-for-cycle-ageing-of-lfp-18650-lithium-ion-ba/",
+      "note": "University of Birmingham research record explicitly identifies commercial LFP 18650 cells."
+    },
+    "application_domains": [],
+    "license": "CC BY 4.0",
+    "doi": "10.5281/zenodo.22286449",
+    "dataset_kind": "Experimental"
+  },
+  {
+    "id": "bath-tempest-lfp-280ah-700cycle",
+    "name": "Bath TEMPEST 280 Ah LFP Prismatic Cell Aging (700 Cycles)",
+    "category": "Lab Aging & Degradation",
+    "chemistry": "LFP",
+    "tasks": [
+      "Degradation analysis",
+      "Knee-onset research",
+      "SOH estimation"
+    ],
+    "source": "University of Bath / EU TEMPEST — Gray & Vagg",
+    "scale": "1 large-format 280 Ah prismatic LFP cell · 700 ageing cycles",
+    "description": "Experimental large-format LFP cell dataset with 700 ageing cycles of raw cycling measurements and reference performance tests; separate capacity, HPPC and entropy-characterisation files across 15–35 °C. Relevant to BMS diagnostics and potential retrospective knee screening.",
+    "url": "https://zenodo.org/records/20813753",
+    "paper": "",
+    "access": "Open dataset landing page",
+    "signals": [
+      "Capacity",
+      "Cycling data",
+      "Voltage",
+      "Current",
+      "Temperature"
+    ],
+    "notes": "Only one physical cell; no population-level generalization or knee-onset ground-truth labels are claimed. Inspect full capacity trajectory and diagnostic interval before attempting knee identification. Licence not confirmed from public source display; do not redistribute original files without checking terms.",
+    "source_type": "data_repository",
+    "access_status": "not_checked",
+    "chemistries": [
+      "LFP"
+    ],
+    "chemistry_review_status": "source_verified",
+    "chemistry_evidence_url": "https://zenodo.org/records/20813753",
+    "chemistry_verification": "source_verified",
+    "chemistry_evidence": {
+      "status": "source_verified",
+      "url": "https://zenodo.org/records/20813753",
+      "note": "Zenodo dataset record identifies a 280 Ah prismatic LFP cell, 700 cycles and TEMPEST project."
+    },
+    "application_domains": [],
+    "license": null,
+    "doi": "10.5281/zenodo.20813753",
+    "dataset_kind": "Experimental"
   }
 ]
