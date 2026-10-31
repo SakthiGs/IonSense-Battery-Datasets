@@ -792,23 +792,12 @@ function methodFamiliesOf(d) {
 let KNEE = {};
 const kneeOf = d => KNEE[d.id] || null;
 const kneeEvidenceOf = d => (kneeOf(d) || {}).evidence || 'Not assessed for knee onset';
-const KNEE_ORDER = [
-  'Published knee-onset study',
-  'Published knee-point study',
-  'Real-cell knee demonstration',
-  'Unlabelled ageing candidate',
-  'Aggregated benchmark; knee evidence not audited',
-  'Not assessed for knee onset'
-];
-
 const FACETS = [
   { key: 'category', title: 'Category', short: 'Category', get: d => [d.category || 'Uncategorised'] },
   { key: 'domain', title: 'Application domain', short: 'Application', get: domainOf },
   { key: 'chemistry', title: 'Cell chemistry', short: 'Chemistry', get: chemOf },
-  { key: 'task', title: 'Research task', short: 'Task', get: d => d.tasks || [], switchable: true },
-  { key: 'knee', title: 'Knee research evidence', short: 'Knee evidence', get: d => [kneeEvidenceOf(d)],
-    order: () => KNEE_ORDER,
-    note: 'Source-level desk audit only; published knee-onset evidence is not proof of downloadable ground-truth labels. Unassessed does not mean no knee.' },
+  { key: 'task', title: 'Research task', short: 'Task', get: d => d.tasks || [], switchable: true,
+    note: 'Choose Knee onset to see research candidates. Published knee evidence and label availability are explained within each dataset; this task does not imply verified onset labels.' },
   { key: 'method', title: 'Methods used in studies', short: 'Methods', get: methodFamiliesOf, switchable: true, order: () => METHOD_FAMILIES.map(x => x[0]),
     note: 'From the published studies listed for each dataset. Most datasets list only their original study so far.' },
   { key: 'signal', title: 'Measurements', short: 'Measurements', get: d => (d.signals && d.signals.length) ? d.signals : ['Not listed'], switchable: true },
@@ -1867,6 +1856,8 @@ function readUrl() {
   state.q = p.get('q') || '';
   $('#q').value = state.q;
   for (const f of FACETS) for (const v of p.getAll(f.key)) if (f.options.includes(v)) state.sel[f.key].add(v);
+  /* Legacy ?knee= links now open the knee-onset task; evidence tiers remain visible in each record. */
+  if (p.has('knee') && FACET.task.options.includes('Knee onset')) state.sel.task.add('Knee onset');
   for (const k of Object.keys(state.mode)) if (p.get(k + 'Match') === 'all') state.mode[k] = 'all';
   if (['name', 'category', 'documented', 'newest'].includes(p.get('sort'))) state.sort = p.get('sort');
   if (['cards', 'table', 'coverage'].includes(p.get('view'))) state.view = p.get('view');
