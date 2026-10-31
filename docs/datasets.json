@@ -630,8 +630,8 @@
     "tasks": [
       "Cycle life",
       "RUL prediction",
-      "Knee-onset identification",
-      "Knee-point detection"
+      "Knee-point detection",
+      "Knee onset"
     ],
     "source": "MIT / Stanford / Toyota Research Institute",
     "scale": "Early-prediction cycling dataset",
@@ -675,7 +675,8 @@
     "chemistry": "NMC",
     "tasks": [
       "SOH estimation",
-      "Degradation analysis"
+      "Degradation analysis",
+      "Knee onset"
     ],
     "source": "Xi'an Jiaotong University",
     "scale": "55 cells (LISHEN 18650, 2 Ah) · 6 test protocols",
@@ -1572,7 +1573,8 @@
     "tasks": [
       "SOH estimation",
       "RUL prediction",
-      "Capacity estimation"
+      "Capacity estimation",
+      "Knee onset"
     ],
     "source": "Huazhong University of Science and Technology",
     "scale": "77 cells (A123 APR18650M1A, 1.1 Ah) · 146,122 cycles",
@@ -2425,7 +2427,8 @@
     "tasks": [
       "Cycle life",
       "Degradation analysis",
-      "Capacity estimation"
+      "Capacity estimation",
+      "Knee onset"
     ],
     "source": "Sandia National Laboratories",
     "scale": "Commercial 18650 cells of three chemistries · several temperatures, depths of discharge and currents",
@@ -3502,7 +3505,8 @@
       "Degradation analysis",
       "Knee-point detection",
       "SOH estimation",
-      "Second-life classification"
+      "Second-life classification",
+      "Knee onset"
     ],
     "source": "Seoul National University (Kim et al.)",
     "scale": "60 Samsung INR18650-30Q cells · 9 ageing conditions · SOH 100% to ~60%",
@@ -3546,9 +3550,9 @@
     "category": "Synthetic & Derived Battery Datasets",
     "chemistry": "NMC",
     "tasks": [
-      "Knee-onset identification",
       "Knee-point detection",
-      "Degradation analysis"
+      "Degradation analysis",
+      "Knee onset"
     ],
     "source": "Chalmers University of Technology — Zhang, Altaf & Wik",
     "scale": "5 simulated NMC811 battery trajectories · 5 particle-cracking rates",
@@ -3587,7 +3591,8 @@
     "tasks": [
       "Cycle life",
       "RUL prediction",
-      "Degradation analysis"
+      "Degradation analysis",
+      "Knee onset"
     ],
     "source": "Seoul National University — Yong Jin Jeong",
     "scale": "130 experimental cells in 3 cohorts (90 + 12 + 28) · charging protocols up to 1,000 cycles",
@@ -3630,7 +3635,8 @@
     "tasks": [
       "Degradation analysis",
       "SOH estimation",
-      "Health monitoring"
+      "Health monitoring",
+      "Knee onset"
     ],
     "source": "Seoul National University — Kim, An & Choi",
     "scale": "81 LG Chem INR18650-MJ1 cells · NMC811/graphite–SiOx · periodic diagnostics",
@@ -3669,9 +3675,9 @@
     "category": "Lab Aging & Degradation",
     "chemistry": "LFP",
     "tasks": [
-      "Knee-onset identification",
       "Knee-point detection",
-      "Degradation analysis"
+      "Degradation analysis",
+      "Knee onset"
     ],
     "source": "ICFormer authors — Nahuel Costa et al.",
     "scale": "2 experimental A123 LFP cells plus related synthetic diagnosis/prognosis resources",
@@ -3708,10 +3714,10 @@
     "category": "Lab Aging & Degradation",
     "chemistry": "NCA",
     "tasks": [
-      "Knee-onset identification",
       "Degradation analysis",
       "SOH estimation",
-      "Cycle life"
+      "Cycle life",
+      "Knee onset"
     ],
     "source": "Stanford University / SLAC / MIT / Toyota Research Institute — van Vlijmen et al.",
     "scale": "363 experimental Panasonic 21700 cells · hundreds of cycling protocols",
@@ -3752,7 +3758,7 @@
     "chemistry": "LFP",
     "tasks": [
       "Degradation analysis",
-      "Knee-onset research"
+      "Knee onset"
     ],
     "source": "University of Birmingham — Japar, Al-Sagheer & Steinberger-Wilckens",
     "scale": "LFP 18650 cells (1.25 Ah) · 6 ageing-rate conditions B1–B6 · exact independent cell count requires checking",
@@ -3791,8 +3797,8 @@
     "chemistry": "LFP",
     "tasks": [
       "Degradation analysis",
-      "Knee-onset research",
-      "SOH estimation"
+      "SOH estimation",
+      "Knee onset"
     ],
     "source": "University of Bath / EU TEMPEST — Gray & Vagg",
     "scale": "1 large-format 280 Ah prismatic LFP cell · 700 ageing cycles",
