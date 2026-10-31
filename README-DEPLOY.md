@@ -15,11 +15,12 @@ python3 -m http.server 8000
 
 Open `http://localhost:8000/docs/` and verify:
 
-- The catalogue loads 101 indexed resources and filters by application domain, category, chemistry, research task and measurements.
+- The catalogue loads 104 indexed resources and filters by application domain, category, chemistry, research task and measurements.
 - Field datasets do not all appear as EV records; check Home Storage, Tsinghua EV and NASA satellite examples.
 - Cards, Table, Coverage, Dataset Comparison (up to 3 entries), dark/light mode and copyable comparison URLs still work.
 - Cloudflare beacon remains in `docs/index.html` (analytics appears only once deployed, and your dashboard may take time to update).
 - New knee-onset research records appear in search results, with source DOI, experimental/synthetic distinction and accurate licence status.
+- Knee evidence filter includes Stanford Aging Matrix, Birmingham and Bath/TEMPEST; record details show evidence/labels/warnings; run `python scripts/validate_knee_quality.py`.
 - The navigation, issue and README links open the renamed repository.
 
 ## Publish
