@@ -283,7 +283,7 @@
       "url": "https://www.nrel.gov/transportation/battery-failure.html",
       "status": "broken",
       "http": null,
-      "consecutive_failures": 9,
+      "consecutive_failures": 10,
       "checked": "2026-10-31",
       "last_ok": null
     },
@@ -710,7 +710,7 @@
       "url": "https://data.4tu.nl/datasets/e19fe272-4f46-450c-9125-6545c4c1a98b",
       "status": "broken",
       "http": null,
-      "consecutive_failures": 5,
+      "consecutive_failures": 6,
       "checked": "2026-10-31",
       "last_ok": "2026-10-18"
     },
@@ -718,7 +718,7 @@
       "url": "https://data.4tu.nl/datasets/3b2f7917-0448-4860-8ab9-579e8874429d",
       "status": "broken",
       "http": null,
-      "consecutive_failures": 5,
+      "consecutive_failures": 6,
       "checked": "2026-10-31",
       "last_ok": "2026-10-18"
     },
