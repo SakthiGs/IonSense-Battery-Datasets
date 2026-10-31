@@ -1,8 +1,6 @@
 # IonSense — Battery Research Dataset Finder
 
-![IonSense — Battery Research Dataset Finder (legacy banner)](battery_banner_96.webp)
-
-*The banner depicts an earlier 96-resource milestone; the catalogue and counts below reflect the current 104-entry index.*
+![IonSense — Battery Research Dataset Finder: 104 indexed resources in 9 categories](battery_banner_104.svg)
 
 **Discover battery research resources across electric mobility, stationary energy storage, laboratory testing, diagnostics, safety, recycling, and specialised applications.**
 
@@ -68,7 +66,7 @@ For defensible BMS research, inspect full per-cell capacity trajectories, specif
 
 ### Knee-onset evidence quality (source-audited)
 
-IonSense maintains a **separate, machine-readable desk audit** at [`docs/knee_quality.json`](docs/knee_quality.json), reviewed 31 October 2026. It includes **thirteen** knee-relevant records, each linked to primary evidence, while preserving the distinction between source-confirmed knees, source-confirmed knee-onset studies, and ordinary unlabelled ageing datasets. The public dashboard has a **Knee evidence** filter and shows each audited record's label availability, capacity sampling resolution, study caveats, and next validation step.
+IonSense maintains a **separate, machine-readable desk audit** at [`docs/knee_quality.json`](docs/knee_quality.json), reviewed 31 October 2026. It includes **thirteen** knee-relevant records, each linked to primary evidence, while preserving the distinction between source-confirmed knees, source-confirmed knee-onset studies, and ordinary unlabelled ageing datasets. The public dashboard includes **Knee onset** as an option within the **Research task** filter (12 research-suitable records). A separately audited aggregate benchmark is not tagged for this task until its constituent cohorts are checked. The source-evidence classifications, label availability, capacity sampling resolution and caveats remain visible **inside the dataset details**, not as a separate top-level filter.
 
 | Evidence tier | Audited records | Correct interpretation |
 |---|---:|---|
@@ -81,6 +79,8 @@ IonSense maintains a **separate, machine-readable desk audit** at [`docs/knee_qu
 **2026 knee-collection additions:** Stanford’s [363-cell Aging Matrix](https://data.matr.io/11/) contributes published knee-onset fitting evidence and multiple operating protocols. [Birmingham’s experimental LFP ageing](https://doi.org/10.5281/zenodo.22286449) adds coarse 50–100-cycle checkups; [Bath/TEMPEST’s 280 Ah LFP cell](https://zenodo.org/records/20813753) adds a practical large-format BMS case. The latter two are candidates, **not positive knee-onset labels**. Validate per-cell capacity trajectories, censoring and licensing before any supervised experiment.
 
 **New Sandia qualification:** The source publication identified knee onsets in **22 selected LG HG2 NMC cells**, excluding **10 of the original 32**. The Sandia catalogue entry covers a broader multi-chemistry collection. These 22 cells must not be counted as a separate dataset, and exclusions must be documented to avoid biased knee prevalence estimates. The paper's identified knee-onset events are not a publicly verified label file. 
+
+The **Knee onset** task is a research-discovery tag, **not** a guarantee that an observed knee or downloadable onset labels exist. Select the task and read each dataset's evidence and target-status notes before choosing training data.
 
 **Not assessed** means we have not reviewed a dataset for knee-onset research; it does not mean the dataset has no knees. A desk audit is not a reproducibility or download test.
 
