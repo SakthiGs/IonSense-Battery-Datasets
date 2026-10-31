@@ -59,20 +59,23 @@ The catalogue links to **original sources** and documents which resources may be
 | [SNU dynamic-usage dataset, 130 cells](https://data.mendeley.com/datasets/npjy7vdgky/1) | Experimental | RUL and cycling data under variable charging; candidate for retrospective onset labels |
 | [SNU LG MJ1 dataset, 81 cells](https://data.mendeley.com/datasets/p5vbbytz3x/1) | Experimental | Capacity retention and relaxation diagnostics; candidate for detecting transition to accelerated fade |
 | [MIT–Stanford–TRI (MATR)](https://data.matr.io/1/) | Experimental | Previously indexed: original data for the [published knee-point/onset identification code](https://github.com/pfermined/knee_identification) |
+| [Sandia NMC subset (22 of 32 cells)](https://www.batteryarchive.org/study_summaries.html) | Experimental | Published [2024 curvature-based knee-onset study](https://doi.org/10.1016/j.jpowsour.2024.234619); subset selection must be reconstructed; 4 no-observed-knee/EOL and 6 corrupted cells were excluded |
 
 For defensible BMS research, inspect full per-cell capacity trajectories, specify the knee-onset definition, quantify uncertainty when knees are weak or unobserved, and split by battery cell and preferably by cycling protocol to prevent leakage.
 
 ### Knee-onset evidence quality (source-audited)
 
-IonSense maintains a **separate, machine-readable desk audit** at [`docs/knee_quality.json`](docs/knee_quality.json), reviewed 30 October 2026. It includes **nine** knee-relevant records, each linked to primary evidence, while preserving the distinction between source-confirmed knees, source-confirmed knee-onset studies, and ordinary unlabelled ageing datasets. The public dashboard has a **Knee evidence** filter and shows each audited record's label availability, capacity sampling resolution, study caveats, and next validation step.
+IonSense maintains a **separate, machine-readable desk audit** at [`docs/knee_quality.json`](docs/knee_quality.json), reviewed 31 October 2026. It includes **ten** knee-relevant records, each linked to primary evidence, while preserving the distinction between source-confirmed knees, source-confirmed knee-onset studies, and ordinary unlabelled ageing datasets. The public dashboard has a **Knee evidence** filter and shows each audited record's label availability, capacity sampling resolution, study caveats, and next validation step.
 
 | Evidence tier | Audited records | Correct interpretation |
 |---|---:|---|
-| Published knee-onset study | 2 | Published knee-onset analysis exists; **does not imply pre-labelled per-cell onset targets are downloadable** |
+| Published knee-onset study | 3 | Published knee-onset analysis exists; **does not imply pre-labelled per-cell onset targets are downloadable** |
 | Published knee-point study | 1 | Knee-point-specific measurements or analysis; knee onset is not interchangeable with the later knee point |
 | Real-cell knee demonstration | 1 | Small experimental case study; insufficient for generalization claims |
 | Unlabelled ageing candidate | 4 | Cycling/retention information exists; knee presence, prevalence and onset labels have **not** been established |
 | Aggregate benchmark, not audited | 1 | Source overlap must be resolved before treating samples as independent |
+
+**New Sandia qualification:** The source publication identified knee onsets in **22 selected LG HG2 NMC cells**, excluding **10 of the original 32**. The Sandia catalogue entry covers a broader multi-chemistry collection. These 22 cells must not be counted as a separate dataset, and exclusions must be documented to avoid biased knee prevalence estimates. The paper's identified knee-onset events are not a publicly verified label file. 
 
 **Not assessed** means we have not reviewed a dataset for knee-onset research; it does not mean the dataset has no knees. A desk audit is not a reproducibility or download test.
 
