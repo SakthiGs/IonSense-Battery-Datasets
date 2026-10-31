@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1000" height="500" viewBox="0 0 1000 500" role="img" aria-label="IonSense Battery Research Dataset Finder: 104 indexed research resources, 9 research categories, multiple battery chemistries and diverse signals.">
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f9fcfc"/><stop offset=".57" stop-color="#eff8f7"/><stop offset="1" stop-color="#d6f1f1"/></linearGradient>
+ <linearGradient id="brand" x1="0" x2="1"><stop stop-color="#002a58"/><stop offset="1" stop-color="#0aaa84"/></linearGradient>
+ <linearGradient id="bat" x1="0" x2="1"><stop stop-color="#91a9b4"/><stop offset=".2" stop-color="#efffff"/><stop offset=".56" stop-color="#2dd0b1"/><stop offset=".83" stop-color="#237c80"/><stop offset="1" stop-color="#c8e9e6"/></linearGradient>
+ <linearGradient id="liquid" x1="0" y1="1" x2="0" y2="0"><stop stop-color="#058767"/><stop offset=".7" stop-color="#20bb91"/><stop offset="1" stop-color="#b5f3d0"/></linearGradient>
+ <linearGradient id="card" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffffff" stop-opacity=".97"/><stop offset="1" stop-color="#e9f9f7" stop-opacity=".94"/></linearGradient>
+ <filter id="shadow" x="-25%" y="-35%" width="150%" height="170%"><feDropShadow dx="0" dy="5" stdDeviation="9" flood-color="#00515d" flood-opacity=".11"/></filter>
+ <filter id="smallshadow" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#00515d" flood-opacity=".13"/></filter>
+ <clipPath id="band"><rect x="0" y="380" width="1000" height="120"/></clipPath>
+</defs>
+<rect width="1000" height="500" fill="url(#bg)"/>
+<circle cx="826" cy="160" r="200" fill="#c9f2f0" opacity=".55"/><circle cx="838" cy="171" r="148" fill="none" stroke="#ffffff" stroke-opacity=".83" stroke-width="2"/>
+<path d="M0 356 Q140 325 260 351 T504 345 T756 343 T1000 334 L1000 383 L0 383Z" fill="#a9eee8" opacity=".26"/>
+<!-- Logo and title -->
+<g transform="translate(39 44)">
+ <rect x="9" y="0" width="29" height="8" rx="3" fill="#006ba1"/>
+ <rect x="2" y="7" width="44" height="55" rx="8" fill="#ffffff" stroke="#003969" stroke-width="5"/>
+ <rect x="10" y="16" width="28" height="37" rx="3" fill="#0caa86" opacity=".15"/>
+ <path d="M10 48 C10 27 24 20 43 16 C43 37 34 48 10 48Z" fill="#14b782"/>
+ <path d="M11 51 Q26 34 38 25" fill="none" stroke="#fff" stroke-width="2.8" stroke-linecap="round"/>
+</g>
+<text x="95" y="104" font-family="Arial,Helvetica,sans-serif" font-size="65" font-weight="800" fill="url(#brand)" letter-spacing="-2.4">IonSense</text>
+<text x="43" y="164" font-family="Arial,Helvetica,sans-serif" font-size="30" font-weight="750" fill="#092347" letter-spacing="-1">Battery Research Dataset Finder</text>
+<text x="44" y="202" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#475569">A curated index of open battery research datasets</text>
+<text x="44" y="229" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#475569">for data-driven energy storage research</text>
+<rect x="44" y="248" width="162" height="4" rx="2" fill="url(#brand)"/>
+<!-- Glass statistics cards -->
+<g font-family="Arial,Helvetica,sans-serif" filter="url(#smallshadow)">
+ <rect x="35" y="273" width="155" height="92" rx="12" fill="url(#card)" stroke="#d1e5e6"/>
+ <rect x="199" y="273" width="136" height="92" rx="12" fill="url(#card)" stroke="#d1e5e6"/>
+ <rect x="344" y="273" width="162" height="92" rx="12" fill="url(#card)" stroke="#d1e5e6"/>
+ <rect x="515" y="273" width="147" height="92" rx="12" fill="url(#card)" stroke="#d1e5e6"/>
+</g>
+<g font-family="Arial,Helvetica,sans-serif">
+ <g fill="none" stroke="#1475ac" stroke-width="3"><ellipse cx="57" cy="310" rx="11" ry="4"/><path d="M46 310v18c0 3 22 3 22 0v-18M46 318c0 5 22 5 22 0M46 325c0 5 22 5 22 0"/></g>
+ <text x="76" y="321" fill="#003b70" font-size="43" font-weight="800">104</text><text x="47" y="345" fill="#3b4a5c" font-size="12">Indexed research</text><text x="47" y="358" fill="#3b4a5c" font-size="12">resources</text>
+ <g transform="translate(210 294)" stroke="#098f7c" stroke-width="3" fill="none"><path d="M1 4h16l6 6v26H1Z"/><path d="M17 4v7h7M6 18h13M6 23h13M6 28h10"/></g>
+ <text x="252" y="321" fill="#087965" font-size="43" font-weight="800">9</text><text x="210" y="345" fill="#3b4a5c" font-size="12">Research</text><text x="210" y="358" fill="#3b4a5c" font-size="12">categories</text>
+ <g transform="translate(355 295)" fill="none" stroke="#7342c7" stroke-width="3"><path d="M10 1v12l-9 20q-2 4 3 4h23q5 0 3-4L20 13V1M8 1h14M6 27h19"/></g>
+ <text x="390" y="313" fill="#6240b3" font-size="21" font-weight="750">Multiple</text><text x="390" y="332" fill="#334155" font-size="13">chemistries</text><text x="390" y="350" fill="#334155" font-size="13">&amp; tasks</text>
+ <path d="M528 315h11l6-17 9 33 8-16h12" fill="none" stroke="#db670f" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+ <text x="577" y="312" fill="#c45d0b" font-size="21" font-weight="750">Diverse</text><text x="577" y="331" fill="#334155" font-size="13">signals &amp;</text><text x="577" y="350" fill="#334155" font-size="13">modalities</text>
+</g>
+<!-- Battery research centerpiece -->
+<g filter="url(#shadow)">
+ <ellipse cx="804" cy="352" rx="90" ry="13" fill="#046b67" opacity=".20"/>
+ <rect x="760" y="100" width="100" height="239" rx="21" fill="url(#bat)" stroke="#5f9097" stroke-width="3"/>
+ <rect x="767" y="143" width="86" height="183" rx="9" fill="url(#liquid)"/>
+ <rect x="775" y="74" width="70" height="36" rx="10" fill="#d0eef0" stroke="#658c96" stroke-width="4"/>
+ <rect x="792" y="65" width="36" height="13" rx="5" fill="#667e8b"/>
+ <ellipse cx="810" cy="100" rx="49" ry="13" fill="#e5fcfd" stroke="#779ea4" stroke-width="4"/>
+ <ellipse cx="810" cy="329" rx="48" ry="12" fill="#bddbdf" stroke="#73939d" stroke-width="4"/>
+ <path d="M821 170l-34 65h21l-10 61 42-75h-23Z" fill="#e5fff6" opacity=".95"/>
+ <path d="M772 145v177" stroke="#fff" stroke-opacity=".44" stroke-width="5"/>
+</g>
+<!-- Floating analytic panels -->
+<g font-family="Arial,Helvetica,sans-serif" filter="url(#smallshadow)">
+ <g><rect x="573" y="40" width="152" height="98" rx="10" fill="#ffffff" fill-opacity=".88" stroke="#b8d5de"/><text x="584" y="59" font-size="12" font-weight="700" fill="#0c324f">Charge / Discharge</text><path d="M587 119V69M587 119h123" stroke="#9db2be" stroke-width="1.5" fill="none"/><path d="M589 117Q618 73 640 80T709 82" fill="none" stroke="#099a90" stroke-width="2.5"/><path d="M589 117Q617 91 641 92T710 85" fill="none" stroke="#327ddd" stroke-width="2"/></g>
+ <g><rect x="862" y="34" width="134" height="109" rx="10" fill="#ffffff" fill-opacity=".91" stroke="#b8d5de"/><text x="871" y="54" font-size="12" font-weight="700" fill="#0c324f">Capacity Fade</text><path d="M874 120V64M874 120h111" stroke="#9db2be" fill="none"/><path d="M876 73Q931 90 989 120" fill="none" stroke="#246cce" stroke-width="2.5"/></g>
+ <g><rect x="576" y="154" width="152" height="100" rx="10" fill="#ffffff" fill-opacity=".9" stroke="#b8d5de"/><text x="587" y="174" font-size="12" font-weight="700" fill="#0c324f">Impedance (EIS)</text><path d="M590 235V182M590 235h122" stroke="#9db2be" fill="none"/><path d="M593 229C622 168 678 160 709 221" stroke="#21a0c3" stroke-width="2.4" fill="none"/></g>
+ <g><rect x="871" y="171" width="125" height="115" rx="10" fill="#ffffff" fill-opacity=".91" stroke="#b8d5de"/><text x="882" y="191" font-size="12" font-weight="700" fill="#0c324f">SOH / RUL</text><path d="M883 265V200M883 265h102" stroke="#9db2be" fill="none"/><path d="M886 206L910 215 932 225 956 246 987 262" stroke="#078c85" stroke-width="2.6" fill="none"/></g>
+</g>
+<!-- Sector strip -->
+<g clip-path="url(#band)"><rect x="0" y="380" width="1000" height="120" fill="#fff" fill-opacity=".88"/>
+ <path d="M0 473Q110 444 235 474T490 474T757 477T1000 468V500H0Z" fill="#d9f6f1"/>
+</g>
+<g font-family="Arial,Helvetica,sans-serif" text-anchor="middle">
+ <g stroke="#d6e4e5" stroke-width="1.2"><path d="M110 399v76M221 399v76M332 399v76M443 399v76M554 399v76M665 399v76M776 399v76M887 399v76"/></g>
+ <g font-weight="800" font-size="28">
+ <text x="55" y="429" fill="#ef513c">EV</text><text x="166" y="429" fill="#00a579">◆</text><text x="277" y="429" fill="#7447bd">⌘</text><text x="388" y="429" fill="#117cce">◇</text><text x="499" y="429" fill="#e17713">♻</text><text x="610" y="429" fill="#069a88">AI</text><text x="721" y="429" fill="#e35694">▤</text><text x="832" y="429" fill="#0875c7">✈</text><text x="943" y="429" fill="#119e79">∞</text>
+ </g>
+ <g font-size="12" fill="#21313c">
+ <text x="55" y="450">Electric</text><text x="55" y="464">Vehicles</text>
+ <text x="166" y="450">Battery</text><text x="166" y="464">Materials</text>
+ <text x="277" y="450">Cell</text><text x="277" y="464">Characterization</text>
+ <text x="388" y="450">Safety &amp;</text><text x="388" y="464">Testing</text>
+ <text x="499" y="450">Recycling &amp;</text><text x="499" y="464">Second Life</text>
+ <text x="610" y="450">Machine Learning</text><text x="610" y="464">&amp; Prognostics</text>
+ <text x="721" y="450">Grid Storage</text><text x="721" y="464">&amp; Stationary</text>
+ <text x="832" y="450">Aviation &amp;</text><text x="832" y="464">Aerospace</text>
+ <text x="943" y="450">Multi-domain</text><text x="943" y="464">&amp; Others</text>
+ </g>
+</g>
+</svg>
