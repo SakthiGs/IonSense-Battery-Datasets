@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "reviewed_on": "2026-10-31",
-  "scope": "Ten source-reviewed knee-research catalogue records; all other IonSense records are unassessed, not negative cases.",
+  "scope": "13 source-reviewed knee-research catalogue records; remaining IonSense resources unassessed, not negative.",
   "disclaimer": "Desk audit of public source descriptions and publications, not downloaded raw file validation or independent confirmation of knee-event labels. Evidence categories are not accuracy scores or BMS-ready ground truth.",
   "definitions": {
     "knee_onset": "Beginning of detectable nonlinear/accelerating capacity fade under a specified identification method; operational definition varies by paper.",
@@ -148,6 +148,48 @@
       "next_check": "Obtain original Sandia capacity curves; recover exact 32 source IDs and 22 analysed cell IDs, including exclusions and cycle counts; reproduce 2024 paper onset events and retain the unobserved-knee cohort as censored.",
       "evidence_url": "https://doi.org/10.1016/j.jpowsour.2024.234619",
       "method_url": "https://doi.org/10.1016/j.jpowsour.2024.234619"
+    },
+    "stanford-aging-matrix-nca-363": {
+      "evidence": "Published knee-onset study",
+      "origin": "Experimental",
+      "label_status": "Published Bacon–Watts knee-onset fitting methodology; machine-readable, validated per-cell onset cycle labels not confirmed",
+      "source_review": "Stanford/TRI data.matr.io/11 dataset page and van Vlijmen et al. (2025) Energy & Environmental Science Supplementary Information S.7.1",
+      "raw_files_audited": false,
+      "knee_observed": "Multiple experimental cells show accelerated capacity fade; supplementary information uses a two-segment Bacon–Watts fit to estimate the knee onset (transition x_t) and knee-angle indicator.",
+      "capacity_resolution": "Raw and processed cycling/diagnostics are available; per-cell checkup spacing and completeness need inspection from processed metadata",
+      "warning": "The 363-cell matrix includes both knee and non-knee trajectories. Do not label all 363 as positive cases or conflate the fitted transition with independently measured physical truth. Original data are CC BY-NC 4.0. Raw archive is roughly 178 GiB; processed files are provided separately.",
+      "research_use": "High-priority multi-protocol external cohort for knee-onset reproducibility and BMS early-warning generalization",
+      "next_check": "Download processed data and protocol metadata, extract all cell IDs and 0.2C capacity checks, reproduce SI Section S.7.1 fits per cell, quantify uncertainty/censoring and compare with matched BMS early-history features.",
+      "evidence_url": "https://data.matr.io/11/",
+      "method_url": "https://www.rsc.org/suppdata/d4/ee/d4ee05609d/d4ee05609d1.pdf"
+    },
+    "birmingham-lfp-crate-cycle-ageing-2026": {
+      "evidence": "Unlabelled ageing candidate",
+      "origin": "Experimental",
+      "label_status": "No reported knee-onset cycle labels; presence and timing of any knee unverified",
+      "source_review": "University of Birmingham research catalogue, 3 September 2026 release, and the source Zenodo dataset description",
+      "raw_files_audited": false,
+      "knee_observed": "Not established from the source description; the study was designed to compare C-rate ageing.",
+      "capacity_resolution": "Excel/MSTAT raw workbooks are organized by 50-cycle checkpoints initially, then 100-cycle intervals; exact coverage varies across test conditions",
+      "warning": "Sparse diagnostic checkpoints may make onset localization too uncertain. Six C-rate ageing conditions do not necessarily represent six statistically independent cells. Reconstruct capacity from raw current/time and verify cell IDs, whether full lifetime was captured and rights to reuse.",
+      "research_use": "Exploratory LFP cross-protocol screening and negative/no-knee controls, pending evidence of sufficient trajectory curvature",
+      "next_check": "Enumerate independent cells and downloadable checkpoint files, reconstruct each capacity history and flag right-censored cells and confidence intervals at the 50–100-cycle granularity.",
+      "evidence_url": "https://research.birmingham.ac.uk/en/datasets/experimental-dataset-for-cycle-ageing-of-lfp-18650-lithium-ion-ba/",
+      "method_url": ""
+    },
+    "bath-tempest-lfp-280ah-700cycle": {
+      "evidence": "Unlabelled ageing candidate",
+      "origin": "Experimental",
+      "label_status": "No per-cell knee-onset labels or published knee event identified",
+      "source_review": "University of Bath / TEMPEST Zenodo v2 original dataset record, 23 June 2026",
+      "raw_files_audited": false,
+      "knee_observed": "Not established from public dataset metadata",
+      "capacity_resolution": "700 cycles and an associated ageing.zip with raw cycles and reference performance tests; specific checkup frequencies not independently audited",
+      "warning": "One 280 Ah prismatic cell cannot establish generalization. Even if a knee is identifiable, it would be one trajectory; licence conditions are not confirmed from the source display.",
+      "research_use": "Practical large-format LFP BMS sanity check after an independently reproducible knee/no-knee assessment",
+      "next_check": "Inspect ageing.zip capacity and RPT trajectories, establish whether onset is observed, document cycle index and cell ID, and confirm file reuse licence.",
+      "evidence_url": "https://zenodo.org/records/20813753",
+      "method_url": ""
     }
   }
 }
