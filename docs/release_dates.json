@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-30",
+  "updated": "2026-10-31",
   "note": "When each dataset was first made public, from the hosting repository. 'Project created' and 'Repository created' are used where the host records no release date.",
   "datasets": {
     "a-cross-scale-framework-for-evaluating-flexibility-values-of-battery-and-fuel-cell-evs": {
@@ -43,6 +43,12 @@
       "kind": "Released",
       "url": "https://doi.org/10.5281/zenodo.10293071"
     },
+    "bath-tempest-lfp-280ah-700cycle": {
+      "date": "2026-04-17",
+      "source": "DataCite record for doi:10.5281/zenodo.19632938",
+      "kind": "Released",
+      "url": "https://doi.org/10.5281/zenodo.19632938"
+    },
     "battery-aging-modes-across-nmc-compositions": {
       "date": "2022-10-25",
       "source": "DataCite record for doi:10.5281/zenodo.7250552",
@@ -77,6 +83,12 @@
       "source": "DataCite record for doi:10.48804/8kpdtw",
       "kind": "Released",
       "url": "https://doi.org/10.48804/8kpdtw"
+    },
+    "birmingham-lfp-crate-cycle-ageing-2026": {
+      "date": "2026-09-03",
+      "source": "DataCite record for doi:10.5281/zenodo.22286449",
+      "kind": "Released",
+      "url": "https://doi.org/10.5281/zenodo.22286449"
     },
     "bmw-i3-real-driving-battery-heating": {
       "date": "2020-10-19",
@@ -505,6 +517,7 @@
     "prognosis-of-multivariate-battery-state-via-transformers",
     "randomized-battery-usage-data-set-nasa",
     "sandia-commercial-cell-degradation",
+    "stanford-aging-matrix-nca-363",
     "tum-commercial-aging",
     "uconn-lco-gr-battery-fast-charging-dataset",
     "ul-purdue-degradation-safety",
