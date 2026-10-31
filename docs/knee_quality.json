@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
-  "reviewed_on": "2026-10-30",
-  "scope": "Curated knee-research subset; unlisted IonSense resources are not assessed for knee onset",
-  "disclaimer": "This is a desk audit of source descriptions and publications, not a download-level verification of raw data, knee prevalence or pre-labelled knee onset. Evidence categories are not numeric performance rankings.",
+  "reviewed_on": "2026-10-31",
+  "scope": "Ten source-reviewed knee-research catalogue records; all other IonSense records are unassessed, not negative cases.",
+  "disclaimer": "Desk audit of public source descriptions and publications, not downloaded raw file validation or independent confirmation of knee-event labels. Evidence categories are not accuracy scores or BMS-ready ground truth.",
   "definitions": {
     "knee_onset": "Beginning of detectable nonlinear/accelerating capacity fade under a specified identification method; operational definition varies by paper.",
     "knee_point": "Subsequent transition/inflection or breakpoint marking fast capacity degradation; may not coincide with onset.",
@@ -134,6 +134,20 @@
       "next_check": "Map cell IDs to origin datasets, count independent cells and audit per-source knee prevalence.",
       "evidence_url": "https://github.com/Ruifeng-Tan/BatteryLife",
       "method_url": ""
+    },
+    "sandia-commercial-cell-degradation": {
+      "evidence": "Published knee-onset study",
+      "origin": "Experimental (selected NMC subset of a larger multi-chemistry archive)",
+      "label_status": "Knee-onset times inferred using the 2024 published identification method; downloadable per-cell onset label file not confirmed",
+      "source_review": "Zhang, Altaf & Wik (2024), Journal of Power Sources, sections 3.3.2 and 4.1.2; underlying Sandia study represented by Battery Archive",
+      "raw_files_audited": false,
+      "knee_observed": "2024 study includes 22 NMC/graphite LG HG2 cells selected from an initial group of 32 and reports knee-onset and knee identification; other cells were excluded for no knee/EOL or corrupted capacity traces",
+      "capacity_resolution": "Rated discharge capacity measured periodically; original source sampling intervals and cell-ID mapping still require raw-data audit",
+      "warning": "The published 22-cell NMC subset is NOT the whole Sandia multi-chemistry catalogue entry. Four cells were excluded because knees/EOL were not observed; six because capacity measurements were corrupted. The original study reports some knees after the 80% SOH threshold. Reconstruct and document the exact 22-cell selection; do not silently drop censored cells in benchmarking.",
+      "research_use": "Secondary independent-chemistry replication of knee-onset identification; potential external validation after 22-cell subset is reconstructed",
+      "next_check": "Obtain original Sandia capacity curves; recover exact 32 source IDs and 22 analysed cell IDs, including exclusions and cycle counts; reproduce 2024 paper onset events and retain the unobserved-knee cohort as censored.",
+      "evidence_url": "https://doi.org/10.1016/j.jpowsour.2024.234619",
+      "method_url": "https://doi.org/10.1016/j.jpowsour.2024.234619"
     }
   }
 }
