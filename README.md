@@ -2,7 +2,7 @@
 
 ![IonSense — Battery Research Dataset Finder (legacy banner)](battery_banner_96.webp)
 
-*The banner depicts an earlier 96-resource milestone; the catalogue and counts below reflect the current 101-entry index.*
+*The banner depicts an earlier 96-resource milestone; the catalogue and counts below reflect the current 104-entry index.*
 
 **Discover battery research resources across electric mobility, stationary energy storage, laboratory testing, diagnostics, safety, recycling, and specialised applications.**
 
@@ -12,7 +12,7 @@
 
 IonSense is a **curated discovery catalogue**, not an EV-only dataset collection and not a host of third-party data. It helps researchers locate and compare links to battery datasets and associated research resources, then navigate to the original publishers and authors.
 
-The current index contains **101 entries in 9 research categories**. It covers real-world battery telemetry, experimental cell testing, electrochemical characterisation, imaging, second-life studies, synthetic data and certain related code or model resources. **An indexed record does not automatically mean a downloadable or independently verified dataset.**
+The current index contains **104 entries in 9 research categories**. It covers real-world battery telemetry, experimental cell testing, electrochemical characterisation, imaging, second-life studies, synthetic data and certain related code or model resources. **An indexed record does not automatically mean a downloadable or independently verified dataset.**
 
 ## What you can do
 
@@ -36,20 +36,20 @@ The current index contains **101 entries in 9 research categories**. It covers r
 |---|---:|
 | Field & Real-World | 12 |
 | Safety & Failure | 7 |
-| Lab Aging & Degradation | 40 |
+| Lab Aging & Degradation | 43 |
 | State Estimation & Health Monitoring | 16 |
 | Electrochemical Characterisation | 8 |
 | Battery Imaging | 2 |
 | Second-Life & Recycling | 3 |
 | Aerospace & Specialised | 7 |
 | Synthetic & Derived Battery Datasets | 6 |
-| **Total** | **101** |
+| **Total** | **104** |
 
 **New knee-point resource:** [Samsung INR18650-30Q Knee-Point Aging Dataset](https://data.mendeley.com/datasets/zn82y35zr8/4) (60 experimental cells, 9 ageing conditions, CC BY 4.0). The associated study examines knee points and second-life grading; the record does **not** provide validated knee-onset cycle labels for supervised prediction. The catalogue source contains the original dataset DOI and linked PNAS publication.
 
 ## Knee-onset and knee-point research
 
-The catalogue links to **original sources** and documents which resources may be suitable for deriving knee-onset labels. A capacity-fade trajectory alone is **not** proof that a well-defined knee onset occurs, and a knee point is not identical to its onset. **None of the four newly added records is advertised as a fully validated, ready-labelled knee-onset benchmark.**
+The catalogue links to **original sources** and documents which resources may be suitable for deriving knee-onset labels. A capacity-fade trajectory alone is **not** proof that a well-defined knee onset occurs, and a knee point is not identical to its onset. **None of these additions is promoted to a validated, ready-labelled knee-onset benchmark without downloaded, independently checked per-cell onset targets.**
 
 | Resource | Experimental or simulated | Knee-onset suitability |
 |---|---|---|
@@ -60,20 +60,25 @@ The catalogue links to **original sources** and documents which resources may be
 | [SNU LG MJ1 dataset, 81 cells](https://data.mendeley.com/datasets/p5vbbytz3x/1) | Experimental | Capacity retention and relaxation diagnostics; candidate for detecting transition to accelerated fade |
 | [MIT–Stanford–TRI (MATR)](https://data.matr.io/1/) | Experimental | Previously indexed: original data for the [published knee-point/onset identification code](https://github.com/pfermined/knee_identification) |
 | [Sandia NMC subset (22 of 32 cells)](https://www.batteryarchive.org/study_summaries.html) | Experimental | Published [2024 curvature-based knee-onset study](https://doi.org/10.1016/j.jpowsour.2024.234619); subset selection must be reconstructed; 4 no-observed-knee/EOL and 6 corrupted cells were excluded |
+| [Stanford Aging Matrix (363 NCA cells)](https://data.matr.io/11/) | Experimental | 2025 paper publishes a [Bacon–Watts knee-onset fitting method](https://www.rsc.org/suppdata/d4/ee/d4ee05609d/d4ee05609d1.pdf); onset labels not independently validated; **CC BY-NC 4.0**; processed data offered alongside ~178 GiB raw archive |
+| [Birmingham LFP C-rate ageing (2026)](https://doi.org/10.5281/zenodo.22286449) | Experimental | Six charge/discharge-rate conditions, but **knee onset unproven**; 50–100-cycle checkpoint spacing limits timing accuracy |
+| [Bath/TEMPEST LFP 280 Ah (700 cycles)](https://zenodo.org/records/20813753) | Experimental | Single large-format prismatic cell; raw data and reference tests; **no confirmed knee onset**, licence pending source check |
 
 For defensible BMS research, inspect full per-cell capacity trajectories, specify the knee-onset definition, quantify uncertainty when knees are weak or unobserved, and split by battery cell and preferably by cycling protocol to prevent leakage.
 
 ### Knee-onset evidence quality (source-audited)
 
-IonSense maintains a **separate, machine-readable desk audit** at [`docs/knee_quality.json`](docs/knee_quality.json), reviewed 31 October 2026. It includes **ten** knee-relevant records, each linked to primary evidence, while preserving the distinction between source-confirmed knees, source-confirmed knee-onset studies, and ordinary unlabelled ageing datasets. The public dashboard has a **Knee evidence** filter and shows each audited record's label availability, capacity sampling resolution, study caveats, and next validation step.
+IonSense maintains a **separate, machine-readable desk audit** at [`docs/knee_quality.json`](docs/knee_quality.json), reviewed 31 October 2026. It includes **thirteen** knee-relevant records, each linked to primary evidence, while preserving the distinction between source-confirmed knees, source-confirmed knee-onset studies, and ordinary unlabelled ageing datasets. The public dashboard has a **Knee evidence** filter and shows each audited record's label availability, capacity sampling resolution, study caveats, and next validation step.
 
 | Evidence tier | Audited records | Correct interpretation |
 |---|---:|---|
-| Published knee-onset study | 3 | Published knee-onset analysis exists; **does not imply pre-labelled per-cell onset targets are downloadable** |
+| Published knee-onset study | 4 | Published knee-onset analysis exists; **does not imply pre-labelled per-cell onset targets are downloadable** |
 | Published knee-point study | 1 | Knee-point-specific measurements or analysis; knee onset is not interchangeable with the later knee point |
 | Real-cell knee demonstration | 1 | Small experimental case study; insufficient for generalization claims |
-| Unlabelled ageing candidate | 4 | Cycling/retention information exists; knee presence, prevalence and onset labels have **not** been established |
+| Unlabelled ageing candidate | 6 | Cycling/retention information exists; knee presence, prevalence and onset labels have **not** been established |
 | Aggregate benchmark, not audited | 1 | Source overlap must be resolved before treating samples as independent |
+
+**2026 knee-collection additions:** Stanford’s [363-cell Aging Matrix](https://data.matr.io/11/) contributes published knee-onset fitting evidence and multiple operating protocols. [Birmingham’s experimental LFP ageing](https://doi.org/10.5281/zenodo.22286449) adds coarse 50–100-cycle checkups; [Bath/TEMPEST’s 280 Ah LFP cell](https://zenodo.org/records/20813753) adds a practical large-format BMS case. The latter two are candidates, **not positive knee-onset labels**. Validate per-cell capacity trajectories, censoring and licensing before any supervised experiment.
 
 **New Sandia qualification:** The source publication identified knee onsets in **22 selected LG HG2 NMC cells**, excluding **10 of the original 32**. The Sandia catalogue entry covers a broader multi-chemistry collection. These 22 cells must not be counted as a separate dataset, and exclusions must be documented to avoid biased knee prevalence estimates. The paper's identified knee-onset events are not a publicly verified label file. 
 
@@ -108,7 +113,7 @@ Category counts are for indexed **records**, not confirmed independent datasets 
 ## Metadata quality and research cautions
 
 1. **Original sources first.** Read the dataset owner's description, licence, documentation, and associated papers before using or redistributing data. Cite **the original dataset creators**.
-2. **Application labels are provisional.** The new application filter is based on information already present in the catalogue; it has **not** been independently verified for all 101 records. Uncertain end-uses are marked **Not specified**.
+2. **Application labels are provisional.** The new application filter is based on information already present in the catalogue; it has **not** been independently verified for all 104 records. Uncertain end-uses are marked **Not specified**.
 3. **Chemistry is not guessed.** An unknown cathode chemistry is not inferred merely from lithium-ion or from a battery product name.
 4. **Access is not guaranteed.** Links may lead to a paper, software repository or landing page rather than raw measurements. An accessible URL is not proof that a dataset can be downloaded or reused.
 5. **Synthetic data is identified as such.** For example, MagBridge-Battery is a synthetic research resource, not an experimental magnetometry recording.
