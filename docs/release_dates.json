@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-08",
+  "updated": "2026-11-14",
   "note": "When each dataset was first made public, from the hosting repository. 'Project created' and 'Repository created' are used where the host records no release date.",
   "datasets": {
     "a-cross-scale-framework-for-evaluating-flexibility-values-of-battery-and-fuel-cell-evs": {
@@ -77,6 +77,12 @@
       "date": "2025-02-21",
       "source": "GitHub repository Ruifeng-Tan/BatteryLife",
       "kind": "Repository created"
+    },
+    "bayreuth-three-electrode-degradation-modes-2026": {
+      "date": "2026-06-25",
+      "source": "DataCite record for doi:10.57880/rdspace-ubt-54",
+      "kind": "Released",
+      "url": "https://doi.org/10.57880/rdspace-ubt-54"
     },
     "bev-energy-kuleuven": {
       "date": "2025-06-27",
@@ -388,6 +394,12 @@
       "source": "DataCite record for doi:10.18154/rwth-2021-04545",
       "kind": "Released",
       "url": "https://doi.org/10.18154/rwth-2021-04545"
+    },
+    "rwth-nmc622-eis-soh-aging-2026": {
+      "date": "2026-11-03",
+      "source": "DataCite record for doi:10.18154/rwth-2026-10225",
+      "kind": "Released",
+      "url": "https://doi.org/10.18154/rwth-2026-10225"
     },
     "samsung-50e-second-life-hppc": {
       "date": "2024-03-28",
