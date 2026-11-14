@@ -26,7 +26,7 @@ def validate():
         errors.append("Catalogue contains duplicate IDs")
     if doc.get("schema_version") != 1:
         errors.append("Unsupported relationship schema version")
-    if not re.fullmatch(r"\\d{4}-\\d{2}-\\d{2}", str(doc.get("reviewed_on", ""))):
+    if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(doc.get("reviewed_on", ""))):
         errors.append("Missing relationship review date")
     records = doc.get("relationships")
     if not isinstance(records, list) or not records:
@@ -64,12 +64,12 @@ def validate():
     site = HTML_PATH.read_text(encoding="utf-8")
     for needle in ("fetch('./relationships.json'", "function relatedRecordsSection(d)",
                    "const overlaps = RELATIONS.filter", "function exportResearchManifest()",
-                   "id=\\"export-manifest\\""):
+                   'id="export-manifest"'):
         if needle not in site:
             errors.append("Missing dashboard integration: " + needle)
 
     if errors:
-        raise SystemExit("Relationship checks FAILED:\\n - " + "\\n - ".join(errors))
+        raise SystemExit("Relationship checks FAILED:\n - " + "\n - ".join(errors))
     print(f"Relationship checks passed: {len(records)} curated links across "
           f"{len(datasets)} catalogue resources. Raw cell overlap is unverified.")
 
