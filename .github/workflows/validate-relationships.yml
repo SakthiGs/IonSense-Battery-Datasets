@@ -36,7 +36,7 @@ jobs:
           import re
           from pathlib import Path
           html = Path("docs/index.html").read_text(encoding="utf-8")
-          scripts = re.findall(r"<script(?:\\s[^>]*)?>([\\s\\S]*?)</script>", html)
+          scripts = re.findall(r"<script(?:\s[^>]*)?>([\s\S]*?)</script>", html)
           for i, source in enumerate(scripts):
               if not source.strip():
                   continue
