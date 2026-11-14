@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-15",
+  "scope": "Source-reviewed record relationships only. Unlisted pairs are unassessed; these annotations do not establish duplicate sample identities.",
+  "disclaimer": "Shared portals, hosting, and reported cell reuse are different. Do not infer duplicate batteries, merge cohorts, or combine train/test partitions without verifying cell-level identifiers and study provenance.",
+  "relationships": [
+    {
+      "a": "early-cycle-life",
+      "b": "closed-loop-fast-charging-optimisation",
+      "type": "shared_portal",
+      "label": "Shared repository portal",
+      "status": "source_link_verified",
+      "description": "Both entries link to data.matr.io/1/ and reference related MIT–Stanford–TRI fast-charging research. A shared portal is not proof that the experiments used identical cells. Trace study, batch and cell IDs before combining them.",
+      "evidence_url": "https://data.matr.io/1/"
+    },
+    {
+      "a": "sandia-commercial-cell-degradation",
+      "b": "battery-archive",
+      "type": "hosted_by",
+      "label": "Hosted within umbrella portal",
+      "status": "source_link_verified",
+      "description": "Battery Archive is the umbrella portal hosting the Sandia commercial-cell degradation study. The portal and constituent dataset are not two independent experimental cohorts.",
+      "evidence_url": "https://www.batteryarchive.org/study_summaries.html"
+    },
+    {
+      "a": "lithium-ion-battery-aging-dataset-based-on-ev-real-driving-profiles",
+      "b": "second-life-lithium-ion-battery-aging-dataset-based-on-grid-storage-cycling",
+      "type": "reported_sequential_cell_reuse",
+      "label": "Reported reuse of aged cells",
+      "status": "source_description_reviewed",
+      "description": "The second-life study describes six 21700 cells previously aged under EV-driving profiles. Treat these as potentially linked experimental histories; verify original cell identifiers before cross-study splits or pooling.",
+      "evidence_url": "https://osf.io/8jnr5/"
+    }
+  ]
+}
