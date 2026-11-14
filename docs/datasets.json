@@ -3831,5 +3831,89 @@
     "license": null,
     "doi": "10.5281/zenodo.20813753",
     "dataset_kind": "Experimental"
+  },
+  {
+    "id": "bayreuth-three-electrode-degradation-modes-2026",
+    "name": "Bayreuth Three-Electrode Battery Aging — Degradation Modes & Impedance (2026)",
+    "category": "Lab Aging & Degradation",
+    "chemistry": "NMC",
+    "chemistries": [
+      "NMC"
+    ],
+    "tasks": [
+      "Degradation analysis",
+      "SOH estimation"
+    ],
+    "source": "University of Bayreuth / TUM / BMW AG — Hofmann, Sayilgan et al.",
+    "scale": "NMC–graphite three-electrode cells · 9 months of ageing · 11 diagnostic checkups · independent cell count not confirmed",
+    "description": "Experimental NMC–graphite lithium-ion battery ageing dataset with three-electrode measurements. Eleven checkups include pseudo-OCV, hybrid pulse power characterization (HPPC), and electrochemical impedance spectroscopy (EIS) across state-of-charge and temperature. Includes raw data, evaluated degradation-mode labels, electrode resistance and impedance, equivalent-circuit-model parameters, and analysis scripts.",
+    "url": "https://rdspace.uni-bayreuth.de/entities/researchdata/0bb95cc2-8ce9-4dcb-b7c0-4eda5949f9ed",
+    "paper": "https://doi.org/10.15495/EPub_UBT_00008980",
+    "doi": "10.57880/rdspace-ubt-54",
+    "access": "Open institutional research-data repository; 8.29 GB archive listed",
+    "signals": [
+      "Cycling data",
+      "Voltage",
+      "Current",
+      "Capacity",
+      "EIS",
+      "Resistance"
+    ],
+    "notes": "Original dataset released 25 June 2026; distinct from the 2024 commercial LG M50T 21700-cell ageing dataset. Degradation-mode labels do not imply knee-onset cycle labels. Dataset.zip is approximately 8.29 GB; raw files and exact independent cell count have not been locally audited. Data licensed CC BY-SA 4.0, subject to attribution and share-alike requirements.",
+    "source_type": "data_repository",
+    "access_status": "not_checked",
+    "chemistry_review_status": "source_verified",
+    "chemistry_evidence_url": "https://rdspace.uni-bayreuth.de/entities/researchdata/0bb95cc2-8ce9-4dcb-b7c0-4eda5949f9ed/full",
+    "chemistry_verification": "source_verified",
+    "chemistry_evidence": {
+      "status": "source_verified",
+      "url": "https://rdspace.uni-bayreuth.de/entities/researchdata/0bb95cc2-8ce9-4dcb-b7c0-4eda5949f9ed/full",
+      "note": "Official research-data abstract identifies a three-electrode NMC–graphite cell study."
+    },
+    "application_domains": [],
+    "license": "CC BY-SA 4.0",
+    "dataset_kind": "Experimental"
+  },
+  {
+    "id": "rwth-nmc622-eis-soh-aging-2026",
+    "name": "RWTH Aachen NMC622 EIS and SOH Under Variable Ageing (2026)",
+    "category": "Lab Aging & Degradation",
+    "chemistry": "NMC",
+    "chemistries": [
+      "NMC"
+    ],
+    "tasks": [
+      "SOH estimation",
+      "Degradation analysis",
+      "Health monitoring"
+    ],
+    "source": "RWTH Aachen University — Ezeoba, Celik, Stahl & Sauer",
+    "scale": "1 Ah NMC622–graphite cell type · EIS and electrical cycling under multiple temperature/rate/rest conditions · independent cell count not confirmed",
+    "description": "Experimental raw EIS and electrical cycling records for a 1 Ah NMC622–graphite lithium-ion cell type subjected to varying temperature, current rate and rest time. Research article evaluates SOH estimation from impedance feature representations under fourteen ageing conditions; original dataset archive and data description are linked by RWTH.",
+    "url": "https://publications.rwth-aachen.de/record/1045352",
+    "paper": "https://doi.org/10.1016/j.est.2026.124353",
+    "doi": "10.18154/RWTH-2026-10225",
+    "access": "RWTH open-access record with EIS_measurement_data.zip and Data_description.pdf",
+    "signals": [
+      "EIS",
+      "Cycling data",
+      "Temperature",
+      "Current",
+      "Voltage"
+    ],
+    "notes": "Source record and CC BY 4.0 licence checked. Fourteen ageing conditions are reported in the accompanying paper, not fourteen confirmed independent physical cells. No per-cell knee-onset ground-truth labels are claimed. Individual file checks and longitudinal knee-screening require a separate audit.",
+    "source_type": "data_repository",
+    "access_status": "not_checked",
+    "chemistry_review_status": "source_verified",
+    "chemistry_evidence_url": "https://publications.rwth-aachen.de/record/1045352",
+    "chemistry_verification": "source_verified",
+    "chemistry_evidence": {
+      "status": "source_verified",
+      "url": "https://publications.rwth-aachen.de/record/1045352",
+      "note": "Official RWTH dataset description states 1 Ah NMC622–graphite lithium-ion chemistry."
+    },
+    "application_domains": [],
+    "license": "CC BY 4.0",
+    "dataset_kind": "Experimental"
   }
 ]
