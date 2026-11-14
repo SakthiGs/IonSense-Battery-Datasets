@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-message: "If you use IonSense, please cite the IonSense-QKG paper below, and cite the original creators of each dataset you use."
+message: "If IonSense helped you discover or compare battery research resources, please cite the IonSense software/catalogue and also cite the original creators of every dataset you use."
 title: "IonSense: Battery Research Dataset Finder"
 type: software
 authors:
@@ -10,23 +10,9 @@ authors:
 repository-code: "https://github.com/SakthiGs/IonSense-Battery-Datasets"
 url: "https://sakthigs.github.io/IonSense-Battery-Datasets/"
 keywords:
-  - lithium-ion batteries
-  - battery datasets
+  - battery research datasets
+  - battery dataset discovery
+  - metadata curation
+  - dataset provenance
+  - battery ageing
   - state of health
-  - quantum machine learning
-  - metadata
-preferred-citation:
-  type: article
-  title: "IonSense-QKG: A Quantum-Readiness Metadata Framework for Lithium-Ion Battery Dataset Discovery"
-  authors:
-    - family-names: Gunasekar
-      given-names: Sakthi Prabhu
-    - family-names: Rangarajan
-      given-names: Prasanna Kumar
-  year: 2026
-  journal: "arXiv preprint"
-  identifiers:
-    - type: other
-      value: "arXiv:2607.01286"
-  doi: "10.48550/arXiv.2607.01286"
-  url: "https://arxiv.org/abs/2607.01286"
