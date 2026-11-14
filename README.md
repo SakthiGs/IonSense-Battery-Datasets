@@ -1,6 +1,6 @@
 # IonSense — Battery Research Dataset Finder
 
-![IonSense — Battery Research Dataset Finder: 104 indexed resources in 9 categories](battery_banner_104.svg)
+![IonSense — Battery Research Dataset Finder: 106 indexed resources in 9 categories](battery_banner_106.svg)
 
 **Discover battery research resources across electric mobility, stationary energy storage, laboratory testing, diagnostics, safety, recycling, and specialised applications.**
 
@@ -10,7 +10,7 @@
 
 IonSense is a **curated discovery catalogue**, not an EV-only dataset collection and not a host of third-party data. It helps researchers locate and compare links to battery datasets and associated research resources, then navigate to the original publishers and authors.
 
-The current index contains **104 entries in 9 research categories**. It covers real-world battery telemetry, experimental cell testing, electrochemical characterisation, imaging, second-life studies, synthetic data and certain related code or model resources. **An indexed record does not automatically mean a downloadable or independently verified dataset.**
+The current index contains **106 entries in 9 research categories**. It covers real-world battery telemetry, experimental cell testing, electrochemical characterisation, imaging, second-life studies, synthetic data and certain related code or model resources. **An indexed record does not automatically mean a downloadable or independently verified dataset.**
 
 ## What you can do
 
@@ -34,16 +34,18 @@ The current index contains **104 entries in 9 research categories**. It covers r
 |---|---:|
 | Field & Real-World | 12 |
 | Safety & Failure | 7 |
-| Lab Aging & Degradation | 43 |
+| Lab Aging & Degradation | 45 |
 | State Estimation & Health Monitoring | 16 |
 | Electrochemical Characterisation | 8 |
 | Battery Imaging | 2 |
 | Second-Life & Recycling | 3 |
 | Aerospace & Specialised | 7 |
 | Synthetic & Derived Battery Datasets | 6 |
-| **Total** | **104** |
+| **Total** | **106** |
 
-**New knee-point resource:** [Samsung INR18650-30Q Knee-Point Aging Dataset](https://data.mendeley.com/datasets/zn82y35zr8/4) (60 experimental cells, 9 ageing conditions, CC BY 4.0). The associated study examines knee points and second-life grading; the record does **not** provide validated knee-onset cycle labels for supervised prediction. The catalogue source contains the original dataset DOI and linked PNAS publication.
+**Newly source-reviewed (14 November 2026):** [Bayreuth three-electrode NMC/graphite ageing with degradation-mode and impedance labels](https://doi.org/10.57880/rdspace-ubt-54) (9 months, 11 checkups, CC BY-SA 4.0) and [RWTH Aachen NMC622 EIS/SOH under variable ageing conditions](https://doi.org/10.18154/RWTH-2026-10225) (published raw EIS and cycling data, CC BY 4.0). Neither is represented as a validated knee-onset benchmark; original files and cell-level IDs still need auditing.
+
+**Contributor curation:** [Review of 11 GitHub issues submitted by Pavan (Pxvan09), #10–#20](docs/curation/pavan_issues_2026-11-14.md) records which suggestions are already indexed, which are supporting software/cohorts, and which yielded a distinct new resource.
 
 ## Knee-onset and knee-point research
 
@@ -113,7 +115,7 @@ Category counts are for indexed **records**, not confirmed independent datasets 
 ## Metadata quality and research cautions
 
 1. **Original sources first.** Read the dataset owner's description, licence, documentation, and associated papers before using or redistributing data. Cite **the original dataset creators**.
-2. **Application labels are provisional.** The new application filter is based on information already present in the catalogue; it has **not** been independently verified for all 104 records. Uncertain end-uses are marked **Not specified**.
+2. **Application labels are provisional.** The new application filter is based on information already present in the catalogue; it has **not** been independently verified for all 106 records. Uncertain end-uses are marked **Not specified**.
 3. **Chemistry is not guessed.** An unknown cathode chemistry is not inferred merely from lithium-ion or from a battery product name.
 4. **Access is not guaranteed.** Links may lead to a paper, software repository or landing page rather than raw measurements. An accessible URL is not proof that a dataset can be downloaded or reused.
 5. **Synthetic data is identified as such.** For example, MagBridge-Battery is a synthetic research resource, not an experimental magnetometry recording.
