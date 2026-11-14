@@ -643,7 +643,7 @@
       "Cycling data",
       "Capacity"
     ],
-    "notes": "Original fast-charge LFP capacity trajectories were used in the published 2020 knee-point and knee-onset identification study (DOI: 10.1016/j.egyai.2020.100006). An independent public notebook implements knee-point/onset extraction. These are derived targets, not directly measured labels; verify experimental batch and train/test separation.",
+    "notes": "Original fast-charge LFP capacity trajectories were used in the published 2020 knee-point and knee-onset identification study (DOI: 10.1016/j.egyai.2020.100006). An independent public notebook implements knee-point/onset extraction. These are derived targets, not directly measured labels; verify experimental batch and train/test separation. The original study's official preprocessing/loader code is at https://github.com/rdbraatz/data-driven-prediction-of-battery-cycle-life-before-capacity-degradation. Attia (2020) cells appear in separate related fast-charging experiments on the same portal; later 169-cell knee-onset cohorts must be mapped to cell IDs before pooling, not counted as independent data by default.",
     "source_type": "data_repository",
     "access_status": "not_checked",
     "chemistries": [
@@ -806,7 +806,7 @@
       "Capacity",
       "Charging data"
     ],
-    "notes": "Imported from README; verify data access, license, chemistry, and labels at source.",
+    "notes": "Original figshare metadata describes 251 pouch cells across 63 conditions. Published subsets and secondary listings report smaller completed-cell counts; identify the exact completed and excluded cells before using this as a knee benchmark. No validated knee-onset labels are claimed. Verify individual file access and licence at source.",
     "source_type": "data_repository",
     "access_status": "not_checked",
     "chemistries": [
@@ -2531,7 +2531,7 @@
       "Cycling data",
       "Charging data"
     ],
-    "notes": "",
+    "notes": "Related to the Attia et al. 2020 closed-loop fast-charging study. The 45 additional LFP cells mentioned in some later knee-onset studies must be traced to exact downloadable batch and cell identifiers. This entry shares a portal with the Severson/MATR entry and must not be counted as 45 independent additional cells unless IDs are verified.",
     "source_type": "data_repository",
     "access_status": "not_checked",
     "chemistries": [
