@@ -1,0 +1,46 @@
+name: Validate source relationships and research export
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - docs/datasets.json
+      - docs/relationships.json
+      - docs/index.html
+      - scripts/validate_relationships.py
+      - .github/workflows/validate-relationships.yml
+  pull_request:
+    paths:
+      - docs/datasets.json
+      - docs/relationships.json
+      - docs/index.html
+      - scripts/validate_relationships.py
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate curated relationships and dashboard wiring
+        run: python scripts/validate_relationships.py
+      - name: Check inline dashboard JavaScript syntax
+        run: |
+          python - <<'PY'
+          import re
+          from pathlib import Path
+          html = Path("docs/index.html").read_text(encoding="utf-8")
+          scripts = re.findall(r"<script(?:\\s[^>]*)?>([\\s\\S]*?)</script>", html)
+          for i, source in enumerate(scripts):
+              if not source.strip():
+                  continue
+              Path(f"/tmp/ionsense-inline-{i}.js").write_text(source, encoding="utf-8")
+          print(f"Found {len(scripts)} inline scripts")
+          PY
+          for f in /tmp/ionsense-inline-*.js; do node --check "$f"; done
