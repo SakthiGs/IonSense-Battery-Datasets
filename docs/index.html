@@ -272,6 +272,14 @@ mark{background:color-mix(in srgb,var(--warn) 22%,transparent);color:inherit;bor
 .knee-audit .knee-desk{font-size:12.5px;margin-top:10px}
 .knee-audit a{color:var(--accent-ink)}
 
+.lineage-panel{margin:12px 0;padding:14px 16px;border:1px solid var(--line-strong);border-radius:var(--r-m);background:var(--sunken)}
+.lineage-panel h3{font-size:15px;margin:0 0 8px}
+.lineage-panel p,.lineage-panel li{font-size:13px;line-height:1.5;color:var(--ink-2)}
+.lineage-panel p{margin:4px 0 8px}
+.lineage-panel ul{margin:0;padding-left:19px}
+.lineage-panel li{margin:6px 0}
+.lineage-panel li .link-btn{font-size:inherit}
+@media (max-width:640px){#export-manifest{font-size:12px;padding:8px}}
 /* Table + coverage */
 .table-wrap{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:var(--r-m)}
 table{border-collapse:collapse;width:100%;font-size:13.5px}
@@ -600,6 +608,7 @@ button.cmp-name:hover{color:var(--accent-ink);text-decoration:underline;text-und
       <div class="toolbar">
         <h2 id="results-title" aria-live="polite">Loading catalogue…</h2>
         <div class="tools">
+          <button type="button" class="btn" id="export-manifest" disabled title="Download a timestamped JSON snapshot of all matching catalogue records, selected filters, citations, and source-relationship warnings">Export research manifest</button>
           <label class="select" id="sort-wrap">Sort
             <select id="sort">
               <option value="documented">Best documented</option>
@@ -816,6 +825,8 @@ const state = {
   expanded: {}
 };
 let data = [], results = [], categoryOrder = [];
+let RELATIONS = [];  /* Curated provenance relationships. Unlisted pairs have not been assessed. */
+const relationshipsOf = d => RELATIONS.filter(r => r.a === d.id || r.b === d.id);
 let CITES = {}, CITES_META = {};  /* citations.json: OpenAlex counts for each dataset's original paper */
 let USES = {};  /* research_uses.json, keyed by dataset id; empty if the file is missing */
 const usesOf = d => (USES[d.id] && Array.isArray(USES[d.id].papers)) ? USES[d.id].papers.filter(p => p && p.title) : [];
@@ -1193,6 +1204,7 @@ function renderResults() {
   const n = results.length;
   const title = $('#results-title');
   title.replaceChildren(plural(n, 'dataset'), ' ', h('span', {}, isFiltered() ? `of ${data.length}` : ''));
+  $('#export-manifest').disabled = n === 0;
   document.querySelectorAll('.views button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.view === state.view)));
   $('#sort-wrap').hidden = state.view === 'coverage';
   const focusKey = document.activeElement && document.activeElement.dataset ? document.activeElement.dataset.fk : null;
@@ -1205,6 +1217,66 @@ function renderResults() {
     const again = [...document.querySelectorAll('[data-fk]')].find(el => el.dataset.fk === focusKey);
     if (again) again.focus({ preventScroll: true });
   }
+}
+
+/* A research manifest is a metadata snapshot, not a redistribution of source data or a verified benchmark. */
+function exportResearchManifest() {
+  if (!results.length) return;
+  const selected = new Set(results.map(d => d.id));
+  const payload = {
+    schema_version: 1,
+    generated_at_utc: new Date().toISOString(),
+    catalogue: 'IonSense: Battery Research Dataset Finder',
+    catalogue_url: 'https://sakthigs.github.io/IonSense-Battery-Datasets/',
+    catalogue_source: 'https://github.com/SakthiGs/IonSense-Battery-Datasets',
+    catalogue_total_resources: data.length,
+    selection_count: results.length,
+    selection: {
+      query: state.q.trim(),
+      sort: state.sort,
+      filters: Object.fromEntries(FACETS.map(f => [f.key, [...state.sel[f.key]]])),
+      match_mode: { ...state.mode }
+    },
+    methodology_note: 'Metadata discovery snapshot only. Licence, original-source access, sample identity, knee-onset labels, and experimental independence must be verified from original providers. Cite original dataset creators.',
+    records: results.map(d => ({
+      id: d.id,
+      name: d.name,
+      category: d.category || null,
+      research_tasks: d.tasks || [],
+      chemistries: chemOf(d),
+      chemistry_review_status: d.chemistry_verification || d.chemistry_review_status || null,
+      application_domains: domainOf(d),
+      signals: d.signals || [],
+      description: d.description || null,
+      scale: known(d.scale) || null,
+      source: d.source || null,
+      original_data_url: http(d.url) || null,
+      original_publication_url: paperOf(d) || null,
+      dataset_doi: d.doi || null,
+      source_code_url: codeOf(d) || null,
+      source_type: d.source_type || null,
+      access_status: d.access_status || 'not_checked',
+      licence: known(d.license) || null,
+      knee_evidence: kneeOf(d)?.evidence || null,
+      knee_label_status: kneeOf(d)?.label_status || null,
+      related_records: relationshipsOf(d).map(r => ({
+        other_id: r.a === d.id ? r.b : r.a,
+        relationship: r.label,
+        warning: r.description,
+        evidence_url: r.evidence_url
+      }))
+    })),
+    curated_relationships_touching_selection: RELATIONS.filter(r => selected.has(r.a) || selected.has(r.b))
+  };
+  const json = JSON.stringify(payload, null, 2) + '\n';
+  const url = URL.createObjectURL(new Blob([json], { type: 'application/json;charset=utf-8' }));
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'ionsense-research-manifest-' + new Date().toISOString().slice(0, 10) + '.json';
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 2000);
 }
 
 function chip(key, value, d) {
@@ -1528,6 +1600,21 @@ function openMetrics(d) {
   writeUrl();
 }
 
+function relatedRecordsSection(d) {
+  const relations = relationshipsOf(d);
+  if (!relations.length) return null;
+  return h('section', { class: 'lineage-panel', 'aria-label': 'Related source records' },
+    h('h3', {}, 'Related sources and cohort provenance'),
+    h('p', {}, 'Curated source relationships, not a universal duplicate check. Confirm original cell and batch IDs before pooling records.'),
+    h('ul', {}, relations.map(r => {
+      const other = data.find(x => x.id === (r.a === d.id ? r.b : r.a));
+      return h('li', {},
+        other ? h('button', { type: 'button', class: 'link-btn', onclick: () => openDetail(other) }, other.name) : 'Related resource',
+        ' — ', r.label, ': ', r.description, ' ',
+        extLink(http(r.evidence_url), 'Source', 'link-btn'));
+    })));
+}
+
 function openDetail(d, jump) {
   hideTip();
   const focusKey = dlg.open && dlg.contains(document.activeElement) ? document.activeElement.dataset.fk : null;
@@ -1596,6 +1683,7 @@ function openDetail(d, jump) {
     links,
     facts,
     notes.length ? h('div', {}, h('h3', {}, 'Notes'), h('p', { class: 'note' }, ICON_INFO(), h('span', {}, notes.join(' ')))) : null,
+    relatedRecordsSection(d),
     kneeAudit ? h('section', { class: 'knee-audit', 'aria-label': 'Knee research quality audit' },
       h('h3', {}, 'Knee-onset research quality'),
       h('p', {}, h('strong', {}, 'Evidence: '), kneeAudit.evidence, ' · ', kneeAudit.origin),
@@ -1799,6 +1887,11 @@ function renderCompare() {
   table.style.minWidth = `calc(${narrow ? 116 : 178}px + ${n} * ${narrow ? 210 : 230}px)`;
 
   const parts = [];
+  const overlaps = RELATIONS.filter(r => list.some(d => d.id === r.a) && list.some(d => d.id === r.b));
+  if (overlaps.length) parts.push(h('section', { class: 'lineage-panel', 'aria-label': 'Source relationship warning' },
+    h('h3', {}, 'Related records: check sample independence'),
+    h('p', {}, 'These records have documented source relationships. This does not prove duplicate cells; review provenance before treating them as independent cohorts.'),
+    h('ul', {}, overlaps.map(r => h('li', {}, r.label, ': ', r.description, ' ', extLink(http(r.evidence_url), 'Source evidence', 'link-btn'))))));
   if (n < 2) parts.push(h('p', { class: 'cmp-note' }, 'Only one dataset is selected. Close this panel and tick Compare on another dataset.'));
   if (onlyDiff && n > 1 && !diffCount) parts.push(h('p', { class: 'cmp-empty' }, 'These datasets match on every attribute listed here.'));
   else parts.push(table);
@@ -1910,6 +2003,7 @@ const setPlaceholder = () => { $('#q').placeholder = wideQuery.matches ? 'Search
 try { wideQuery.addEventListener('change', setPlaceholder); } catch (e) {}
 setPlaceholder();
 $('#sort').addEventListener('change', e => { state.sort = e.target.value; update(); });
+$('#export-manifest').addEventListener('click', exportResearchManifest);
 document.querySelectorAll('.views button').forEach(b => b.addEventListener('click', () => { state.view = b.dataset.view; update(); }));
 document.addEventListener('keydown', e => {
   if (e.key !== '/' || e.metaKey || e.ctrlKey || e.altKey) return;
@@ -1944,6 +2038,10 @@ const fmtDay = iso => { try { return new Date(iso + 'T00:00:00').toLocaleDateStr
 const linkOf = d => LINKS[d.id] || null;
 const citeOf = d => (CITES[d.id] && typeof CITES[d.id].count === 'number') ? CITES[d.id].count : null;
 const citeAsOf = () => { try { return new Date(CITES_META.updated + 'T00:00:00').toLocaleDateString('en-GB', { month: 'short', year: 'numeric' }); } catch (e) { return ''; } };
+const lineageReady = fetch('./relationships.json', { cache: 'no-cache' })
+  .then(r => r.ok ? r.json() : null)
+  .then(j => { if (j && Array.isArray(j.relationships)) RELATIONS = j.relationships.filter(r => r && r.a && r.b && r.label && r.description); })
+  .catch(() => {});
 const kneeReady = fetch('./knee_quality.json', { cache: 'no-cache' })
   .then(r => r.ok ? r.json() : null)
   .then(j => { if (j && j.records && typeof j.records === 'object') KNEE = j.records; })
@@ -1954,7 +2052,7 @@ const usesReady = fetch('./research_uses.json', { cache: 'no-cache' })
   .catch(() => {});
 fetch('./datasets.json', { cache: 'no-cache' })
   .then(r => { if (!r.ok) throw new Error('The catalogue file returned HTTP ' + r.status + '.'); return r.json(); })
-  .then(json => Promise.all([usesReady, citesReady, linksReady, relReady, wnReady, kneeReady]).then(() => json))
+  .then(json => Promise.all([usesReady, citesReady, linksReady, relReady, wnReady, kneeReady, lineageReady]).then(() => json))
   .then(json => {
     if (!Array.isArray(json)) throw new Error('datasets.json should contain a list of datasets.');
     data = json.filter(d => d && d.name).map((d, i) => {
