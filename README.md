@@ -17,6 +17,8 @@ The current index contains **106 entries in 9 research categories**. It covers r
 - **Discover** resources with text search and faceted filters for **application domain, research category, chemistry, research task, measurements and resource type**.
 - **Compare up to three entries** side-by-side using the metadata available, including access status and documentation.
 - **Explore coverage** by research task and catalogue category; switch among cards, table, and coverage views.
+- **Export a research manifest** for all matching records as timestamped JSON, including the applied search and filters, original source URLs, citation references, licence fields, and known cohort-relationship cautions. The export is a *metadata snapshot*, not an independent dataset or a reproducibility certificate.
+- **Inspect related datasets** when source records share a portal, one collection hosts another, or a study reports reusing aged cells. Curated relationships appear in dataset detail panels and as warnings when comparing linked records; unlisted relationships have not been audited.
 - **Inspect metadata coverage** for each search or filter result: chemistry labels reviewed against sources, records with licence metadata, and resources with an identified application domain. These counts describe catalogue documentation, not independently verified data access.
 - **Review pending candidates** using the open GitHub Issues queue; discovered suggestions are not included in the catalogue until curated.
 - **Visit original sources** and linked publications. Source owners retain control of their data and licensing terms.
@@ -106,6 +108,7 @@ Category counts are for indexed **records**, not confirmed independent datasets 
 
 - [`docs/datasets.json`](docs/datasets.json) — structured catalogue and source URLs; metadata may be incomplete or provisional.
 - [`docs/index.html`](docs/index.html) — the static GitHub Pages explorer, including filtering, comparison and coverage views.
+- [`docs/relationships.json`](docs/relationships.json) — source-reviewed relationships between catalogue records; they do not establish cell-level duplicates or guarantee independent cohorts.
 - [`metadata/`](metadata/) — separate research-oriented quantum-readiness metadata and example tables; do not interpret its scores as experimentally proven quantum advantage.
 - [`scripts/check_links.py`](scripts/check_links.py) — link-checking utility; HTTP reachability alone does not establish downloadable data or rights to reuse.
 - [`CONTRIBUTING.md`](CONTRIBUTING.md) — contribution guidance.
@@ -127,24 +130,22 @@ We welcome dataset suggestions, corrections to domain or chemistry labels, sourc
 
 ## Citing IonSense
 
-If IonSense helped you find or compare datasets, please cite:
+If you use the **dashboard/catalogue** to discover, compare, or select research resources, cite the software and metadata catalogue:
 
-> Gunasekar, S. P., & Rangarajan, P. K. (2026). *IonSense-QKG: A Quantum-Readiness Metadata Framework for Lithium-Ion Battery Dataset Discovery.* arXiv:2607.01286. https://arxiv.org/abs/2607.01286
+> Gunasekar, S. P., & Rangarajan, P. K. (2026). *IonSense: Battery Research Dataset Finder* [Software and metadata catalogue]. GitHub. https://github.com/SakthiGs/IonSense-Battery-Datasets
 
 ```bibtex
-@misc{gunasekar2026ionsenseqkg,
-  title         = {{IonSense-QKG}: A Quantum-Readiness Metadata Framework for Lithium-Ion Battery Dataset Discovery},
-  author        = {Gunasekar, Sakthi Prabhu and Rangarajan, Prasanna Kumar},
-  year          = {2026},
-  eprint        = {2607.01286},
-  archivePrefix = {arXiv},
-  primaryClass  = {cs.LG},
-  doi           = {10.48550/arXiv.2607.01286},
-  url           = {https://arxiv.org/abs/2607.01286}
+@misc{gunasekar2026ionsensedashboard,
+  title        = {{IonSense}: Battery Research Dataset Finder},
+  author       = {Gunasekar, Sakthi Prabhu and Rangarajan, Prasanna Kumar},
+  year         = {2026},
+  howpublished = {GitHub software and metadata catalogue},
+  url          = {https://github.com/SakthiGs/IonSense-Battery-Datasets},
+  note         = {Original dataset creators must also be cited.}
 }
 ```
 
-Please also cite the original creators of every dataset you use. Machine-readable metadata is in [`CITATION.cff`](CITATION.cff).
+The dashboard does **not yet have its own DOI**; a future versioned repository archive may receive one. The related [IonSense-QKG quantum-readiness preprint](https://arxiv.org/abs/2607.01286) is a distinct methodological contribution and should not be presented as the citation for the broader dashboard. **Always cite the original dataset creators** for any data you use. Machine-readable software citation metadata is in [`CITATION.cff`](CITATION.cff).
 
 ## Licensing and attribution
 
