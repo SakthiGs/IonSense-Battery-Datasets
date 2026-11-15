@@ -1,0 +1,55 @@
+name: Validate IonSense Phase 2 source audit
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - docs/phase2_source_audit_2026-11-15.json
+      - docs/datasets.json
+      - docs/readiness_passports.json
+      - docs/curation/PHASE2_AUDIT_PROTOCOL.md
+      - scripts/validate_phase2_source_audit.py
+      - scripts/audit_local_archive.py
+      - .github/workflows/validate-phase2.yml
+  pull_request:
+    paths:
+      - docs/phase2_source_audit_2026-11-15.json
+      - docs/datasets.json
+      - docs/readiness_passports.json
+      - scripts/validate_phase2_source_audit.py
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit-integrity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate 15 resource source-review register and evidence grades
+        run: python scripts/validate_phase2_source_audit.py
+      - name: Test offline archive inventory without claiming actual dataset verification
+        run: |
+          python - <<'PY'
+          import csv, hashlib, json, subprocess, tempfile, zipfile
+          from pathlib import Path
+          with tempfile.TemporaryDirectory() as tmp:
+              p = Path(tmp) / "dummy_fixture.zip"
+              with zipfile.ZipFile(p, "w") as z:
+                  z.writestr("test/sample.csv", "cell,voltage\ncellA,3.7\n")
+              result = subprocess.run(
+                  ["python", "scripts/audit_local_archive.py", str(p)],
+                  check=True, capture_output=True, text=True
+              )
+              parsed = json.loads(result.stdout)
+              assert parsed["archive_member_count"] == 1
+              assert parsed["archive_entries"][0]["csv_sample"]["header"] == ["cell", "voltage"]
+              assert parsed["sample_labels_verified"] is False
+              assert parsed["cell_independence_verified"] is False
+              assert parsed["sha256_recomputed"] == hashlib.sha256(p.read_bytes()).hexdigest()
+              print("Synthetic fixture checks PASS; no original research data audited")
+          PY
