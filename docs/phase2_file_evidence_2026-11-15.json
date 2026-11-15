@@ -1,0 +1,272 @@
+{
+  "schema_version": 1,
+  "audit_run_id": "ionsense-local-raw-copy-audit-2026-11-15",
+  "run_date": "2026-11-15",
+  "status": "PARTIAL_LOCAL_COPY_FILE_INSPECTION_NOT_PUBLISHER_AUTHENTICATED",
+  "scope": "Source-copied raw data from the user's connected Drive. Actual bytes were inspected with Python in a local execution environment. This is not a 15-dataset publisher-authenticated audit.",
+  "original_provider_checksum_matches_verified": 0,
+  "distinct_catalogue_records_with_locally_inspected_bytes": 3,
+  "cohort_records": {
+    "nasa-battery-data-set": {
+      "type": "local_original_format_MAT_file_structure_inspection",
+      "source_copy": "User-connected Drive copies of NASA B0005, B0006, B0007 and B0018 MATLAB files; provider hash not obtained.",
+      "file_checks": [
+        {
+          "cell_id": "B0005",
+          "file_name": "B0005.mat (connected Drive copy)",
+          "size_bytes": 15956874,
+          "sha256_recomputed": "0eae4585baf3f200c09fe24c5ab884f1889679fc75206ca1aa19da704104f0b0",
+          "matlab_structure_readable": true,
+          "cycle_types": {
+            "charge": 170,
+            "discharge": 168,
+            "impedance": 278
+          },
+          "discharge_capacity_records": 168,
+          "sampled_signal_arrays": [
+            "Voltage_measured",
+            "Current_measured",
+            "Temperature_measured",
+            "Time"
+          ],
+          "signal_value_counts": 591458,
+          "nonfinite_measurements": {
+            "voltage": 0,
+            "current": 0,
+            "temperature": 0,
+            "time": 0
+          },
+          "mismatched_signal_array_length_cycles": 0,
+          "nonmonotonic_sample_time_cycles": 0
+        },
+        {
+          "cell_id": "B0006",
+          "file_name": "B0006.mat (connected Drive copy)",
+          "size_bytes": 16028159,
+          "sha256_recomputed": "fa818ab4db5db8ab21e910b6dd6c3e20d3761bb9672089e1a4de8f96074616c5",
+          "matlab_structure_readable": true,
+          "cycle_types": {
+            "charge": 170,
+            "discharge": 168,
+            "impedance": 278
+          },
+          "discharge_capacity_records": 168,
+          "sampled_signal_arrays": [
+            "Voltage_measured",
+            "Current_measured",
+            "Temperature_measured",
+            "Time"
+          ],
+          "signal_value_counts": 591458,
+          "nonfinite_measurements": {
+            "voltage": 0,
+            "current": 0,
+            "temperature": 0,
+            "time": 0
+          },
+          "mismatched_signal_array_length_cycles": 0,
+          "nonmonotonic_sample_time_cycles": 0
+        },
+        {
+          "cell_id": "B0007",
+          "file_name": "B0007.mat (connected Drive copy)",
+          "size_bytes": 16049460,
+          "sha256_recomputed": "d022afa086efaf54ab5b63f05220f5be178c8027e2fa8d68589db0e85a441a3b",
+          "matlab_structure_readable": true,
+          "cycle_types": {
+            "charge": 170,
+            "discharge": 168,
+            "impedance": 278
+          },
+          "discharge_capacity_records": 168,
+          "sampled_signal_arrays": [
+            "Voltage_measured",
+            "Current_measured",
+            "Temperature_measured",
+            "Time"
+          ],
+          "signal_value_counts": 591458,
+          "nonfinite_measurements": {
+            "voltage": 0,
+            "current": 0,
+            "temperature": 0,
+            "time": 0
+          },
+          "mismatched_signal_array_length_cycles": 0,
+          "nonmonotonic_sample_time_cycles": 0
+        },
+        {
+          "cell_id": "B0018",
+          "file_name": "B0018.mat (connected Drive copy)",
+          "size_bytes": 8502218,
+          "sha256_recomputed": "d1e6c923a43ea1c9666b3a90bbb521757a067fd60b4d17dbfaa49c50b179da69",
+          "matlab_structure_readable": true,
+          "cycle_types": {
+            "charge": 134,
+            "discharge": 132,
+            "impedance": 53
+          },
+          "discharge_capacity_records": 132,
+          "sampled_signal_arrays": [
+            "Voltage_measured",
+            "Current_measured",
+            "Temperature_measured",
+            "Time"
+          ],
+          "signal_value_counts": 314676,
+          "nonfinite_measurements": {
+            "voltage": 2,
+            "current": 2,
+            "temperature": 2,
+            "time": 0
+          },
+          "mismatched_signal_array_length_cycles": 0,
+          "nonmonotonic_sample_time_cycles": 0
+        }
+      ],
+      "summary": {
+        "files_checked": 4,
+        "distinct_cell_ids": 4,
+        "total_discharge_capacity_records": 636,
+        "all_mat_structures_parse": true,
+        "all_signal_segment_lengths_match": true,
+        "nonfinite_values_found_in_B0018": true
+      },
+      "warnings": [
+        "B0018 contains 2 non-finite values each in voltage, current and temperature measurements; handle explicitly rather than assuming zero missingness.",
+        "B0005/B0006/B0007 exhibit measured voltage values above 8 V and, for B0006, below zero. These outliers require protocol-level inspection; file integrity alone does not validate physical plausibility.",
+        "Four cell files inspected do not prove completeness of the full official NASA archive.",
+        "Publisher checksum and direct archive-bytes match unavailable; source authenticity is not independently established."
+      ],
+      "next_check": "Fetch the official NASA zip, compare individual MATLAB file SHA-256, document channel units/anomalous records, and test a frozen cell-based split."
+    },
+    "osf-battery-magnetometry-archive": {
+      "type": "local_raw_measurement_sample_inspection",
+      "source_copy": "User-connected Drive copies from the OSF battery magnetometry experimental folder; upstream publisher checksum not obtained.",
+      "file_checks": [
+        {
+          "file": "batterymap28092018_2540V/02.txt",
+          "size_bytes": 1175517,
+          "sha256_recomputed": "bafa9727a94b756be779d9347f6b942a888c3fb30ce7b502cb90c06e7d4cdd24",
+          "raw_rows": 25000,
+          "numeric_columns": 5,
+          "nonfinite_numeric_values": 0,
+          "time_blocks": 5,
+          "measurements_per_block": 5000
+        },
+        {
+          "file": "batterymap28092018_2540V/03.txt",
+          "size_bytes": 1175293,
+          "sha256_recomputed": "0bc504af8d3a079474d23c8dcbff77f90fcdbabbfbcfb9886079c0c2d97c5111",
+          "raw_rows": 25000,
+          "numeric_columns": 5,
+          "nonfinite_numeric_values": 0,
+          "time_blocks": 5,
+          "measurements_per_block": 5000
+        }
+      ],
+      "derived_auxiliary": {
+        "osf_sequences_npz_sha256": "86ad9cfdc343eb32c2678437d5b0d1c82d59271eacd99b903693f7b7ad7a61da",
+        "preprocessed_array_shape": [
+          205,
+          100,
+          6
+        ],
+        "all_values_finite": true
+      },
+      "warnings": [
+        "Only two source-folder text measurement files inspected; not the complete OSF archive.",
+        "The time index resets four times at 5,000-row block boundaries. A whole-file monotonic-time requirement would be invalid; parse run boundaries first.",
+        "The six-channel 205-sample NPZ is a downstream preprocessing artifact, not independent raw OSF measurements.",
+        "Original source archive checksum not available for matching."
+      ],
+      "next_check": "Fetch canonical OSF original ZIP and verify upstream hashes, run-based time parsing, channel semantics and coverage across every source folder."
+    },
+    "magbridge-battery-v1": {
+      "type": "input_and_staging_manifest_integrity_audit",
+      "source_copy": "User-connected Drive PulseBat and OSF inputs and locally generated May 2026 MagBridge v1.0 staging outputs; NOT the authenticated official Zenodo release.",
+      "pulsebat": {
+        "file": "pulsebat_lfp.csv",
+        "size_bytes": 147701,
+        "sha256_recomputed": "045f5ec028304f4503ecf3a42b5f944ec0c1d77630d74842de082baa193291cc",
+        "rows": 560,
+        "columns": 32,
+        "distinct_physical_cell_ids": 56,
+        "rows_per_cell": 10,
+        "missing_entries": 0,
+        "duplicate_rows": 0,
+        "max_abs_soh_minus_Q_over_Qn": 1.1102230246251565e-16
+      },
+      "osf_input": {
+        "file": "osf_sequences.npz",
+        "size_bytes": 931141,
+        "sha256_recomputed": "86ad9cfdc343eb32c2678437d5b0d1c82d59271eacd99b903693f7b7ad7a61da",
+        "array_shape": [
+          205,
+          100,
+          6
+        ],
+        "nonfinite_values": 0
+      },
+      "staging_manifest": {
+        "sha256_recomputed": "4f5cad1a442f059f860d19766f1f4d3fb7a6dde78eae895089da018996e77b5b",
+        "source_hash_prefixes_matched": true,
+        "claimed_total_rows": 6760,
+        "primary_split": {
+          "train": 4698,
+          "val": 976,
+          "test": 1086
+        },
+        "primary_cell_counts": {
+          "train": 39,
+          "val": 8,
+          "test": 9
+        },
+        "primary_cell_overlap_each_pair": 0,
+        "primary_sample_id_overlap_each_pair": 0,
+        "record_level_baseline": {
+          "train": 4732,
+          "val": 1014,
+          "test": 1014,
+          "physical_cell_overlap_between_each_pair": 56
+        }
+      },
+      "official_release_contrast": {
+        "published_primary_split": {
+          "train": 4507,
+          "val": 1074,
+          "test": 1179
+        },
+        "reference": "https://huggingface.co/datasets/Sakthigsjhy/MagBridge-Battery",
+        "split_counts_match": false
+      },
+      "parquet_container_checks": {
+        "file_count": 6,
+        "parquet_header_and_footer_magic_passed": 6,
+        "rows_decoded": 0,
+        "content_schema_decoded": false
+      },
+      "warnings": [
+        "Staging copy cannot certify the official Zenodo archive. Published official primary split is 4507/1074/1179, which differs from local 4698/976/1086.",
+        "The record-level optimistic baseline is leaky across all 56 physical cells even though sample IDs are non-overlapping.",
+        "Six Parquet container magic/footer checks do not verify row contents, sample IDs or correctness of numeric values.",
+        "OSF magnetometry and PulseBat SOH are joined synthetically; not co-measured ground truth."
+      ],
+      "next_check": "Obtain exact published Zenodo ZIP, validate included SHA-256 manifest, parse all Parquet rows, verify 6760 sample IDs, parent-child grouping, official cell-level split and each target column."
+    }
+  },
+  "milestone": {
+    "target_distinct_resources": 15,
+    "locally_examined_records": 3,
+    "publisher_authenticated_raw_data_resources": 0,
+    "completion_criteria_met": false,
+    "blocker": "Original provider archives/checksums have not been obtained and compared for all 15 target records."
+  },
+  "methods": [
+    "SciPy loadmat for NASA MATLAB structures and full signal-array finiteness/timing counts",
+    "pandas CSV/TSV parsing of source copies; numpy NPZ loaded with allow_pickle=False",
+    "SHA-256 independently recomputed on copied file bytes",
+    "Set comparisons of MagBridge split sample IDs and physical cell IDs",
+    "Parquet container magic/footer-only check (no schema decoder available)"
+  ]
+}
