@@ -300,6 +300,12 @@ mark{background:color-mix(in srgb,var(--warn) 22%,transparent);color:inherit;bor
 .phase2-audit p{margin:5px 0}
 .phase2-audit ul{margin:6px 0 8px;padding-left:18px}
 .phase2-audit li{margin:4px 0}
+.rawcopy-panel{padding:14px 16px;margin:8px 0 16px;border:1px solid var(--line-strong);border-radius:var(--r-m);background:var(--panel)}
+.rawcopy-panel h3{font-size:15px;margin:0 0 8px}
+.rawcopy-panel p,.rawcopy-panel li{font-size:13px;line-height:1.5;color:var(--ink-2)}
+.rawcopy-panel p{margin:6px 0}
+.rawcopy-panel ul{margin:6px 0 10px;padding-left:19px}
+.rawcopy-panel li{margin:4px 0}
 @media (min-width:800px){.passport-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 /* Table + coverage */
 .table-wrap{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:var(--r-m)}
@@ -846,7 +852,9 @@ const state = {
 let data = [], results = [], categoryOrder = [];
 let RELATIONS = [];  /* Curated provenance relationships. Unlisted pairs have not been assessed. */
 let PASSPORTS = {}, PASSPORT_META = {};  /* Conservative metadata-only readiness evidence for all records. */
-let PHASE2 = {}; /* Fifteen independent original-source documentation reviews; no original raw file audit completed. */
+let PHASE2 = {}; /* Fifteen independent original-source documentation reviews; no official archive authenticated in that run. */
+let FILE_EVIDENCE = {}; /* Local copy byte inspections; not original-provider checksum matches. */
+const localEvidenceOf = d => FILE_EVIDENCE[d.id] || null;
 const phase2Of = d => PHASE2[d.id] || null;
 const passportOf = d => PASSPORTS[d.id] || null;
 const PASSPORT_LEVELS = {
@@ -1682,6 +1690,21 @@ function readinessPassportSection(d) {
     h('div', { class: 'passport-grid' }, rows));
 }
 
+function localRawEvidenceSection(d) {
+  const a = localEvidenceOf(d);
+  if (!a) return null;
+  const checked = d.id === 'nasa-battery-data-set' ? a.summary.files_checked
+    : d.id === 'osf-battery-magnetometry-archive' ? a.file_checks.length : null;
+  const notes = a.warnings || [];
+  const prefix = d.id === 'magbridge-battery-v1' ? 'Input files and staging outputs inspected' : checked + ' local source-copy files inspected';
+  return h('section', { class: 'rawcopy-panel', 'aria-label': 'Independent local file inspection' },
+    h('h3', {}, 'Local file inspection · Partial'),
+    h('p', {}, h('strong', {}, prefix, '. '), 'SHA-256 hashes and data structures were checked from stored copies. Source-provider archive checksums were not available for comparison. This is not complete dataset certification.'),
+    h('p', {}, h('strong', {}, 'Important findings and limits:')),
+    h('ul', {}, notes.map(t => h('li', {}, t))),
+    h('p', {}, extLink('https://github.com/SakthiGs/IonSense-Battery-Datasets/blob/main/docs/phase2_file_evidence_2026-11-15.json', 'File-level audit evidence', 'link-btn')));
+}
+
 function phase2AuditSection(d) {
   const review = phase2Of(d);
   if (!review) return null;
@@ -1689,7 +1712,7 @@ function phase2AuditSection(d) {
   const raw = review.raw_file_audit;
   return h('section', { class: 'phase2-audit', 'aria-label': 'Phase 2 source audit' },
     h('h3', {}, 'Phase 2 · Source documentation audit'),
-    h('p', {}, h('strong', {}, 'Evidence level: '), 'Original source documentation reviewed. ', h('strong', {}, 'Raw-file verification: '), raw.status === 'file_verified' ? 'File evidence recorded' : 'Not performed'),
+    h('p', {}, h('strong', {}, 'Evidence level: '), 'Original source documentation reviewed. ', h('strong', {}, 'Publisher-original archive validation in initial pilot: '), raw.status === 'file_verified' ? 'Recorded' : 'Not performed'),
     h('p', {}, 'Source findings (as documented by the original provider, not independently reproduced):'),
     h('ul', {}, (docs.facts || []).map(t => h('li', {}, t))),
     h('p', {}, h('strong', {}, 'Important cautions:')),
@@ -1782,6 +1805,7 @@ function openDetail(d, jump) {
     links,
     facts,
     readinessPassportSection(d),
+    localRawEvidenceSection(d),
     phase2AuditSection(d),
     notes.length ? h('div', {}, h('h3', {}, 'Notes'), h('p', { class: 'note' }, ICON_INFO(), h('span', {}, notes.join(' ')))) : null,
     relatedRecordsSection(d),
@@ -2143,6 +2167,10 @@ const lineageReady = fetch('./relationships.json', { cache: 'no-cache' })
   .then(r => r.ok ? r.json() : null)
   .then(j => { if (j && Array.isArray(j.relationships)) RELATIONS = j.relationships.filter(r => r && r.a && r.b && r.label && r.description); })
   .catch(() => {});
+const fileAuditReady = fetch('./phase2_file_evidence_2026-11-15.json', { cache: 'no-cache' })
+  .then(r => r.ok ? r.json() : null)
+  .then(j => { if (j && j.cohort_records && typeof j.cohort_records === 'object') FILE_EVIDENCE = j.cohort_records; })
+  .catch(() => {});
 const phase2Ready = fetch('./phase2_source_audit_2026-11-15.json', { cache: 'no-cache' })
   .then(r => r.ok ? r.json() : null)
   .then(j => { if (j && Array.isArray(j.entries)) PHASE2 = Object.fromEntries(j.entries.filter(e => e.dataset_id).map(e => [e.dataset_id, e])); })
@@ -2161,7 +2189,7 @@ const usesReady = fetch('./research_uses.json', { cache: 'no-cache' })
   .catch(() => {});
 fetch('./datasets.json', { cache: 'no-cache' })
   .then(r => { if (!r.ok) throw new Error('The catalogue file returned HTTP ' + r.status + '.'); return r.json(); })
-  .then(json => Promise.all([usesReady, citesReady, linksReady, relReady, wnReady, kneeReady, lineageReady, passportReady, phase2Ready]).then(() => json))
+  .then(json => Promise.all([usesReady, citesReady, linksReady, relReady, wnReady, kneeReady, lineageReady, passportReady, phase2Ready, fileAuditReady]).then(() => json))
   .then(json => {
     if (!Array.isArray(json)) throw new Error('datasets.json should contain a list of datasets.');
     data = json.filter(d => d && d.name).map((d, i) => {
