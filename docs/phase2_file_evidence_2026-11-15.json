@@ -260,7 +260,16 @@
     "locally_examined_records": 3,
     "publisher_authenticated_raw_data_resources": 0,
     "completion_criteria_met": false,
-    "blocker": "Original provider archives/checksums have not been obtained and compared for all 15 target records."
+    "blocker": "Original provider archives/checksums have not been obtained and compared for all 15 target records.",
+    "locally_examined_pilot_records": 2,
+    "additional_locally_examined_nonpilot_records": 1,
+    "pilot_record_ids_locally_examined": [
+      "nasa-battery-data-set",
+      "magbridge-battery-v1"
+    ],
+    "additional_record_ids": [
+      "osf-battery-magnetometry-archive"
+    ]
   },
   "methods": [
     "SciPy loadmat for NASA MATLAB structures and full signal-array finiteness/timing counts",
