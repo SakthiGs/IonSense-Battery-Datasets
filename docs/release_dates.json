@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-14",
+  "updated": "2026-11-15",
   "note": "When each dataset was first made public, from the hosting repository. 'Project created' and 'Repository created' are used where the host records no release date.",
   "datasets": {
     "a-cross-scale-framework-for-evaluating-flexibility-values-of-battery-and-fuel-cell-evs": {
@@ -126,12 +126,6 @@
       "kind": "Released",
       "url": "https://doi.org/10.1184/r1/14226830"
     },
-    "comprehensive-battery-aging-dataset-nmc-c-sio-capacity-impedance-fade": {
-      "date": "2024-03-07",
-      "source": "DataCite record for doi:10.35097/1947",
-      "kind": "Released",
-      "url": "https://doi.org/10.35097/1947"
-    },
     "comprehensive-cycle-aging-data-and-analysis-for-commercial-21700-cells": {
       "date": "2024-02-08",
       "source": "DataCite record for doi:10.5281/zenodo.10637533",
@@ -155,12 +149,6 @@
       "source": "DataCite record for doi:10.5281/zenodo.17654406",
       "kind": "Released",
       "url": "https://doi.org/10.5281/zenodo.17654406"
-    },
-    "dynamic-cycling-enhances-battery-lifetime": {
-      "date": "2024-11-12",
-      "source": "DataCite record for doi:10.25740/td676xr4322",
-      "kind": "Released",
-      "url": "https://doi.org/10.25740/td676xr4322"
     },
     "early-cycle-life": {
       "date": "2019-03-25",
@@ -519,7 +507,9 @@
     "battery-failure-databank-nrel",
     "battery-imaging-library-bil",
     "calce-battery-data",
+    "comprehensive-battery-aging-dataset-nmc-c-sio-capacity-impedance-fade",
     "cycle-aging-data-of-automotive-grade-li-ion-cells-under-realistic-conditions-vw-id-3",
+    "dynamic-cycling-enhances-battery-lifetime",
     "formation-tri",
     "hirf-battery-data-set-nasa",
     "hnei-lg-icr18650c2-variability",
