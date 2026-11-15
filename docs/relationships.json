@@ -28,8 +28,8 @@
       "type": "reported_sequential_cell_reuse",
       "label": "Reported reuse of aged cells",
       "status": "source_description_reviewed",
-      "description": "The second-life study describes six 21700 cells previously aged under EV-driving profiles. Treat these as potentially linked experimental histories; verify original cell identifiers before cross-study splits or pooling.",
-      "evidence_url": "https://osf.io/8jnr5/"
+      "description": "The published second-life data article identifies six experimental cells (V4, W8, W9, V5, W10 and G1) reused from the earlier 10-cell first-life EV-driving experiment. A shared cell history is documented at publication level; confirm exact IDs in raw files and keep longitudinal records out of nominally independent train/test cohorts.",
+      "evidence_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11639452/"
     }
   ]
 }
