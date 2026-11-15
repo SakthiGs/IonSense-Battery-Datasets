@@ -1,0 +1,36 @@
+name: Validate Data Readiness Passports
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - docs/datasets.json
+      - docs/knee_quality.json
+      - docs/relationships.json
+      - docs/readiness_passports.json
+      - docs/index.html
+      - scripts/validate_readiness_passports.py
+      - .github/workflows/validate-readiness.yml
+  pull_request:
+    paths:
+      - docs/datasets.json
+      - docs/knee_quality.json
+      - docs/relationships.json
+      - docs/readiness_passports.json
+      - docs/index.html
+      - scripts/validate_readiness_passports.py
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify passport coverage, provenance and conservative evidence grades
+        run: python scripts/validate_readiness_passports.py
