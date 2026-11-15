@@ -19,7 +19,7 @@ The current index contains **106 entries in 9 research categories**. It covers r
 - **Explore coverage** by research task and catalogue category; switch among cards, table, and coverage views.
 - **Export a research manifest** for all matching records as timestamped JSON, including the applied search and filters, original source URLs, citation references, licence fields, and known cohort-relationship cautions. The export is a *metadata snapshot*, not an independent dataset or a reproducibility certificate.
 - **Inspect related datasets** when source records share a portal, one collection hosts another, or a study reports reusing aged cells. Curated relationships appear in dataset detail panels and as warnings when comparing linked records; unlisted relationships have not been audited.
-- **Inspect the Phase 2 source-audit pilot** on 15 selected detail pages. This shows findings from original study/provider documentation, warnings, and exact blockers to file verification. **No original raw battery archive was independently inspected in this pilot**; this is not a 15-dataset scientific certification.
+- **See Phase 2 audit status on all 106 entries**, including source-review evidence, local-file inspection status, historical landing-page checks and original-provider authentication. Fifteen records have source-level reviews; only three have locally inspected file subsets. **None has a complete original-publisher-authenticated audit.**
 - **Inspect a Data Readiness Passport** for every indexed resource. Eight dimensions separate source-reviewed evidence, desk audits, catalogue-only claims, known cautions and unassessed fields. Export any passport as JSON; research-manifest exports include the relevant passports.
 - **Inspect metadata coverage** for each search or filter result: chemistry labels reviewed against sources, records with licence metadata, and resources with an identified application domain. These counts describe catalogue documentation, not independently verified data access.
 - **Review pending candidates** using the open GitHub Issues queue; discovered suggestions are not included in the catalogue until curated.
@@ -114,19 +114,32 @@ The automated validator [`scripts/validate_knee_quality.py`](scripts/validate_kn
 
 Category counts are for indexed **records**, not confirmed independent datasets or verified downloads. The index can include publications, repositories, code or model resources; potential overlaps and duplicates need source-level review.
 
-## Phase 2 — independent evidence audit (started 15 November 2026)
+## Phase 2 — evidence tracking across all 106 resources
 
-The first pilot covers **15 source-documentation reviews**, with findings recorded in [a machine-readable audit register](docs/phase2_source_audit_2026-11-15.json) and visible alongside the corresponding datasets' readiness passports. The [audit protocol](docs/curation/PHASE2_AUDIT_PROTOCOL.md) defines requirements for original file acquisition, integrity and checksum checks, column/schema verification, cell and batch identities, licensing and leakage-free splits.
+The [complete Phase 2 register](docs/phase2_all_resources.json) now covers **106/106** IonSense records. This is **complete tracking coverage, not completed scientific verification**. Each entry has a landing-page monitor snapshot, evidence-backed source-review state, local-file inspection state, original-provider authentication state, and a resource-specific next verification action.
 
-**Initial source-review pilot:** 15 source-level reviews; 0 original file inspections at the time of that pilot.
+| Audit milestone | Completed | Important interpretation |
+|---|---:|---|
+| Resources with explicit Phase 2 audit status | **106 / 106** | Every resource is accounted for; missing evidence is marked pending |
+| Original-source documentation reviews | **15 / 106** | Primary publications/repository descriptions were inspected, not the raw files |
+| Records with locally inspected file subsets | **3 / 106** | NASA, OSF magnetometry and MagBridge staging/source inputs, from connected Drive copies |
+| Locally inspected resources among the original 15-resource pilot | **2 / 15** | NASA and MagBridge; OSF was outside that initial pilot |
+| Canonical publisher-file checksum comparisons | **0 / 106** | No complete official-release authentication established |
+| Fully validated datasets for a specified research task | **0** | Labels, licences, original cell IDs and reproducibility remain unproven |
 
-**Subsequent local-copy file checks (15 November 2026):** The [file evidence register](docs/phase2_file_evidence_2026-11-15.json) documents real byte-level checks for **three catalogue resources**: NASA (four MATLAB cell files), the OSF magnetometry archive (two original-format text measurement files), and MagBridge-Battery (source inputs and a **staging** dataset). SHA-256 values, data shapes, missing values, cell identities and available split IDs were recomputed from the copies in connected Drive. **No original publisher archive checksum has yet been matched; the 15-resource publisher-authenticated raw-data milestone remains incomplete.** Do not equate a locally inspected copy with a fully authenticated canonical release.
+The [landing-page monitor snapshot](docs/link_status.json), dated **15 November 2026**, reported **96 reachable, 8 inconclusive and 2 flagged** links. Landing-page reachability is **not** a successful original data-file download, and a 403/429 result does not establish that the data are inaccessible to researchers.
 
-**Important findings:** NASA B0018 has two non-finite voltage/current/temperature values; the OSF files contain five distinct 5,000-row time blocks; and the MagBridge staging copy uses 4,698/976/1,086 train/validation/test records, unlike the **official published** 4,507/1,074/1,179. The staged record-level baseline has all 56 cells spanning partitions and is deliberately leaky. Never use that staging split as if it were the official reproducible benchmark. <https://huggingface.co/datasets/Sakthigsjhy/MagBridge-Battery> describes the published split.
+The [15-resource source-review register](docs/phase2_source_audit_2026-11-15.json) documents original-source claims and limitations. The separate [local file evidence register](docs/phase2_file_evidence_2026-11-15.json) records actual byte-level checks from connected storage. None of the original-provenance hashes has been matched to a publisher-hosted archive in this phase. The MagBridge local **staging** split differs from the officially published Zenodo split; do not treat them as interchangeable.
 
-To independently inspect permitted downloaded files offline, use `python scripts/audit_local_archive.py /path/to/original.zip`. To verify the source-review register's internal consistency, run `python scripts/validate_phase2_source_audit.py`. Neither tool should be described as a scientific validation without the corresponding results.
+**What counts as a completed raw-data audit:** obtain the canonical provider release with its version, recompute and compare its hashes, read original measurements and labels, establish cell and batch identities, verify any split-leakage claims, inspect the applicable data licence, and document task-specific reproducibility. For portals, code repositories and research papers, first identify which distinct underlying experimental dataset is being evaluated; the catalogue contains research **resources**, not 106 independent cohorts.
 
-**Priority finding:** Stanford's published second-life aging campaign reused cells V4, W8, W9, V5, W10 and G1 from its earlier EV-driving experiment. Splitting those records by *study name* instead of *cell ID* can produce misleading independence claims. See the [original data article](https://pmc.ncbi.nlm.nih.gov/articles/PMC11639452/).
+Use the [Phase 2 audit protocol](docs/curation/PHASE2_AUDIT_PROTOCOL.md), `python scripts/audit_local_archive.py /path/to/permitted-original-file.zip` for local inventories, and validators:
+`python scripts/validate_phase2_source_audit.py`,
+`python scripts/validate_phase2_file_evidence.py`, and
+`python scripts/validate_phase2_all_resources.py`.
+These validators check **audit consistency only**; they are not substitutes for original data verification.
+
+**Key observed leakage caution:** Stanford's published second-life programme reused cells V4, W8, W9, V5, W10 and G1 from the earlier EV-driving experiment. Do not claim independence from study names alone; check source cell IDs before defining train/test partitions. See the [original article](https://pmc.ncbi.nlm.nih.gov/articles/PMC11639452/).
 
 ## Data and website files
 
@@ -135,6 +148,8 @@ To independently inspect permitted downloaded files offline, use `python scripts
 - [`docs/relationships.json`](docs/relationships.json) — source-reviewed relationships between catalogue records; they do not establish cell-level duplicates or guarantee independent cohorts.
 - [`docs/phase2_source_audit_2026-11-15.json`](docs/phase2_source_audit_2026-11-15.json) — findings for the 15-record Phase 2 documentation pilot; raw archive inspections remain pending.
 - [`docs/phase2_file_evidence_2026-11-15.json`](docs/phase2_file_evidence_2026-11-15.json) — subsequent locally inspected source-copy evidence for NASA, OSF and MagBridge staging; publisher archive matching remains pending.
+- [`docs/phase2_all_resources.json`](docs/phase2_all_resources.json) — complete 106-resource Phase 2 audit tracking register; missing checks remain explicitly unverified.
+- [`scripts/validate_phase2_all_resources.py`](scripts/validate_phase2_all_resources.py) — cross-check the 106-record register with the catalogue and recorded source/file evidence.
 - [`docs/readiness_passports.json`](docs/readiness_passports.json) — all 106 resource passports (eight evidence-graded dimensions each; metadata-only initial assessment).
 - [`docs/READINESS_METHOD.md`](docs/READINESS_METHOD.md) — assessment rubric, limitations, verification protocol and maintenance rules.
 - [`scripts/validate_readiness_passports.py`](scripts/validate_readiness_passports.py) — passport coverage and evidence-integrity validator.
