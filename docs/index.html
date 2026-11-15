@@ -280,6 +280,21 @@ mark{background:color-mix(in srgb,var(--warn) 22%,transparent);color:inherit;bor
 .lineage-panel li{margin:6px 0}
 .lineage-panel li .link-btn{font-size:inherit}
 @media (max-width:640px){#export-manifest{font-size:12px;padding:8px}}
+.readiness-passport{margin:16px 0;padding:16px;border:1px solid var(--line-strong);border-radius:var(--r-m);background:var(--panel)}
+.passport-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.readiness-passport h3{font-size:16px;margin:0;font-weight:700}
+.passport-sub{margin:7px 0 11px;font-size:13px;color:var(--ink-2);line-height:1.5}
+.passport-grid{display:grid;gap:8px}
+.passport-item{padding:10px 12px;border:1px solid var(--line);border-radius:var(--r-s);background:var(--sunken)}
+.passport-title{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;font-weight:650;font-size:13.5px}
+.passport-evidence{display:inline-block;font-size:11.5px;font-weight:600;padding:3px 8px;border:1px solid var(--line-strong);border-radius:999px;color:var(--ink-2);background:var(--panel)}
+.passport-evidence.caution{border-color:var(--warn);color:var(--warn)}
+.passport-evidence.source{color:var(--accent-ink);border-color:var(--accent)}
+.passport-item p{font-size:13px;line-height:1.5;margin:7px 0 0;color:var(--ink-2)}
+.passport-item .passport-next{color:var(--muted);font-size:12.5px}
+.passport-item .link-btn{font-size:12.5px}
+.passport-download{height:31px}
+@media (min-width:800px){.passport-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 /* Table + coverage */
 .table-wrap{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:var(--r-m)}
 table{border-collapse:collapse;width:100%;font-size:13.5px}
@@ -824,6 +839,16 @@ const state = {
 };
 let data = [], results = [], categoryOrder = [];
 let RELATIONS = [];  /* Curated provenance relationships. Unlisted pairs have not been assessed. */
+let PASSPORTS = {}, PASSPORT_META = {};  /* Conservative metadata-only readiness evidence for all records. */
+const passportOf = d => PASSPORTS[d.id] || null;
+const PASSPORT_LEVELS = {
+  source_reviewed: 'Source reviewed',
+  desk_reviewed: 'Desk reviewed',
+  catalogue_recorded: 'In catalogue',
+  caution_documented: 'Specific caution',
+  not_assessed: 'Not assessed',
+  not_applicable: 'Not applicable'
+};
 const relationshipsOf = d => RELATIONS.filter(r => r.a === d.id || r.b === d.id);
 let CITES = {}, CITES_META = {};  /* citations.json: OpenAlex counts for each dataset's original paper */
 let USES = {};  /* research_uses.json, keyed by dataset id; empty if the file is missing */
@@ -1236,6 +1261,7 @@ function exportResearchManifest() {
       match_mode: { ...state.mode }
     },
     methodology_note: 'Metadata discovery snapshot only. Licence, original-source access, sample identity, knee-onset labels, and experimental independence must be verified from original providers. Cite original dataset creators.',
+    readiness_evidence_levels: PASSPORT_META.evidence_levels || {},
     records: results.map(d => ({
       id: d.id,
       name: d.name,
@@ -1257,6 +1283,7 @@ function exportResearchManifest() {
       licence: known(d.license) || null,
       knee_evidence: kneeOf(d)?.evidence || null,
       knee_label_status: kneeOf(d)?.label_status || null,
+      readiness_passport: passportOf(d),
       related_records: relationshipsOf(d).map(r => ({
         other_id: r.a === d.id ? r.b : r.a,
         relationship: r.label,
@@ -1598,6 +1625,55 @@ function openMetrics(d) {
   writeUrl();
 }
 
+function downloadReadinessPassport(d) {
+  const p = passportOf(d);
+  if (!p) return;
+  const exportData = {
+    schema_version: PASSPORT_META.schema_version,
+    generated_on: PASSPORT_META.generated_on,
+    scope: PASSPORT_META.scope,
+    limitations: PASSPORT_META.limitations,
+    evidence_levels: PASSPORT_META.evidence_levels,
+    dimensions: PASSPORT_META.dimensions,
+    id: d.id,
+    name: d.name,
+    original_source: http(d.url) || null,
+    publication: paperOf(d) || null,
+    passport: p
+  };
+  const url = URL.createObjectURL(new Blob([JSON.stringify(exportData, null, 2) + '\n'], { type: 'application/json;charset=utf-8' }));
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'ionsense-readiness-' + d.id + '.json';
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 2000);
+}
+
+function readinessPassportSection(d) {
+  const passport = passportOf(d);
+  if (!passport) return h('section', { class: 'readiness-passport', 'aria-label': 'Data Readiness Passport' },
+    h('h3', {}, 'Data Readiness Passport'),
+    h('p', { class: 'passport-sub' }, 'No passport is available for this resource. No readiness conclusions can be drawn.'));
+  const rows = Object.entries(PASSPORT_META.dimensions || {}).map(([key, label]) => {
+    const item = passport.dimensions[key];
+    if (!item) return null;
+    return h('div', { class: 'passport-item' },
+      h('div', { class: 'passport-title' }, h('span', {}, label),
+        h('span', { class: 'passport-evidence' + (item.status === 'caution_documented' ? ' caution' : item.status === 'source_reviewed' ? ' source' : '') }, PASSPORT_LEVELS[item.status] || 'Not assessed')),
+      h('p', {}, item.finding),
+      h('p', { class: 'passport-next' }, h('strong', {}, 'Next verification: '), item.next_check),
+      item.evidence_url ? h('p', {}, extLink(http(item.evidence_url), 'Reference / original source', 'link-btn')) : null);
+  }).filter(Boolean);
+  return h('section', { class: 'readiness-passport', 'aria-label': 'Data Readiness Passport' },
+    h('div', { class: 'passport-head' },
+      h('h3', {}, 'Data Readiness Passport'),
+      h('button', { type: 'button', class: 'btn passport-download', onclick: () => downloadReadinessPassport(d) }, 'Download passport JSON')),
+    h('p', { class: 'passport-sub' }, 'Evidence graded across eight checks. Source reviewed means that documentation was examined—not raw battery files. Not assessed is not a failure. No single readiness score or guaranteed research suitability is implied.'),
+    h('div', { class: 'passport-grid' }, rows));
+}
+
 function relatedRecordsSection(d) {
   const relations = relationshipsOf(d);
   if (!relations.length) return null;
@@ -1680,6 +1756,7 @@ function openDetail(d, jump) {
     h('p', {}, d.description || 'No description yet.'),
     links,
     facts,
+    readinessPassportSection(d),
     notes.length ? h('div', {}, h('h3', {}, 'Notes'), h('p', { class: 'note' }, ICON_INFO(), h('span', {}, notes.join(' ')))) : null,
     relatedRecordsSection(d),
     kneeAudit ? h('section', { class: 'knee-audit', 'aria-label': 'Knee research quality audit' },
@@ -2040,6 +2117,10 @@ const lineageReady = fetch('./relationships.json', { cache: 'no-cache' })
   .then(r => r.ok ? r.json() : null)
   .then(j => { if (j && Array.isArray(j.relationships)) RELATIONS = j.relationships.filter(r => r && r.a && r.b && r.label && r.description); })
   .catch(() => {});
+const passportReady = fetch('./readiness_passports.json', { cache: 'no-cache' })
+  .then(r => { if (!r.ok) throw new Error('Passport data not available: ' + r.status); return r.json(); })
+  .then(j => { if (!j || !j.passports || !j.dimensions) throw new Error('Invalid readiness passports'); PASSPORTS = j.passports; PASSPORT_META = j; })
+  .catch(err => { console.warn('Data readiness passport file could not be loaded.', err); });
 const kneeReady = fetch('./knee_quality.json', { cache: 'no-cache' })
   .then(r => r.ok ? r.json() : null)
   .then(j => { if (j && j.records && typeof j.records === 'object') KNEE = j.records; })
@@ -2050,7 +2131,7 @@ const usesReady = fetch('./research_uses.json', { cache: 'no-cache' })
   .catch(() => {});
 fetch('./datasets.json', { cache: 'no-cache' })
   .then(r => { if (!r.ok) throw new Error('The catalogue file returned HTTP ' + r.status + '.'); return r.json(); })
-  .then(json => Promise.all([usesReady, citesReady, linksReady, relReady, wnReady, kneeReady, lineageReady]).then(() => json))
+  .then(json => Promise.all([usesReady, citesReady, linksReady, relReady, wnReady, kneeReady, lineageReady, passportReady]).then(() => json))
   .then(json => {
     if (!Array.isArray(json)) throw new Error('datasets.json should contain a list of datasets.');
     data = json.filter(d => d && d.name).map((d, i) => {
