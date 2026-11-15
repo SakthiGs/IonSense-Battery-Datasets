@@ -19,6 +19,7 @@ The current index contains **106 entries in 9 research categories**. It covers r
 - **Explore coverage** by research task and catalogue category; switch among cards, table, and coverage views.
 - **Export a research manifest** for all matching records as timestamped JSON, including the applied search and filters, original source URLs, citation references, licence fields, and known cohort-relationship cautions. The export is a *metadata snapshot*, not an independent dataset or a reproducibility certificate.
 - **Inspect related datasets** when source records share a portal, one collection hosts another, or a study reports reusing aged cells. Curated relationships appear in dataset detail panels and as warnings when comparing linked records; unlisted relationships have not been audited.
+- **Inspect the Phase 2 source-audit pilot** on 15 selected detail pages. This shows findings from original study/provider documentation, warnings, and exact blockers to file verification. **No original raw battery archive was independently inspected in this pilot**; this is not a 15-dataset scientific certification.
 - **Inspect a Data Readiness Passport** for every indexed resource. Eight dimensions separate source-reviewed evidence, desk audits, catalogue-only claims, known cautions and unassessed fields. Export any passport as JSON; research-manifest exports include the relevant passports.
 - **Inspect metadata coverage** for each search or filter result: chemistry labels reviewed against sources, records with licence metadata, and resources with an identified application domain. These counts describe catalogue documentation, not independently verified data access.
 - **Review pending candidates** using the open GitHub Issues queue; discovered suggestions are not included in the catalogue until curated.
@@ -113,11 +114,22 @@ The automated validator [`scripts/validate_knee_quality.py`](scripts/validate_kn
 
 Category counts are for indexed **records**, not confirmed independent datasets or verified downloads. The index can include publications, repositories, code or model resources; potential overlaps and duplicates need source-level review.
 
+## Phase 2 — independent evidence audit (started 15 November 2026)
+
+The first pilot covers **15 source-documentation reviews**, with findings recorded in [a machine-readable audit register](docs/phase2_source_audit_2026-11-15.json) and visible alongside the corresponding datasets' readiness passports. The [audit protocol](docs/curation/PHASE2_AUDIT_PROTOCOL.md) defines requirements for original file acquisition, integrity and checksum checks, column/schema verification, cell and batch identities, licensing and leakage-free splits.
+
+**Status:** 15 source-level reviews; **0 complete original raw-file inspections during this run**. This distinction is intentional: publisher pages and GitHub READMEs support documentation-level claims, but do not prove sample quality, downloadable access, independent cell histories, or executable benchmarks. Sources may block automation, and some data archives are very large.
+
+To independently inspect permitted downloaded files offline, use `python scripts/audit_local_archive.py /path/to/original.zip`. To verify the source-review register's internal consistency, run `python scripts/validate_phase2_source_audit.py`. Neither tool should be described as a scientific validation without the corresponding results.
+
+**Priority finding:** Stanford's published second-life aging campaign reused cells V4, W8, W9, V5, W10 and G1 from its earlier EV-driving experiment. Splitting those records by *study name* instead of *cell ID* can produce misleading independence claims. See the [original data article](https://pmc.ncbi.nlm.nih.gov/articles/PMC11639452/).
+
 ## Data and website files
 
 - [`docs/datasets.json`](docs/datasets.json) — structured catalogue and source URLs; metadata may be incomplete or provisional.
 - [`docs/index.html`](docs/index.html) — the static GitHub Pages explorer, including filtering, comparison and coverage views.
 - [`docs/relationships.json`](docs/relationships.json) — source-reviewed relationships between catalogue records; they do not establish cell-level duplicates or guarantee independent cohorts.
+- [`docs/phase2_source_audit_2026-11-15.json`](docs/phase2_source_audit_2026-11-15.json) — findings for the 15-record Phase 2 documentation pilot; raw archive inspections remain pending.
 - [`docs/readiness_passports.json`](docs/readiness_passports.json) — all 106 resource passports (eight evidence-graded dimensions each; metadata-only initial assessment).
 - [`docs/READINESS_METHOD.md`](docs/READINESS_METHOD.md) — assessment rubric, limitations, verification protocol and maintenance rules.
 - [`scripts/validate_readiness_passports.py`](scripts/validate_readiness_passports.py) — passport coverage and evidence-integrity validator.
