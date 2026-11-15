@@ -127,7 +127,7 @@ The [complete Phase 2 register](docs/phase2_all_resources.json) now covers **106
 | Canonical publisher-file checksum comparisons | **0 / 106** | No complete official-release authentication established |
 | Fully validated datasets for a specified research task | **0** | Labels, licences, original cell IDs and reproducibility remain unproven |
 
-The [landing-page monitor snapshot](docs/link_status.json), dated **15 November 2026**, reported **96 reachable, 8 inconclusive and 2 flagged** links. Landing-page reachability is **not** a successful original data-file download, and a 403/429 result does not establish that the data are inaccessible to researchers.
+The [landing-page monitor snapshot](docs/link_status.json), dated **15 November 2026**, reported **96 reachable, 8 inconclusive and 2 flagged** links. Landing-page reachability is **not** a successful original data-file download, and a 403/429 result does not establish that the data are inaccessible to researchers. [Source-link recovery candidates](docs/curation/PHASE2_LINK_RECOVERY_2026-11-15.md) document the flagged NLR Battery Failure Databank and Bayreuth records without prematurely marking their raw files verified.
 
 The [15-resource source-review register](docs/phase2_source_audit_2026-11-15.json) documents original-source claims and limitations. The separate [local file evidence register](docs/phase2_file_evidence_2026-11-15.json) records actual byte-level checks from connected storage. None of the original-provenance hashes has been matched to a publisher-hosted archive in this phase. The MagBridge local **staging** split differs from the officially published Zenodo split; do not treat them as interchangeable.
 
