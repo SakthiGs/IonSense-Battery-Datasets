@@ -5,10 +5,12 @@ on:
     branches: [main]
     paths:
       - docs/phase2_source_audit_2026-11-15.json
+      - docs/phase2_all_resources.json
       - docs/datasets.json
       - docs/readiness_passports.json
       - docs/curation/PHASE2_AUDIT_PROTOCOL.md
       - scripts/validate_phase2_source_audit.py
+      - scripts/validate_phase2_all_resources.py
       - scripts/validate_phase2_file_evidence.py
       - docs/phase2_file_evidence_2026-11-15.json
       - scripts/audit_local_archive.py
@@ -16,9 +18,14 @@ on:
   pull_request:
     paths:
       - docs/phase2_source_audit_2026-11-15.json
+      - docs/phase2_all_resources.json
+      - docs/phase2_file_evidence_2026-11-15.json
       - docs/datasets.json
       - docs/readiness_passports.json
+      - docs/index.html
       - scripts/validate_phase2_source_audit.py
+      - scripts/validate_phase2_file_evidence.py
+      - scripts/validate_phase2_all_resources.py
   workflow_dispatch:
 
 permissions:
@@ -36,6 +43,8 @@ jobs:
         run: python scripts/validate_phase2_source_audit.py
       - name: Validate local file evidence record and publisher-checksum caveats
         run: python scripts/validate_phase2_file_evidence.py
+      - name: Validate all 106 source/file evidence statuses
+        run: python scripts/validate_phase2_all_resources.py
       - name: Test offline archive inventory without claiming actual dataset verification
         run: |
           python - <<'PY'
