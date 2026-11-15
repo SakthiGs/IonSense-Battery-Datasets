@@ -118,7 +118,11 @@ Category counts are for indexed **records**, not confirmed independent datasets 
 
 The first pilot covers **15 source-documentation reviews**, with findings recorded in [a machine-readable audit register](docs/phase2_source_audit_2026-11-15.json) and visible alongside the corresponding datasets' readiness passports. The [audit protocol](docs/curation/PHASE2_AUDIT_PROTOCOL.md) defines requirements for original file acquisition, integrity and checksum checks, column/schema verification, cell and batch identities, licensing and leakage-free splits.
 
-**Status:** 15 source-level reviews; **0 complete original raw-file inspections during this run**. This distinction is intentional: publisher pages and GitHub READMEs support documentation-level claims, but do not prove sample quality, downloadable access, independent cell histories, or executable benchmarks. Sources may block automation, and some data archives are very large.
+**Initial source-review pilot:** 15 source-level reviews; 0 original file inspections at the time of that pilot.
+
+**Subsequent local-copy file checks (15 November 2026):** The [file evidence register](docs/phase2_file_evidence_2026-11-15.json) documents real byte-level checks for **three catalogue resources**: NASA (four MATLAB cell files), the OSF magnetometry archive (two original-format text measurement files), and MagBridge-Battery (source inputs and a **staging** dataset). SHA-256 values, data shapes, missing values, cell identities and available split IDs were recomputed from the copies in connected Drive. **No original publisher archive checksum has yet been matched; the 15-resource publisher-authenticated raw-data milestone remains incomplete.** Do not equate a locally inspected copy with a fully authenticated canonical release.
+
+**Important findings:** NASA B0018 has two non-finite voltage/current/temperature values; the OSF files contain five distinct 5,000-row time blocks; and the MagBridge staging copy uses 4,698/976/1,086 train/validation/test records, unlike the **official published** 4,507/1,074/1,179. The staged record-level baseline has all 56 cells spanning partitions and is deliberately leaky. Never use that staging split as if it were the official reproducible benchmark. <https://huggingface.co/datasets/Sakthigsjhy/MagBridge-Battery> describes the published split.
 
 To independently inspect permitted downloaded files offline, use `python scripts/audit_local_archive.py /path/to/original.zip`. To verify the source-review register's internal consistency, run `python scripts/validate_phase2_source_audit.py`. Neither tool should be described as a scientific validation without the corresponding results.
 
@@ -130,6 +134,7 @@ To independently inspect permitted downloaded files offline, use `python scripts
 - [`docs/index.html`](docs/index.html) — the static GitHub Pages explorer, including filtering, comparison and coverage views.
 - [`docs/relationships.json`](docs/relationships.json) — source-reviewed relationships between catalogue records; they do not establish cell-level duplicates or guarantee independent cohorts.
 - [`docs/phase2_source_audit_2026-11-15.json`](docs/phase2_source_audit_2026-11-15.json) — findings for the 15-record Phase 2 documentation pilot; raw archive inspections remain pending.
+- [`docs/phase2_file_evidence_2026-11-15.json`](docs/phase2_file_evidence_2026-11-15.json) — subsequent locally inspected source-copy evidence for NASA, OSF and MagBridge staging; publisher archive matching remains pending.
 - [`docs/readiness_passports.json`](docs/readiness_passports.json) — all 106 resource passports (eight evidence-graded dimensions each; metadata-only initial assessment).
 - [`docs/READINESS_METHOD.md`](docs/READINESS_METHOD.md) — assessment rubric, limitations, verification protocol and maintenance rules.
 - [`scripts/validate_readiness_passports.py`](scripts/validate_readiness_passports.py) — passport coverage and evidence-integrity validator.
