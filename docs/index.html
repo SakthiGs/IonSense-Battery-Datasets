@@ -852,7 +852,9 @@ const state = {
 let data = [], results = [], categoryOrder = [];
 let RELATIONS = [];  /* Curated provenance relationships. Unlisted pairs have not been assessed. */
 let PASSPORTS = {}, PASSPORT_META = {};  /* Conservative metadata-only readiness evidence for all records. */
-let PHASE2 = {}; /* Fifteen independent original-source documentation reviews; no official archive authenticated in that run. */
+let PHASE2 = {}; /* Initial 15 original-source documentation reviews. */
+let ALL_PHASE2 = {}; /* Full 106-record evidence ledger. No complete provider-authenticated audits yet. */
+const phase2AuditOf = d => ALL_PHASE2[d.id] || null;
 let FILE_EVIDENCE = {}; /* Local copy byte inspections; not original-provider checksum matches. */
 const localEvidenceOf = d => FILE_EVIDENCE[d.id] || null;
 const phase2Of = d => PHASE2[d.id] || null;
@@ -1300,6 +1302,7 @@ function exportResearchManifest() {
       knee_evidence: kneeOf(d)?.evidence || null,
       knee_label_status: kneeOf(d)?.label_status || null,
       readiness_passport: passportOf(d),
+      phase2_verification: phase2AuditOf(d),
       related_records: relationshipsOf(d).map(r => ({
         other_id: r.a === d.id ? r.b : r.a,
         relationship: r.label,
@@ -1655,7 +1658,8 @@ function downloadReadinessPassport(d) {
     name: d.name,
     original_source: http(d.url) || null,
     publication: paperOf(d) || null,
-    passport: p
+    passport: p,
+    phase2_verification: phase2AuditOf(d)
   };
   const url = URL.createObjectURL(new Blob([JSON.stringify(exportData, null, 2) + '\n'], { type: 'application/json;charset=utf-8' }));
   const a = document.createElement('a');
@@ -1665,6 +1669,22 @@ function downloadReadinessPassport(d) {
   a.click();
   a.remove();
   setTimeout(() => URL.revokeObjectURL(url), 2000);
+}
+
+function phase2CoverageLine(d) {
+  const entry = phase2AuditOf(d);
+  if (!entry) return h('p', { class: 'passport-sub' }, 'Phase 2 audit registry unavailable; no certification implied.');
+  const docReviewed = entry.documentation.state === 'original_source_described';
+  const inspected = entry.local_file_inspection.state === 'connected_drive_copy_inspected';
+  const linkState = entry.landing_page_monitor.reachability;
+  const linkText = linkState === 'ok' ? 'Landing page responded'
+    : linkState === 'broken' ? 'Link flagged for correction' : 'Landing-page check inconclusive';
+  return h('p', { class: 'passport-sub' },
+    h('strong', {}, 'Phase 2 status: '),
+    docReviewed ? 'Primary-source description reviewed' : 'Original-source review pending', ' · ',
+    inspected ? 'Stored-file subset inspected (canonical release unconfirmed)' : 'No independent raw-file check', ' · ',
+    linkText, ' · ', 'Publisher-original verification not completed. ',
+    extLink('https://github.com/SakthiGs/IonSense-Battery-Datasets/blob/main/docs/phase2_all_resources.json', 'Full audit registry', 'link-btn'));
 }
 
 function readinessPassportSection(d) {
@@ -1686,7 +1706,8 @@ function readinessPassportSection(d) {
     h('div', { class: 'passport-head' },
       h('h3', {}, 'Data Readiness Passport'),
       h('button', { type: 'button', class: 'btn passport-download', onclick: () => downloadReadinessPassport(d) }, 'Download passport JSON')),
-    h('p', { class: 'passport-sub' }, 'Evidence graded across eight checks. Source reviewed means that documentation was examined—not raw battery files. Not assessed is not a failure. No single readiness score or guaranteed research suitability is implied.'),
+    h('p', { class: 'passport-sub' }, 'Evidence graded across eight checks. Source reviewed means documentation was examined—not raw battery files. Not assessed is not a failure. No single readiness score or guaranteed research suitability is implied.'),
+    phase2CoverageLine(d),
     h('div', { class: 'passport-grid' }, rows));
 }
 
@@ -2167,6 +2188,10 @@ const lineageReady = fetch('./relationships.json', { cache: 'no-cache' })
   .then(r => r.ok ? r.json() : null)
   .then(j => { if (j && Array.isArray(j.relationships)) RELATIONS = j.relationships.filter(r => r && r.a && r.b && r.label && r.description); })
   .catch(() => {});
+const allPhase2Ready = fetch('./phase2_all_resources.json', { cache: 'no-cache' })
+  .then(r => r.ok ? r.json() : null)
+  .then(j => { if (j && j.resources && typeof j.resources === 'object') ALL_PHASE2 = j.resources; })
+  .catch(() => {});
 const fileAuditReady = fetch('./phase2_file_evidence_2026-11-15.json', { cache: 'no-cache' })
   .then(r => r.ok ? r.json() : null)
   .then(j => { if (j && j.cohort_records && typeof j.cohort_records === 'object') FILE_EVIDENCE = j.cohort_records; })
@@ -2189,7 +2214,7 @@ const usesReady = fetch('./research_uses.json', { cache: 'no-cache' })
   .catch(() => {});
 fetch('./datasets.json', { cache: 'no-cache' })
   .then(r => { if (!r.ok) throw new Error('The catalogue file returned HTTP ' + r.status + '.'); return r.json(); })
-  .then(json => Promise.all([usesReady, citesReady, linksReady, relReady, wnReady, kneeReady, lineageReady, passportReady, phase2Ready, fileAuditReady]).then(() => json))
+  .then(json => Promise.all([usesReady, citesReady, linksReady, relReady, wnReady, kneeReady, lineageReady, passportReady, phase2Ready, fileAuditReady, allPhase2Ready]).then(() => json))
   .then(json => {
     if (!Array.isArray(json)) throw new Error('datasets.json should contain a list of datasets.');
     data = json.filter(d => d && d.name).map((d, i) => {
