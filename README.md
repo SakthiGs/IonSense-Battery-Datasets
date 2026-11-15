@@ -19,10 +19,19 @@ The current index contains **106 entries in 9 research categories**. It covers r
 - **Explore coverage** by research task and catalogue category; switch among cards, table, and coverage views.
 - **Export a research manifest** for all matching records as timestamped JSON, including the applied search and filters, original source URLs, citation references, licence fields, and known cohort-relationship cautions. The export is a *metadata snapshot*, not an independent dataset or a reproducibility certificate.
 - **Inspect related datasets** when source records share a portal, one collection hosts another, or a study reports reusing aged cells. Curated relationships appear in dataset detail panels and as warnings when comparing linked records; unlisted relationships have not been audited.
+- **Inspect a Data Readiness Passport** for every indexed resource. Eight dimensions separate source-reviewed evidence, desk audits, catalogue-only claims, known cautions and unassessed fields. Export any passport as JSON; research-manifest exports include the relevant passports.
 - **Inspect metadata coverage** for each search or filter result: chemistry labels reviewed against sources, records with licence metadata, and resources with an identified application domain. These counts describe catalogue documentation, not independently verified data access.
 - **Review pending candidates** using the open GitHub Issues queue; discovered suggestions are not included in the catalogue until curated.
 - **Visit original sources** and linked publications. Source owners retain control of their data and licensing terms.
 - **Suggest corrections or new records** through GitHub Issues.
+
+## Data Readiness Passports (initial metadata-only snapshot)
+
+Every one of the **106 indexed resources** now has a passport in its detail view. Each passport covers identity/provenance, data-file accessibility, measurements, chemistry, ground-truth labels/tasks, cohort independence, licensing and reproducibility. Individual passports and filtered research manifests can be downloaded as JSON.
+
+**Do not interpret these as 106 fully verified datasets.** The initial passports were generated from existing catalogue fields, 58 previously source-reviewed chemistry annotations, 13 existing knee desk audits, and three documented relationships affecting six records. None of the 106 original data access records has been marked as file-downloaded or verified; the code/model/paper/portal entries are not automatically raw datasets. Missing checks are deliberately shown as **Not assessed**, not as failures or implicit approvals.
+
+See the [readiness assessment rubric and future verification protocol](docs/READINESS_METHOD.md). Researchers must verify original files, labels, reuse terms and cell-level independence before training and reporting benchmarks.
 
 ## Application domains vs research categories
 
@@ -109,6 +118,9 @@ Category counts are for indexed **records**, not confirmed independent datasets 
 - [`docs/datasets.json`](docs/datasets.json) — structured catalogue and source URLs; metadata may be incomplete or provisional.
 - [`docs/index.html`](docs/index.html) — the static GitHub Pages explorer, including filtering, comparison and coverage views.
 - [`docs/relationships.json`](docs/relationships.json) — source-reviewed relationships between catalogue records; they do not establish cell-level duplicates or guarantee independent cohorts.
+- [`docs/readiness_passports.json`](docs/readiness_passports.json) — all 106 resource passports (eight evidence-graded dimensions each; metadata-only initial assessment).
+- [`docs/READINESS_METHOD.md`](docs/READINESS_METHOD.md) — assessment rubric, limitations, verification protocol and maintenance rules.
+- [`scripts/validate_readiness_passports.py`](scripts/validate_readiness_passports.py) — passport coverage and evidence-integrity validator.
 - [`metadata/`](metadata/) — separate research-oriented quantum-readiness metadata and example tables; do not interpret its scores as experimentally proven quantum advantage.
 - [`scripts/check_links.py`](scripts/check_links.py) — link-checking utility; HTTP reachability alone does not establish downloadable data or rights to reuse.
 - [`CONTRIBUTING.md`](CONTRIBUTING.md) — contribution guidance.
