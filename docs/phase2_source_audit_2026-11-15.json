@@ -1,0 +1,501 @@
+{
+  "schema_version": 1,
+  "audit_id": "ionsense-phase2-pilot-2026-11-15",
+  "checked_on": "2026-11-15",
+  "audit_scope": "15 diverse indexed resources covering primary laboratory datasets, field data, safety-style archive sources, reused EV/second-life cohorts, synthetic data and derived benchmarks.",
+  "source_documentation_reviewed": 15,
+  "raw_files_independently_inspected": 0,
+  "status": "documentation_review_completed_raw_data_pending",
+  "methodology": "Each record has at least one direct publisher/official repository/author publication or code-repository reference assessed. Findings reflect source claims, not independent file verification. Source URL and publisher publication are different forms of evidence.",
+  "limitations": "Network restrictions and large archives prevented raw file acquisition. The 15-resource pilot is NOT 15 file-audited or fully validated datasets. No existing access_status, raw-file verification, labels, licence clearance or suitability grade should be upgraded based on this source check.",
+  "entries": [
+    {
+      "dataset_id": "early-cycle-life",
+      "dataset_name": "MIT–Stanford–TRI Battery Cycle Life Dataset (MATR)",
+      "source_url": "https://data.matr.io/1/",
+      "source_documentation": {
+        "status": "publication_reviewed_portal_js_only",
+        "evidence_url": "https://www.nature.com/articles/s41560-019-0356-8",
+        "facts": [
+          "Original Severson et al. article reports 124 A123 LFP/graphite cells under fast charging.",
+          "Original paper identifies data.matr.io/1/ as dataset portal."
+        ]
+      },
+      "raw_file_audit": {
+        "status": "not_performed",
+        "blocker": "Data portal dynamic; raw cells and split IDs not retrieved.",
+        "files_inspected": 0,
+        "sha256_recomputed": false,
+        "raw_columns_checked": false,
+        "cell_ids_checked": false,
+        "train_test_split_checked": false
+      },
+      "review_flags": [
+        "Do not equate the 124-cell publication cohort with later broader or reprocessed MATR collections.",
+        "Portal requires JavaScript; original cell/batch mapping and exact files not inspected."
+      ],
+      "next_steps": [
+        "Obtain original data under source licence/access conditions.",
+        "Inventory filenames, sizes and cryptographic hashes; examine sample raw rows safely.",
+        "Validate signal columns, units, cell/batch identifiers and output-label definitions.",
+        "Check exact sample lineage and any split leakage before updating readiness evidence."
+      ]
+    },
+    {
+      "dataset_id": "physics-informed-neural-network-for-lithium-ion-battery-degradation-modelling",
+      "dataset_name": "XJTU Battery Degradation Dataset",
+      "source_url": "https://zenodo.org/records/10963339",
+      "source_documentation": {
+        "status": "repository_landing_reviewed",
+        "evidence_url": "https://zenodo.org/records/10963339",
+        "facts": [
+          "Zenodo record lists 55 NCM/graphite 18650 cells, six aging strategies, and nominal 1 Hz sampling.",
+          "Repository lists 2.4 GB Battery Dataset.zip with published MD5 a635cef9678e0de21f9d5c1f78a4342c.",
+          "Original source links an independent preprocessing code repository."
+        ]
+      },
+      "raw_file_audit": {
+        "status": "not_performed",
+        "blocker": "2.4 GB ZIP unavailable for local read/checksum in this execution.",
+        "files_inspected": 0,
+        "sha256_recomputed": false,
+        "raw_columns_checked": false,
+        "cell_ids_checked": false,
+        "train_test_split_checked": false
+      },
+      "review_flags": [
+        "Published MD5 was not recomputed: no local ZIP was downloaded.",
+        "BatteryLife also includes a standardized version of XJTU; investigate derived cohort duplication."
+      ],
+      "next_steps": [
+        "Obtain original data under source licence/access conditions.",
+        "Inventory filenames, sizes and cryptographic hashes; examine sample raw rows safely.",
+        "Validate signal columns, units, cell/batch identifiers and output-label definitions.",
+        "Check exact sample lineage and any split leakage before updating readiness evidence."
+      ]
+    },
+    {
+      "dataset_id": "real-time-personalized-health-status-prediction-via-deep-transfer-learning",
+      "dataset_name": "HUST Battery Dataset (77 LFP cells)",
+      "source_url": "https://data.mendeley.com/datasets/nsc7hnsg4s/2",
+      "source_documentation": {
+        "status": "repository_landing_reviewed",
+        "evidence_url": "https://data.mendeley.com/datasets/nsc7hnsg4s/2",
+        "facts": [
+          "Mendeley v2 DOI 10.17632/nsc7hnsg4s.2 reports 77 LFP/graphite cells at 30 C.",
+          "Original record lists CC BY 4.0; differing discharge protocols and common charging protocol."
+        ]
+      },
+      "raw_file_audit": {
+        "status": "not_performed",
+        "blocker": "Mendeley Download All is not exposed as an inspectable data file here.",
+        "files_inspected": 0,
+        "sha256_recomputed": false,
+        "raw_columns_checked": false,
+        "cell_ids_checked": false,
+        "train_test_split_checked": false
+      },
+      "review_flags": [
+        "Download All control appears on landing page but file inventory and hashes were not retrieved.",
+        "No independently verified train/test cell-ID mapping or label column definitions."
+      ],
+      "next_steps": [
+        "Obtain original data under source licence/access conditions.",
+        "Inventory filenames, sizes and cryptographic hashes; examine sample raw rows safely.",
+        "Validate signal columns, units, cell/batch identifiers and output-label definitions.",
+        "Check exact sample lineage and any split leakage before updating readiness evidence."
+      ]
+    },
+    {
+      "dataset_id": "samsung-inr18650-30q-knee-point-aging",
+      "dataset_name": "Samsung INR18650-30Q Knee-Point Aging Dataset",
+      "source_url": "https://data.mendeley.com/datasets/zn82y35zr8/4",
+      "source_documentation": {
+        "status": "repository_landing_reviewed",
+        "evidence_url": "https://data.mendeley.com/datasets/zn82y35zr8/4",
+        "facts": [
+          "Mendeley v4 DOI 10.17632/zn82y35zr8.4 describes 60 NCA/graphite-silicon Samsung INR18650-30Q cells.",
+          "Publisher documents per-cell CSV folders for RPT, cycle, after-SOH80 and processed-feature data.",
+          "RPT intervals differ across phases and protocols change at approximately 80% SOH; CC BY 4.0 documented."
+        ]
+      },
+      "raw_file_audit": {
+        "status": "not_performed",
+        "blocker": "Raw CSV folders were described in source but not downloaded or examined.",
+        "files_inspected": 0,
+        "sha256_recomputed": false,
+        "raw_columns_checked": false,
+        "cell_ids_checked": false,
+        "train_test_split_checked": false
+      },
+      "review_flags": [
+        "A knee-point publication does not guarantee supplied, independently validated knee-onset labels.",
+        "Protocol discontinuity must be controlled when fitting knee onset."
+      ],
+      "next_steps": [
+        "Obtain original data under source licence/access conditions.",
+        "Inventory filenames, sizes and cryptographic hashes; examine sample raw rows safely.",
+        "Validate signal columns, units, cell/batch identifiers and output-label definitions.",
+        "Check exact sample lineage and any split leakage before updating readiness evidence."
+      ]
+    },
+    {
+      "dataset_id": "sandia-commercial-cell-degradation",
+      "dataset_name": "Sandia Commercial Cell Degradation Dataset (SNL)",
+      "source_url": "https://www.batteryarchive.org/study_summaries.html",
+      "source_documentation": {
+        "status": "repository_landing_reviewed",
+        "evidence_url": "https://www.batteryarchive.org/study_summaries.html",
+        "facts": [
+          "Battery Archive describes Sandia 18650 NCA, NMC and LFP degradation study under varied temperature, DOD and current.",
+          "Website identifies underlying Sandia publication and presents data in host-standardized format."
+        ]
+      },
+      "raw_file_audit": {
+        "status": "not_performed",
+        "blocker": "Portal-level study summary inspected; underlying cells/export files not inspected.",
+        "files_inspected": 0,
+        "sha256_recomputed": false,
+        "raw_columns_checked": false,
+        "cell_ids_checked": false,
+        "train_test_split_checked": false
+      },
+      "review_flags": [
+        "This record is a study under Battery Archive, not an extra independent cohort on top of the portal.",
+        "Original Sandia cell IDs, standardized export correspondence and licensing terms are not verified."
+      ],
+      "next_steps": [
+        "Obtain original data under source licence/access conditions.",
+        "Inventory filenames, sizes and cryptographic hashes; examine sample raw rows safely.",
+        "Validate signal columns, units, cell/batch identifiers and output-label definitions.",
+        "Check exact sample lineage and any split leakage before updating readiness evidence."
+      ]
+    },
+    {
+      "dataset_id": "battery-archive",
+      "dataset_name": "Battery Archive",
+      "source_url": "https://www.batteryarchive.org/",
+      "source_documentation": {
+        "status": "repository_landing_reviewed",
+        "evidence_url": "https://www.batteryarchive.org/study_summaries.html",
+        "facts": [
+          "Website states datasets are uploaded with provider permission and transformed into a standard format.",
+          "Hosting portal includes Sandia, HNEI and other original institutions; requests citations of original papers and of the portal."
+        ]
+      },
+      "raw_file_audit": {
+        "status": "not_performed",
+        "blocker": "No standardized export file or original-study cohort inventory downloaded.",
+        "files_inspected": 0,
+        "sha256_recomputed": false,
+        "raw_columns_checked": false,
+        "cell_ids_checked": false,
+        "train_test_split_checked": false
+      },
+      "review_flags": [
+        "Portal entry represents multiple constituent studies, not a single experimental sample cohort.",
+        "Per-study licence and provenance must be checked separately."
+      ],
+      "next_steps": [
+        "Obtain original data under source licence/access conditions.",
+        "Inventory filenames, sizes and cryptographic hashes; examine sample raw rows safely.",
+        "Validate signal columns, units, cell/batch identifiers and output-label definitions.",
+        "Check exact sample lineage and any split leakage before updating readiness evidence."
+      ]
+    },
+    {
+      "dataset_id": "closed-loop-fast-charging-optimisation",
+      "dataset_name": "Closed-Loop Fast-Charging Optimisation Dataset",
+      "source_url": "https://data.matr.io/1/",
+      "source_documentation": {
+        "status": "publication_reviewed_portal_js_only",
+        "evidence_url": "https://www.nature.com/articles/s41586-020-1994-5",
+        "facts": [
+          "Attia et al. describe a closed-loop optimization campaign with 224 candidate charging protocols.",
+          "Original Nature article links its data to data.matr.io/1/ and publishes code links."
+        ]
+      },
+      "raw_file_audit": {
+        "status": "not_performed",
+        "blocker": "Shared portal requires JavaScript; study-to-experiment file mapping not inspected.",
+        "files_inspected": 0,
+        "sha256_recomputed": false,
+        "raw_columns_checked": false,
+        "cell_ids_checked": false,
+        "train_test_split_checked": false
+      },
+      "review_flags": [
+        "224 candidate protocols must not be interpreted as 224 independent cells.",
+        "Same portal as MATR 2019 publication; identical cell membership not proved."
+      ],
+      "next_steps": [
+        "Obtain original data under source licence/access conditions.",
+        "Inventory filenames, sizes and cryptographic hashes; examine sample raw rows safely.",
+        "Validate signal columns, units, cell/batch identifiers and output-label definitions.",
+        "Check exact sample lineage and any split leakage before updating readiness evidence."
+      ]
+    },
+    {
+      "dataset_id": "lithium-ion-battery-aging-dataset-based-on-ev-real-driving-profiles",
+      "dataset_name": "Lithium-Ion Battery Aging Dataset Based on EV Real-Driving Profiles",
+      "source_url": "https://osf.io/qsabn/?view_only=2a03b6c78ef14922a3e244f3d549de78",
+      "source_documentation": {
+        "status": "publication_reviewed_repository_blocked",
+        "evidence_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8892076/",
+        "facts": [
+          "Original 2022 Data in Brief report describes 10 INR21700-M50T NMC/graphite-silicon cells.",
+          "23 months of UDDS EV cycle data and periodic capacity, HPPC and EIS tests are documented.",
+          "The publication distinguishes large raw XLSX measurements from processed MAT files."
+        ]
+      },
+      "raw_file_audit": {
+        "status": "not_performed",
+        "blocker": "OSF repository blocked automated access; no XLSX/MAT files downloaded.",
+        "files_inspected": 0,
+        "sha256_recomputed": false,
+        "raw_columns_checked": false,
+        "cell_ids_checked": false,
+        "train_test_split_checked": false
+      },
+      "review_flags": [
+        "Six first-life cell identities are reused in the second-life study; avoid independent-cohort counting.",
+        "The OSF host returned access restrictions to automated inspection; no conclusion about general access."
+      ],
+      "next_steps": [
+        "Obtain original data under source licence/access conditions.",
+        "Inventory filenames, sizes and cryptographic hashes; examine sample raw rows safely.",
+        "Validate signal columns, units, cell/batch identifiers and output-label definitions.",
+        "Check exact sample lineage and any split leakage before updating readiness evidence."
+      ]
+    },
+    {
+      "dataset_id": "second-life-lithium-ion-battery-aging-dataset-based-on-grid-storage-cycling",
+      "dataset_name": "Second-Life Lithium-Ion Battery Aging Dataset Based on Grid Storage Cycling",
+      "source_url": "https://osf.io/8jnr5/",
+      "source_documentation": {
+        "status": "publication_reviewed_repository_blocked",
+        "evidence_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11639452/",
+        "facts": [
+          "The 2024 Data in Brief article explicitly identifies six cells reused from the 10-cell first-life EV campaign.",
+          "Reused cell IDs in the article are V4, W8, W9, V5, W10 and G1.",
+          "24 months of second-life cycling with grid duty cycles, RPT and EIS are documented."
+        ]
+      },
+      "raw_file_audit": {
+        "status": "not_performed",
+        "blocker": "OSF repository denied automated inspection; raw XLSX/MAT files not obtained.",
+        "files_inspected": 0,
+        "sha256_recomputed": false,
+        "raw_columns_checked": false,
+        "cell_ids_checked": false,
+        "train_test_split_checked": false
+      },
+      "review_flags": [
+        "Definite cross-study cell reuse at publication level; do not split by study expecting independence.",
+        "OSF file availability and cell identifiers inside actual files are not yet confirmed."
+      ],
+      "next_steps": [
+        "Obtain original data under source licence/access conditions.",
+        "Inventory filenames, sizes and cryptographic hashes; examine sample raw rows safely.",
+        "Validate signal columns, units, cell/batch identifiers and output-label definitions.",
+        "Check exact sample lineage and any split leakage before updating readiness evidence."
+      ]
+    },
+    {
+      "dataset_id": "nasa-battery-data-set",
+      "dataset_name": "NASA Battery Data Set",
+      "source_url": "https://phm-datasets.s3.amazonaws.com/NASA/5.+Battery+Data+Set.zip",
+      "source_documentation": {
+        "status": "agency_repository_page_reviewed",
+        "evidence_url": "https://www.nasa.gov/intelligent-systems-division/discovery-and-systems-health/pcoe/pcoe-data-set-repository/",
+        "facts": [
+          "NASA PCoE's official data repository lists the Battery Data Set download and author citation for Saha and Goebel.",
+          "Official description covers charging/discharging at different temperatures and impedance measurements."
+        ]
+      },
+      "raw_file_audit": {
+        "status": "not_performed",
+        "blocker": "Direct ZIP bytes were not available to local file inspection.",
+        "files_inspected": 0,
+        "sha256_recomputed": false,
+        "raw_columns_checked": false,
+        "cell_ids_checked": false,
+        "train_test_split_checked": false
+      },
+      "review_flags": [
+        "Direct ZIP link is listed but download success, archive contents and column names not checked.",
+        "NASA battery and randomized-usage datasets are separate entries; do not mix them."
+      ],
+      "next_steps": [
+        "Obtain original data under source licence/access conditions.",
+        "Inventory filenames, sizes and cryptographic hashes; examine sample raw rows safely.",
+        "Validate signal columns, units, cell/batch identifiers and output-label definitions.",
+        "Check exact sample lineage and any split leakage before updating readiness evidence."
+      ]
+    },
+    {
+      "dataset_id": "home-storage-rwth",
+      "dataset_name": "Multi-Year Home Storage Field Measurements",
+      "source_url": "https://zenodo.org/records/12091223",
+      "source_documentation": {
+        "status": "repository_landing_reviewed",
+        "evidence_url": "https://zenodo.org/records/12091223",
+        "facts": [
+          "Zenodo original record documents 21 home storage systems, 106 system-years and one-second measurements.",
+          "Record lists 1,270 monthly files in 21 system folders and 21 data ZIPs totaling ~21 GB.",
+          "Published Metadata_and_Code.zip is listed at 31.1 KB with MD5 23720da306f63fd2fd20fdc1a7b8f106."
+        ]
+      },
+      "raw_file_audit": {
+        "status": "not_performed",
+        "blocker": "Even the 31.1 KB metadata ZIP could not be fetched into the local environment; no archive read.",
+        "files_inspected": 0,
+        "sha256_recomputed": false,
+        "raw_columns_checked": false,
+        "cell_ids_checked": false,
+        "train_test_split_checked": false
+      },
+      "review_flags": [
+        "A host-published checksum is not an independently recomputed checksum.",
+        "Site-level files are system-level measurements, not guaranteed cell-by-cell labels."
+      ],
+      "next_steps": [
+        "Obtain original data under source licence/access conditions.",
+        "Inventory filenames, sizes and cryptographic hashes; examine sample raw rows safely.",
+        "Validate signal columns, units, cell/batch identifiers and output-label definitions.",
+        "Check exact sample lineage and any split leakage before updating readiness evidence."
+      ]
+    },
+    {
+      "dataset_id": "magbridge-battery-v1",
+      "dataset_name": "MagBridge-Battery v1.0",
+      "source_url": "https://zenodo.org/records/20260147",
+      "source_documentation": {
+        "status": "associated_code_repository_reviewed",
+        "evidence_url": "https://github.com/SakthiGs/MagBridge-Battery",
+        "facts": [
+          "Published companion code repository documents synthetic magnetometry-to-SOH bridge data and a Zenodo archive DOI.",
+          "README documents parquet shards, grouped splits, checksums and ~40 MB archive."
+        ]
+      },
+      "raw_file_audit": {
+        "status": "not_performed",
+        "blocker": "Zenodo archive endpoint inaccessible here; no original parquet checksums recomputed.",
+        "files_inspected": 0,
+        "sha256_recomputed": false,
+        "raw_columns_checked": false,
+        "cell_ids_checked": false,
+        "train_test_split_checked": false
+      },
+      "review_flags": [
+        "Synthetic bridge outputs must not be treated as physically recorded paired battery magnetometry.",
+        "Code documentation inspected; official Zenodo archive and hashes were not rechecked in this execution."
+      ],
+      "next_steps": [
+        "Obtain original data under source licence/access conditions.",
+        "Inventory filenames, sizes and cryptographic hashes; examine sample raw rows safely.",
+        "Validate signal columns, units, cell/batch identifiers and output-label definitions.",
+        "Check exact sample lineage and any split leakage before updating readiness evidence."
+      ]
+    },
+    {
+      "dataset_id": "bayreuth-three-electrode-degradation-modes-2026",
+      "dataset_name": "Bayreuth Three-Electrode Battery Aging — Degradation Modes & Impedance (2026)",
+      "source_url": "https://rdspace.uni-bayreuth.de/entities/researchdata/0bb95cc2-8ce9-4dcb-b7c0-4eda5949f9ed",
+      "source_documentation": {
+        "status": "repository_landing_reviewed",
+        "evidence_url": "https://rdspace.uni-bayreuth.de/entities/researchdata/0bb95cc2-8ce9-4dcb-b7c0-4eda5949f9ed",
+        "facts": [
+          "University of Bayreuth repository documents nine months of three-electrode NMC/graphite ageing with 11 checkups.",
+          "Publisher reports raw data, degradation-mode labels, EIS and evaluation scripts.",
+          "The original record lists Dataset.zip at 8.29 GB under CC BY-SA 4.0."
+        ]
+      },
+      "raw_file_audit": {
+        "status": "not_performed",
+        "blocker": "8.29 GB archive unavailable for local structural audit.",
+        "files_inspected": 0,
+        "sha256_recomputed": false,
+        "raw_columns_checked": false,
+        "cell_ids_checked": false,
+        "train_test_split_checked": false
+      },
+      "review_flags": [
+        "Source-described labels are not file-verified ground-truth column matches.",
+        "Do not mark knee-onset labels as present based on degradation-mode labels."
+      ],
+      "next_steps": [
+        "Obtain original data under source licence/access conditions.",
+        "Inventory filenames, sizes and cryptographic hashes; examine sample raw rows safely.",
+        "Validate signal columns, units, cell/batch identifiers and output-label definitions.",
+        "Check exact sample lineage and any split leakage before updating readiness evidence."
+      ]
+    },
+    {
+      "dataset_id": "rwth-nmc622-eis-soh-aging-2026",
+      "dataset_name": "RWTH Aachen NMC622 EIS and SOH Under Variable Ageing (2026)",
+      "source_url": "https://publications.rwth-aachen.de/record/1045352",
+      "source_documentation": {
+        "status": "repository_landing_reviewed",
+        "evidence_url": "https://publications.rwth-aachen.de/record/1045352",
+        "facts": [
+          "RWTH Aachen official record DOI 10.18154/RWTH-2026-10225 lists raw EIS data and electrical cycling under varied conditions.",
+          "Repository lists EIS_measurement_data.zip and Data_description.pdf for an NMC622/graphite 1 Ah cell.",
+          "Original source states CC BY 4.0."
+        ]
+      },
+      "raw_file_audit": {
+        "status": "not_performed",
+        "blocker": "ZIP/PDF listed by host but local file download/inspection not achieved.",
+        "files_inspected": 0,
+        "sha256_recomputed": false,
+        "raw_columns_checked": false,
+        "cell_ids_checked": false,
+        "train_test_split_checked": false
+      },
+      "review_flags": [
+        "Single described cell is not evidence of cross-cell generalization or independent holdout testing.",
+        "ZIP contents, checksums, schema and EIS labels not independently checked."
+      ],
+      "next_steps": [
+        "Obtain original data under source licence/access conditions.",
+        "Inventory filenames, sizes and cryptographic hashes; examine sample raw rows safely.",
+        "Validate signal columns, units, cell/batch identifiers and output-label definitions.",
+        "Check exact sample lineage and any split leakage before updating readiness evidence."
+      ]
+    },
+    {
+      "dataset_id": "batterylife-benchmark",
+      "dataset_name": "BatteryLife: Dataset and Benchmark for Battery Life Prediction",
+      "source_url": "https://github.com/Ruifeng-Tan/BatteryLife",
+      "source_documentation": {
+        "status": "public_code_repository_reviewed",
+        "evidence_url": "https://github.com/Ruifeng-Tan/BatteryLife",
+        "facts": [
+          "Official BatteryLife repository provides preprocessing, data loaders, split definitions and model implementations.",
+          "Repository LICENSE file inspected through GitHub connector: MIT, copyright Ruifeng Tan.",
+          "Repository states standardized datasets including XJTU are distributed separately."
+        ]
+      },
+      "raw_file_audit": {
+        "status": "not_performed",
+        "blocker": "Software licence and source code repository inspected; benchmark raw/standardized battery arrays and splits were not executed or checked.",
+        "files_inspected": 0,
+        "sha256_recomputed": false,
+        "raw_columns_checked": false,
+        "cell_ids_checked": false,
+        "train_test_split_checked": false
+      },
+      "review_flags": [
+        "BatteryLife is a benchmark/derived dataset integration; do not count it as an independent experimental cohort.",
+        "MIT software licence does not automatically license third-party underlying battery measurements."
+      ],
+      "next_steps": [
+        "Obtain original data under source licence/access conditions.",
+        "Inventory filenames, sizes and cryptographic hashes; examine sample raw rows safely.",
+        "Validate signal columns, units, cell/batch identifiers and output-label definitions.",
+        "Check exact sample lineage and any split leakage before updating readiness evidence."
+      ]
+    }
+  ]
+}
