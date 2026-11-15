@@ -41,7 +41,9 @@ def validate():
     for f in nasa:
         if not SHA.fullmatch(f["sha256_recomputed"]):
             errors.append("NASA SHA-256 missing: " + f["cell_id"])
-        if f["cycle_count"] != sum(f["cycle_types"].values()):
+        if not isinstance(f.get("cycle_types"), dict) or not f["cycle_types"]:
+            errors.append("NASA cycle-type counts missing: " + f["cell_id"])
+        elif "cycle_count" in f and f["cycle_count"] != sum(f["cycle_types"].values()):
             errors.append("NASA operation counts inconsistent: " + f["cell_id"])
         if f["discharge_capacity_records"] != f["cycle_types"]["discharge"]:
             errors.append("NASA capacity count inconsistent: " + f["cell_id"])
