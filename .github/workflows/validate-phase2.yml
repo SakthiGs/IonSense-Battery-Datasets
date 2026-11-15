@@ -9,6 +9,8 @@ on:
       - docs/readiness_passports.json
       - docs/curation/PHASE2_AUDIT_PROTOCOL.md
       - scripts/validate_phase2_source_audit.py
+      - scripts/validate_phase2_file_evidence.py
+      - docs/phase2_file_evidence_2026-11-15.json
       - scripts/audit_local_archive.py
       - .github/workflows/validate-phase2.yml
   pull_request:
@@ -32,6 +34,8 @@ jobs:
           python-version: '3.12'
       - name: Validate 15 resource source-review register and evidence grades
         run: python scripts/validate_phase2_source_audit.py
+      - name: Validate local file evidence record and publisher-checksum caveats
+        run: python scripts/validate_phase2_file_evidence.py
       - name: Test offline archive inventory without claiming actual dataset verification
         run: |
           python - <<'PY'
