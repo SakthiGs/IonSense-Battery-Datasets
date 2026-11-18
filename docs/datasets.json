@@ -40,7 +40,9 @@
       "note": "Nature Energy paper groups the 21 systems by cathode: LMO (blended with NMC), NMC and LFP."
     },
     "doi": "10.5281/zenodo.12091223",
-    "doi_source": "derived_from_url"
+    "doi_source": "derived_from_url",
+    "license": "CC BY 4.0",
+    "license_evidence_url": "https://zenodo.org/records/12091223"
   },
   {
     "id": "field-28-lfp",
@@ -152,7 +154,9 @@
       "note": "Not yet checked: the data page could not be opened."
     },
     "doi": "10.17632/mcsh4hnb8b.1",
-    "doi_source": "derived_from_url"
+    "doi_source": "derived_from_url",
+    "license": "CC BY 4.0",
+    "license_evidence_url": "https://data.mendeley.com/datasets/mcsh4hnb8b/1"
   },
   {
     "id": "predicting-battery-end-of-life-from-solar-off-grid-field-data",
@@ -180,7 +184,9 @@
     "chemistry_review_status": "catalogue_label_not_independently_verified",
     "application_domains": [
       "Stationary energy storage"
-    ]
+    ],
+    "license": "CC BY-NC 4.0",
+    "license_evidence_url": "https://ora.ox.ac.uk/objects/uuid:e41d3d4c-f74e-4d76-81fd-0caa77ec6cec"
   },
   {
     "id": "challenges-and-opportunities-in-truck-electrification-big-operational-data",
@@ -527,7 +533,9 @@
       "status": "source_verified",
       "url": "https://doaj.org/article/68b752677dc84eed99dac571bdddf4d4",
       "note": "Data in Brief article: NCA (Panasonic NCR18650B), NMC (LG INR21700-M50) and LFP (A123 ANR26650m1-B) cells."
-    }
+    },
+    "license": "CC BY 4.0",
+    "license_evidence_url": "https://data.mendeley.com/datasets/kxsbr4x3j2/2"
   },
   {
     "id": "increasing-generalization-capability-of-battery-health-estimation-continual-learning",
@@ -560,7 +568,9 @@
       "note": "Checked: the paper describes pouch, 100 Ah prismatic and small polymer cells but does not state their chemistries."
     },
     "doi": "10.17632/n3b54nsw8m.9",
-    "doi_source": "derived_from_url"
+    "doi_source": "derived_from_url",
+    "license": "CC BY 4.0",
+    "license_evidence_url": "https://data.mendeley.com/datasets/n3b54nsw8m/9"
   },
   {
     "id": "tum-commercial-aging",
@@ -908,7 +918,9 @@
       "status": "source_verified",
       "url": "https://www.nature.com/articles/s41560-024-01675-8",
       "note": "Nature Energy paper: nickel-cobalt-aluminium cathode with a silicon oxide-graphite anode."
-    }
+    },
+    "license": "CC BY 4.0",
+    "license_evidence_url": "https://purl.stanford.edu/td676xr4322"
   },
   {
     "id": "stanford-long-term-calendar-aging-dataset",
@@ -1286,7 +1298,9 @@
       "note": "Checked: the paper names SB Limotive 5.2 Ah prismatic cells but not their chemistry."
     },
     "doi": "10.5683/SP3/THZTJC",
-    "doi_source": "derived_from_url"
+    "doi_source": "derived_from_url",
+    "license": "CC BY 4.0",
+    "license_evidence_url": "https://borealisdata.ca/dataset.xhtml?persistentId=doi:10.5683/SP3/THZTJC"
   },
   {
     "id": "battery-failure-detection-and-fpi-estimation-during-cycling-to-failure",
@@ -1398,7 +1412,9 @@
       "note": "npj Computational Materials paper: the public model was trained on cells with LCO, LFP, NMC and NCA cathodes and fine-tuned on sodium-ion data. These are the chemistries of the training data."
     },
     "doi": "10.5281/zenodo.10293072",
-    "doi_source": "derived_from_url"
+    "doi_source": "derived_from_url",
+    "license": "MIT",
+    "license_evidence_url": "https://zenodo.org/records/10293072"
   },
   {
     "id": "lithium-inventory-tracking-as-a-nondestructive-battery-evaluation-method",
@@ -1468,7 +1484,9 @@
       "status": "source_verified",
       "url": "https://www.nature.com/articles/s41467-023-38895-7",
       "note": "Nature Communications paper: graphite-based negative electrode and NMC (1:1:1) positive electrode."
-    }
+    },
+    "license": "CC BY 4.0",
+    "license_evidence_url": "https://data.mendeley.com/datasets/rg8b2k2k28/1"
   },
   {
     "id": "data-driven-capacity-estimation-from-voltage-relaxation",
@@ -1512,7 +1530,9 @@
       "Tongji"
     ],
     "doi": "10.5281/zenodo.6405084",
-    "doi_source": "derived_from_url"
+    "doi_source": "derived_from_url",
+    "license": "CC BY 4.0",
+    "license_evidence_url": "https://zenodo.org/records/6405084"
   },
   {
     "id": "impedance-based-forecasting-of-battery-performance-amid-uneven-usage",
@@ -1583,7 +1603,9 @@
       "note": "Nature Communications paper (Methods): LiCoO2 cathode and graphite anode, Eunicell LR2032 coin cells."
     },
     "doi": "10.5281/zenodo.3633835",
-    "doi_source": "derived_from_url"
+    "doi_source": "derived_from_url",
+    "license": "CC BY 4.0",
+    "license_evidence_url": "https://zenodo.org/records/3633835"
   },
   {
     "id": "real-time-personalized-health-status-prediction-via-deep-transfer-learning",
@@ -1803,7 +1825,9 @@
       "note": "Nature Communications paper: NCA/graphite pouch cells (MGL SPIM08HP) and NMC/graphite prismatic cells (L148N50B)."
     },
     "doi": "10.5281/zenodo.17591942",
-    "doi_source": "derived_from_url"
+    "doi_source": "derived_from_url",
+    "license": "CC BY 4.0",
+    "license_evidence_url": "https://zenodo.org/records/17591942"
   },
   {
     "id": "probability-distributed-equivalent-circuit-model-dataset",
@@ -1837,7 +1861,9 @@
       "status": "source_verified",
       "url": "https://www.nature.com/articles/s44172-024-00221-4",
       "note": "Communications Engineering paper: A123 18650M1A cell, LFP cathode and graphite anode."
-    }
+    },
+    "license": "CC BY 4.0",
+    "license_evidence_url": "https://zenodo.org/records/10852930"
   },
   {
     "id": "source-data-internal-sensors-in-a-smart-battery-impact-on-local-graphite-lithiation",
@@ -1972,7 +1998,9 @@
       "status": "not_applicable",
       "url": "https://github.com/macroenergy/Dolphyn.jl",
       "note": "An energy-system optimisation model (electricity and hydrogen); it contains no battery cell data."
-    }
+    },
+    "license": "GPL-2.0",
+    "license_evidence_url": "https://github.com/macroenergy/Dolphyn.jl"
   },
   {
     "id": "improving-real-world-execution-of-optimised-trading-schedules-for-large-scale-battery-storage",
@@ -2252,7 +2280,9 @@
       "status": "not_stated",
       "url": "https://www.nasa.gov/intelligent-systems-division/discovery-and-systems-health/pcoe/pcoe-data-set-repository/",
       "note": "Checked: NASA's repository page names the BP930 batteries but not their chemistry."
-    }
+    },
+    "license": "US Government Works",
+    "license_evidence_url": "https://data.nasa.gov/dataset/small-satellite-power-simulation"
   },
   {
     "id": "accelerated-battery-life-testing-nasa",
@@ -2279,7 +2309,9 @@
       "status": "not_stated",
       "url": "https://data.nasa.gov/dataset/randomized-and-recommissioned-battery-dataset",
       "note": "Checked: the NASA page describes two-cell 18650 packs but not the cell model or chemistry."
-    }
+    },
+    "license": "US Government Works",
+    "license_evidence_url": "https://data.nasa.gov/dataset/randomized-and-recommissioned-battery-dataset"
   },
   {
     "id": "magbridge-battery-v1",
@@ -2727,7 +2759,7 @@
     "application_domains": [
       "Electric mobility"
     ],
-    "license": null,
+    "license": "CC BY 4.0",
     "doi": "10.17632/cp3473x7xv.3",
     "chemistry_evidence_url": "https://data.mendeley.com/datasets/cp3473x7xv/3",
     "chemistry_verification": null,
@@ -2735,7 +2767,8 @@
       "status": "not_stated",
       "url": "https://data.mendeley.com/datasets/cp3473x7xv/3",
       "note": "Checked: the data record says Li-ion only."
-    }
+    },
+    "license_evidence_url": "https://data.mendeley.com/datasets/cp3473x7xv/3"
   },
   {
     "id": "panasonic-18650pf-data",
@@ -2765,7 +2798,7 @@
     "application_domains": [
       "Electric mobility"
     ],
-    "license": null,
+    "license": "CC BY 4.0",
     "doi": "10.17632/wykht8y7tg.1",
     "chemistry_evidence_url": "https://data.mendeley.com/datasets/wykht8y7tg/1",
     "chemistry_verification": null,
@@ -2773,7 +2806,8 @@
       "status": "not_stated",
       "url": "https://data.mendeley.com/datasets/wykht8y7tg/1",
       "note": "Checked: the data record says lithium-ion only."
-    }
+    },
+    "license_evidence_url": "https://data.mendeley.com/datasets/wykht8y7tg/1"
   },
   {
     "id": "unibo-powertools-dataset",
@@ -2806,7 +2840,7 @@
     "application_domains": [
       "Industrial & portable"
     ],
-    "license": null,
+    "license": "CC BY 4.0",
     "doi": "10.17632/n6xg5fzsbv.1",
     "chemistry_evidence_url": "https://data.mendeley.com/datasets/n6xg5fzsbv/1",
     "chemistry_verification": null,
@@ -2814,7 +2848,8 @@
       "status": "not_stated",
       "url": "https://data.mendeley.com/datasets/n6xg5fzsbv/1",
       "note": "Checked: the data record does not give cell models or chemistry."
-    }
+    },
+    "license_evidence_url": "https://data.mendeley.com/datasets/n6xg5fzsbv/1"
   },
   {
     "id": "umich-battery-expansion",
@@ -2966,7 +3001,7 @@
     "application_domains": [
       "Electric mobility"
     ],
-    "license": null,
+    "license": "CC BY 4.0",
     "doi": "10.21227/6jr9-5235",
     "chemistry_evidence_url": "https://ieee-dataport.org/open-access/battery-and-heating-data-real-driving-cycles",
     "chemistry_verification": null,
@@ -2974,7 +3009,8 @@
       "status": "not_stated",
       "url": "https://ieee-dataport.org/open-access/battery-and-heating-data-real-driving-cycles",
       "note": "Checked: the data page gives the 60 Ah capacity but not the chemistry."
-    }
+    },
+    "license_evidence_url": "https://ieee-dataport.org/open-access/battery-and-heating-data-real-driving-cycles"
   },
   {
     "id": "argonne-camp-2023",
@@ -3174,7 +3210,7 @@
     ],
     "chemistry_review_status": "inferred_related_source",
     "application_domains": [],
-    "license": null,
+    "license": "CC BY 4.0",
     "doi": "10.17632/sn2kv34r4h.1",
     "chemistry_evidence_url": "https://www.batteryarchive.org/study_summaries.html",
     "chemistry_verification": "inferred_related_source",
@@ -3182,7 +3218,8 @@
       "status": "inferred_related_source",
       "url": "https://www.batteryarchive.org/study_summaries.html",
       "note": "The data record lists chemistry as a recorded field without values; Battery Archive's summary of the same tests lists NMC, LCO, LFP and LMO-based blends."
-    }
+    },
+    "license_evidence_url": "https://data.mendeley.com/datasets/sn2kv34r4h/1"
   },
   {
     "id": "vito-ni-rich-18650-lifecycle-ageing",
@@ -3356,7 +3393,7 @@
     "application_domains": [
       "Electric mobility"
     ],
-    "license": null,
+    "license": "CC BY 4.0",
     "doi": "10.17632/4fx8cjprxm.1",
     "chemistry_evidence_url": "https://data.mendeley.com/datasets/4fx8cjprxm/1",
     "chemistry_verification": null,
@@ -3364,7 +3401,8 @@
       "status": "not_stated",
       "url": "https://data.mendeley.com/datasets/4fx8cjprxm/1",
       "note": "Checked: the data record says lithium-ion only."
-    }
+    },
+    "license_evidence_url": "https://data.mendeley.com/datasets/4fx8cjprxm/1"
   },
   {
     "id": "hnei-lfp-synthetic-diagnosis-prognosis",
@@ -3394,7 +3432,7 @@
     ],
     "chemistry_review_status": "source_verified",
     "application_domains": [],
-    "license": null,
+    "license": "CC BY 4.0",
     "doi": "10.17632/bs2j56pn7y.3",
     "chemistry_evidence_url": "https://data.mendeley.com/datasets/bs2j56pn7y/3",
     "chemistry_verification": "source_verified",
@@ -3403,7 +3441,8 @@
       "url": "https://data.mendeley.com/datasets/bs2j56pn7y/3",
       "note": "Data record title: graphite//LFP."
     },
-    "dataset_kind": "Synthetic"
+    "dataset_kind": "Synthetic",
+    "license_evidence_url": "https://data.mendeley.com/datasets/bs2j56pn7y/3"
   },
   {
     "id": "lg-m50-parameterisation-data",
@@ -3432,7 +3471,7 @@
     ],
     "chemistry_review_status": "source_verified",
     "application_domains": [],
-    "license": null,
+    "license": "CC BY 4.0",
     "doi": "10.5281/zenodo.4032561",
     "chemistry_evidence_url": "https://wrap.warwick.ac.uk/id/eprint/149527",
     "chemistry_verification": "source_verified",
@@ -3440,7 +3479,8 @@
       "status": "source_verified",
       "url": "https://wrap.warwick.ac.uk/id/eprint/149527",
       "note": "Data record: NMC 811 positive and graphite–SiOx negative electrodes."
-    }
+    },
+    "license_evidence_url": "https://zenodo.org/records/4032561"
   },
   {
     "id": "samsung-50e-second-life-hppc",
@@ -3513,7 +3553,7 @@
     ],
     "chemistry_review_status": "source_verified",
     "application_domains": [],
-    "license": null,
+    "license": "CC BY 4.0",
     "doi": "10.17632/w48j7rn4x3.1",
     "chemistry_evidence_url": "https://data.mendeley.com/datasets/w48j7rn4x3/1",
     "chemistry_verification": "source_verified",
@@ -3522,7 +3562,8 @@
       "url": "https://data.mendeley.com/datasets/w48j7rn4x3/1",
       "note": "Data record: LFP/LMO, NMC/LMO and NCM/NCA blended electrodes against graphite."
     },
-    "dataset_kind": "Synthetic"
+    "dataset_kind": "Synthetic",
+    "license_evidence_url": "https://data.mendeley.com/datasets/w48j7rn4x3/1"
   },
   {
     "id": "samsung-inr18650-30q-knee-point-aging",
@@ -3856,9 +3897,10 @@
       "note": "Zenodo dataset record identifies a 280 Ah prismatic LFP cell, 700 cycles and TEMPEST project."
     },
     "application_domains": [],
-    "license": null,
+    "license": "CC BY 4.0",
     "doi": "10.5281/zenodo.20813753",
-    "dataset_kind": "Experimental"
+    "dataset_kind": "Experimental",
+    "license_evidence_url": "https://zenodo.org/records/20813753"
   },
   {
     "id": "bayreuth-three-electrode-degradation-modes-2026",
