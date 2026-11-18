@@ -556,6 +556,11 @@ button.cmp-name:hover{color:var(--accent-ink);text-decoration:underline;text-und
   .foot-in{padding-inline:16px}
 }
 @media (max-width:900px) and (min-width:641px){ .slot.empty{display:none} }
+/* Loading skeleton: placeholder cards while datasets.json loads (replaced by the first render). */
+.skel-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.skel{height:180px;border:1px solid var(--line);border-radius:12px;background:linear-gradient(100deg,var(--line) 30%,transparent 50%,var(--line) 70%) var(--panel);background-size:200% 100%;opacity:.55;animation:skel-shimmer 1.4s linear infinite}
+@keyframes skel-shimmer{from{background-position:200% 0}to{background-position:-200% 0}}
+@media (prefers-reduced-motion:reduce){.skel{animation:none}}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{transition-duration:0s!important;animation-duration:0s!important}
 }
@@ -652,7 +657,7 @@ button.cmp-name:hover{color:var(--accent-ink);text-decoration:underline;text-und
         </div>
       </div>
       <div class="active" id="active" hidden></div>
-      <div id="view"></div>
+      <div id="view" aria-busy="true"><div class="skel-grid" aria-hidden="true"><div class="skel"></div><div class="skel"></div><div class="skel"></div><div class="skel"></div><div class="skel"></div><div class="skel"></div></div></div>
     </section>
   </div>
 </main>
@@ -837,6 +842,8 @@ const FACETS = [
   { key: 'signal', title: 'Measurements', short: 'Measurements', get: d => (d.signals && d.signals.length) ? d.signals : ['Not listed'], switchable: true },
   { key: 'released', title: 'First released', short: 'Released', get: relBucket, order: () => REL_BUCKETS },
   { key: 'resource', title: 'Resource type', short: 'Resource', get: d => [resourceOf(d)] },
+  { key: 'license', title: 'Licence', short: 'Licence', get: d => [(d.license && String(d.license).trim()) || 'Not specified'],
+    note: 'Licence as recorded in the catalogue. “Not specified” means no licence was recorded here, not that the data is unlicensed. Check the original source before reuse.' },
   { key: 'includes', title: 'Must include', short: 'Must include', get: includesOf, fixed: 'all' }
 ];
 const FACET = Object.fromEntries(FACETS.map(f => [f.key, f]));
@@ -1250,6 +1257,7 @@ function renderResults() {
   $('#sort-wrap').hidden = state.view === 'coverage';
   const focusKey = document.activeElement && document.activeElement.dataset ? document.activeElement.dataset.fk : null;
   const view = $('#view');
+  view.removeAttribute('aria-busy');
   if (!n) view.replaceChildren(emptyState());
   else if (state.view === 'table') view.replaceChildren(tableView());
   else if (state.view === 'coverage') view.replaceChildren(coverageView());
@@ -1425,7 +1433,52 @@ function coverageView() {
   const scale = h('div', { class: 'scale', 'aria-hidden': 'true' }, 'Fewer', [1, 2, 3, 4, 5].map(i => h('i', { style: `background:var(--h${i})` })), 'More');
   return h('div', { style: 'display:flex;flex-direction:column;gap:12px' },
     h('p', { class: 'cov-intro' }, 'How the current results spread across research tasks and categories. Click a cell to show those datasets. A dataset can cover several tasks, so task totals can add up to more than the dataset count.' + hiddenNote),
-    h('div', { class: 'table-wrap' }, h('table', { class: 'cov' }, h('caption', { class: 'sr-only' }, 'Datasets per research task and category'), thead, tbody, tfoot), scale));
+    h('div', { class: 'table-wrap' }, h('table', { class: 'cov' }, h('caption', { class: 'sr-only' }, 'Datasets per research task and category'), thead, tbody, tfoot), scale),
+    chemSignalMatrix());
+}
+
+/* Cell chemistry x measurement: shows which signal types exist for which chemistries, and where there are gaps.
+   Zero cells are real gaps in the catalogue, not proof that no such data exists anywhere. */
+function chemSignalMatrix() {
+  const grid = new Map(), rowTotal = new Map(), colTotal = new Map();
+  for (const d of results) {
+    const chems = d._v.chemistry || [], sigs = d._v.signal || [];
+    for (const c of chems) rowTotal.set(c, (rowTotal.get(c) || 0) + 1);
+    for (const g of sigs) colTotal.set(g, (colTotal.get(g) || 0) + 1);
+    for (const c of chems) for (const g of sigs) { const k = c + '\u0000' + g; grid.set(k, (grid.get(k) || 0) + 1); }
+  }
+  if (!rowTotal.size || !colTotal.size) return h('div');
+  const rows = [...rowTotal.keys()].sort((a, b) => rowTotal.get(b) - rowTotal.get(a) || a.localeCompare(b));
+  const cols = [...colTotal.keys()].sort((a, b) => colTotal.get(b) - colTotal.get(a) || a.localeCompare(b));
+  const max = Math.max(1, ...grid.values());
+  const level = c => Math.min(5, Math.max(1, Math.ceil(c / max * 5)));
+  const pinnedOf = (c, g) => state.sel.chemistry.size === 1 && state.sel.chemistry.has(c) && state.sel.signal.size === 1 && state.sel.signal.has(g);
+  const drill2 = (c, g, pinned) => {
+    state.sel.chemistry = new Set(pinned ? [] : [c]);
+    state.sel.signal = new Set(pinned ? [] : [g]);
+    if (!pinned) { state.view = 'cards'; state.lastAdded = { key: 'signal', value: g }; }
+    update();
+    if (!pinned) $('#results').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+  };
+  const thead = h('thead', {}, h('tr', {}, h('th', { scope: 'col' }, 'Cell chemistry'),
+    cols.map(g => h('th', { scope: 'col', title: g }, g)), h('th', { scope: 'col', class: 'total' }, 'Total')));
+  const tbody = h('tbody', {}, rows.map(c => h('tr', {}, h('th', { scope: 'row' }, c),
+    cols.map(g => {
+      const n = grid.get(c + '\u0000' + g) || 0;
+      if (!n) return h('td', {}, h('span', { class: 'hc z', 'aria-label': 'none, a gap in the catalogue', title: `No dataset records ${g} for ${c}` }, '·'));
+      const pinned = pinnedOf(c, g);
+      return h('td', {}, h('button', {
+        type: 'button', class: 'hc l' + level(n), 'data-fk': `cov2|${c}|${g}`,
+        title: `${plural(n, 'dataset')}: ${g} for ${c}. ${pinned ? 'Click to clear.' : 'Click to show them.'}`,
+        'aria-label': `${plural(n, 'dataset')} with ${g} for ${c}`,
+        onclick: () => drill2(c, g, pinned)
+      }, n));
+    }),
+    h('td', { class: 'total' }, rowTotal.get(c)))));
+  return h('div', { style: 'display:flex;flex-direction:column;gap:12px;margin-top:20px' },
+    h('h3', { style: 'margin:0;font-size:16px' }, 'Chemistry by measurement'),
+    h('p', { class: 'cov-intro' }, 'Which measurements are recorded for which cell chemistries. A dot is a gap in this catalogue, not proof that no such data exists. Datasets can list several chemistries and measurements, so totals can exceed the dataset count.'),
+    h('div', { class: 'table-wrap' }, h('table', { class: 'cov' }, h('caption', { class: 'sr-only' }, 'Datasets per cell chemistry and measurement'), thead, tbody)));
 }
 
 function drill(cat, task, pinned) {
@@ -2244,6 +2297,7 @@ fetch('./datasets.json', { cache: 'no-cache' })
   })
   .catch(err => {
     $('#results-title').textContent = 'The catalogue didn’t load';
+    $('#view').removeAttribute('aria-busy');
     $('#view').replaceChildren(h('div', { class: 'empty' },
       h('h3', {}, 'Couldn’t read datasets.json'),
       h('p', {}, err.message + ' If you opened this file straight from disk, serve the folder instead, for example with “python3 -m http.server” in the docs folder, then reload.')));
