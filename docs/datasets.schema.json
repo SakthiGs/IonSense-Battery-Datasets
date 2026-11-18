@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sakthigs.github.io/IonSense-Battery-Datasets/datasets.schema.json",
+  "title": "IonSense catalogue record list",
+  "description": "Schema for docs/datasets.json. Extra fields are allowed so generated metadata does not break validation; the fields below are the ones the explorer relies on.",
+  "type": "array",
+  "minItems": 1,
+  "items": { "$ref": "#/$defs/record" },
+  "$defs": {
+    "nonEmpty": { "type": "string", "minLength": 1 },
+    "stringList": { "type": "array", "items": { "type": "string", "minLength": 1 }, "uniqueItems": true },
+    "url": { "type": "string", "pattern": "^https?://[^\\s]+$" },
+    "record": {
+      "type": "object",
+      "required": ["id", "name", "category", "chemistry", "tasks", "source", "description", "url", "signals", "source_type", "application_domains", "chemistries", "chemistry_review_status"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+        "name": { "$ref": "#/$defs/nonEmpty" },
+        "category": { "$ref": "#/$defs/nonEmpty" },
+        "chemistry": { "$ref": "#/$defs/nonEmpty" },
+        "source": { "$ref": "#/$defs/nonEmpty" },
+        "scale": { "type": "string" },
+        "description": { "type": "string", "minLength": 20 },
+        "url": { "$ref": "#/$defs/url" },
+        "paper": { "type": "string" },
+        "doi": { "type": ["string", "null"], "pattern": "^(10\\.\\d{4,9}/\\S+)?$" },
+        "code_url": { "$ref": "#/$defs/url" },
+        "license": { "type": ["string", "null"] },
+        "access": { "type": "string" },
+        "notes": { "type": "string" },
+        "tasks": { "$ref": "#/$defs/stringList" },
+        "signals": { "$ref": "#/$defs/stringList" },
+        "chemistries": { "$ref": "#/$defs/stringList" },
+        "application_domains": { "$ref": "#/$defs/stringList" },
+        "source_type": {
+          "enum": ["data_repository", "data_portal", "code_repository", "publication_source", "direct_download", "source_data", "code_only"]
+        },
+        "access_status": { "type": "string" },
+        "chemistry_review_status": {
+          "enum": ["source_verified", "not_stated", "inferred_related_source", "needs_source_verification", "not_applicable", "catalogue_label_not_independently_verified", "confirmed_by_users"]
+        }
+      },
+      "additionalProperties": true
+    }
+  }
+}

@@ -1,0 +1,30 @@
+name: Validate datasets.json
+
+on:
+  push:
+    paths:
+      - docs/datasets.json
+      - docs/datasets.schema.json
+      - scripts/validate_datasets.py
+      - .github/workflows/validate-datasets.yml
+  pull_request:
+    paths:
+      - docs/datasets.json
+      - docs/datasets.schema.json
+      - scripts/validate_datasets.py
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install jsonschema
+      - name: Validate schema and integrity checks
+        run: python scripts/validate_datasets.py
