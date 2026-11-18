@@ -38,7 +38,9 @@
       "status": "source_verified",
       "url": "https://www.nature.com/articles/s41560-024-01620-9",
       "note": "Nature Energy paper groups the 21 systems by cathode: LMO (blended with NMC), NMC and LFP."
-    }
+    },
+    "doi": "10.5281/zenodo.12091223",
+    "doi_source": "derived_from_url"
   },
   {
     "id": "field-28-lfp",
@@ -148,7 +150,9 @@
       "status": "not_checked",
       "url": "https://data.mendeley.com/datasets/mcsh4hnb8b/1",
       "note": "Not yet checked: the data page could not be opened."
-    }
+    },
+    "doi": "10.17632/mcsh4hnb8b.1",
+    "doi_source": "derived_from_url"
   },
   {
     "id": "predicting-battery-end-of-life-from-solar-off-grid-field-data",
@@ -337,7 +341,9 @@
       "status": "not_checked",
       "url": "https://rdr.kuleuven.be/dataset.xhtml?persistentId=doi:10.48804/8KPDTW",
       "note": "Not yet checked: the data page could not be opened."
-    }
+    },
+    "doi": "10.48804/8KPDTW",
+    "doi_source": "derived_from_url"
   },
   {
     "id": "electric-vehicle-usage-data-set-for-battery-aging-studies",
@@ -481,7 +487,9 @@
     "application_domains": [],
     "license": "CC BY 4.0",
     "chemistry_evidence_url": "https://wrap.warwick.ac.uk/183745/1/1-s2.0-S2352340924001987-main.pdf",
-    "chemistry_verification": "source_verified"
+    "chemistry_verification": "source_verified",
+    "doi": "10.17632/zh58byr53c.1",
+    "doi_source": "derived_from_url"
   },
   {
     "id": "experimental-data-galvanostatic-discharge-at-different-c-rates-and-temperatures",
@@ -550,7 +558,9 @@
       "status": "not_stated",
       "url": "https://vbn.aau.dk/files/698872376/1-s2.0-S266638642300588X-main.pdf",
       "note": "Checked: the paper describes pouch, 100 Ah prismatic and small polymer cells but does not state their chemistries."
-    }
+    },
+    "doi": "10.17632/n3b54nsw8m.9",
+    "doi_source": "derived_from_url"
   },
   {
     "id": "tum-commercial-aging",
@@ -1274,7 +1284,9 @@
       "status": "not_stated",
       "url": "https://www.nature.com/articles/s44172-025-00409-2",
       "note": "Checked: the paper names SB Limotive 5.2 Ah prismatic cells but not their chemistry."
-    }
+    },
+    "doi": "10.5683/SP3/THZTJC",
+    "doi_source": "derived_from_url"
   },
   {
     "id": "battery-failure-detection-and-fpi-estimation-during-cycling-to-failure",
@@ -1340,7 +1352,9 @@
       "status": "not_checked",
       "url": "https://dataverse.csuc.cat/dataset.xhtml?persistentId=doi:10.34810/data2395",
       "note": "Not yet checked: the data page could not be opened."
-    }
+    },
+    "doi": "10.34810/data2395",
+    "doi_source": "derived_from_url"
   },
   {
     "id": "attention-towards-chemistry-agnostic-and-explainable-battery-lifetime-prediction-arcana",
@@ -1382,7 +1396,9 @@
       "status": "source_verified",
       "url": "https://www.nature.com/articles/s41524-024-01286-7",
       "note": "npj Computational Materials paper: the public model was trained on cells with LCO, LFP, NMC and NCA cathodes and fine-tuned on sodium-ion data. These are the chemistries of the training data."
-    }
+    },
+    "doi": "10.5281/zenodo.10293072",
+    "doi_source": "derived_from_url"
   },
   {
     "id": "lithium-inventory-tracking-as-a-nondestructive-battery-evaluation-method",
@@ -1494,7 +1510,9 @@
       "Data-Driven Capacity Estimation from Voltage Relaxation",
       "TJU",
       "Tongji"
-    ]
+    ],
+    "doi": "10.5281/zenodo.6405084",
+    "doi_source": "derived_from_url"
   },
   {
     "id": "impedance-based-forecasting-of-battery-performance-amid-uneven-usage",
@@ -1563,7 +1581,9 @@
       "status": "source_verified",
       "url": "https://www.nature.com/articles/s41467-020-15235-7",
       "note": "Nature Communications paper (Methods): LiCoO2 cathode and graphite anode, Eunicell LR2032 coin cells."
-    }
+    },
+    "doi": "10.5281/zenodo.3633835",
+    "doi_source": "derived_from_url"
   },
   {
     "id": "real-time-personalized-health-status-prediction-via-deep-transfer-learning",
@@ -1607,7 +1627,9 @@
       "HUST",
       "Huazhong"
     ],
-    "license": "CC BY 4.0"
+    "license": "CC BY 4.0",
+    "doi": "10.17632/nsc7hnsg4s.2",
+    "doi_source": "derived_from_url"
   },
   {
     "id": "generative-learning-assisted-state-of-health-estimation-for-battery-recycling",
@@ -1678,7 +1700,9 @@
       "status": "source_verified",
       "url": "https://wrap.warwick.ac.uk/175923/1/1-s2.0-S2352340923002767-main.pdf",
       "note": "Data in Brief article: LGM50 21700 cells with an NMC811 cathode."
-    }
+    },
+    "doi": "10.17632/mn9fb7xdx6.3",
+    "doi_source": "derived_from_url"
   },
   {
     "id": "retired-lithium-ion-batteries-dataset",
@@ -1777,7 +1801,9 @@
       "status": "source_verified",
       "url": "https://www.nature.com/articles/s41467-025-67565-z",
       "note": "Nature Communications paper: NCA/graphite pouch cells (MGL SPIM08HP) and NMC/graphite prismatic cells (L148N50B)."
-    }
+    },
+    "doi": "10.5281/zenodo.17591942",
+    "doi_source": "derived_from_url"
   },
   {
     "id": "probability-distributed-equivalent-circuit-model-dataset",
@@ -1876,7 +1902,9 @@
     "chemistry_review_status": "source_verified",
     "application_domains": [],
     "chemistry_evidence_url": "https://portal.fis.tum.de/en/publications/comparing-the-electrical-performance-of-commercial-sodium-ion-and/",
-    "chemistry_verification": "source_verified"
+    "chemistry_verification": "source_verified",
+    "doi": "10.14459/2024mp1762675",
+    "doi_source": "derived_from_url"
   },
   {
     "id": "data-repository-for-electrochemical-thermal-modelling-of-high-power-li-ion-pouch-cells",

@@ -9,6 +9,10 @@ Notes (printed, never fail):
   - several records sharing one landing URL (common for portals such as Battery Archive)
   - how many records lack a license or DOI
 
+Gap ratchet (errors): a record missing `license` or `doi` must be listed in
+scripts/metadata_gap_baseline.json. New records therefore need both fields, and
+once a gap is filled its id must be removed from the baseline, so the list only shrinks.
+
 Usage:  python scripts/validate_datasets.py [path/to/datasets.json]
 """
 import json
@@ -22,6 +26,7 @@ from jsonschema import Draft202012Validator
 ROOT = Path(__file__).resolve().parent.parent
 DATA = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "docs" / "datasets.json"
 SCHEMA = ROOT / "docs" / "datasets.schema.json"
+BASELINE = ROOT / "scripts" / "metadata_gap_baseline.json"
 
 
 def norm(text: str) -> str:
@@ -61,8 +66,15 @@ def main() -> int:
         if len(ids) > 1:
             notes.append(f"shared url: {url} -> {', '.join(ids)}")
 
+    baseline = json.loads(BASELINE.read_text(encoding="utf-8")) if BASELINE.exists() else {}
     for field in ("license", "doi"):
         missing = [r.get("id", "?") for r in records if not r.get(field)]
+        allowed = set(baseline.get(field, []))
+        for rid in missing:
+            if rid not in allowed:
+                errors.append(f"gap: {rid}: no {field}. Add one (with the source page that states it) or, if genuinely unavailable, list the id in {BASELINE.name}")
+        for rid in sorted(allowed - set(missing)):
+            errors.append(f"baseline: {rid} now has a {field}; remove it from {BASELINE.name} so the gap list keeps shrinking")
         if missing:
             notes.append(f"missing {field}: {len(missing)}/{len(records)} records have no {field} (shown as 'Not specified')")
 
