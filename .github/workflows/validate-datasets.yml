@@ -6,12 +6,14 @@ on:
       - docs/datasets.json
       - docs/datasets.schema.json
       - scripts/validate_datasets.py
+      - scripts/metadata_gap_baseline.json
       - .github/workflows/validate-datasets.yml
   pull_request:
     paths:
       - docs/datasets.json
       - docs/datasets.schema.json
       - scripts/validate_datasets.py
+      - scripts/metadata_gap_baseline.json
   workflow_dispatch:
 
 permissions:
