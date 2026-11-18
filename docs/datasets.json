@@ -217,7 +217,9 @@
       "status": "not_stated",
       "url": "https://www.nature.com/articles/s41560-024-01602-x",
       "note": "Checked: the paper does not state the trucks' battery chemistry. The public files hold emission and cost results; raw operating data is available on request."
-    }
+    },
+    "license": "CC BY 4.0",
+    "license_evidence_url": "https://api.figshare.com/v2/articles/24421210"
   },
   {
     "id": "onroad-capacity",
@@ -250,7 +252,9 @@
       "status": "not_stated",
       "url": "https://github.com/shiyunliu-battery/battery-charging-data-of-on-road-electric-vehicles",
       "note": "Checked: the repository README does not state the chemistry."
-    }
+    },
+    "license": "MIT",
+    "license_evidence_url": "https://raw.githubusercontent.com/shiyunliu-battery/battery-charging-data-of-on-road-electric-vehicles/HEAD/LICENSE"
   },
   {
     "id": "synthetic-duty-cycles-from-real-world-autonomous-ev-driving",
@@ -841,7 +845,9 @@
       "status": "source_verified",
       "url": "https://arxiv.org/abs/2307.08382",
       "note": "Dataset authors' paper: NMC cathode and graphite anode (they cite it as the ISU & ILCC NMC/Gr dataset)."
-    }
+    },
+    "license": "CC BY 4.0",
+    "license_evidence_url": "https://api.figshare.com/v2/articles/22582234"
   },
   {
     "id": "comprehensive-battery-aging-dataset-nmc-c-sio-capacity-impedance-fade",
@@ -2158,7 +2164,9 @@
       "status": "source_verified",
       "url": "https://www.nature.com/articles/s41597-025-05360-7",
       "note": "Scientific Data descriptor: lithium manganese oxide and lithium nickel oxide cathodes."
-    }
+    },
+    "license": "CC BY 4.0",
+    "license_evidence_url": "https://api.figshare.com/v2/articles/28732490"
   },
   {
     "id": "nasa-battery-data-set",
@@ -3356,7 +3364,7 @@
     "chemistries": [],
     "chemistry_review_status": "not_applicable",
     "application_domains": [],
-    "license": null,
+    "license": "CC BY 4.0",
     "doi": "10.6084/m9.figshare.11888115.v2",
     "chemistry_evidence_url": "https://www.nature.com/articles/s41597-020-00602-2",
     "chemistry_verification": null,
@@ -3364,7 +3372,8 @@
       "status": "not_applicable",
       "url": "https://www.nature.com/articles/s41597-020-00602-2",
       "note": "Materials database extracted from papers; not measurements on particular cells."
-    }
+    },
+    "license_evidence_url": "https://api.figshare.com/v2/articles/11888115"
   },
   {
     "id": "turnigy-graphene-5ah-data",
